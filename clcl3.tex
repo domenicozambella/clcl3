@@ -1,0 +1,356 @@
+\documentclass{amsproc}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{comment}
+\usepackage[alphabetic]{amsrefs}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{datetime2} 
+\usepackage[colorlinks=true,linkcolor=blue,]{hyperref}
+
+\usepackage{stackengine}
+\usepackage{scalerel}
+\usepackage{mathtools}
+\usepackage{calc}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{euscript}
+% \def\EuScript#1{\mathscr#1}
+% \usepackage{fourier-otf}
+\usepackage{fourier}
+%\usepackage{palatino}
+% \usepackage[sc]{mathpazo} % add possibly `sc` and `osf` options
+%\usepackage{eulervm}
+%\usepackage{bbm}
+%\usepackage{latexsym}
+% \usepackage{mathrsfs}
+% \usepackage{stmaryrd}
+% \usepackage{stix}
+\def\dotminus{\stackon[.2ex]{$-$}{$.$}}
+% \def\wneg{\stackon[-.2ex]{$\neg$}{$\neg$}}
+\usepackage{dsfont}
+% \newcommand*{\TakeFourierOrnament}[1]{{%
+% \fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
+% \renewcommand*{\danger}{\TakeFourierOrnament{66}}
+\parindent0ex
+\parskip1.2ex
+% \makeatletter
+% \DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+% \DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
+% \DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
+% \DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+% \DeclareOldFontCommand{\it}{\normalfont\itshape}{\mathit}
+% \DeclareOldFontCommand{\sl}{\normalfont\slshape}{\@nomath\sl}
+% \DeclareOldFontCommand{\sc}{\normalfont\scshape}{\@nomath\sc}
+% \makeatother
+
+\newcommand{\mylabel}[1]{{#1}\hfill}
+\renewenvironment{itemize}
+  {\begin{list}{$\triangleright$}{%
+  \setlength{\parskip}{0mm}
+  \setlength{\topsep}{.4\baselineskip}
+  \setlength{\rightmargin}{0mm}
+  \setlength{\listparindent}{0mm}
+  \setlength{\itemindent}{0mm}
+  \setlength{\labelwidth}{3ex}
+  \setlength{\itemsep}{.2\baselineskip}
+  \setlength{\parsep}{.2\baselineskip}
+  \setlength{\partopsep}{0mm}
+  \setlength{\labelsep}{1ex}
+  \setlength{\leftmargin}{\labelwidth+\labelsep}
+  \let\makelabel\mylabel}}{%
+\end{list}}
+
+\declaretheoremstyle[
+  headfont=\normalfont\bfseries,
+  notefont=\bfseries,
+  notebraces={(}{)},
+  bodyfont=\normalfont,
+  postheadspace=1em,
+  mdframed={
+  nobreak=true,
+  outerlinewidth=1pt,
+  linecolor=gray!20,
+  roundcorner = 1ex,    
+  backgroundcolor=gray!10, 
+  innerleftmargin=1ex,
+  leftmargin=0ex,
+  innerrightmargin=1ex,
+  rightmargin=0ex,
+  innertopmargin=1.5ex, 
+  innerbottommargin=1ex, 
+  skipabove=3ex,
+  skipbelow=1ex}, 
+]{mystyle}
+
+\declaretheorem[style=mystyle]%
+{theorem}
+\declaretheorem[style=mystyle,sibling=theorem]%
+{lemma,proposition,fact,corollary,definition,notation,remark,example,claim,question}
+
+\let\proof\relax
+\declaretheoremstyle[
+  spaceabove=6pt, 
+  spacebelow=6pt, 
+  headfont=\normalfont\itshape, 
+  bodyfont = \normalfont,
+  postheadspace=1em, 
+  qed=\qedsymbol, 
+  headpunct={.}]
+{myproof} 
+\declaretheorem[style=myproof, unnumbered]{proof}
+
+\renewcommand*{\emph}[1]{%
+   \smash{\tikz[baseline]\node[rectangle, fill=teal!25, rounded corners, inner xsep=0.5ex, inner ysep=0.2ex, anchor=base, minimum height = 2.7ex]{\strut #1};}}
+
+%%%%%%% GETCOMMIT
+\newcommand\dotGitHEAD{}
+\newcommand\branch{}
+
+
+\makeatletter\let\myfilehandle\@inputcheck\makeatother
+
+\openin\myfilehandle=.git/HEAD\relax
+
+\begingroup\endlinechar-1
+  \global\read\myfilehandle to \dotGitHEAD
+\endgroup
+\closein\myfilehandle
+
+\newcommand\GetBranch{}
+\def\GetBranch ref: refs/heads/#1\relax{\renewcommand{\branch}{#1}}
+
+\expandafter\GetBranch\dotGitHEAD\relax
+
+\makeatother
+
+\linespread{1.1}
+% \author{S. A. Polymath}
+\author{Domenico Zambella}
+\author{et al.}
+\thanks{Dipartimento di Matematica, Universit\`a di Torino, via Carlo Alberto 10, 10123 Torino.}
+\begin{document}
+\title{Local stability in structures with a standard sort}
+% \hfill\texttt{~}
+\hfill\texttt{Branch:\ \branch\ \DTMnow}
+\maketitle
+\raggedbottom
+
+\begin{abstract}
+
+\end{abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{}
+
+\def\ceq#1#2#3{\parbox[t]{23ex}{$\displaystyle #1$}\parbox{6ex}{\hfil $#2$}{$\displaystyle #3$}}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+\newcommand\biburl[1]{\url{#1}}
+\BibSpec{arXiv}{%
+  +{}{\PrintAuthors}{author}
+  +{,}{ \textit}{title}
+  +{}{ \parenthesize}{date}
+  +{,}{ arXiv:}{eprint}
+  +{,}{ } {note}
+  % +{,}{ \url}
+}
+
+\BibSpec{webpage}{%
+  +{}{\PrintAuthors} {author}
+  +{,}{ \textit} {title}
+  +{,}{ } {portal}
+  +{}{ \parenthesize} {date}
+  +{,}{ } {doi}
+  +{,}{ } {note}
+  +{.}{ } {transition}
+}
+\begin{bibdiv}
+\begin{biblist}[]\normalsize
+
+\bib{clcl}{article}{
+    label={AAVV},
+    author = {Agostini, Claudio},
+    author = {Baratella, Stefano},
+    author = {Barbina, Silvia},
+    author = {Motto Ros, Luca},
+    author = {Zambella, Domenico},
+    title = {Continuous logic in a classical setting},
+    note={Submitted},
+    date = {2023},
+  }
+
+  \bib{A}{webpage}{
+    label={A},
+    author={Auslander, Josef},
+    title={Topological Dynamics},
+    portal={Scholarpedia},
+    doi={doi:10.4249/ scholarpedia.3449},
+    date={2008},
+}
+
+  \bib{BY}{article}{
+    label={BY},
+    author={Ben Yaacov, Ita\"{\i}},
+    title={Model theoretic stability and definability of types, after A.
+    Grothendieck},
+    journal={Bull. Symb. Log.},
+    volume={20},
+    date={2014},
+    number={4},
+    pages={491--496},
+    % issn={1079-8986},
+    % review={\MR{3294276}},
+    % doi={10.1017/bsl.2014.33},
+ }
+
+\bib{BBHU}{article}{
+  label={BBHU},
+  author={Ben Yaacov, Ita\"{\i}},
+  author={Berenstein, Alexander},
+  author={Henson, C. Ward},
+  author={Usvyatsov, Alexander},
+  title={Model theory for metric structures},
+  conference={
+      title={Model theory with applications to algebra and analysis. Vol. 2},
+  },
+  book={
+      series={London Math. Soc. Lecture Note Ser.},
+      volume={350},
+      publisher={Cambridge Univ. Press, Cambridge},
+  },
+  %  isbn={978-0-521-70908-8},
+  date={2008},
+  pages={315--427},
+  %  review={\MR{2436146}},
+  %  doi={10.1017/CBO9780511735219.011},
+}
+
+% \bib{G}{article}{
+%   label={G},
+%   author = {Goldbring, Isaac},
+%   title = {Lecture notes on nonstandard analysis},
+%   conference={
+%     title={UCLA Summer School in Logic 2012}
+%    },
+%   eprint = {www.math.uci.edu/~isaac/NSA\%20notes.pdf},
+% }
+
+% \bib{H}{arXiv}{
+%   label={H},
+%   author = {Hart, Bradd},
+%   title = {An Introduction To Continuous Model Theory},
+%   eprint={2303.03969},
+%   doi = {10.48550/arXiv.2303.03969},
+%   url = {https://arxiv.org/abs/},
+%   publisher = {arXiv},
+%   date = {2023},
+% }
+
+\bib{Hr}{article}{
+   label={Hr},
+   author={Hrushovski, Ehud},
+   title={Stable group theory and approximate subgroups},
+   journal={J. Amer. Math. Soc.},
+   volume={25},
+   date={2012},
+   number={1},
+   pages={189--243},
+   %issn={0894-0347},
+   %doi={10.1090/S0894-0347-2011-00708-S},
+}
+
+% \bib{HPP}{article}{
+%    label={HPP},
+%    author={Hrushovski, Ehud},
+%    author={Peterzil, Ya'acov},
+%    author={Pillay, Anand},
+%    title={Groups, measures, and the NIP},
+%    journal={J. Amer. Math. Soc.},
+%    volume={21},
+%    date={2008},
+%    number={2},
+%    pages={563--596},
+%   %  issn={0894-0347},
+%   %  review={\MR{2373360}},
+%   %  doi={10.1090/S0894-0347-07-00558-9},
+% }
+
+\bib{HI}{article}{
+  label={HI},
+  author={Henson, C. Ward},
+  author={Iovino, Jos\'{e}},
+  title={Ultraproducts in analysis},
+  conference={
+    title={Analysis and logic},
+    address={Mons},
+    date={1997},
+   },
+   book={
+      series={London Math. Soc. Lecture Note Ser.},
+      volume={262},
+      publisher={Cambridge Univ. Press, Cambridge},
+   },
+   date={2002},
+   pages={1--110},
+  %  review={\MR{1967834}},
+}
+
+\bib{K}{arXiv}{
+  label={K},
+  author = {Keisler, H. Jerome},
+  title = {Model Theory for Real-valued Structures},
+  eprint={2005.11851},
+  doi = {10.48550/ARXIV.2005.11851},
+  url = {https://arxiv.org/abs/2005.11851},
+  publisher = {arXiv},
+  date = {2020},
+}
+
+% \bib{Z}{arXiv}{
+%   label = {Z},
+%   author = {Zambella, Domenco},
+%   note = {In preparation},
+% }
+
+% \bib{Z}{article}{
+%   label={Z},
+%    author={Zambella, Domenico},
+%    title={Elementary classes of finite VC-dimension},
+%    journal={Arch. Math. Logic},
+%    volume={54},
+%    date={2015},
+%    number={5-6},
+%    pages={511--520},
+%   %  issn={0933-5846},
+%   %  review={\MR{3372605}},
+%   %  doi={10.1007/s00153-015-0424-0},
+% }
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Continuous group actions}
+\end{biblist}
+\end{bibdiv}
+\end{document}
