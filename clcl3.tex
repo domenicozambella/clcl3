@@ -145,6 +145,102 @@
 \end{abstract}
 
 
+\def\ceq#1#2#3{\parbox[t]{18ex}{$\displaystyle #1$}\parbox{6ex}{\hfil $#2$}{$\displaystyle #3$}}
+
+Let \emph{$S$\/} be some Hausdorff compact topological space.
+We associate to $S$ a first order structure in a language \emph{${\EuScript L}_{\sf S}$\/} that has a symbol for each compact subsets $C\subseteq S^n$ and a function symbol for each continuous functions $f:S^n\to S$.
+According to the context, $C$ and $f$ denote either the symbols of ${\EuScript L}_{\sf S}$ or their interpretation in the structure $S$.
+Note that we write $x\in C$ for $C(x)$.
+
+We also fix a first-order language \emph{${\EuScript L}_{\sf H}$\/} which we call the language of the \emph{home sort.}
+
+\begin{definition}\label{def_0}
+  Let \emph{${\EuScript L}$\/} be a two sorted language. 
+  The two sorts are denoted by \emph{${\sf H}$} and \emph{${\sf S}$.} 
+  The language ${\EuScript L}$ expands ${\EuScript L}_{\sf H}$ and ${\EuScript L}_{\sf S}$ with symbols sort ${\sf H}^n\times{\sf S}^m\to {\sf S}$.
+  An \emph{${\EuScript L}$-structure\/} is a structure of signature ${\EuScript L}$ that interprets these symbols in equicontinuous functions.
+
+  A \emph{standard structure\/} is a two-sorted ${\EuScript L}$-structure of the form $\langle M,S\rangle$, where $M$ is any structure of signature ${\EuScript L}_{\sf H}$ and $S$ is fixed.
+  Standard structures are denoted by the domain of their home sort.
+\end{definition}
+
+We denote by ${\EuScript F}$ the set of ${\EuScript L}$-formulas constructed inductively from formulas of the form (i) ands (ii) below using Boolean connectives $\wedge$, $\vee$; the quantifiers $\forall\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$ of sort ${\sf H}$; and the quantifiers $\forall\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$ of sort ${\sf S}$
+
+\begin{definition}
+  We call atomic formulas those of the form
+  \begin{itemize}
+  \item[i.] atomic or negated atomic formulas of ${\EuScript L}_{\sf H}$;
+  \item[ii.] $\tau\in C$, where $C\subseteq S$ is a compact set and $\tau$ is a term of sort ${\sf H}^n\times {\sf S}^m\to {\sf S}$.
+  \end{itemize}
+\end{definition}
+
+In (ii) of the above definition we could replace $C$ by a compact subset of $S^n$ and $\tau$ with a tuple of terms~--~but this would complicate the notation and add nothing of relevance.
+
+To convenienlty describe the substitution of a set/predicate $C\subseteq S$ occurring in a formula, we introduce variables of new sort ${\sf X}$.
+Let ${\EuScript F}_{\sf X}$ be defined as ${\EuScript F}$ but replacing (ii) with 
+
+\begin{itemize}
+  \item[iii.] $\tau(x\,;\eta)\in X$, where $X$ is a variable of sort ${\sf X}$.
+\end{itemize}
+
+Formulas in ${\EuScript F}_{\sf X}$ are denoted by $\varphi(X)$, where $X=X_1,\dots,X_k$ be a tuple of variables of the new sort.
+If $C=C _1,\dots,C_k$ is a tuple of compact subsets of $S$ then $\varphi(x\;\xi;C)$, is a formula in ${\EuScript F}$.
+All formulas in ${\EuScript F}$ are obtained as such istantiations a formulas in ${\EuScript F}_{\sf X}$.
+
+\begin{definition}
+   The pseudonegation of $\varphi(X)$ is the formula obtained by replacing in $\varphi(X)$ the atomic formulas in  ${\EuScript L}_{\sf H}$ by their negation and each connective $\wedge$, $\vee$, $\forall\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$ by its respective dual  $\vee$, $\wedge$,  $\exists\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$.
+   
+  The pseudonegation of $\varphi(X)$ is denoted by $\tilde\varphi(X)$.
+\end{definition}
+
+Note that if $\varphi(X)$ is in ${\EuScript L}_{\sf H}$, so $\xi$ and $X$ are pleonastic, then $\tilde\varphi(X)\leftrightarrow\neg\varphi(X)$.
+If $\tilde C$ is (componentwise) disjoint of $C$ then $\tilde\varphi(\tilde C)\leftarrow\neg\varphi(x\;\xi;C)$.
+
+Let $\varphi(x\,;z\,;X)$ be a formula in  ${\EuScript F}_{\sf X}$ with the tuples of variables of sort ${\sf H}$ partitioned in two $x\,;z$.
+
+A global $\varphi(x\,;z\,;X)$-type is a consistent set of formulas $p(x)\subseteq{\EuScript F}({\EuScript U})$ of the form $\varphi(x\,;b\,;C)$ and/or $\tilde\varphi(x\,;b\,;C)$ for some tuple $C$ of compact subsets of $S$ and some $b\in{\EuScript U}^{|z|}$.
+
+Let $p(x)$ be a global $\varphi(x\,;z\,;X)$-type.
+We say that the set ${\EuScript D}_p\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$ defined below is \emph{externally defined\/} by $p(x)$
+
+\ceq{\hfill{\EuScript D}_{p}}{=}{\Big\{\langle b,\alpha\rangle\ :\  \varphi(x\,;b\,;C)\in p \textrm{ for every }C\textrm{ neighborhood of }\alpha\Big\}}
+
+We say that ${\EuScript D}\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$ is \emph{approximated\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$ there is a compact $C\subseteq S^{\scriptscriptstyle|X|}$ and some $a\in{\EuScript U}^{|x|}$ such that 
+
+
+\ceq{\hfill \langle b,\alpha\rangle\in B\cap{\EuScript D}}{\Rightarrow}{\varphi(a\,;b\,;C) \textrm{ and } C \textrm{ is a neighborhood of }\alpha}
+
+\ceq{\hfill \langle b,\alpha\rangle\in B\smallsetminus{\EuScript D}}{\Rightarrow}{\tilde\varphi(a\,;b\,;C) \textrm{ and } \neg\tilde C \textrm{ is a neighborhood of }\alpha }
+
+
+\begin{fact}
+  For every ${\EuScript D}\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$, the following are equivalent
+  \begin{itemize}
+    \item [1.] ${\EuScript D}$ is externally definable by some $\varphi(x\,;z\,;X)$-type
+    \item [2.]  ${\EuScript D}$ is approximated by $\varphi(x\,;z\,;X)$.
+  \end{itemize}
+\end{fact}
+
+\begin{proof}
+  (1)$\Rightarrow$(2). Let $B\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$ be finite.
+  For $\langle b,\alpha\rangle\in B\cap{\EuScript D}$ let $C_{\langle b,\alpha\rangle}$ be some neightborhood of $\alpha$. % such that $\varphi(x\,;b\,;C_{\langle b,\alpha\rangle})\in p$.
+  Let $C$ be the union of all these neighborhoods.
+  For $\langle b,\alpha\rangle\in B\smallsetminus{\EuScript D}$ let $\tilde C_{\langle b,\alpha\rangle}$ be some neightborhood of $\alpha$. % such that $\tilde\varphi(x\,;b\,;\tilde C_{\langle b,\alpha\rangle})\in p$.
+  Let $\tilde C$ be the union of all these neighborhoods.
+  By the finiteness of $B$, we can require that $C$ and $\tilde C$ are disjoint. 
+  Then (2) follows from the concistency of $p(x)$.
+
+  (2)$\Rightarrow$(1). Note that the condition of approximability asserts the finite concistency of the type $p(x)$ that is union of the following two sets of formulas
+
+\noindent\kern5ex $\Big\{\varphi(x\,;b\,;C)\ :\ \langle b,\alpha\rangle\in{\EuScript D}\textrm{ and }C\textrm{ neighborhood of }\alpha\Big\}$
+
+
+\noindent\kern5ex $\Big\{\tilde\varphi(x\,;b\,;\tilde C)\ :\ \langle b,\alpha\rangle\notin{\EuScript D}\textrm{ and }\tilde C\textrm{ neighborhood of }\alpha\Big\}$
+
+The inclusion ${\EuScript D}\subseteq{\EuScript D}_p$ is immediate.
+For the converse inclusion, let $\langle b,\alpha\rangle\notin{\EuScript D}$ and let $\tilde C$ be a neighborhood of $\alpha$ such that $\tilde\varphi(x\,;b\,;\tilde C)$.
+\end{proof}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -184,15 +280,15 @@
 \begin{biblist}[]\normalsize
 
 \bib{clcl}{article}{
-    label={AAVV},
+    label={ABBMZ},
     author = {Agostini, Claudio},
     author = {Baratella, Stefano},
     author = {Barbina, Silvia},
     author = {Motto Ros, Luca},
     author = {Zambella, Domenico},
     title = {Continuous logic in a classical setting},
-    note={Submitted},
-    date = {2023},
+    note={t.a. in Bull. Iranian Math. Soc.},
+    date = {2025},
   }
 
   \bib{A}{webpage}{
@@ -311,17 +407,19 @@
   %  review={\MR{1967834}},
 }
 
-\bib{K}{arXiv}{
+\bib{K}{article}{
   label={K},
   author = {Keisler, H. Jerome},
   title = {Model Theory for Real-valued Structures},
-  eprint={2005.11851},
-  doi = {10.48550/ARXIV.2005.11851},
-  url = {https://arxiv.org/abs/2005.11851},
-  publisher = {arXiv},
-  date = {2020},
+  book={
+    editor={Iovino, Jos\'e},
+    title ={{in} Beyond First Order Model Theory}, 
+    volume ={II},
+    publisher={Chapman and Hall/CRC},
+  % https://doi.org/10.1201/9780429263637
+    date = {2023},
 }
-
+}
 % \bib{Z}{arXiv}{
 %   label = {Z},
 %   author = {Zambella, Domenco},
