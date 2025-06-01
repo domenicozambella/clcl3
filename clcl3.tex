@@ -8,6 +8,7 @@
 \usepackage{xcolor}
 \usepackage{datetime2} 
 \usepackage[colorlinks=true,linkcolor=blue,]{hyperref}
+\usepackage{tcolorbox}
 
 \usepackage{stackengine}
 \usepackage{scalerel}
@@ -65,44 +66,70 @@
   \let\makelabel\mylabel}}{%
 \end{list}}
 
-\declaretheoremstyle[
-  headfont=\normalfont\bfseries,
-  notefont=\bfseries,
-  notebraces={(}{)},
-  bodyfont=\normalfont,
-  postheadspace=1em,
-  mdframed={
-  nobreak=true,
-  outerlinewidth=1pt,
-  linecolor=gray!20,
-  roundcorner = 1ex,    
-  backgroundcolor=gray!10, 
-  innerleftmargin=1ex,
-  leftmargin=0ex,
-  innerrightmargin=1ex,
-  rightmargin=0ex,
-  innertopmargin=1.5ex, 
-  innerbottommargin=1ex, 
-  skipabove=3ex,
-  skipbelow=1ex}, 
-]{mystyle}
 
-\declaretheorem[style=mystyle]%
-{theorem}
-\declaretheorem[style=mystyle,sibling=theorem]%
-{lemma,proposition,fact,corollary,definition,notation,remark,example,claim,question}
+\newtheoremstyle{mio}% name
+     {2\parskip}     % Space above
+     {2\parskip}     % Space below
+     {}%         Body font
+     {}%         Indent amount (empty = no indent, \parindent = para indent)
+     {\bfseries}% Thm head font
+     {}%        Punctuation after thm head
+     {1ex}%     Space after thm head: " " = normal interword space;
+           %   \newline = linebreak
+     {\llap{\thmnumber{#2}\hskip0.9ex}\thmname{#1}\thmnote{\bfseries{}#3}}% Thm head spec (can be left empty, meaning `normal')
 
-\let\proof\relax
-\declaretheoremstyle[
-  spaceabove=6pt, 
-  spacebelow=6pt, 
-  headfont=\normalfont\itshape, 
-  bodyfont = \normalfont,
-  postheadspace=1em, 
-  qed=\qedsymbol, 
-  headpunct={.}]
-{myproof} 
-\declaretheorem[style=myproof, unnumbered]{proof}
+\newcounter{thm}
+
+\tcbset{
+  mythm/.style={
+    colback=black!5!white,
+    colframe=white!50!black,
+    extrude right by=2ex,
+    extrude left by=6.5ex,
+    % before=\par\noindent,
+    % after=\par\noindent,
+    top=0.7ex,
+    bottom=1.5ex,
+    right=2ex,
+    left=6.5ex,
+    boxsep=0pt,
+    % parbox=false,
+    before skip=\baselineskip,
+    after skip=\baselineskip,
+  },
+}
+\theoremstyle{mio}
+\newtheorem{theorem}[thm]{Theorem}\tcolorboxenvironment{theorem}{mythm}
+\newtheorem{corollary}[thm]{Corollary}\tcolorboxenvironment{corollary}{mythm}
+\newtheorem{proposition}[thm]{Proposition}\tcolorboxenvironment{proposition}{mythm}
+\newtheorem{lemma}[thm]{Lemma}\tcolorboxenvironment{lemma}{mythm}
+\newtheorem{fact}[thm]{Fact}\tcolorboxenvironment{fact}{mythm}
+\newtheorem{definition}[thm]{Definition}\tcolorboxenvironment{definition}{mythm}
+\newtheorem{assumption}[thm]{Assumption}\tcolorboxenvironment{assumption}{mythm}
+\newtheorem{void}[thm]{}\tcolorboxenvironment{void}{mythm}
+\newtheorem{notation}[thm]{Notation}\tcolorboxenvironment{notation}{mythm}
+\newtheorem{note}[thm]{Note}\tcolorboxenvironment{note}{mythm}
+\newtheorem{remark}[thm]{Remark}\tcolorboxenvironment{remark}{mythm}
+\newtheorem{exercise}[thm]{Exercise}
+\newtheorem{example}[thm]{Example}
+\newtheorem{question}[thm]{Question}
+
+\makeatletter
+\providecommand{\proofNameStyle}{\bfseries}
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont% \topsep6\p@\@plus6\p@\relax
+  % \vspace*{-\baselineskip}
+  \trivlist
+  \item[\hskip\labelsep
+        \proofNameStyle
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+
 
 \renewcommand*{\emph}[1]{%
    \smash{\tikz[baseline]\node[rectangle, fill=teal!25, rounded corners, inner xsep=0.5ex, inner ysep=0.2ex, anchor=base, minimum height = 2.7ex]{\strut #1};}}
@@ -129,9 +156,9 @@
 \makeatother
 
 \linespread{1.1}
-% \author{S. A. Polymath}
-\author{Domenico Zambella}
-\author{et al.}
+\author{L. S. S. S. S. Polymath}
+% \author{Domenico Zambella}
+% \author{al.}
 \thanks{Dipartimento di Matematica, Universit\`a di Torino, via Carlo Alberto 10, 10123 Torino.}
 \begin{document}
 \title{Local stability in structures with a standard sort}
@@ -144,15 +171,18 @@
 
 \end{abstract}
 
+\def\medrel#1{\parbox{5ex}{\hfil $#1$}}
+\def\ceq#1#2#3{\parbox[t]{18ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
-\def\ceq#1#2#3{\parbox[t]{18ex}{$\displaystyle #1$}\parbox{6ex}{\hfil $#2$}{$\displaystyle #3$}}
+\section{Structures with a standard sort}
 
 Let \emph{$S$\/} be some Hausdorff compact topological space.
-We associate to $S$ a first order structure in a language \emph{${\EuScript L}_{\sf S}$\/} that has a symbol for each compact subsets $C\subseteq S^n$ and a function symbol for each continuous functions $f:S^n\to S$.
+We associate to $S$ a first order structure in a language \emph{${\EuScript L}_{\sf S}$\/} that has a symbol for each compact subset $C\subseteq S$ and a function symbol for each continuous functions $f:S^n\to S$.
 According to the context, $C$ and $f$ denote either the symbols of ${\EuScript L}_{\sf S}$ or their interpretation in the structure $S$.
-Note that we write $x\in C$ for $C(x)$.
+We write \emph{$x\in C$\/} for $C(x)$.
 
-We also fix a first-order language \emph{${\EuScript L}_{\sf H}$\/} which we call the language of the \emph{home sort.}
+Finally, note that we could allow in ${\EuScript L}_{\sf S}$ relation symbols for all compact subsets of $S^n$, for any $n$.
+But this would clutter the notation adding very little to the theory.
 
 \begin{definition}\label{def_0}
   Let \emph{${\EuScript L}$\/} be a two sorted language. 
@@ -164,7 +194,7 @@ We also fix a first-order language \emph{${\EuScript L}_{\sf H}$\/} which we cal
   Standard structures are denoted by the domain of their home sort.
 \end{definition}
 
-We denote by ${\EuScript F}$ the set of ${\EuScript L}$-formulas constructed inductively from formulas of the form (i) ands (ii) below using Boolean connectives $\wedge$, $\vee$; the quantifiers $\forall\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$ of sort ${\sf H}$; and the quantifiers $\forall\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$ of sort ${\sf S}$
+We denote by ${\EuScript F}$ the set of ${\EuScript L}$-formulas constructed inductively from atomic formulas of the form (i) and (ii) below using Boolean connectives $\wedge$, $\vee$; the quantifiers $\forall\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$ of sort ${\sf H}$; and the quantifiers $\forall\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$ of sort ${\sf S}$.
 
 \begin{definition}
   We call atomic formulas those of the form
@@ -174,49 +204,313 @@ We denote by ${\EuScript F}$ the set of ${\EuScript L}$-formulas constructed ind
   \end{itemize}
 \end{definition}
 
-In (ii) of the above definition we could replace $C$ by a compact subset of $S^n$ and $\tau$ with a tuple of terms~--~but this would complicate the notation and add nothing of relevance.
+\begin{remark}
+  A smaller fragment of ${\EuScript F}$ may be of interest in some specific contexts.
+  This is obtained by excluding equalities and inequalities from (i) and requiring that $C$ in (ii) is a regular compact set.
+  The discussion below applies to this smaller fragment as well.
+\end{remark}
 
-To convenienlty describe the substitution of a set/predicate $C\subseteq S$ occurring in a formula, we introduce variables of new sort ${\sf X}$.
-Let ${\EuScript F}_{\sf X}$ be defined as ${\EuScript F}$ but replacing (ii) with 
+ Let $M\subseteq N$ be standard structures.
+ We say that $M$ is an \emph{${\EuScript F}$-elementary\/} substructure of $N$ if the latter models all sentences in ${\EuScript F}(M)$ true in $M$.
+
+ A standard structure $M$ is \emph{${\EuScript F}$-saturated\/} if it realizes every type $p(x\,;\xi)\subseteq{\EuScript F}(A)$, for any $A\subseteq M$ of cardinality smaller than $|M|$, that is finitely consistent in $M$.
+ The following is proved in \cite{clcl} for signatures containing only symbols sort ${\sf H}^n\times{\sf S}^m\to {\sf S}$ with $n{\cdot}m=0$.
+ In \cite{Z} it is observed that, under the assumption of equicontinuity, the proof extends to the case $n{\cdot}m\geq 0$.
+\begin{theorem}[ (Compactness)]%
+  Every standard structure has a ${\EuScript F}$-saturated ${\EuScript F}$-elementary extension.
+\end{theorem}
+
+To conveniently describe classes of ${\EuScript F}$ that only differ by the sets/predicates $C\subseteq S$ that occur in the formula, we introduce variables of new sort ${\sf X}$.
+These will be used as placeholders for compact subsets of $S$.
+Let ${\EuScript F}_{\sf X}$ be defined as ${\EuScript F}$ but replacing (ii) with
 
 \begin{itemize}
-  \item[iii.] $\tau(x\,;\eta)\in X$, where $X$ is a variable of sort ${\sf X}$.
+  \item[iii.] $\tau(x\,;\xi)\in X$, where $X$ is a variable of sort ${\sf X}$.
 \end{itemize}
 
-Formulas in ${\EuScript F}_{\sf X}$ are denoted by $\varphi(X)$, where $X=X_1,\dots,X_k$ be a tuple of variables of the new sort.
-If $C=C _1,\dots,C_k$ is a tuple of compact subsets of $S$ then $\varphi(x\;\xi;C)$, is a formula in ${\EuScript F}$.
-All formulas in ${\EuScript F}$ are obtained as such istantiations a formulas in ${\EuScript F}_{\sf X}$.
+Formulas in ${\EuScript F}_{\sf X}$ are denoted by $\varphi(x\,;\xi;X)$, where $X=X_1,\dots,X_k$ be a tuple of variables of sort ${\sf X}$.
+If $C=C _1,\dots,C_k$ is a tuple of compact subsets of $S$ then $\varphi(x\,;\xi;C)$, is a formula in ${\EuScript F}$.
+This we call an \emph{instance\/} of $\varphi(x\,;\xi;X)$.
+All formulas in ${\EuScript F}$ are instances of formulas in ${\EuScript F}_{\sf X}$.
 
 \begin{definition}
-   The pseudonegation of $\varphi(X)$ is the formula obtained by replacing in $\varphi(X)$ the atomic formulas in  ${\EuScript L}_{\sf H}$ by their negation and each connective $\wedge$, $\vee$, $\forall\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$ by its respective dual  $\vee$, $\wedge$,  $\exists\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$.
+   Let $\varphi\in{\EuScript F}_{\sf X}$ be formula~--~possibly with some (hidden) free variables.
+   The \emph{pseudonegation\/} of $\varphi\in{\EuScript F}_{\sf X}$ is the formula obtained by replacing in $\varphi$ the atomic formulas in  ${\EuScript L}_{\sf H}$ by their negation and each connective $\wedge$, $\vee$, $\forall\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$ by its respective dual  $\vee$, $\wedge$,  $\exists\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$.
    
-  The pseudonegation of $\varphi(X)$ is denoted by $\tilde\varphi(X)$.
+  The pseudonegation of $\varphi$ is denoted by \emph{${\sim}\varphi$.}
+  Clearly, when $X$ does not occur in $\varphi$, we have ${\sim}\varphi\leftrightarrow\neg\varphi$.
 \end{definition}
 
-Note that if $\varphi(X)$ is in ${\EuScript L}_{\sf H}$, so $\xi$ and $X$ are pleonastic, then $\tilde\varphi(X)\leftrightarrow\neg\varphi(X)$.
-If $\tilde C$ is (componentwise) disjoint of $C$ then $\tilde\varphi(\tilde C)\leftarrow\neg\varphi(x\;\xi;C)$.
 
-Let $\varphi(x\,;z\,;X)$ be a formula in  ${\EuScript F}_{\sf X}$ with the tuples of variables of sort ${\sf H}$ partitioned in two $x\,;z$.
+The following fact will be used without further mention.
 
-A global $\varphi(x\,;z\,;X)$-type is a consistent set of formulas $p(x)\subseteq{\EuScript F}({\EuScript U})$ of the form $\varphi(x\,;b\,;C)$ and/or $\tilde\varphi(x\,;b\,;C)$ for some tuple $C$ of compact subsets of $S$ and some $b\in{\EuScript U}^{|z|}$.
+\begin{fact}
+  Let $\varphi(X)\in{\EuScript F}_{\sf X}$ have, possibly, hidden variables of sort ${\sf H}$ and/or ${\sf S}$.
+  Then for every (tuples of) compact sets $C\subseteq C'$ and $\tilde C\cap C=\varnothing$.
+  \smallskip
+
+  \ceq{\hfill\varphi(C)}{\rightarrow}{\phantom{\neg}\varphi(C')}\smallskip
+
+  \ceq{\hfill{\sim}\varphi(C)}{\rightarrow}{\neg\varphi(\tilde C)}
+\end{fact}
+
+A standard structure $M$ is \emph{${\EuScript F}$-maximal\/} if it models all ${\EuScript F}(M)$-sentences that hold in some of its ${\EuScript F}$-elementary extensions.
+
+\begin{fact}\label{fact_maximal}
+  Let $\varphi(X)\in{\EuScript F}_{\sf X}(M)$.
+  Then the following are equivalent
+  \begin{itemize}
+    \item [1.] $M$ is ${\EuScript F}$-maximal
+    \item [2.] for every tuple $C$ of compact subsets of $S$
+    
+    \ceq{\hfill M\ \models\quad\varphi(C)}{\leftrightarrow}{\bigwedge\Big\{\varphi(C')\ :\ C'\textrm{ neighborhood of }C\Big\} }
+  
+    \item [3.] for every tuple $C$ of compact subsets of $S$
+
+    \ceq{\hfill M\ \models\quad \neg\varphi(C)}{\leftrightarrow}{\bigvee\Big\{{\sim}\varphi(\tilde C)\ :\ \tilde C\cap C=\varnothing\Big\}.}
+  \end{itemize}
+  Moreover, all of the above hold when $M$ is ${\EuScript F}$-saturated.
+\end{fact}
+
+\begin{proof}
+  Arguing by induction on the syntax of $\varphi(X)$ we can prove that (2) holds when $M$ is ${\EuScript F}$-saturated, see \cite{clcl}.
+
+  2$\Leftrightarrow$3. By normality.
+
+  1$\Rightarrow$2. If (2) fails, then $\neg\varphi(C)\wedge\neg\,{\sim}\varphi(\tilde C)$ holds in $M$ for every $\tilde C\cap C=\varnothing$.
+  Let ${\EuScript U}$ be an ${\EuScript F}$-saturated ${\EuScript F}$-elementary extension of $M$.
+  As $M$ is ${\EuScript F}$-maximal, $\neg\varphi(C)\wedge\neg\,{\sim}\varphi(\tilde C)$ also holds in ${\EuScript U}$.
+  Then (2) fails also in ${\EuScript U}$, a contradiction.
+
+  2$\Rightarrow$1. 
+  Let $N$ be any ${\EuScript F}$-elementary extension of $M$.
+  Suppose $N\models\varphi(C)$.
+  By (2), it suffices to prove that $M\models\varphi(C')$ for every $C'$ neighborhood of $C$.
+  Suppose not. Then, by (3), $M\models{\sim}\varphi(\tilde C)$ for some $\tilde C\cap C'=\varnothing$.
+  Then $N\models{\sim}\varphi(\tilde C)$ by ${\EuScript F}$-elementarity.
+  As $\tilde C\cap C=\varnothing$, this contradicts the above fact.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Externally definable sets}
+
+In what follows we fix a large saturated standard structure which we denote by \emph{${\EuScript U}$.}
+Unless otherwise specified, we work inside ${\EuScript U}$.
+
+Let $\varphi(x\,;z\,;X)$ be a formula in  ${\EuScript F}_{\sf X}$ with the variables of sort ${\sf H}$ partitioned in two tuples $x\,;z$.
+A \emph{global $\varphi(x\,;z\,;X)$-type\/} is a maximally consistent set of formulas that are instances of $\varphi(x\,;b\,;X)$ and/or ${\sim}\varphi(x\,;b\,;X)$ for some $b\in{\EuScript U}^{|z|}$.
+
+% \begin{fact}
+%   Let $p(x)$ be a global $\varphi(x\,;z\,;X)$-type.
+% \end{fact}
 
 Let $p(x)$ be a global $\varphi(x\,;z\,;X)$-type.
-We say that the set ${\EuScript D}_p\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$ defined below is \emph{externally defined\/} by $p(x)$
+We define 
 
-\ceq{\hfill{\EuScript D}_{p}}{=}{\Big\{\langle b,\alpha\rangle\ :\  \varphi(x\,;b\,;C)\in p \textrm{ for every }C\textrm{ neighborhood of }\alpha\Big\}}
+\ceq{\hfill\emph{${\EuScript D}_{p,\varphi,C}$}}{=}{\big\{b\in{\EuScript U}^{z}\ :\ \varphi(x\,;b\,;C)\in p\big\}}
 
-We say that ${\EuScript D}\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$ is \emph{approximated\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$ there is a compact $C\subseteq S^{\scriptscriptstyle|X|}$ and some $a\in{\EuScript U}^{|x|}$ such that 
+\begin{fact}\ \vskip-0.5\baselineskip
+  
+  \ceq{\hfill\neg{\EuScript D}_{p,\varphi,C}}{=}{\bigcup\Big\{{\EuScript D}_{p,{\sim}\varphi,\tilde C}\ \ :\ \ \tilde C\cap C=\varnothing\Big\}}
+\end{fact}
+
+\begin{proof}
+  ($\subseteq$).
+  Let $b\notin{\EuScript D}_{p,\varphi,C}$.
+  Let $A\subseteq{\EuScript U}$ be such that every instance of $\varphi(x\,;b\,;X)$ and ${\sim}\varphi(x\,;b\,;X)$ that is consistent with $p(x)\restriction A$ is finitely consistent with $p(x)$.
+  Finally pick $a\models p(x)\restriction A$.
+  As $\neg\varphi(a,b,C)$, from Fact~\ref{fact_maximal} we obtain that  ${\sim}\varphi(a\,;b\,;\tilde C)$ holds for some $\tilde C\cap C=\varnothing$.
+  Then ${\sim}\varphi(x\,;b\,;\tilde C)$ is consistent with $p(x)\restriction A$.
+  By maximality of $p(x)$, we have ${\sim}\varphi(x\,;b\,;\tilde C)\in p$.
+  Then $b\in{\EuScript D}_{p,{\sim}\varphi,\tilde C}$.
+  
+  ($\supseteq$).
+  Similar.
+\end{proof}
+
+\begin{fact}
+  Let $\varphi(x\,;z\,;X)$ and $C$ be given.
+  Then for every ${\EuScript D}\subseteq {\EuScript U}^{z}$ the following are equivalent
+  \begin{itemize}
+    \item [1.] ${\EuScript D}={\EuScript D}_{p,\varphi,C}$ for some global $\varphi(x\,;z\,;X)$-type $p(x)$
+    \item [2.] for every finite set $B\subseteq{\EuScript U}^{z}$ there is an $a\in{\EuScript U}^{x}$ such that
+    
+    \ceq{\hfill B\ \cap\ {\EuScript D}}{=}{B\ \cap\ \varphi(a\,;{\EuScript U}^x\,;C).}
+
+  \end{itemize}
+\end{fact}
+
+\begin{proof}
+  Let $B_0=B\smallsetminus{\EuScript D}$ and $B_1=B\cap{\EuScript D}$.
+
+  1$\Rightarrow$2. 
+  By the above fact, there is a $\tilde C\cap C=\varnothing$ such that $b\in{\EuScript D}_{p,\sim\varphi,\tilde C}$  form every $b\in B_0$.
+  Let $a$ realize the type containing $\varphi(x\,;b\,;C)$ for every $b\in B_1$ and ${\sim}\varphi(x\,;b\,;\tilde C)$ for every $b\in B_0$. 
+
+  2$\Rightarrow$1. 
+  There is a set $\tilde C\cap C=\varnothing$ such that ${\sim}\varphi(x\,;b\,;\tilde C)$  for every $b\in B_0$.
+  Let $p(x)$ be any global $\varphi(x\,;z\,;X)$-type containing $\varphi(x\,;b\,;C)$ for every $b\in B_1$ and ${\sim}\varphi(x\,;b\,;\tilde C)$ for every $b\in B_0$.
+  Such type exists as (2) guarantees consistency.
+\end{proof}
+
+Let ${\EuScript D}\subseteq {\EuScript U}^{z}\times S^{\scriptscriptstyle|X|}$.
+For $\alpha\in S^{\scriptscriptstyle|X|}$, we write ${\EuScript D}_\alpha$ for the set of all $b\in{\EuScript U}^{z}$ such that $\langle b,\alpha\rangle\in{\EuScript D}$.
+We say that ${\EuScript D}$ is \emph{externally definable\/} by $\varphi(x\,;z\,;X)$ if there is a global $\varphi(x\,;z\,;X)$-type $p(x)$ such that for every $\alpha$
+
+\ceq{\hfill{\EuScript D}_\alpha}{=}{\bigcap\big\{{\EuScript D}_{p,\varphi,C}\ :\ \alpha\in C^\circ\big\}}
+
+We say that ${\EuScript D}$ is \emph{approximable\/} by $\varphi(x\,;z\,;X)$ if for every $\alpha\in S^{\scriptscriptstyle|X|}$ and every finite $B\subseteq{\EuScript U}^{z}$ there is an $a\in{\EuScript U}^{|x|}$ such that
+
+\ceq{\hfill B\ \cap\ {\EuScript D}_\alpha}{=}{B\ \cap\ \bigcap\big\{\varphi(a\,;{\EuScript U}^{z}\,;C)\ :\ \alpha\in C^\circ\big\}}
+
+\begin{fact}
+  Let $\varphi(x\,;z\,;X)$ be given.
+  Then, for every ${\EuScript D}\subseteq {\EuScript U}^{z}\times S^{\scriptscriptstyle|X|}$ the following are equivalent
+  \begin{itemize}
+    \item [1.] ${\EuScript D}$ is externally definable by $\varphi(x\,;z\,;X)$
+    \item [2.] ${\EuScript D}$ is approximated by $\varphi(x\,;z\,;X)$.
+  \end{itemize}
+\end{fact}
+
+We say that ${\EuScript D}$ is approximable \emph{from below\/} if for every $B\subseteq{\EuScript D}$ there is
+an $a\in{\EuScript U}^{|x|}$ such that
+
+\ceq{\hfill B}{\subseteq}{\varphi(a\,;{\EuScript U}^z\,;C)}\medrel{\subseteq}${\EuScript D}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Stable formulas}
+
+We say that $\varphi(x\,;z\,;X)$ is unstable if there are some compact sets $C\cap\tilde C=\varnothing$ and a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for every $i<j<\omega$
+
+\ceq{\hfill \varphi(a_i\,;b_j\,;C)}{\wedge}{{\sim}\varphi(a_j\,;b_i\,;\tilde C)}
+
+We say that $\varphi(x\,;z\,;X)$ is \emph{stable\/} if it is not unstable.
+
+% \begin{theorem}[ (conjecture)]\label{thm_stable}
+%   If $\varphi(x\,;z\,;X)$ is stable, then for every $\varphi(x\,;z\,;X)$-type $p(x)$ and every compact set $C$ then\smallskip
+
+%   \ceq{\hfill{\EuScript D}_{p,\varphi,C}}{=}{\bigcup_{i=1}^{n}\ \bigcap_{j=1}^{n}\ \varphi(a_{i,j}\,;{\EuScript U}^z\,;C)}\smallskip
+
+%    for some $\langle a_{i,j}\ :\ 1\le i,j\le n\rangle$.
+% \end{theorem}
+
+The following fact is a characterization of stability in a context of particular interest.
+Let $\tau:{\EuScript U}^{x;z}\to S$ be a definable function.
+We say that $\tau(x\,;z)$ is \emph{stable\/} if so is the formula $\tau(x\,;z)\in X$.
+
+\def\medrel#1{\parbox{5ex}{\hfil $#1$}}
+\def\ceq#1#2#3{\parbox[t]{25ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+\begin{fact}
+  Let $\tau:{\EuScript U}^{x;z}\to S$ be a definable function.
+  Then the following are equivalent
+  \begin{itemize}
+    \item [1.] the formula $\tau(x\,;z)\in X$ is unstable
+    \item [2.] for some sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$\smallskip
+
+    \ceq{\hfill \lim_{i\to\infty}\lim_{j\to\infty}\tau(a_i\,;b_j)}{\neq}{\lim_{j\to\infty}\lim_{i\to\infty}\tau(a_i\,;b_j)}
+
+    \item [3.] for some sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ and some neighborhood $\varepsilon$ of the diagonal of $S^2$\smallskip
+
+    \ceq{\hfill \big\langle\tau(a_i\,;b_j),\ \tau(a_j\,;b_i)\big\rangle}{\notin}{\varepsilon}\smallskip
+
+    for every $i<j<\omega$.
+  \end{itemize}
+\end{fact}
+
+\begin{proof}
+  2$\Leftrightarrow$3. Clear.
+
+  1$\Rightarrow$3.
+  Let $C\cap\tilde C=\varnothing$ be such that $\tau(a_i\,;b_j)\in C$ and $\tau(a_j\,;b_i)\in \tilde C$ for every $i<j<\omega$ as given by (1).
+  Then (3) holds for any $\varepsilon$ contained in the complement of $C\times\tilde C$.%\ \cup\ \tilde C\times C
+
+  2$\Rightarrow$1. Let $C$ and $\tilde C$ be two disjoint intervals centered in the two limits in (2).
+  Then (1) is witnessed by a tail of the sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$.
+\end{proof}
+
+\begin{fact}
+  Let $S=[0,1]$.
+  Let $\tau(x\,;z)$ be a stable definable function.  
+  Let $f:{\EuScript U}^{x;z}\to S$.
+  Assume that for every finite $B\subseteq{\EuScript U}^z$ and every $\varepsilon>0$ there is an $a\in{\EuScript U}^x$ such that\smallskip
+
+  \ceq{\hfill \big|f(b)-\tau(a\,;b)\big|}{\le}{\varepsilon}\hfill for every $b\in B$.\smallskip
+
+  Then there are some $\langle a_{i,j}\ :\ 1\le i,j\le n\rangle$ such that\smallskip
+
+  \ceq{\hfill f(b)}{=}{\max_{i=1,\dots,n}\ \min_{j=1,\dots,n}\ \tau(a_{i,j}\,;b)}\hfill for every $b\in{\EuScript U}^z$.
+
+\end{fact}
+
+\begin{proof}
+  
+\end{proof}
+
+\begin{lemma}
+  Let $\varphi(x\,;z\,;X)$ be stable.
+  Let ${\EuScript D}\subseteq {\EuScript U}^{|z|}$ be approximated by $\varphi(x\,;z\,;X)$ from below.
+  Then
+  
+  \ceq{\hfill{\EuScript D}_{p,\varphi,C}}{=}{\bigcup_{i=1}^{n}\ \varphi(a_i\,;{\EuScript U}^z\,;C)}\smallskip
+
+  for some $\langle a_i\ :\ 1\le i\le n\rangle$.
+\end{lemma}
+
+\vskip3ex
+Garbage after this line
+\vskip-\baselineskip
+\hrulefill
+\vskip3ex
+
+We define ${\EuScript D}_p\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$ as follows
+
+\ceq{\hfill{\EuScript D}_{p}}{=}{\Big\{\,\langle b,\alpha\rangle\ :\  \varphi(x\,;b\,;C)\in p\ \textrm{ for every }C\textrm{ neighborhood of }\alpha\Big\}.}
+
+% \ceq{\hfill\tilde {\EuScript D}_{p}}{=}{\Big\{\langle b,\alpha\rangle\ :\  {\sim}\varphi(x\,;b\,;\tilde C)\in p \textrm{ for every }C\rotatebox[origin=c]{180}{$\notin$}\alpha\Big\}.}
+
+\begin{fact}\ \vskip-0.5\baselineskip
+
+  \ceq{\hfill\neg {\EuScript D}_{p}}{=}{\Big\{\,\langle b,\alpha\rangle\ :\  {\sim}\varphi(x\,;b\,;\tilde C)\in p\ \textrm{  for every }\tilde C\,\rotatebox[origin=c]{180}{$\notin$}\,\alpha\;\Big\}.}
+\end{fact}
+
+\begin{proof}
+  Let $a\models p(x)\restriction b$.
+  Let $C$ be the intersection of all neighborhoods of $\alpha$ such that $\varphi(a\,;b\,;C')$.
+  Assume $\langle b,\alpha\rangle\notin{\EuScript D}_p$, in other words $\varphi(a\,;b\,;C)$, then $C$ is a neighborhood of $\alpha$.
+  By Fact~\ref{fact_maximal} we have $\varphi(a\,;b\,;C)$.
+  Let $\tilde C\subseteq C\smallsetminus\{\alpha\}$ be such that $C$ is a neighborhood of $\tilde C$.
+  Then $\neg\varphi(a\,;b\,;\tilde C)$.
+  Therefor by the definition of ${\EuScript D}_p$.
+
+  Then we can find $\tilde C$ such that $\alpha\notin\tilde C$ and $C$ is a neighborhood of $\tilde C$.
+  contains two dijoint compacts
+  Then ${\sim}\varphi(x\,;b\,;\tilde C')\in p$ by the definition of ${\EuScript D}_p$.
 
 
-\ceq{\hfill \langle b,\alpha\rangle\in B\cap{\EuScript D}}{\Rightarrow}{\varphi(a\,;b\,;C) \textrm{ and } C \textrm{ is a neighborhood of }\alpha}
+  Then ${\sim}\varphi(x\,;b\,;\tilde C')\in p$ for every neighborhood $\tilde C'$ of $\alpha$ disjoint from $C'$.
+  Then for every neighborhood $C$ of $\alpha$, we have $\varphi(x\,;b\,;C)\in p$.
+\end{proof}
 
-\ceq{\hfill \langle b,\alpha\rangle\in B\smallsetminus{\EuScript D}}{\Rightarrow}{\tilde\varphi(a\,;b\,;C) \textrm{ and } \neg\tilde C \textrm{ is a neighborhood of }\alpha }
+We say that ${\EuScript D}$ is \emph{externally defined\/} by $p(x)$ and $\varphi(x\,;z\,;X)$ if ${\EuScript D}_p\subseteq{\EuScript D}$ and $\tilde{\EuScript D}_p\subseteq\neg{\EuScript D}$.
 
+We say that ${\EuScript D}\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$ is \emph{approximated\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$ there is an $a\in{\EuScript U}^{|x|}$ such that 
+
+\ceq{\hfill \langle b,\alpha\rangle\in B\cap{\EuScript D}}{\Rightarrow}{\varphi(a\,;b\,;C) \textrm{ for every neighborhood } C \textrm{ of }\alpha}
+
+\ceq{\hfill \langle b,\alpha\rangle\in B\smallsetminus{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C) \textrm{ for every }C\textrm{ such that }\alpha\notin C}
 
 \begin{fact}
   For every ${\EuScript D}\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$, the following are equivalent
   \begin{itemize}
-    \item [1.] ${\EuScript D}$ is externally definable by some $\varphi(x\,;z\,;X)$-type
+    \item [1.] ${\EuScript D}$ is externally definable by some global $\varphi$-type
     \item [2.]  ${\EuScript D}$ is approximated by $\varphi(x\,;z\,;X)$.
   \end{itemize}
 \end{fact}
@@ -225,7 +519,7 @@ We say that ${\EuScript D}\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptst
   (1)$\Rightarrow$(2). Let $B\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$ be finite.
   For $\langle b,\alpha\rangle\in B\cap{\EuScript D}$ let $C_{\langle b,\alpha\rangle}$ be some neightborhood of $\alpha$. % such that $\varphi(x\,;b\,;C_{\langle b,\alpha\rangle})\in p$.
   Let $C$ be the union of all these neighborhoods.
-  For $\langle b,\alpha\rangle\in B\smallsetminus{\EuScript D}$ let $\tilde C_{\langle b,\alpha\rangle}$ be some neightborhood of $\alpha$. % such that $\tilde\varphi(x\,;b\,;\tilde C_{\langle b,\alpha\rangle})\in p$.
+  For $\langle b,\alpha\rangle\in B\smallsetminus{\EuScript D}$ let $\tilde C_{\langle b,\alpha\rangle}$ be some neightborhood of $\alpha$. % such that ${\sim}\varphi(x\,;b\,;\tilde C_{\langle b,\alpha\rangle})\in p$.
   Let $\tilde C$ be the union of all these neighborhoods.
   By the finiteness of $B$, we can require that $C$ and $\tilde C$ are disjoint. 
   Then (2) follows from the concistency of $p(x)$.
@@ -235,10 +529,10 @@ We say that ${\EuScript D}\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptst
 \noindent\kern5ex $\Big\{\varphi(x\,;b\,;C)\ :\ \langle b,\alpha\rangle\in{\EuScript D}\textrm{ and }C\textrm{ neighborhood of }\alpha\Big\}$
 
 
-\noindent\kern5ex $\Big\{\tilde\varphi(x\,;b\,;\tilde C)\ :\ \langle b,\alpha\rangle\notin{\EuScript D}\textrm{ and }\tilde C\textrm{ neighborhood of }\alpha\Big\}$
+\noindent\kern5ex $\Big\{{\sim}\varphi(x\,;b\,;C)\ :\ \langle b,\alpha\rangle\notin{\EuScript D}\textrm{ and }\alpha\notin C\Big\}$
 
 The inclusion ${\EuScript D}\subseteq{\EuScript D}_p$ is immediate.
-For the converse inclusion, let $\langle b,\alpha\rangle\notin{\EuScript D}$ and let $\tilde C$ be a neighborhood of $\alpha$ such that $\tilde\varphi(x\,;b\,;\tilde C)$.
+For the converse inclusion, let $\langle b,\alpha\rangle\notin{\EuScript D}$ and let $\tilde C$ be a neighborhood of $\alpha$ such that ${\sim}\varphi(x\,;b\,;\tilde C)$.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -280,7 +574,7 @@ For the converse inclusion, let $\langle b,\alpha\rangle\notin{\EuScript D}$ and
 \begin{biblist}[]\normalsize
 
 \bib{clcl}{article}{
-    label={ABBMZ},
+    label={AAVV},
     author = {Agostini, Claudio},
     author = {Baratella, Stefano},
     author = {Barbina, Silvia},
@@ -358,18 +652,19 @@ For the converse inclusion, let $\langle b,\alpha\rangle\notin{\EuScript D}$ and
 %   date = {2023},
 % }
 
-\bib{Hr}{article}{
-   label={Hr},
-   author={Hrushovski, Ehud},
-   title={Stable group theory and approximate subgroups},
-   journal={J. Amer. Math. Soc.},
-   volume={25},
-   date={2012},
-   number={1},
-   pages={189--243},
-   %issn={0894-0347},
-   %doi={10.1090/S0894-0347-2011-00708-S},
-}
+
+% \bib{Hr}{article}{
+%    label={Hr},
+%    author={Hrushovski, Ehud},
+%    title={Stable group theory and approximate subgroups},
+%    journal={J. Amer. Math. Soc.},
+%    volume={25},
+%    date={2012},
+%    number={1},
+%    pages={189--243},
+%    %issn={0894-0347},
+%    %doi={10.1090/S0894-0347-2011-00708-S},
+% }
 
 % \bib{HPP}{article}{
 %    label={HPP},
@@ -440,7 +735,16 @@ For the converse inclusion, let $\langle b,\alpha\rangle\notin{\EuScript D}$ and
 %   %  doi={10.1007/s00153-015-0424-0},
 % }
 
-
+\bib{Z}{arXiv}{
+  label={Z},
+  author = {Zambella, Domenico},
+  title = {Standed analysis},
+  eprint={2311.15711},
+  doi = {10.48550/arXiv.2311.15711},
+  url = {https://arxiv.org/abs/},
+  publisher = {arXiv},
+  date = {2023},
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
