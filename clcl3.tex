@@ -53,13 +53,13 @@
 \renewenvironment{itemize}
   {\begin{list}{$\triangleright$}{%
   \setlength{\parskip}{0mm}
-  \setlength{\topsep}{.4\baselineskip}
+  \setlength{\topsep}{.1\baselineskip}
   \setlength{\rightmargin}{0mm}
   \setlength{\listparindent}{0mm}
   \setlength{\itemindent}{0mm}
   \setlength{\labelwidth}{3ex}
-  \setlength{\itemsep}{.2\baselineskip}
-  \setlength{\parsep}{.2\baselineskip}
+  \setlength{\itemsep}{.1\baselineskip}
+  \setlength{\parsep}{.1\baselineskip}
   \setlength{\partopsep}{0mm}
   \setlength{\labelsep}{1ex}
   \setlength{\leftmargin}{\labelwidth+\labelsep}
@@ -171,18 +171,15 @@
 
 \end{abstract}
 
-\def\medrel#1{\parbox{5ex}{\hfil $#1$}}
-\def\ceq#1#2#3{\parbox[t]{18ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+\def\medrel#1{\parbox{6ex}{\hfil $#1$}}
+\def\ceq#1#2#3{\parbox[t]{13ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
 \section{Structures with a standard sort}
 
 Let \emph{$S$\/} be some Hausdorff compact topological space.
-We associate to $S$ a first order structure in a language \emph{${\EuScript L}_{\sf S}$\/} that has a symbol for each compact subset $C\subseteq S$ and a function symbol for each continuous functions $f:S^n\to S$.
+We associate to $S$ a first order structure in a language \emph{${\EuScript L}_{\sf S}$\/} that has a symbol for each compact subset $C\subseteq S^n$ and a function symbol for each continuous functions $f:S^n\to S$.
 According to the context, $C$ and $f$ denote either the symbols of ${\EuScript L}_{\sf S}$ or their interpretation in the structure $S$.
 We write \emph{$x\in C$\/} for $C(x)$.
-
-Finally, note that we could allow in ${\EuScript L}_{\sf S}$ relation symbols for all compact subsets of $S^n$, for any $n$.
-But this would clutter the notation adding very little to the theory.
 
 \begin{definition}\label{def_0}
   Let \emph{${\EuScript L}$\/} be a two sorted language. 
@@ -200,7 +197,7 @@ We denote by ${\EuScript F}$ the set of ${\EuScript L}$-formulas constructed ind
   We call atomic formulas those of the form
   \begin{itemize}
   \item[i.] atomic or negated atomic formulas of ${\EuScript L}_{\sf H}$;
-  \item[ii.] $\tau\in C$, where $C\subseteq S$ is a compact set and $\tau$ is a term of sort ${\sf H}^n\times {\sf S}^m\to {\sf S}$.
+  \item[ii.] $\tau\in C$, where $C\subseteq S^n$ is a compact set and $\tau$ is a tuple of terms of sort ${\sf H}^n\times {\sf S}^m\to {\sf S}$.
   \end{itemize}
 \end{definition}
 
@@ -220,9 +217,9 @@ We denote by ${\EuScript F}$ the set of ${\EuScript L}$-formulas constructed ind
   Every standard structure has a ${\EuScript F}$-saturated ${\EuScript F}$-elementary extension.
 \end{theorem}
 
-To conveniently describe classes of ${\EuScript F}$ that only differ by the sets/predicates $C\subseteq S$ that occur in the formula, we introduce variables of new sort ${\sf X}$.
-These will be used as placeholders for compact subsets of $S$.
-Let ${\EuScript F}_{\sf X}$ be defined as ${\EuScript F}$ but replacing (ii) with
+We introduce variables of some new sorts ${\sf X}_n$ with the sole scope of conveniently describing classes of ${\EuScript F}$-formulas that only differ by the sets/predicates $C\subseteq S^n$ that occur in the formula.
+To avoid cluttering the notation we write ${\sf X}$ for an unspecified tuple of sorts ${\sf X}_n$.
+Let ${\EuScript F}_{\sf X}$ be defined as ${\EuScript F}$ but replacing (ii) with\smallskip
 
 \begin{itemize}
   \item[iii.] $\tau(x\,;\xi)\in X$, where $X$ is a variable of sort ${\sf X}$.
@@ -235,70 +232,122 @@ All formulas in ${\EuScript F}$ are instances of formulas in ${\EuScript F}_{\sf
 
 \begin{definition}
    Let $\varphi\in{\EuScript F}_{\sf X}$ be formula~--~possibly with some (hidden) free variables.
-   The \emph{pseudonegation\/} of $\varphi\in{\EuScript F}_{\sf X}$ is the formula obtained by replacing in $\varphi$ the atomic formulas in  ${\EuScript L}_{\sf H}$ by their negation and each connective $\wedge$, $\vee$, $\forall\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$ by its respective dual  $\vee$, $\wedge$,  $\exists\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$.
+   The \emph{pseudonegation\/} of $\varphi\in{\EuScript F}_{\sf X}$ is the formula obtained by replacing in $\varphi$ the atomic formulas in  ${\EuScript L}_{\sf H}$ by their negation and each connective $\wedge$, $\vee$, $\forall$, $\exists$
+   %$\forall\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$ 
+   by its respective dual  $\vee$, $\wedge$, $\exists$, $\forall$.
+  % $\exists\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$.
    
   The pseudonegation of $\varphi$ is denoted by \emph{${\sim}\varphi$.}
-  Clearly, when $X$ does not occur in $\varphi$, we have ${\sim}\varphi\leftrightarrow\neg\varphi$.
 \end{definition}
 
 
 The following fact will be used without further mention.
 
 \begin{fact}
-  Let $\varphi(X)\in{\EuScript F}_{\sf X}$ have, possibly, hidden variables of sort ${\sf H}$ and/or ${\sf S}$.
-  Then for every (tuples of) compact sets $C\subseteq C'$ and $\tilde C\cap C=\varnothing$.
+  Let $\varphi(X)\in{\EuScript F}_{\sf X}(M)$, where $M$ is a standard structure.
+  Then the following holds in $M$ for every (tuples of) compact sets $C\subseteq C'$ and $\tilde C\cap C=\varnothing$
   \smallskip
 
-  \ceq{\hfill\varphi(C)}{\rightarrow}{\phantom{\neg}\varphi(C')}\smallskip
+  \ceq{\hfill M}{\models}{\varphi(C)\ \rightarrow\phantom{\neg}\varphi(C')}\smallskip
 
-  \ceq{\hfill{\sim}\varphi(C)}{\rightarrow}{\neg\varphi(\tilde C)}
+  \ceq{\hfill M}{\models}{{\sim}\varphi(C)\ \rightarrow\neg\varphi(\tilde C)}\smallskip
+  
+  Clearly, when $X$ does not occur in $\varphi$, we have ${\sim}\varphi\leftrightarrow\neg\varphi$.
 \end{fact}
 
-A standard structure $M$ is \emph{${\EuScript F}$-maximal\/} if it models all ${\EuScript F}(M)$-sentences that hold in some of its ${\EuScript F}$-elementary extensions.
+\begin{fact}
+  Let $\varphi(X)\in{\EuScript F}_{\sf X}(M)$, where $M$ is a standard structure.
+  Then for every $C\subseteq C'$ there is a $\tilde C\subseteq C'$ disjoint from $C$ such that\smallskip
+  
+  \ceq{\hfill M}{\models}{\varphi(C)\ \rightarrow\ \neg\,{\sim}\varphi(\tilde C)\ \rightarrow\ \varphi(C')}\smallskip
+
+  Conversely, for every $\tilde C\cap C=\varnothing$ there is a $C'\supseteq C$ such that\smallskip
+
+  \ceq{\hfill M}{\models}{\varphi(C)\ \rightarrow\ \varphi(C')\ \rightarrow\ \neg\,{\sim}\varphi(\hat C)}.\smallskip
+
+\end{fact}
+
+\begin{proof}
+  When $\varphi(C)$ is the atomic formula of the form $\tau\in C$, the first claim holds with $\tilde C=C'\smallsetminus O$ for any open set $C\subseteq O\supseteq C'$.
+  The second claim holds with as $C'$ any neighborhood of $C$ disjoint of $\tilde C$.
+  Induction on the syntax of $\varphi(X)$ proves the general case.
+\end{proof}
+
+The above fact has the following useful consequence.
+
+\begin{fact}\label{fact_otto}
+  Let $\varphi(X)\in{\EuScript F}_{\sf X}(M)$, where $M$ is a standard structure.
+  Then the following are equivalent for every tuple $C$ of compact subsets of $S$\smallskip
+  
+    \ceq{\hfill M}{\models}{\phantom{\neg}\varphi(C)\ \leftrightarrow\ \bigwedge\Big\{\ \varphi(C')\ :\ C'\textrm{ neighborhood of }C\Big\} }\smallskip
+
+    \ceq{\hfill M}{\models}{\neg\varphi(C)\ \leftrightarrow\ \bigvee\Big\{{\sim}\varphi(\tilde C)\ :\ \tilde C\cap C=\varnothing\Big\}.}\smallskip
+
+\end{fact}
+
+
+Note that the above fact also holds if we restrict the above $C'$ and $\tilde C$ to range over the subsets of some $C''$ neighboorhood of $C$.
+
+\begin{fact}\label{fact_saturation}
+  The equivalent conditions in Fact~\ref{fact_otto} hold in all ${\EuScript F}$-saturated structures.
+\end{fact}
+
+\begin{proof}
+  By induction on the syntax of $\varphi(X)$.
+\end{proof}
+
+We say that astandard structure $M$ is \emph{${\EuScript F}$-maximal\/} if it models all ${\EuScript F}(M)$-sentences that hold in some of its ${\EuScript F}$-elementary extensions.
+By the following fact ${\EuScript F}$-saturated structures are ${\EuScript F}$-maximal.
 
 \begin{fact}\label{fact_maximal}
   Let $\varphi(X)\in{\EuScript F}_{\sf X}(M)$.
   Then the following are equivalent
   \begin{itemize}
     \item [1.] $M$ is ${\EuScript F}$-maximal
-    \item [2.] for every tuple $C$ of compact subsets of $S$
-    
-    \ceq{\hfill M\ \models\quad\varphi(C)}{\leftrightarrow}{\bigwedge\Big\{\varphi(C')\ :\ C'\textrm{ neighborhood of }C\Big\} }
-  
-    \item [3.] for every tuple $C$ of compact subsets of $S$
-
-    \ceq{\hfill M\ \models\quad \neg\varphi(C)}{\leftrightarrow}{\bigvee\Big\{{\sim}\varphi(\tilde C)\ :\ \tilde C\cap C=\varnothing\Big\}.}
+    \item [2.] the equivalent conditions in Fact~\ref{fact_otto} hold for every $\varphi(C)$. 
   \end{itemize}
-  Moreover, all of the above hold when $M$ is ${\EuScript F}$-saturated.
 \end{fact}
 
 \begin{proof}
-  Arguing by induction on the syntax of $\varphi(X)$ we can prove that (2) holds when $M$ is ${\EuScript F}$-saturated, see \cite{clcl}.
-
-  2$\Leftrightarrow$3. By normality.
-
-  1$\Rightarrow$2. If (2) fails, then $\neg\varphi(C)\wedge\neg\,{\sim}\varphi(\tilde C)$ holds in $M$ for every $\tilde C\cap C=\varnothing$.
+  1$\Rightarrow$2. If (2) in Fact~\ref{fact_otto} fails, then $\neg\varphi(C)\wedge\neg\,{\sim}\varphi(\tilde C)$ holds in $M$ for every $\tilde C\cap C=\varnothing$.
   Let ${\EuScript U}$ be an ${\EuScript F}$-saturated ${\EuScript F}$-elementary extension of $M$.
   As $M$ is ${\EuScript F}$-maximal, $\neg\varphi(C)\wedge\neg\,{\sim}\varphi(\tilde C)$ also holds in ${\EuScript U}$.
-  Then (2) fails also in ${\EuScript U}$, a contradiction.
+  Then (2) in Fact~\ref{fact_otto} also fails in ${\EuScript U}$, contradicting Fact~\ref{fact_saturation}.
 
   2$\Rightarrow$1. 
   Let $N$ be any ${\EuScript F}$-elementary extension of $M$.
   Suppose $N\models\varphi(C)$.
   By (2), it suffices to prove that $M\models\varphi(C')$ for every $C'$ neighborhood of $C$.
-  Suppose not. Then, by (3), $M\models{\sim}\varphi(\tilde C)$ for some $\tilde C\cap C'=\varnothing$.
+  Suppose not. Then, by (2) in Fact~\ref{fact_otto}, $M\models{\sim}\varphi(\tilde C)$ for some $\tilde C\cap C'=\varnothing$.
   Then $N\models{\sim}\varphi(\tilde C)$ by ${\EuScript F}$-elementarity.
   As $\tilde C\cap C=\varnothing$, this contradicts the above fact.
 \end{proof}
 
+In what follows we fix a large saturated standard structure which we denote by \emph{${\EuScript U}$.}
+Unless otherwise specified, we work inside ${\EuScript U}$.
+
+Let $\varphi(X)\in{\EuScript F}_{\sf X}({\EuScript U})$ be given. Define
+
+\ceq{\hfill A_{\varphi}}{=}{\big\{\alpha\ :\ \varphi(C) \text{ holds for every neighborhood } C \text{ of } \alpha \big\}}
+
+\begin{fact}
+  Let $n$ be the total length of $X$. Then $A_\varphi\ \cup\ A_{\sim\varphi}\ =\ S^n$ and $A_\varphi\ \cap\ A_{\sim\varphi}\ =\    \varnothing$.
+\end{fact}
+
+\begin{proof}
+  Negate the first claim. 
+  Let $\alpha\notin A_\varphi\,\cup\,A_{\sim\varphi}$.
+  Then there is a neighborhood $C$ of $\alpha$ such that $\neg\varphi(C)$ and $\neg\,{\sim}\varphi(C)$.
+
+
+  By (2) in Fact~\ref{fact_otto}, we have $\sim\varphi(\tilde C)$ for some $\tilde C\cap C=\varnothing$.
+  Thus, $\tilde C\cap A_\varphi=\varnothing$.
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Externally definable sets}
-
-In what follows we fix a large saturated standard structure which we denote by \emph{${\EuScript U}$.}
-Unless otherwise specified, we work inside ${\EuScript U}$.
 
 Let $\varphi(x\,;z\,;X)$ be a formula in  ${\EuScript F}_{\sf X}$ with the variables of sort ${\sf H}$ partitioned in two tuples $x\,;z$.
 A \emph{global $\varphi(x\,;z\,;X)$-type\/} is a maximally consistent set of formulas that are instances of $\varphi(x\,;b\,;X)$ and/or ${\sim}\varphi(x\,;b\,;X)$ for some $b\in{\EuScript U}^{|z|}$.
