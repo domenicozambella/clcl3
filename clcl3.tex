@@ -180,6 +180,8 @@ Let \emph{$S$\/} be some Hausdorff compact topological space.
 We associate to $S$ a first order structure in a language \emph{${\EuScript L}_{\sf S}$\/} that has a symbol for each compact subset $C\subseteq S^n$ and a function symbol for each continuous functions $f:S^n\to S$.
 According to the context, $C$ and $f$ denote either the symbols of ${\EuScript L}_{\sf S}$ or their interpretation in the structure $S$.
 
+We also fix an arbitrary first-order language which we denote by \emph{${\EuScript L}_{\sf H}$\/} and call the language of the home sort.
+
 \begin{definition}\label{def_0}
   Let \emph{${\EuScript L}$\/} be a two sorted language. 
   The two sorts are denoted by \emph{${\sf H}$} and \emph{${\sf S}$.} 
@@ -212,9 +214,13 @@ We write \emph{$x\in C$\/} for the predicate associated to a compact set $C$, an
  We say that $M$ is an \emph{${\EuScript F}$-elementary\/} substructure of $N$ if the latter models all sentences in ${\EuScript F}(M)$ true in $M$.
 
  A standard structure $M$ is \emph{${\EuScript F}$-saturated\/} if it realizes every type $p(x\,;\xi)\subseteq{\EuScript F}(A)$, for any $A\subseteq M$ of cardinality smaller than $|M|$, that is finitely consistent in $M$.
- The following is proved in \cite{clcl} for signatures containing only symbols sort ${\sf H}^n\times{\sf S}^m\to {\sf S}$ with $n{\cdot}m=0$.
- In \cite{Z} it is observed that, under the assumption of equicontinuity, the proof extends to the case $n{\cdot}m\geq 0$.
-\begin{theorem}[ (Compactness)]%
+ The following theorem is proved in \cite{clcl} for signatures that do not contain symbols sort ${\sf H}^n\times{\sf S}^m\to {\sf S}$ with $n{\cdot}m>0$.
+ A similar framework has been independently introduced in \cite{PC}~--~though without quantifiers of sort {\sf H} and with an approximate notion of satisfaction.
+ By elimination of quantifiers of sort {\sf S}, cf.\@ \cite{clcl}*{Proposition 3.6}, the two approaches are equivalent (up to approximations).
+
+ In \cite{Z} it is observed that, under the assumption of equicontinuity, the proof in \cite{clcl} extends to the case $n{\cdot}m\geq 0$.
+
+ \begin{theorem}[ (Compactness)]%
   Every standard structure has a ${\EuScript F}$-saturated ${\EuScript F}$-elementary extension.
 \end{theorem}
 
@@ -281,9 +287,9 @@ The above fact has the following useful consequence.
   
     \ceq{\hfill M}{\models}{\phantom{\neg}\varphi(C)\ \rightarrow\ \bigwedge\Big\{\ \varphi(C')\ :\ C'\textrm{ neighborhood of }C\Big\} }\smallskip
 
-    \ceq{\hfill M}{\models}{\neg\varphi(C)\ \leftarrow\ \bigvee\Big\{{\sim}\varphi(\tilde C)\ :\ \tilde C\cap C=\varnothing\Big\}.}\smallskip
+    \ceq{\hfill M}{\models}{\neg\varphi(C)\ \rightarrow\ \bigvee\Big\{{\sim}\varphi(\tilde C)\ :\ \tilde C\cap C=\varnothing\Big\}.}\smallskip
 
-  (The converse of these implications are trivial, therefore not displayed.)
+  (The converse implications are trivial~--~therefore not displayed.)
 \end{fact}
 
 
@@ -412,7 +418,7 @@ It is easy to see that when $\tau(x\,;z)$ has values in $[0,1]$ stability holds 
 \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
 \def\ceq#1#2#3{\parbox[t]{35ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
-The following theorem and its proof are well-known though not literally in this form.
+The following theorem and its proof are well-known~--~though not literally in this form, cf.\@ \cite{BU}*{Proposition 7.6}.
 
 \begin{theorem}
   Let $S=[0,1]$.
@@ -420,7 +426,7 @@ The following theorem and its proof are well-known though not literally in this 
   Let $f:{\EuScript U}^{x;z}\to S$ be $\varepsilon$-approximable by $\tau(x\,;z)$.
   Then there are some $\langle a_{i,j}\ :\ i<n,\ j<\omega\rangle$ such that\medskip
 
-  \ceq{\hfill\big|f(b)\ -\ \max_{i=0,\dots,n-1}\ \inf_{j<\omega}\ \tau(a_{i,j}\,;b)\big|}{\le}{\varepsilon}\hfill for every $b\in{\EuScript U}^z$.
+  \ceq{\hfill\big|f(b)\ -\ \max_{i=0,\dots,n-1}\ \inf_{j<\omega}\ \tau(a_{i,j}\,;b)\big|}{\le}{3\varepsilon}\hfill for every $b\in{\EuScript U}^z$.
 \end{theorem}
 
 \begin{proof}
@@ -507,8 +513,7 @@ We say that $f:{\EuScript U}^{x;z}\to[0,1]$ is $\varepsilon$-approximable \emph{
 \end{proof}
 
 \begin{lemma}
-  Under the assumptions of the theorem.
-  The function $\sigma(\bar x\,;z)$ in the previous lemma is stable. 
+  If $\tau(\bar x\,;z)$ is stable, then $\sigma(\bar x\,;z)$ in the previous lemma is stable. 
 \end{lemma}
 
 \begin{proof}
@@ -539,6 +544,64 @@ in the second case we obtain
 \ceq{\hfill\tau(a_{2,i}\,;b_j)-\tau(a_{1,j}\,;b_i)}{\ge}{\varepsilon.}
 
 In both cases we contradict the stability of $\tau(x\,;z)$.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Tentative}
+\def\medrel#1{\parbox{5ex}{\hfil $#1$}}
+\def\ceq#1#2#3{\parbox[t]{15ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+
+We write $K(S)$ for a set of compact subsets of $S$ or, when the context suggest it, of $S^n$.  
+Let ${\EuScript D}\subseteq K(S)$.
+We define 
+
+\ceq{\hfill\emph{${\sim}{\EuScript D}$}}{=}{\big\{\tilde C\in K(S)\ :\ \tilde C\cap C\neq\varnothing\text{ for every }C\in{\EuScript D}\big\}.}
+
+If $\varphi(X)\in{\EuScript F}_{\sf X}$ and ${\EuScript D}=\{C:\varphi(C)\}$ then ${\sim}{\EuScript D}=\{C:{\sim}\varphi(C)\}$.
+
+
+
+Note that ${\EuScript D}\subseteq {\sim}{\sim}{\EuScript D}$.
+We say that ${\EuScript D}$ is regular if ${\EuScript D}= {\sim}{\sim}{\EuScript D}$.
+
+We say that ${\EuScript D}$ is \emph{approximable\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq{\EuScript U}^z$ and every finitely many $C_i\in K(S)$, for $i=1,\dots,n$, there is an $a\in{\EuScript U}^x$ such that
+
+\ceq{\hfill \langle b,C_i\rangle\in {\EuScript D}}{\rightarrow}{\phantom{\sim}\varphi(a\,;b\,;C_i)}\quad and
+
+\ceq{\hfill \langle b,C_i\rangle\in{\sim}{\EuScript D}}{\rightarrow}{{\sim}\varphi(a\,;b\,;C_i)}\hfill for all $b\in B$ and $i=1,\dots,n$.
+
+A \emph{global $\varphi(x\,;z\,;X)$-type\/} is a maximally (finitely) consistent set of formulas that are instances of $\varphi(x\,;b\,;X)$ and/or ${\sim}\varphi(x\,;b\,;X)$ for some $b\in{\EuScript U}^{|z|}$.
+
+The following is immediate.
+
+\begin{fact}
+  For every ${\EuScript D}\subseteq {\EuScript U}^z\times K(S)$ the following are equivalent
+  \begin{itemize}
+    \item [1.] ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$
+    \item [2.] the following defines a (consistent) global $\varphi(x\,;z\,;X)$-type
+    
+    \noindent\kern-\labelwidth\kern-\labelsep
+    \ceq{\hfill p(x)}{=}{\big\{\varphi(x\,;b\,;C)\ :\ \langle b,C\rangle\in{\EuScript D}\big\}\ \cup\ \big\{{\sim}\varphi(x\,;b\,;C)\ :\ \langle b,C\rangle\in{\sim}{\EuScript D}\big\}.}
+  
+  \end{itemize}
+\end{fact}
+
+\begin{proof}
+  2$\Rightarrow$1.
+  The finite consistency of $p(x)$ immediately implies that ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$.
+
+  1$\Rightarrow$2.
+  Finite consistency of $p(x)$ follows (again, immediately) from approximability.
+  We prove $p(x)$ is maximal.
+  We need to consider two cases.
+  First, assume for a contradiction that $\varphi(x\,;b\,;C)$ is consistent with $p(x)$ but $\langle b,C\rangle\notin{\EuScript D}$.
+  Then consistency implies that $\langle b,\tilde C\rangle\notin{\sim}{\EuScript D}$ for every $\tilde C\cap C=\varnothing$.
+  But this contradicts the definition of ${\sim}{\EuScript D}$.
+  The second case, for ${\sim}\varphi(x\,;b\,;C)$ is similar as ${\sim}{\sim}{\EuScript D}={\EuScript D}$.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -773,7 +836,20 @@ For the converse inclusion, let $\langle b,\alpha\rangle\notin{\EuScript D}$ and
     % review={\MR{3294276}},
     % doi={10.1017/bsl.2014.33},
  }
-
+\bib{BU}{article}{
+   label={BU},
+   author={Ben Yaacov, Ita\"i},
+   author={Usvyatsov, Alexander},
+   title={Continuous first order logic and local stability},
+   journal={Trans. Amer. Math. Soc.},
+   volume={362},
+   date={2010},
+  %  number={10},
+   pages={5213--5259},
+  %  issn={0002-9947},
+  %  review={\MR{2657678}},
+  %  doi={10.1090/S0002-9947-10-04837-3},
+}
 \bib{BBHU}{article}{
   label={BBHU},
   author={Ben Yaacov, Ita\"{\i}},
@@ -899,6 +975,20 @@ For the converse inclusion, let $\langle b,\alpha\rangle\notin{\EuScript D}$ and
 %   %  review={\MR{3372605}},
 %   %  doi={10.1007/s00153-015-0424-0},
 % }
+\bib{PC}{article}{
+    label={PC},
+   author={Chavarria, Nicolas},
+   author={Pillay, Anand},
+   title={On pp-elimination and stability in a continuous setting},
+   journal={Ann. Pure Appl. Logic},
+   volume={174},
+   date={2023},
+  %  number={5},
+   pages={Paper No. 103258, 14},
+  %  issn={0168-0072},
+  %  review={\MR{4554677}},
+  %  doi={10.1016/j.apal.2023.103258},
+}
 
 \bib{Z}{arXiv}{
   label={Z},
