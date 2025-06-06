@@ -204,7 +204,7 @@ We write \emph{$x\in C$\/} for the predicate associated to a compact set $C$, an
   We call atomic formulas those of the form
   \begin{itemize}
   \item[i.] atomic or negated atomic formulas of ${\EuScript L}_{\sf H}$;
-  \item[ii.] $\tau\in C$, where $\tau$ is a tuple of terms of sort ${\sf H}^n\times {\sf S}^m\to {\sf S}$, and $C\subseteq S^{|\tau|}$ is a compact set.
+  \item[ii.] $\tau\in C$, where $\tau$ is a term of sort ${\sf H}^n\times {\sf S}^m\to {\sf S}$, and $C\subseteq S$ is a compact set.
   \end{itemize}
 \end{definition}
 
@@ -555,7 +555,7 @@ In both cases we contradict the stability of $\tau(x\,;z)$.
 \def\ceq#1#2#3{\parbox[t]{15ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
 
-We write \emph{$K(S)$\/} for the set of compact subsets of $S^n$, where $n$ is inferred from the context.  
+We write \emph{$K(S)$\/} for the set of compact subsets of $S^n$, for some $n$ which is inferred from the context.
 Let ${\EuScript D}\subseteq K(S)$.
 We define 
 
@@ -579,9 +579,6 @@ We define
   As $O$ is arbitrary, we obtain $\varphi(\tilde C)$ from the second implication in  Fact~\ref{fact_otto}.
 \end{proof}
 
-Note that we always have ${\EuScript D}\subseteq {\sim}{\sim}{\EuScript D}$.
-When ${\EuScript D}= {\sim}{\sim}{\EuScript D}$ we say that ${\EuScript D}$ is \emph{regular.}
-
 If ${\EuScript D}\subseteq{\EuScript U}^z\times K(S)$ then ${\sim}{\EuScript D}$ is obtained by applying $\sim$ to all fibers of ${\EuScript D}$.
 We say that ${\EuScript D}$ is \emph{approximable\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq{\EuScript U}^z$ and every finitely many $C_i\in K(S)$, for $i=1,\dots,n$, there is an $a\in{\EuScript U}^x$ such that
 
@@ -591,7 +588,8 @@ We say that ${\EuScript D}$ is \emph{approximable\/} by $\varphi(x\,;z\,;X)$ if 
 
 A \emph{global $\varphi(x\,;z\,;X)$-type\/} is a maximally (finitely) consistent set of formulas that are instances of $\varphi(x\,;b\,;X)$ and/or ${\sim}\varphi(x\,;b\,;X)$ for some $b\in{\EuScript U}^{|z|}$.
 
-The following is immediate.
+Note that we always have ${\EuScript D}\subseteq {\sim}{\sim}{\EuScript D}$.
+When ${\EuScript D}= {\sim}{\sim}{\EuScript D}$ we say that ${\EuScript D}$ is \emph{regular.}
 
 \begin{fact}
   For every regular ${\EuScript D}\subseteq {\EuScript U}^z\times K(S)$ the following are equivalent
