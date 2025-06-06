@@ -211,11 +211,12 @@ We write \emph{$x\in C$\/} for the predicate associated to a compact set $C$, an
 \end{remark}
 
  Let $M\subseteq N$ be standard structures.
- We say that $M$ is an \emph{${\EuScript F}$-elementary\/} substructure of $N$ if the latter models all sentences in ${\EuScript F}(M)$ true in $M$.
+ We say that $M$ is an \emph{${\EuScript F}$-elementary\/} substructure of $N$ if the latter models all ${\EuScript F}(M)$-sentences that are true in $M$.
 
+ Let $x$ and $\xi$ be variables of sort ${\sf H}$, respectively ${\sf S}$.
  A standard structure $M$ is \emph{${\EuScript F}$-saturated\/} if it realizes every type $p(x\,;\xi)\subseteq{\EuScript F}(A)$, for any $A\subseteq M$ of cardinality smaller than $|M|$, that is finitely consistent in $M$.
  The following theorem is proved in \cite{clcl} for signatures that do not contain symbols sort ${\sf H}^n\times{\sf S}^m\to {\sf S}$ with $n{\cdot}m>0$.
- A similar framework has been independently introduced in \cite{PC}~--~though without quantifiers of sort {\sf H} and with an approximate notion of satisfaction.
+ A similar framework has been independently introduced in \cite{PC}~--~only without quantifiers of sort {\sf H} and with an approximate notion of satisfaction.
  By elimination of quantifiers of sort {\sf S}, cf.\@ \cite{clcl}*{Proposition 3.6}, the two approaches are equivalent (up to approximations).
 
  In \cite{Z} it is observed that, under the assumption of equicontinuity, the proof in \cite{clcl} extends to the case $n{\cdot}m\geq 0$.
@@ -285,7 +286,7 @@ The above fact has the following useful consequence.
   Let $\varphi(X)\in{\EuScript F}_{\sf X}(M)$, where $M$ is a standard structure.
   Then the following are equivalent for every tuple $C$\smallskip
   
-    \ceq{\hfill M}{\models}{\phantom{\neg}\varphi(C)\ \rightarrow\ \bigwedge\Big\{\ \varphi(C')\ :\ C'\textrm{ neighborhood of }C\Big\} }\smallskip
+    \ceq{\hfill M}{\models}{\phantom{\neg}\varphi(C)\ \leftarrow\ \bigwedge\Big\{\ \varphi(C')\ :\ C'\textrm{ neighborhood of }C\Big\} }\smallskip
 
     \ceq{\hfill M}{\models}{\neg\varphi(C)\ \rightarrow\ \bigvee\Big\{{\sim}\varphi(\tilde C)\ :\ \tilde C\cap C=\varnothing\Big\}.}\smallskip
 
@@ -555,18 +556,33 @@ In both cases we contradict the stability of $\tau(x\,;z)$.
 \def\ceq#1#2#3{\parbox[t]{15ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
 
-We write $K(S)$ for a set of compact subsets of $S$ or, when the context suggest it, of $S^n$.  
-Let ${\EuScript D}\subseteq K(S)$.
+We write $K$ for a set of compact subsets of $S^n$.  
+Let ${\EuScript D}\subseteq K$.
 We define 
 
-\ceq{\hfill\emph{${\sim}{\EuScript D}$}}{=}{\big\{\tilde C\in K(S)\ :\ \tilde C\cap C\neq\varnothing\text{ for every }C\in{\EuScript D}\big\}.}
+\ceq{\hfill\emph{${\sim}{\EuScript D}$}}{=}{\big\{\tilde C\in K\ :\ \tilde C\cap C\neq\varnothing\text{ for every }C\in{\EuScript D}\big\}.}
 
-If $\varphi(X)\in{\EuScript F}_{\sf X}$ and ${\EuScript D}=\{C:\varphi(C)\}$ then ${\sim}{\EuScript D}=\{C:{\sim}\varphi(C)\}$.
+% If $\varphi(X)\in{\EuScript F}_{\sf X}$ and ${\EuScript D}=\{C:\varphi(C)\}$ then ${\sim}{\EuScript D}=\{C:{\sim}\varphi(C)\}$.
 
+\begin{fact}
+  If ${\EuScript D}=\{C\,:\,\varphi(C)\}$ then ${\sim}{\EuScript D}=\{\tilde C\,:\,{\sim}\varphi(\tilde C)\}$
+\end{fact}
 
+\begin{proof}
+  We need to prove that 
 
-Note that ${\EuScript D}\subseteq {\sim}{\sim}{\EuScript D}$.
-We say that ${\EuScript D}$ is regular if ${\EuScript D}= {\sim}{\sim}{\EuScript D}$.
+  \ceq{\hfill{\sim}\varphi(\tilde C)}{\Leftrightarrow}{\text{for every } C,\ \ [C\cap\tilde C=\varnothing\rightarrow\neg\varphi(C)]}
+
+  Implication $\Rightarrow$ follows immediately from Fact~\ref{fact_trivial}.
+  To prove  $\Leftarrow$ assume the r.h.s.
+  Then $\neg\varphi(S\smallsetminus O)$ holds for every open set  $O\supseteq\tilde C$.
+  From the second implication in Fact~\ref{fact_otto} we obtain ${\sim}\varphi(\tilde C')$ for some $\tilde C\subseteq\tilde C'\subseteq O$.
+  As $O$ is arbitrary, we obtain $\varphi(\tilde C)$ from the second implication in  Fact~\ref{fact_otto}.
+\end{proof}
+
+Note that we always have ${\EuScript D}\subseteq {\sim}{\sim}{\EuScript D}$.
+When ${\EuScript D}= {\sim}{\sim}{\EuScript D}$ we say that ${\EuScript D}$ is \emph{regular.}
+
 
 We say that ${\EuScript D}$ is \emph{approximable\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq{\EuScript U}^z$ and every finitely many $C_i\in K(S)$, for $i=1,\dots,n$, there is an $a\in{\EuScript U}^x$ such that
 
