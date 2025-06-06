@@ -353,7 +353,7 @@ In what follows we fix a large saturated standard structure which we denote by \
 \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
 \def\ceq#1#2#3{\parbox[t]{33ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
-Let $\varphi(x\,;z\,;X)$ be \emph{type-definable\/} that is, definable by an infinite (small)conjunction of formulas in ${\EuScript F}_{\sf X}({\EuScript U})$.
+Let $\varphi(x\,;z\,;X)$ be \emph{type-definable\/} that is, definable by an infinite (small) conjunction of formulas in ${\EuScript F}_{\sf X}({\EuScript U})$.
 The variables of sort ${\sf H}$ are partitioned in two tuples $x\,;z$ which may be infinite.
 We say that $\varphi(x\,;z\,;X)$ is \emph{unstable\/} if there are some $C\cap\tilde C=\varnothing$ and a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for every $i<j<\omega$
 
@@ -555,9 +555,8 @@ In both cases we contradict the stability of $\tau(x\,;z)$.
 \def\ceq#1#2#3{\parbox[t]{15ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
 
-We write \emph{$K(S)$\/} for the set of compact subsets of $S^n$, for some $n$ which is inferred from the context.
-Let ${\EuScript D}\subseteq K(S)$.
-We define 
+We write \emph{$K(S)$\/} for the set of compact subsets of $S^n$, for some $n$ which we leave implicit in the context.
+For ${\EuScript D}\subseteq K(S)$ we define 
 
 \ceq{\hfill\emph{${\sim}{\EuScript D}$}}{=}{\big\{\tilde C\in K(S)\ :\ \tilde C\cap C\neq\varnothing\text{ for every }C\in{\EuScript D}\big\}.}
 
@@ -579,17 +578,17 @@ We define
   As $O$ is arbitrary, we obtain $\varphi(\tilde C)$ from the second implication in  Fact~\ref{fact_otto}.
 \end{proof}
 
-If ${\EuScript D}\subseteq{\EuScript U}^z\times K(S)$ then ${\sim}{\EuScript D}$ is obtained by applying $\sim$ to all fibers of ${\EuScript D}$.
-We say that ${\EuScript D}$ is \emph{approximable\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq{\EuScript U}^z$ and every finitely many $C_i\in K(S)$, for $i=1,\dots,n$, there is an $a\in{\EuScript U}^x$ such that
+If ${\EuScript D}\subseteq{\EuScript U}^z\times K(S)$ then ${\sim}{\EuScript D}$ is obtained by applying the definition above to all fibers of ${\EuScript D}$.
+We say that ${\EuScript D}$ is \emph{approximable\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that
 
-\ceq{\hfill \langle b,C_i\rangle\in {\EuScript D}}{\rightarrow}{\phantom{\sim}\varphi(a\,;b\,;C_i)}\quad and
+\ceq{\hfill \langle b,C\rangle\in {\EuScript D}}{\rightarrow}{\phantom{\sim}\varphi(a\,;b\,;C)}\quad and
 
-\ceq{\hfill \langle b,C_i\rangle\in{\sim}{\EuScript D}}{\rightarrow}{{\sim}\varphi(a\,;b\,;C_i)}\hfill for all $b\in B$ and $i=1,\dots,n$.
+\ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\rightarrow}{{\sim}\varphi(a\,;b\,;C)}\hfill for all $b\in B$ and $C\in K(S)$.
 
 A \emph{global $\varphi(x\,;z\,;X)$-type\/} is a maximally (finitely) consistent set of formulas that are instances of $\varphi(x\,;b\,;X)$ and/or ${\sim}\varphi(x\,;b\,;X)$ for some $b\in{\EuScript U}^{|z|}$.
 
 Note that we always have ${\EuScript D}\subseteq {\sim}{\sim}{\EuScript D}$.
-When ${\EuScript D}= {\sim}{\sim}{\EuScript D}$ we say that ${\EuScript D}$ is \emph{regular.}
+When ${\EuScript D} = {\sim}{\sim}{\EuScript D}$ we say that ${\EuScript D}$ is \emph{regular.}
 
 \begin{fact}
   For every regular ${\EuScript D}\subseteq {\EuScript U}^z\times K(S)$ the following are equivalent
@@ -616,8 +615,10 @@ When ${\EuScript D}= {\sim}{\sim}{\EuScript D}$ we say that ${\EuScript D}$ is \
   We need to consider two cases.
   First, assume for a contradiction that $\varphi(x\,;b\,;C)$ is consistent with $p(x)$ but $\langle b,C\rangle\notin{\EuScript D}$.
   Then consistency implies that $\langle b,\tilde C\rangle\notin{\sim}{\EuScript D}$ for every $\tilde C\cap C=\varnothing$.
-  But this contradicts the definition of ${\sim}{\EuScript D}$.
-  The second case, for ${\sim}\varphi(x\,;b\,;C)$, is similar as ${\sim}{\sim}{\EuScript D}={\EuScript D}$.
+  But implies that $C\in{\sim}{\sim}{\EuScript D}={\EuScript D}$, a contradiction.
+  The second case is when ${\sim}\varphi(x\,;b\,;C)$ is consistent with $p(x)$ but $\langle b,C\rangle\notin{\sim}{\EuScript D}$.
+  Then $\langle b,\tilde C\rangle\notin{\EuScript D}$ for every $\tilde C\cap C=\varnothing$.
+  Then $\langle b,\tilde C\rangle\in{\sim}{\EuScript D}$, a contradiction.
 \end{proof}
 
 \begin{theorem}[ (conjecture)]
@@ -625,13 +626,27 @@ When ${\EuScript D}= {\sim}{\sim}{\EuScript D}$ we say that ${\EuScript D}$ is \
   Let ${\EuScript D}\subseteq {\EuScript U}^z\times K(S)$ be approximable by $\varphi(x\,;z\,;X)$.
   Then there are some $\langle a_{i,j}\ :\ i,j<n\rangle$ such that\medskip
 
-  \ceq{\hfill\langle b,C\rangle\in{\EuScript D}}{\Leftrightarrow}{\bigwedge_{i=0}^n\bigvee_{i=0}^n \varphi(a_{i,j}\,;b\,;C)} 
+  \ceq{\hfill\langle b,C\rangle\in{\EuScript D}}{\Leftrightarrow}{\bigwedge_{i=0}^n\ \bigvee_{i=0}^n\ \varphi(a_{i,j}\,;b\,;C)} \medskip
   
+  for every $b\in{\EuScript U}^z$ and $C\in K(S)$.
 \end{theorem}
+
+
 
 \begin{proof}
   
 \end{proof}
+
+We say that ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$ if \emph{from below\/} if in the definition above the implication in (2) holds for every $b\in{\EuScript U}^z$ and $C\in K(S)$.
+
+
+\begin{lemma}
+  If ${\EuScript D}$ is approximable from below then there are some $\langle a_i\ :\ i<n\rangle$ such that\medskip
+
+  \ceq{\hfill\langle b,C\rangle\in{\EuScript D}}{\Leftrightarrow}{\bigvee_{i=0}^n \varphi(a_i\,;b\,;C)} \medskip
+  
+  for every $b\in{\EuScript U}^z$ and $C\in K(S)$.
+\end{lemma}
 
 \begin{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
