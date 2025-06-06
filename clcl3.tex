@@ -177,8 +177,12 @@
 \section{Structures with a standard sort}
 
 Let \emph{$S$\/} be some Hausdorff compact topological space.
-We associate to $S$ a first order structure in a language \emph{${\EuScript L}_{\sf S}$\/} that has a symbol for each compact subset $C\subseteq S^n$ and a function symbol for each continuous functions $f:S^n\to S$.
+We associate to $S$ a first order structure in a language \emph{${\EuScript L}_{\sf S}$\/} that has a symbol for each compact subset $C\subseteq S$ and a function symbol for each continuous functions $f:S^n\to S$.
 According to the context, $C$ and $f$ denote either the symbols of ${\EuScript L}_{\sf S}$ or their interpretation in the structure $S$.
+
+Finally, note that we could allow in ${\EuScript L}_{\sf S}$ relation symbols for all compact subsets of $S^n$, for any $n$.
+But this would clutter the notation adding very little to the theory.
+When needed, we leave the generalization to the reader.
 
 We also fix an arbitrary first-order language which we denote by \emph{${\EuScript L}_{\sf H}$\/} and call the language of the home sort.
 
@@ -225,16 +229,15 @@ We write \emph{$x\in C$\/} for the predicate associated to a compact set $C$, an
   Every standard structure has a ${\EuScript F}$-saturated ${\EuScript F}$-elementary extension.
 \end{theorem}
 
-We introduce variables of some new sorts ${\sf X}_n$ with the sole scope of conveniently describing classes of ${\EuScript F}$-formulas that only differ by the sets/predicates $C\subseteq S^n$ that occur.
-To avoid cluttering the notation we write ${\sf X}$ to mean a suitable tuple of sorts ${\sf X}_{n_1},\dots,{\sf X}_{n_k}$.
+We introduce variables of some new sorts ${\sf X}$ with the sole scope of conveniently describing classes of ${\EuScript F}$-formulas that only differ by the sets/predicates $C\subseteq S$ that occur.
 Let ${\EuScript F}_{\sf X}$ be defined as ${\EuScript F}$ but replacing (ii) with\smallskip
 
 \begin{itemize}
   \item[iii.] $\tau(x\,;\xi)\in X$, where $X$ is a variable of sort ${\sf X}$.
 \end{itemize}
 
-Formulas in ${\EuScript F}_{\sf X}$ are denoted by $\varphi(x\,;\xi;X)$, where $X=X_1,\dots,X_k$ be a tuple of sort ${\sf X}$.
-If $C=C _1,\dots,C_k$ is a tuple of compact subsets of a suitable arity then $\varphi(x\,;\xi;C)$, is a formula in ${\EuScript F}$.
+Formulas in ${\EuScript F}_{\sf X}$ are denoted by $\varphi(x\,;\xi;X)$, where $X=X_1,\dots,X_k$ be a tuple of variables sort ${\sf X}$.
+If $C=C _1,\dots,C_k$ is a tuple of compact subsets of $S$ then $\varphi(x\,;\xi;C)$, is a formula in ${\EuScript F}$.
 This we call an \emph{instance\/} of $\varphi(x\,;\xi;X)$.
 All formulas in ${\EuScript F}$ are instances of formulas in ${\EuScript F}_{\sf X}$.
 
@@ -332,24 +335,26 @@ By the following fact ${\EuScript F}$-saturated structures are ${\EuScript F}$-m
 \end{proof}
 
 In what follows we fix a large saturated standard structure which we denote by \emph{${\EuScript U}$.}
-Unless otherwise specified, we work inside ${\EuScript U}$.
-Let $\varphi(X)\in{\EuScript F}_{\sf X}({\EuScript U})$ be given. Define
 
-\ceq{\hfill C_{\varphi}}{=}{\big\{\alpha\ :\ \varphi(C) \text{ holds for every } C \text{ neighborhood of } \alpha \big\}}
+% Unless otherwise specified, we work inside ${\EuScript U}$.
+% Let $\varphi(X)\in{\EuScript F}_{\sf X}({\EuScript U})$ be given. Define
 
-Then $C_\varphi$ is a closed set.
-Note that either $C_\varphi$ or $C_{\sim\varphi}$ is empty by Fact~\ref{fact_trivial}.
+% \ceq{\hfill C_{\varphi}}{=}{\big\{\alpha\ :\ \varphi(C) \text{ holds for every } C \text{ neighborhood of } \alpha \big\}}
+
+% Then $C_\varphi$ is a closed set.
+% Note that either $C_\varphi$ or $C_{\sim\varphi}$ is empty by Fact~\ref{fact_trivial}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Stable formulas}
+\section{Stable functions and definabilitry}
 \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
-\def\ceq#1#2#3{\parbox[t]{28ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+\def\ceq#1#2#3{\parbox[t]{33ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
-Let $\varphi(x\,;z\,;X)$ be an infinite conjunction of formulas in ${\EuScript F}_{\sf X}$. The variables of sort ${\sf H}$ are partitioned in two tuples $x\,;z$ which may be infinite.
+Let $\varphi(x\,;z\,;X)$ be \emph{type-definable\/} that is, definable by an infinite (small)conjunction of formulas in ${\EuScript F}_{\sf X}({\EuScript U})$.
+The variables of sort ${\sf H}$ are partitioned in two tuples $x\,;z$ which may be infinite.
 We say that $\varphi(x\,;z\,;X)$ is \emph{unstable\/} if there are some $C\cap\tilde C=\varnothing$ and a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for every $i<j<\omega$
 
 \ceq{\hfill \varphi(a_i\,;b_j\,;C)}{\wedge}{{\sim}\varphi(a_j\,;b_i\,;\tilde C)}
@@ -363,20 +368,29 @@ We say that $\varphi(x\,;z\,;X)$ is \emph{stable\/} if it is not unstable.
 
 %    for some $\langle a_{i,j}\ :\ 1\le i,j\le n\rangle$.
 % \end{theorem}
+In this section we consider formulas of particular form which is of some interest. 
+We deal with the general case in the next section.
 
-The following fact is a characterization of stability in a context of particular interest.
+Assume \emph{$S=[0,1]$\/} throughout this section.
+
 Let $\tau:{\EuScript U}^{x;z}\to S$ be a function definable by an infinite conjunction of formulas in ${\EuScript F}$.
 We say that $\tau(x\,;z)$ is \emph{stable\/} if so is $\tau(x\,;z)\in X$.
+The following fact is a suggestive characterization of the stability of functions.
 
 \begin{fact}
   Let $\tau(x\,;z)$ be as above.
   Then the following are equivalent
   \begin{itemize}
     \item [1.] the formula $\tau(x\,;z)\in X$ is unstable
-    \item [2.] for some sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$\smallskip
+    \item [2.] there is a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that\smallskip
     
     \noindent\kern-\labelwidth\kern-\labelsep
     \ceq{\hfill \lim_{i\to\infty}\lim_{j\to\infty}\tau(a_i\,;b_j)}{\neq}{\lim_{j\to\infty}\lim_{i\to\infty}\tau(a_i\,;b_j)}
+
+    \item [3.] there is a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ and some $\varepsilon>0$ such that for every $i<j<\omega$\smallskip
+    
+    \noindent\kern-\labelwidth\kern-\labelsep
+    \ceq{\hfill\big|\tau(a_i\,;b_j)\ -\ \tau(a_j\,;b_i)\big|}{\ge}{\varepsilon.}
 
     % \item [3.] for some sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ and some neighborhood $\varepsilon$ of the diagonal of $S^2$\smallskip
 
@@ -387,6 +401,8 @@ We say that $\tau(x\,;z)$ is \emph{stable\/} if so is $\tau(x\,;z)\in X$.
 \end{fact}
 
 \begin{proof}
+  2$\Leftrightarrow$3 Clear.
+
   1$\Rightarrow$2.
   Let $C\cap\tilde C=\varnothing$ and $\langle a_i\,;b_i\ :\ i<\omega\rangle$ be as given by (1).
   That is, $\tau(a_i\,;b_j)\in C$ and $\tau(a_j\,;b_i)\in \tilde C$ hold for every $i<j<\omega$.
@@ -396,42 +412,25 @@ We say that $\tau(x\,;z)$ is \emph{stable\/} if so is $\tau(x\,;z)\in X$.
   Then (1) is witnessed by a tail of the sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$.
 \end{proof}
 
-Assume $S$ is a metric space.
-Let $\varepsilon>0$
-We say that $f:{\EuScript U}^{x;z}\to S$ is \emph{$\varepsilon$-approximable\/} by $\tau(x\,;z)$ if for every finite $B\subseteq{\EuScript U}^z$ and there is an $a\in{\EuScript U}^x$ such that
+We say that $f:{\EuScript U}^{z}\to S$ is \emph{$\varepsilon$-approximable\/} by $\tau(x\,;z)$ if for every finite $B\subseteq{\EuScript U}^z$ and there is an $a\in{\EuScript U}^x$ such that
 
-\ceq{\hfill d\big(f(b)\;,\tau(a\,;b)\big)}{\le}{\varepsilon}\hfill for every $b\in B$.
+\ceq{\hfill \big|f(b)\;,\tau(a\,;b)\big|}{\le}{\varepsilon}\hfill for every $b\in B$.
 
-In general (when $S$ is not a metric space) then $\varepsilon$ is a closed neighborhood of the diagonal of $S^2$ and the condition above becomes $\big\langle f(b)\;,\tau(a\,;b)\big\rangle\in\varepsilon$.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{A case study}
-
-In this section we assume $S=[0,1]$.
-It is easy to see that when $\tau(x\,;z)$ has values in $[0,1]$ stability holds if there is no sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for every $i<j<\omega$
-
-\ceq{\hfill\big|\tau(a_i\,;b_j)\ -\ \tau(a_j\,;b_i)\big|}{\ge}{\varepsilon.}
-
-\def\medrel#1{\parbox{5ex}{\hfil $#1$}}
-\def\ceq#1#2#3{\parbox[t]{35ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
-
-The following theorem and its proof are well-known~--~though not literally in this form, cf.\@ \cite{BU}*{Proposition 7.6}.
+We say \emph{approximable\/} for $\varepsilon$-approximable for every $\varepsilon>0$.
 
 \begin{theorem}
   Let $S=[0,1]$.
-  Let $\tau(x\,;z)$ be a stable definable function.
-  Let $f:{\EuScript U}^{x;z}\to S$ be $\varepsilon$-approximable by $\tau(x\,;z)$.
-  Then there are some $\langle a_{i,j}\ :\ i<n,\ j<\omega\rangle$ such that\medskip
-
-  \ceq{\hfill\big|f(b)\ -\ \max_{i=0,\dots,n-1}\ \inf_{j<\omega}\ \tau(a_{i,j}\,;b)\big|}{\le}{3\varepsilon}\hfill for every $b\in{\EuScript U}^z$.
+  Let $\tau(x\,;z)$ be a stable type-definable function.
+  Let $f:{\EuScript U}^{z}\to S$ be approximable by $\tau(x\,;z)$.
+  Then $f$ is type-definable. 
 \end{theorem}
 
 \begin{proof}
-  The theorem is an immediate consequence of the following three lemmas.
+  The following three lemmas show that if $\tau(x\,;z)$ is $\varepsilon$-approximable, then there are some $\langle a_{i,j}\ :\ i<n,\ j<\omega\rangle$ such that\medskip
+
+  \ceq{\hfill\big|f(b)\ -\ \max_{i=0,\dots,n-1}\ \inf_{j<\omega}\ \tau(a_{i,j}\,;b)\big|}{\le}{3\varepsilon}\hfill for every $b\in{\EuScript U}^z$.
+
+  Then $f$ is the limit of type-definable functions, hence type-definable.
 \end{proof}
 
 We say that $f:{\EuScript U}^{x;z}\to[0,1]$ is $\varepsilon$-approximable \emph{from below\/} if the parameter $a\in{\EuScript U}^x$ that witnesses approximability satisfies $\tau(a\,;b)\le f(b)+\varepsilon$ for every $b\in {\EuScript U}^z$.
@@ -472,7 +471,7 @@ We say that $f:{\EuScript U}^{x;z}\to[0,1]$ is $\varepsilon$-approximable \emph{
 
   \ceq{\hfill \tau(a_n\,;b_i)-\tau(a_i\,;b_n)}{>}{\tau(a_n\,;b_i)-f(b_n)+\varepsilon}
 
-  then by (2) we have
+  then from (2) we obtain
 
   \ceq{}{>}{f(b_i)-f(b_n)+2\varepsilon}
 
@@ -556,11 +555,11 @@ In both cases we contradict the stability of $\tau(x\,;z)$.
 \def\ceq#1#2#3{\parbox[t]{15ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
 
-We write $K$ for a set of compact subsets of $S^n$.  
-Let ${\EuScript D}\subseteq K$.
+We write \emph{$K(S)$\/} for the set of compact subsets of $S^n$, where $n$ is inferred from the context.  
+Let ${\EuScript D}\subseteq K(S)$.
 We define 
 
-\ceq{\hfill\emph{${\sim}{\EuScript D}$}}{=}{\big\{\tilde C\in K\ :\ \tilde C\cap C\neq\varnothing\text{ for every }C\in{\EuScript D}\big\}.}
+\ceq{\hfill\emph{${\sim}{\EuScript D}$}}{=}{\big\{\tilde C\in K(S)\ :\ \tilde C\cap C\neq\varnothing\text{ for every }C\in{\EuScript D}\big\}.}
 
 % If $\varphi(X)\in{\EuScript F}_{\sf X}$ and ${\EuScript D}=\{C:\varphi(C)\}$ then ${\sim}{\EuScript D}=\{C:{\sim}\varphi(C)\}$.
 
@@ -571,7 +570,7 @@ We define
 \begin{proof}
   We need to prove that 
 
-  \ceq{\hfill{\sim}\varphi(\tilde C)}{\Leftrightarrow}{\text{for every } C,\ \ [C\cap\tilde C=\varnothing\rightarrow\neg\varphi(C)]}
+  \ceq{\hfill{\sim}\varphi(\tilde C)}{\Leftrightarrow}{\text{for every } C,\ \text{ if } C\cap\tilde C=\varnothing\ \text{ then } \neg\varphi(C)}
 
   Implication $\Rightarrow$ follows immediately from Fact~\ref{fact_trivial}.
   To prove  $\Leftarrow$ assume the r.h.s.
@@ -583,7 +582,7 @@ We define
 Note that we always have ${\EuScript D}\subseteq {\sim}{\sim}{\EuScript D}$.
 When ${\EuScript D}= {\sim}{\sim}{\EuScript D}$ we say that ${\EuScript D}$ is \emph{regular.}
 
-
+If ${\EuScript D}\subseteq{\EuScript U}^z\times K(S)$ then ${\sim}{\EuScript D}$ is obtained by applying $\sim$ to all fibers of ${\EuScript D}$.
 We say that ${\EuScript D}$ is \emph{approximable\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq{\EuScript U}^z$ and every finitely many $C_i\in K(S)$, for $i=1,\dots,n$, there is an $a\in{\EuScript U}^x$ such that
 
 \ceq{\hfill \langle b,C_i\rangle\in {\EuScript D}}{\rightarrow}{\phantom{\sim}\varphi(a\,;b\,;C_i)}\quad and
@@ -595,13 +594,16 @@ A \emph{global $\varphi(x\,;z\,;X)$-type\/} is a maximally (finitely) consistent
 The following is immediate.
 
 \begin{fact}
-  For every ${\EuScript D}\subseteq {\EuScript U}^z\times K(S)$ the following are equivalent
+  For every regular ${\EuScript D}\subseteq {\EuScript U}^z\times K(S)$ the following are equivalent
   \begin{itemize}
     \item [1.] ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$
-    \item [2.] the following defines a (consistent) global $\varphi(x\,;z\,;X)$-type
+    \item [2.] the following is a (consistent) global $\varphi(x\,;z\,;X)$-type\smallskip
     
     \noindent\kern-\labelwidth\kern-\labelsep
-    \ceq{\hfill p(x)}{=}{\big\{\varphi(x\,;b\,;C)\ :\ \langle b,C\rangle\in{\EuScript D}\big\}\ \cup\ \big\{{\sim}\varphi(x\,;b\,;C)\ :\ \langle b,C\rangle\in{\sim}{\EuScript D}\big\}.}
+    \ceq{\hfill p(x)}{=}{\big\{\phantom{\sim}\varphi(x\,;b\,;C)\ :\ \langle b,C\rangle\in{\EuScript D}\big\}\ \ \cup}\smallskip
+
+    \noindent\kern-\labelwidth\kern-\labelsep
+    \ceq{}{~}{\big\{{\sim}\varphi(x\,;b\,;C)\ :\ \langle b,C\rangle\in{\sim}{\EuScript D}\big\}.}
   
   \end{itemize}
 \end{fact}
@@ -617,15 +619,28 @@ The following is immediate.
   First, assume for a contradiction that $\varphi(x\,;b\,;C)$ is consistent with $p(x)$ but $\langle b,C\rangle\notin{\EuScript D}$.
   Then consistency implies that $\langle b,\tilde C\rangle\notin{\sim}{\EuScript D}$ for every $\tilde C\cap C=\varnothing$.
   But this contradicts the definition of ${\sim}{\EuScript D}$.
-  The second case, for ${\sim}\varphi(x\,;b\,;C)$ is similar as ${\sim}{\sim}{\EuScript D}={\EuScript D}$.
+  The second case, for ${\sim}\varphi(x\,;b\,;C)$, is similar as ${\sim}{\sim}{\EuScript D}={\EuScript D}$.
 \end{proof}
 
+\begin{theorem}[ (conjecture)]
+  Let $\varphi(x\,;z\,;X)$ be stable.
+  Let ${\EuScript D}\subseteq {\EuScript U}^z\times K(S)$ be approximable by $\varphi(x\,;z\,;X)$.
+  Then there are some $\langle a_{i,j}\ :\ i,j<n\rangle$ such that\medskip
+
+  \ceq{\hfill\langle b,C\rangle\in{\EuScript D}}{\Leftrightarrow}{\bigwedge_{i=0}^n\bigvee_{i=0}^n \varphi(a_{i,j}\,;b\,;C)} 
+  
+\end{theorem}
+
+\begin{proof}
+  
+\end{proof}
+
+\begin{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Externally definable sets}
-
 
 \emph{global $\varphi(x\,;z\,;X)$-type\/} is a maximally consistent set of formulas that are instances of $\varphi(x\,;b\,;X)$ and/or ${\sim}\varphi(x\,;b\,;X)$ for some $b\in{\EuScript U}^{|z|}$.
 
@@ -779,12 +794,15 @@ The inclusion ${\EuScript D}\subseteq{\EuScript D}_p$ is immediate.
 For the converse inclusion, let $\langle b,\alpha\rangle\notin{\EuScript D}$ and let $\tilde C$ be a neighborhood of $\alpha$ such that ${\sim}\varphi(x\,;b\,;\tilde C)$.
 \end{proof}
 
+  
+\end{comment}
+
+\vskip10ex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{}
 
 \def\ceq#1#2#3{\parbox[t]{23ex}{$\displaystyle #1$}\parbox{6ex}{\hfil $#2$}{$\displaystyle #3$}}
 
@@ -1000,7 +1018,7 @@ For the converse inclusion, let $\langle b,\alpha\rangle\notin{\EuScript D}$ and
    volume={174},
    date={2023},
   %  number={5},
-   pages={Paper No. 103258, 14},
+   pages={1--14},
   %  issn={0168-0072},
   %  review={\MR{4554677}},
   %  doi={10.1016/j.apal.2023.103258},
@@ -1009,7 +1027,7 @@ For the converse inclusion, let $\langle b,\alpha\rangle\notin{\EuScript D}$ and
 \bib{Z}{arXiv}{
   label={Z},
   author = {Zambella, Domenico},
-  title = {Standed analysis},
+  title = {Standard analysis},
   eprint={2311.15711},
   doi = {10.48550/arXiv.2311.15711},
   url = {https://arxiv.org/abs/},
