@@ -182,7 +182,7 @@ According to the context, $C$ and $f$ denote either the symbols of ${\EuScript L
 
 Finally, note that we could allow in ${\EuScript L}_{\sf S}$ relation symbols for all compact subsets of $S^n$, for any $n$.
 But this would clutter the notation adding very little to the theory.
-When needed, we leave the generalization to the reader.
+When needed, we will assume this generalization and leave the detail to the reader.
 
 We also fix an arbitrary first-order language which we denote by \emph{${\EuScript L}_{\sf H}$\/} and call the language of the home sort.
 
@@ -221,9 +221,10 @@ We write \emph{$x\in C$\/} for the predicate associated to a compact set $C$, an
  A standard structure $M$ is \emph{${\EuScript F}$-saturated\/} if it realizes every type $p(x\,;\xi)\subseteq{\EuScript F}(A)$, for any $A\subseteq M$ of cardinality smaller than $|M|$, that is finitely consistent in $M$.
  The following theorem is proved in \cite{clcl} for signatures that do not contain symbols sort ${\sf H}^n\times{\sf S}^m\to {\sf S}$ with $n{\cdot}m>0$.
  A similar framework has been independently introduced in \cite{PC}~--~only without quantifiers of sort {\sf H} and with an approximate notion of satisfaction.
- By elimination of quantifiers of sort {\sf S}, cf.\@ \cite{clcl}*{Proposition 3.6}, the two approaches are equivalent (up to approximations).
+ (The setting in \cite{PC} is a generalization of that used by Henson and Iovino for Banach spaces~\cite{HI}.)
+ By the elimination of quantifiers of sort {\sf S}, proved in \cite{clcl}*{Proposition 3.6}, the two approaches are equivalent~--~up to approximations.
 
- In \cite{Z} it is observed that, under the assumption of equicontinuity, the proof in \cite{clcl} extends to the case $n{\cdot}m\geq 0$.
+ In \cite{Z} it is observed that, under the assumption of equicontinuity, the proof in \cite{clcl} extends to the case $n{\cdot}m> 0$.
 
  \begin{theorem}[ (Compactness)]%
   Every standard structure has a ${\EuScript F}$-saturated ${\EuScript F}$-elementary extension.
@@ -242,7 +243,7 @@ This we call an \emph{instance\/} of $\varphi(x\,;\xi;X)$.
 All formulas in ${\EuScript F}$ are instances of formulas in ${\EuScript F}_{\sf X}$.
 
 \begin{definition}
-   Let $\varphi\in{\EuScript F}_{\sf X}$ be formula~--~possibly with some (hidden) free variables.
+   Let $\varphi\in{\EuScript F}_{\sf X}$ be a formula~--~possibly with some (hidden) free variables.
    The \emph{pseudonegation\/} of $\varphi\in{\EuScript F}_{\sf X}$ is the formula obtained by replacing in $\varphi$ the atomic formulas in  ${\EuScript L}_{\sf H}$ by their negation and every connective $\wedge$, $\vee$, $\forall$, $\exists$
    %$\forall\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$ 
    by their respective duals $\vee$, $\wedge$, $\exists$, $\forall$.
@@ -304,7 +305,21 @@ Note that the fact also holds if we restrict the above $C'$ and $\tilde C$ to ra
 \end{fact}
 
 \begin{proof}
-  By induction on the syntax of $\varphi(X)$.
+  \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
+  \def\ceq#1#2#3{\parbox[t]{39ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+  Prove the first of the two implications by induction on the syntax of $\varphi(X)$.
+  The existential quantifier of sort {\sf H} is the only connective that require attention.
+  Assume inductively that
+
+    \ceq{\hfill\bigwedge\Big\{\ \varphi(a\,;C')\ :\ C'\textrm{ neighborhood of }C\Big\}}{\rightarrow}{\varphi(a\,;C)}
+
+  holds for every $\varphi(a\,;C)$.
+  Then induction for the existential quantifier follows from
+
+    \ceq{\hfill\bigwedge\Big\{\ \exists x\,\varphi(x\,;C')\ :\ C'\textrm{ neighborhood of }C\Big\}}{\rightarrow}{\exists x\,\bigwedge\Big\{\varphi(x\,;C')\ :\ C'\textrm{ neighborhood of }C\Big\} }
+
+    which  is a consequence of saturation.
 \end{proof}
 
 We say that $M$ is \emph{${\EuScript F}$-maximal\/} if it models all ${\EuScript F}(M)$-sentences that hold in some of its ${\EuScript F}$-elementary extensions.
@@ -320,7 +335,8 @@ By the following fact ${\EuScript F}$-saturated structures are ${\EuScript F}$-m
 \end{fact}
 
 \begin{proof}
-  1$\Rightarrow$2. If (2) in Fact~\ref{fact_otto} fails, $\neg\varphi(C)\wedge\neg\,{\sim}\varphi(\tilde C)$ holds in $M$ for every $\tilde C\cap C=\varnothing$.
+  1$\Rightarrow$2.
+  If (2) in Fact~\ref{fact_otto} fails, $\neg\varphi(C)\wedge\neg\,{\sim}\varphi(\tilde C)$ holds in $M$ for every $\tilde C\cap C=\varnothing$.
   Let ${\EuScript U}$ be an ${\EuScript F}$-saturated ${\EuScript F}$-elementary extension of $M$.
   As $M$ is ${\EuScript F}$-maximal, $\neg\varphi(C)\wedge\neg\,{\sim}\varphi(\tilde C)$ holds also in ${\EuScript U}$.
   Then (2) in Fact~\ref{fact_otto} fails in ${\EuScript U}$, contradicting Fact~\ref{fact_saturation}.
@@ -368,7 +384,7 @@ We say that $\varphi(x\,;z\,;X)$ is \emph{stable\/} if it is not unstable.
 
 %    for some $\langle a_{i,j}\ :\ 1\le i,j\le n\rangle$.
 % \end{theorem}
-In this section we consider formulas of particular form which is of some interest. 
+In this section we consider formulas of a particular form which is of some interest. 
 We deal with the general case in the next section.
 
 Assume \emph{$S=[0,1]$\/} throughout this section.
@@ -581,14 +597,33 @@ For ${\EuScript D}\subseteq K(S)$ we define
 If ${\EuScript D}\subseteq{\EuScript U}^z\times K(S)$ then ${\sim}{\EuScript D}$ is obtained by applying the definition above to all fibers of ${\EuScript D}$.
 We say that ${\EuScript D}$ is \emph{approximable\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that
 
-\ceq{\hfill \langle b,C\rangle\in {\EuScript D}}{\rightarrow}{\phantom{\sim}\varphi(a\,;b\,;C)}\quad and
+\ceq{\hfill \langle b,C\rangle\in {\EuScript D}}{\Rightarrow}{\phantom{\sim}\varphi(a\,;b\,;C)}\quad and
 
-\ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\rightarrow}{{\sim}\varphi(a\,;b\,;C)}\hfill for all $b\in B$ and $C\in K(S)$.
-
-A \emph{global $\varphi(x\,;z\,;X)$-type\/} is a maximally (finitely) consistent set of formulas that are instances of $\varphi(x\,;b\,;X)$ and/or ${\sim}\varphi(x\,;b\,;X)$ for some $b\in{\EuScript U}^{|z|}$.
+\ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C)}\hfill for all $b\in B$ and $C\in K(S)$.
 
 Note that we always have ${\EuScript D}\subseteq {\sim}{\sim}{\EuScript D}$.
 When ${\EuScript D} = {\sim}{\sim}{\EuScript D}$ we say that ${\EuScript D}$ is \emph{regular.}
+For regular ${\EuScript D}$ the above implications can be reversed.
+
+\begin{fact}
+  Let ${\EuScript D}$ be regular and approximable by $\varphi(x\,;z\,;X)$.
+  Then for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that\smallskip
+
+\ceq{\hfill \langle b,C\rangle\in {\EuScript D}}{\Leftrightarrow}{\phantom{\sim}\varphi(a\,;b\,;C)}\quad and\smallskip
+
+\ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Leftrightarrow}{{\sim}\varphi(a\,;b\,;C)}\hfill for all $b\in B$ and $C\in K(S)$.
+\end{fact}
+
+\begin{proof}
+  For given $B$ let $a$ be as given by approximability. 
+  Assume $\varphi(a\,;b\,;C)$ and, for a contradiction, $\langle b,C\rangle\notin{\EuScript D}$.
+  As ${\EuScript D}={\sim}{\sim}{\EuScript D}$, there must be some $\tilde C\in{\sim}{\EuScript D}$ such that $\tilde C\cap C=\varnothing$.
+  Then ${\sim}\varphi(a\,;b\,;\tilde C)$ by approximability.
+  By Fact~\ref{fact_trivial} this contradicts $\varphi(a\,;b\,;C)$.
+  The second equivalence is proved by a similar argument.
+\end{proof}
+
+A \emph{global $\varphi(x\,;z\,;X)$-type\/} is a maximally (finitely) consistent set of formulas that are instances of $\varphi(x\,;b\,;X)$ and/or ${\sim}\varphi(x\,;b\,;X)$ for some $b\in{\EuScript U}^{|z|}$.
 
 \begin{fact}
   For every regular ${\EuScript D}\subseteq {\EuScript U}^z\times K(S)$ the following are equivalent
@@ -626,8 +661,10 @@ When ${\EuScript D} = {\sim}{\sim}{\EuScript D}$ we say that ${\EuScript D}$ is 
   Let ${\EuScript D}\subseteq {\EuScript U}^z\times K(S)$ be approximable by $\varphi(x\,;z\,;X)$.
   Then there are some $\langle a_{i,j}\ :\ i,j<n\rangle$ such that\medskip
 
-  \ceq{\hfill\langle b,C\rangle\in{\EuScript D}}{\Leftrightarrow}{\bigwedge_{i=0}^n\ \bigvee_{i=0}^n\ \varphi(a_{i,j}\,;b\,;C)} \medskip
+  \ceq{\hfill\langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigwedge_{i=0}^n\ \bigvee_{j=0}^n\ \varphi(a_{i,j}\,;b\,;C)} \medskip
   
+  \ceq{\hfill\langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{\bigvee_{i=0}^n\ \bigwedge_{j=0}^n\ {\sim}\varphi(a_{i,j}\,;b\,;C)} \medskip
+
   for every $b\in{\EuScript U}^z$ and $C\in K(S)$.
 \end{theorem}
 
@@ -640,10 +677,12 @@ When ${\EuScript D} = {\sim}{\sim}{\EuScript D}$ we say that ${\EuScript D}$ is 
 We say that ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$ if \emph{from below\/} if in the definition above the implication in (2) holds for every $b\in{\EuScript U}^z$ and $C\in K(S)$.
 
 
-\begin{lemma}
+\begin{lemma}[ (conjecture)]
   If ${\EuScript D}$ is approximable from below then there are some $\langle a_i\ :\ i<n\rangle$ such that\medskip
 
-  \ceq{\hfill\langle b,C\rangle\in{\EuScript D}}{\Leftrightarrow}{\bigvee_{i=0}^n \varphi(a_i\,;b\,;C)} \medskip
+  \ceq{\hfill\langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i=0}^n\ \varphi(a_i\,;b\,;C)} \medskip
+  
+  \ceq{\hfill\langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{\bigwedge_{i=0}^n\ {\sim}\varphi(a_i\,;b\,;C)} \medskip
   
   for every $b\in{\EuScript U}^z$ and $C\in K(S)$.
 \end{lemma}
