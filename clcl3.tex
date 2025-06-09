@@ -261,7 +261,7 @@ The following fact is immediate and will be used without further mention.
 
   \ceq{\hfill M}{\models}{\phantom{\sim}\varphi(C)\ \rightarrow\phantom{\neg}\varphi(C')}\smallskip
 
-  \ceq{\hfill M}{\models}{{\sim}\varphi(C)\ \rightarrow\neg\varphi(\tilde C).}\smallskip
+  \ceq{\hfill M}{\models}{{\sim}\varphi(\tilde C)\ \rightarrow\neg\varphi(C).}\smallskip
   
 \end{fact}
 
@@ -309,7 +309,7 @@ Note that the fact also holds if we restrict the above $C'$ and $\tilde C$ to ra
   \def\ceq#1#2#3{\parbox[t]{39ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
   Prove the first of the two implications by induction on the syntax of $\varphi(X)$.
-  The existential quantifier of sort {\sf H} is the only connective that require attention.
+  The existential quantifier of sort {\sf H} is the only connective that requires attention.
   Assume inductively that
 
     \ceq{\hfill\bigwedge\Big\{\ \varphi(a\,;C')\ :\ C'\textrm{ neighborhood of }C\Big\}}{\rightarrow}{\varphi(a\,;C)}
@@ -319,7 +319,7 @@ Note that the fact also holds if we restrict the above $C'$ and $\tilde C$ to ra
 
     \ceq{\hfill\bigwedge\Big\{\ \exists x\,\varphi(x\,;C')\ :\ C'\textrm{ neighborhood of }C\Big\}}{\rightarrow}{\exists x\,\bigwedge\Big\{\varphi(x\,;C')\ :\ C'\textrm{ neighborhood of }C\Big\} }
 
-    which  is a consequence of saturation.
+    which is a consequence of saturation.
 \end{proof}
 
 We say that $M$ is \emph{${\EuScript F}$-maximal\/} if it models all ${\EuScript F}(M)$-sentences that hold in some of its ${\EuScript F}$-elementary extensions.
@@ -359,6 +359,105 @@ In what follows we fix a large saturated standard structure which we denote by \
 
 % Then $C_\varphi$ is a closed set.
 % Note that either $C_\varphi$ or $C_{\sim\varphi}$ is empty by Fact~\ref{fact_trivial}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Pseudocomplement in \boldmath$K(S)$}\label{pseudocomplement}
+
+\def\medrel#1{\parbox{5ex}{\hfil $#1$}}
+\def\ceq#1#2#3{\parbox[t]{23ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+
+Write \emph{$K(S)$\/} for the set of compact subsets of $S$.
+For ${\EuScript D}\subseteq K(S)$ we define 
+
+\ceq{\hfill\emph{${\sim}{\EuScript D}$}}{=}{\big\{\tilde C\in K(S)\ :\ \tilde C\cap C\neq\varnothing\text{ for every }C\in{\EuScript D}\big\}.}
+
+The following fact motivates the definition.
+
+\begin{fact}\label{fact_~definibile}
+  If ${\EuScript D}=\{C\,:\,\varphi(C)\}$ then ${\sim}{\EuScript D}=\{\tilde C\,:\,{\sim}\varphi(\tilde C)\}$
+\end{fact}
+
+\begin{proof}
+  We need to prove that 
+
+  \ceq{\hfill{\sim}\varphi(\tilde C)}{\Leftrightarrow}{\text{for every } C,\ \text{ if } C\cap\tilde C=\varnothing\ \text{ then } \neg\varphi(C)}
+
+  Implication $\Rightarrow$ follows immediately from Fact~\ref{fact_trivial}.
+  To prove  $\Leftarrow$ assume the r.h.s.
+  Then $\neg\varphi(S\smallsetminus O)$ holds for every open set  $O\supseteq\tilde C$.
+  From the second implication in Fact~\ref{fact_otto} we obtain ${\sim}\varphi(\tilde C')$ for some $\tilde C\subseteq\tilde C'\subseteq O$.
+  As $O$ is arbitrary, we obtain $\varphi(\tilde C)$ from the second implication in  Fact~\ref{fact_otto}.
+\end{proof}
+
+We prove a couple of straightforward inclusions.
+
+\begin{fact}\label{fact_~inclusione}
+  For every ${\EuScript D}\subseteq{\EuScript C}\subseteq K(S)$ we have ${\sim}{\EuScript C}\subseteq{\sim}{\EuScript D}$.  
+  Moreover, ${\EuScript D}\subseteq{\sim}{\sim}{\EuScript D}$.
+\end{fact}
+
+\begin{proof}
+  Let $C\notin{\sim}{\EuScript D}$.
+  Then $\tilde C\cap C=\varnothing$ for some $\tilde C\in{\EuScript D}$.
+  As  $\tilde C\in{\EuScript C}$ we conclude that  $C\notin{\sim}{\EuScript C}$.
+  For the second claim, let $C\notin{\sim}{\sim}{\EuScript D}$.
+  Then $\tilde C\cap C=\varnothing$ for some $\tilde C\in{\sim}{\EuScript D}$.
+  Then $C\notin{\EuScript D}$ follows.
+\end{proof}
+
+\begin{fact}
+  For every ${\EuScript D}\subseteq K(S)$ the following are equivalent
+  \begin{itemize}
+    \item [1.] ${\EuScript D}={\sim}{\sim}{\EuScript D}$.
+    \item [2.] ${\EuScript D}={\sim}{\EuScript C}$ for some ${\EuScript C}\subseteq K(S)$.
+  \end{itemize}
+\end{fact}
+  
+\begin{proof}
+  Only 2$\Rightarrow$1 requires a proof.
+  From the two claims in the above fact we obtain ${\sim}{\sim}{\sim}{\EuScript C}\subseteq{\sim}{\EuScript C}$.
+  Then form (2) we obtain ${\sim}{\sim}{\EuScript D}\subseteq{\EuScript D}$, which suffices to prove (1).
+\end{proof}
+
+We say that ${\EuScript D}$ is \emph{regular\/} if 
+
+\ceq{\hfill C\in{\EuScript D}}{\Leftrightarrow}{C'\in{\EuScript D}} for every neighborhood $C'$ of $C$.
+
+It is not difficult to see that ${\EuScript D}$ is regular if and only if it is closed in the Vietoris topology and includes all the supersets of its elements.
+
+\begin{theorem}
+  The following are equivalent
+  \begin{itemize}
+    \item [1.] ${\EuScript D}$ is regular 
+    \item [2.] ${\EuScript D}={\sim}{\sim}{\EuScript D}$.
+  \end{itemize}
+\end{theorem}
+
+\begin{proof}
+  1$\Rightarrow$2.
+  It suffices to prove ${\sim}{\sim}{\EuScript D}\subseteq{\EuScript D}$.
+  Let $C\in{\sim}{\sim}{\EuScript D}$.
+  Let $O\supseteq C$ be open.
+  Then $S\smallsetminus O\notin{\sim}{\EuScript D}$.
+  Then $\tilde C\in{\EuScript D}$ for some $\tilde C\subseteq O$.
+  By regularity ($\Rightarrow$) every $C'\supseteq O$ is in ${\EuScript D}$.
+  As $O$ is arbitrary, $C\in {\EuScript D}$ by regularity ($\Leftarrow$).
+
+  2$\Rightarrow$1.
+  It suffices to show that ${\sim}{\EuScript D}$ is regular.
+  Regularity ($\Rightarrow$) is ovious.
+  To prove regularity ($\Leftarrow$), assume $C\notin{\sim}{\EuScript D}$.
+  Then $C\cap\tilde C$ for some $\tilde C\in{\EuScript D}$.
+  Let $C'$ be a neighboorhood of $C$ disjoint of $C$.
+  Then the r.h.s.\@ of the above equivalence fails for $C'$.  
+\end{proof}
+
+% If $\varphi(X)\in{\EuScript F}_{\sf X}$ and ${\EuScript D}=\{C:\varphi(C)\}$ then ${\sim}{\EuScript D}=\{C:{\sim}\varphi(C)\}$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -571,57 +670,23 @@ In both cases we contradict the stability of $\tau(x\,;z)$.
 \def\ceq#1#2#3{\parbox[t]{15ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
 
-We write \emph{$K(S)$\/} for the set of compact subsets of $S^n$, for some $n$ which we leave implicit in the context.
-For ${\EuScript D}\subseteq K(S)$ we define 
-
-\ceq{\hfill\emph{${\sim}{\EuScript D}$}}{=}{\big\{\tilde C\in K(S)\ :\ \tilde C\cap C\neq\varnothing\text{ for every }C\in{\EuScript D}\big\}.}
-
-% If $\varphi(X)\in{\EuScript F}_{\sf X}$ and ${\EuScript D}=\{C:\varphi(C)\}$ then ${\sim}{\EuScript D}=\{C:{\sim}\varphi(C)\}$.
-
-\begin{fact}
-  If ${\EuScript D}=\{C\,:\,\varphi(C)\}$ then ${\sim}{\EuScript D}=\{\tilde C\,:\,{\sim}\varphi(\tilde C)\}$
-\end{fact}
-
-\begin{proof}
-  We need to prove that 
-
-  \ceq{\hfill{\sim}\varphi(\tilde C)}{\Leftrightarrow}{\text{for every } C,\ \text{ if } C\cap\tilde C=\varnothing\ \text{ then } \neg\varphi(C)}
-
-  Implication $\Rightarrow$ follows immediately from Fact~\ref{fact_trivial}.
-  To prove  $\Leftarrow$ assume the r.h.s.
-  Then $\neg\varphi(S\smallsetminus O)$ holds for every open set  $O\supseteq\tilde C$.
-  From the second implication in Fact~\ref{fact_otto} we obtain ${\sim}\varphi(\tilde C')$ for some $\tilde C\subseteq\tilde C'\subseteq O$.
-  As $O$ is arbitrary, we obtain $\varphi(\tilde C)$ from the second implication in  Fact~\ref{fact_otto}.
-\end{proof}
-
-If ${\EuScript D}\subseteq{\EuScript U}^z\times K(S)$ then ${\sim}{\EuScript D}$ is obtained by applying the definition above to all fibers of ${\EuScript D}$.
+If ${\EuScript D}\subseteq{\EuScript U}^z\times K(S)$ then ${\sim}{\EuScript D}$ is obtained by applying the definition in Section~\ref{pseudocomplement} to all fibers of ${\EuScript D}$.
 We say that ${\EuScript D}$ is \emph{approximable\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that
+
+\ceq{\hfill \langle b,C\rangle\in {\EuScript D}}{\Leftrightarrow}{\phantom{\sim}\varphi(a\,;b\,;C)}\hfill for all $b\in B$ and $C\in K(S)$.
+
+By Facts~\ref{fact_~definibile} and~\ref{fact_~inclusione} the equivalence above can be split into two imlications
 
 \ceq{\hfill \langle b,C\rangle\in {\EuScript D}}{\Rightarrow}{\phantom{\sim}\varphi(a\,;b\,;C)}\quad and
 
 \ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C)}\hfill for all $b\in B$ and $C\in K(S)$.
 
-Note that we always have ${\EuScript D}\subseteq {\sim}{\sim}{\EuScript D}$.
-When ${\EuScript D} = {\sim}{\sim}{\EuScript D}$ we say that ${\EuScript D}$ is \emph{regular.}
-For regular ${\EuScript D}$ the above implications can be reversed.
+Or, symmetrically
 
-\begin{fact}
-  Let ${\EuScript D}$ be regular and approximable by $\varphi(x\,;z\,;X)$.
-  Then for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that\smallskip
+\ceq{\hfill\varphi(a\,;b\,;C)}{\Rightarrow}{\langle b,C\rangle\in {\EuScript D}}\quad and
 
-\ceq{\hfill \langle b,C\rangle\in {\EuScript D}}{\Leftrightarrow}{\phantom{\sim}\varphi(a\,;b\,;C)}\quad and\smallskip
+\ceq{\hfill{\sim}\varphi(a\,;b\,;C)}{\Rightarrow}{\langle b,C\rangle\in{\sim}{\EuScript D}}\hfill for all $b\in B$ and $C\in K(S)$.
 
-\ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Leftrightarrow}{{\sim}\varphi(a\,;b\,;C)}\hfill for all $b\in B$ and $C\in K(S)$.
-\end{fact}
-
-\begin{proof}
-  For given $B$ let $a$ be as given by approximability. 
-  Assume $\varphi(a\,;b\,;C)$ and, for a contradiction, $\langle b,C\rangle\notin{\EuScript D}$.
-  As ${\EuScript D}={\sim}{\sim}{\EuScript D}$, there must be some $\tilde C\in{\sim}{\EuScript D}$ such that $\tilde C\cap C=\varnothing$.
-  Then ${\sim}\varphi(a\,;b\,;\tilde C)$ by approximability.
-  By Fact~\ref{fact_trivial} this contradicts $\varphi(a\,;b\,;C)$.
-  The second equivalence is proved by a similar argument.
-\end{proof}
 
 A \emph{global $\varphi(x\,;z\,;X)$-type\/} is a maximally (finitely) consistent set of formulas that are instances of $\varphi(x\,;b\,;X)$ and/or ${\sim}\varphi(x\,;b\,;X)$ for some $b\in{\EuScript U}^{|z|}$.
 
@@ -659,16 +724,13 @@ A \emph{global $\varphi(x\,;z\,;X)$-type\/} is a maximally (finitely) consistent
 \begin{theorem}[ (conjecture)]
   Let $\varphi(x\,;z\,;X)$ be stable.
   Let ${\EuScript D}\subseteq {\EuScript U}^z\times K(S)$ be approximable by $\varphi(x\,;z\,;X)$.
-  Then there are some $\langle a_{i,j}\ :\ i,j<n\rangle$ such that\medskip
+  Let $C\cap\tilde C=\varnothing$ be given.
+  Then there are some $\langle a_{i,j}\ :\ i,j<n\rangle$ such that for every $b\in{\EuScript U}^z$\medskip
 
   \ceq{\hfill\langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigwedge_{i=0}^n\ \bigvee_{j=0}^n\ \varphi(a_{i,j}\,;b\,;C)} \medskip
   
-  \ceq{\hfill\langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{\bigvee_{i=0}^n\ \bigwedge_{j=0}^n\ {\sim}\varphi(a_{i,j}\,;b\,;C)} \medskip
-
-  for every $b\in{\EuScript U}^z$ and $C\in K(S)$.
+  \ceq{\hfill\langle b,\tilde C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{\bigvee_{i=0}^n\ \bigwedge_{j=0}^n\ {\sim}\varphi(a_{i,j}\,;b\,;\tilde C)}
 \end{theorem}
-
-
 
 \begin{proof}
   
@@ -676,15 +738,13 @@ A \emph{global $\varphi(x\,;z\,;X)$-type\/} is a maximally (finitely) consistent
 
 We say that ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$ if \emph{from below\/} if in the definition above the implication in (2) holds for every $b\in{\EuScript U}^z$ and $C\in K(S)$.
 
-
 \begin{lemma}[ (conjecture)]
-  If ${\EuScript D}$ is approximable from below then there are some $\langle a_i\ :\ i<n\rangle$ such that\medskip
+  Let $C\cap\tilde C=\varnothing$ be given.
+  If ${\EuScript D}$ is approximable from below then there are some $\langle a_i\ :\ i<n\rangle$ such that for every $b\in{\EuScript U}^z$\medskip
 
-  \ceq{\hfill\langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i=0}^n\ \varphi(a_i\,;b\,;C)} \medskip
+  \ceq{\hfill\langle b,\tilde C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i=0}^n\ \varphi(a_i\,;b\,;C)} \medskip
   
-  \ceq{\hfill\langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{\bigwedge_{i=0}^n\ {\sim}\varphi(a_i\,;b\,;C)} \medskip
-  
-  for every $b\in{\EuScript U}^z$ and $C\in K(S)$.
+  \ceq{\hfill\langle b,\tilde C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{\bigwedge_{i=0}^n\ {\sim}\varphi(a_i\,;b\,;\tilde C).}
 \end{lemma}
 
 \begin{comment}
