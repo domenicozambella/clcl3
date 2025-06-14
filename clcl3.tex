@@ -363,8 +363,24 @@ In what follows we fix a large saturated standard structure which we denote by \
 % Then $C_\varphi$ is a closed set.
 % Note that either $C_\varphi$ or $C_{\sim\varphi}$ is empty by Fact~\ref{fact_trivial}.
 
-Let $\varepsilon$ a neighborhood of the diagonal of $S^2$.
-For $a,b\in{\EuScript U}^n$ we write $a\sim_\varepsilon b$ if $\langle\tau(a),\tau(b)\rangle\in\varepsilon$ for every term $\tau(z)$ of sort ${\sf H}^n\to{\sf S}$.
+Let $\varepsilon$ a compact neighborhood of the diagonal of $S^2$.
+If $C$ is a tuple of compact subsets of $S$, we write $C^\varepsilon$ for the tuple whose elements are $\varepsilon$-close to the corresponding elements of $C$.
+For $b,b'\in{\EuScript U}^n$ we write $b\sim_\varepsilon b'$ if $\langle\tau(b,c),\tau(b',c)\rangle\in\varepsilon$ for every term $\tau(z,w)$ of sort ${\sf H}^{n+|w|}\to{\sf S}$ and every $c\in{\EuScript U}^w$.
+
+Then the equivalence relations $\sim_\varepsilon$ form the base for a uniformity.
+The coursest uniformity that makes every term $\tau(z,c)$ uniformly continuous
+
+\begin{fact}
+  The following are equivalent 
+  \begin{itemize}
+    \item [1.]  $b\sim_\varepsilon b'$.
+    \item [2.] For every $\varphi(x\,;z\,;X)$, every $c$, every $C$
+    
+    \ceq{\hfill \varphi(c\,;b\,;C)}{\Rightarrow}{\varphi(c\,;b'\,;C^\varepsilon)}
+
+    and the same holds swapping $b$ and $b'$.
+  \end{itemize}
+\end{fact}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -431,12 +447,18 @@ We prove a couple of straightforward inclusions.
 \end{proof}
 
 We say that ${\EuScript D}$ is \emph{involutive\/} if ${\EuScript D}={\sim}{\sim}{\EuScript D}$.
+We say that ${\EuScript D}$ is \emph{closed\/} if 
+
+\ceq{\hfill C\in{\EuScript D}}{\Leftrightarrow}{C'\in{\EuScript D}}\hfill for every neighborhood $C'$ of $C$.
+
+Note that we are requiring closure in two distintic contexts: topological, and Boolean algebraic (upward clousere by inclusion).
+
 
 \begin{theorem}
   The following are equivalent
   \begin{itemize}
     \item [1.] ${\EuScript D}$ is involutive 
-    \item [2.] $C\in{\EuScript D}\medrel{\Leftrightarrow}C'\in{\EuScript D}$\hfill for every neighborhood $C'$ of $C$.
+    \item [2.] ${\EuScript D}$ is closed.
   \end{itemize}
 \end{theorem}
 
@@ -455,7 +477,7 @@ It is not difficult to see that (2) holds if and only if ${\EuScript D}$ is clos
 
   1$\Rightarrow$2.
   It suffices to show that (2) holds with ${\sim}{\EuScript D}$ for ${\EuScript D}$.
-  Implication $\Rightarrow$ is ovious.
+  Implication $\Rightarrow$ in the definition of closed is ovious.
   To prove $\Leftarrow$, assume $C\notin{\sim}{\EuScript D}$.
   Then $C\cap\tilde C$ for some $\tilde C\in{\EuScript D}$.
   Let $C'$ be a neighboorhood of $C$ disjoint of $C$.
@@ -499,7 +521,7 @@ But this may not be true if only have ${\EuScript F}$-saturation.
 Therefore we intruduce the non finitary version of saturation as a separate notion.
 Namely, we say that $\varphi(x\,;z\,;C)$ is \emph{stable\/} if the equivalent conditions in the following fact hold.
 
-\begin{theorem}[ (conjecture)]\label{fact_instable3}
+\begin{theorem}[ (conjecture)]\label{thm_epsilon_stable}
   The following are equivalent\smallskip
 
   \begin{itemize}
@@ -772,31 +794,34 @@ This contradicts stability.
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Attempt 2}
+\def\medrel#1{\parbox{5ex}{\hfil $#1$}}
+\def\ceq#1#2#3{\parbox[t]{22ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
 In this section  ${\EuScript D}$ is always a subset of ${\EuScript U}^z\times K(S)^n$, where $n$ has to be inferred from the context (typically, $n=|X|$).
 We write ${\sim}{\EuScript D}$ for the set obtained by applying the definition in Section~\ref{pseudocomplement} to all fibers of ${\EuScript D}$.
-We say that ${\EuScript D}$ is involutive if all its fibers are such.
+We say that ${\EuScript D}$ is involutive/closed if all its fibers are such.
 
-We write $\varepsilon$ for a compact neighborhood of the diagonal of $(S^n)^2$.
-We write $C^\varepsilon$ for elements of $S^n$ that are $\varepsilon$-close to $C$.
+We write $\varepsilon$ for a compact neighborhood of the diagonal of $S^2$.
+If $C$ is a compact subsets of $S$, we write $C^\varepsilon$ for the set whose elements are $\varepsilon$-close to elements of $C$.
+If $C$ is a tuple, the definition above applies componentwise.
 
-We say that $\varphi(x\,;z\,;C)$ is \emph{$\varepsilon$-stable\/} if the equivalent conditions in the following fact hold.
+We say that $\varphi(x\,;z\,;X)$ is \emph{$\varepsilon$-stable\/} if the equivalent conditions in the following fact hold.
 
-\begin{theorem}[ (conjecture)]\label{fact_instable3}
+\begin{theorem}[ (conjecture)]\label{thm_epsilon_stable}
   The following are equivalent\smallskip
 
   \begin{itemize}
-    \item [1.]  there is no sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for some $\tilde C\cap C^\varepsilon=\varnothing$ and every $i<n$
+    \item [1.]  there is no sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for some $C$, some $\tilde C\cap C^\varepsilon=\varnothing$, and for every $i<n$
 
-    \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C)}
+    \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C)}\smallskip
 
-   \item [2.] there is no sequence $\langle a_i\,;b_i\,;C_i\ :\ i<\omega\rangle$ such that for every $i<n$
+   \item [2.] there is no sequence $\langle a_i\,;b_i\,;C_i\ :\ i<\omega\rangle$ such that for some $C$ and for every $i<n$
   
-    \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;C_n)}\quad and\quad $C^\varepsilon\cap C_n=\varnothing$.
+    \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;C_n)}\quad and\quad $C^\varepsilon\cap C_n=\varnothing$.\smallskip
 
-    \item [3.]  there is a maximal $m$ such that some sequence $\langle a_i\,;b_i\,;C_i\ :\ i<m\rangle$ is such that for every $i<n$
+    \item [3.]  there is a maximal $m$ such that some sequence $\langle a_i\,;b_i\,;C_i\ :\ i<m\rangle$ is such that for some $C$ and for every $i<n$
 
-    \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;C_n)}\quad and\quad $C^\varepsilon\cap C_n=\varnothing$.    
+    \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;C_n)}\quad and\quad $C^\varepsilon\cap C_n=\varnothing$.\smallskip    
   \end{itemize}
 \end{theorem}
 
@@ -805,21 +830,32 @@ We say that $\varphi(x\,;z\,;C)$ is \emph{$\varepsilon$-stable\/} if the equival
 \end{definition}
 
 \begin{definition}\label{def_approx_X}\strut
+  We say that ${\EuScript D}$ is \emph{approximable\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that\smallskip
+
+  \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a\,;b\,;C)}\quad and\smallskip
+
+  \ceq{2.\hfill\langle b,C\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$.\smallskip
+
+We say approximable \emph{from below\/} if the second implication holds for every $b\in{\EuScript U}^z$.
+\end{definition}
+
+The proof of the main theorem requires the following stronger notion of approximation.
+
+\begin{definition}\label{def_e_approx_X}\strut
   We say that ${\EuScript D}$ is \emph{$\varepsilon$-approximable\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that\smallskip
 
   \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a\,;b\,;C)}\quad and\smallskip
 
-  \ceq{2.\hfill\varphi(a\,;b\,;C^\varepsilon)}{\Rightarrow}{\langle b,C\rangle\in {\EuScript D}}\hfill for every $b\in B$ and every $C$.\smallskip
-
-We say $\varepsilon$-approximable \emph{from below\/} if the implication $\Leftarrow$ holds for every $b\in{\EuScript U}^z$.
-We say \emph{approximable\/} for $\varepsilon$-approximable for every $\varepsilon$.
+  \ceq{2.\hfill\langle b,C\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C^\varepsilon)}\hfill for every $b\in B$ and every $C$.\smallskip
 \end{definition}
 
-By Facts~\ref{fact_~definibile} and~\ref{fact_~inclusione} when ${\EuScript D}$ is involutive (1) can be rephrased as
-
-\ceq{\hfill{\sim}\varphi(a\,;b\,;C)}{\Rightarrow}{\langle b,C\rangle\in{\sim}{\EuScript D}}\hfill for every $b\in B$ and every $C$.
-
-Analogously, (2) can be rephrased as
+We remark that, by Facts~\ref{fact_~definibile} and~\ref{fact_~inclusione}, when ${\EuScript D}$ is involutive 
+%(1) can be rephrased as
+%
+% \ceq{\hfill{\sim}\varphi(a\,;b\,;C)}{\Rightarrow}{\langle b,C\rangle\in{\sim}{\EuScript D}}\hfill for every $b\in B$ and every $C$.
+%
+% Analogously, 
+(2) can be rephrased as
 
 \ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C^\varepsilon)}\hfill for every $b\in B$ and every $C$.
 
@@ -827,7 +863,8 @@ Analogously, (2) can be rephrased as
   For every involutive ${\EuScript D}$ the following are equivalent
   \begin{itemize}
     \item [1.] ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$
-    \item [2.] the following is a global $\varphi(x\,;z\,;X)$-type\smallskip
+    \item [2.] ${\EuScript D}$ is $\varepsilon$-approximable by $\varphi(x\,;z\,;X)$ for every $\varepsilon$
+    \item [3.] the following is a global $\varphi(x\,;z\,;X)$-type\smallskip
     
     \noindent\kern-\labelwidth\kern-\labelsep
     \ceq{\hfill p(x)}{=}{\big\{\phantom{\sim}\varphi(x\,;b\,;C)\ :\ \langle b,C\rangle\in{\EuScript D}\big\}\ \ \cup}\smallskip
@@ -839,55 +876,7 @@ Analogously, (2) can be rephrased as
 \end{fact}
 
 \begin{proof}
-  2$\Rightarrow$1.
-  Let $B$ be a given finite subset of ${\EuScript U}^z$.
-  The finite consistency of $p(x)$ provides some $a$ such that for every finite $B$ an $a$ such that
-
-  \ceq{\hfill \langle b,C\rangle\in {\EuScript D}}{\Rightarrow}{\phantom{\sim}\varphi(a\,;b\,;C)}\quad and 
-  
-  \ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$. 
-
-   Therefore also 
-
-  \ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C^\varepsilon).}
-    
-  By what remarked above, these yield (1) and (2) in Definition~\ref{def_approx_X}.
-  
-  1$\Rightarrow$2.
-  Firstly, we prove finite consistency.
-  Let $B$ and $C_1,\dots,C_n$ be given.
-  Let $\varepsilon$ be small enough so that 
-  
-  \ceq{\hfill\langle b,C_i^\varepsilon\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{\langle b,C_i\rangle\in{\sim}{\EuScript D}}\hfill   for every $b\in B$ and every $i<n$.
-  
-  
-  Let $a$ be given by Definition~\ref{def_approx_X}.
-  Then 
-
-  \ceq{\hfill\langle b,C_i\rangle\notin{\EuScript D}}{\Rightarrow}{C_i\cap C=\varnothing} for some C\
-
-  \ceq{\hfill\langle b,C_i\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a\,;b\,;C_i)}\hfill for every $b\in B$ and every $i$.
-
-  Then the following holds for every $\varepsilon$
-
-  \ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C_i^\varepsilon)}
-  
-  As $\varepsilon$
-
-  \ceq{}{\Rightarrow}{\varphi(a\,;b\,;C_i).}
-  
-
-
-
-  This implies that $\langle b,C_i\rangle\in{\EuScript D}$ for every $b\in B$ and every $C_i$.
-
-  
-  
-
-  Then for every $i<n$ and every $b\in B$ we have that
-  
-  follows (again, immediately) from approximability.
-  We prove $p(x)$ is maximal.
+  First we prove that $p(x)$ is maximal as soon as it is consistent~--~in fact, this only depends on ${\EuScript D}$ being involutive.
   We need to consider two cases.
   First, assume that $\varphi(x\,;b\,;C)$ is consistent with $p(x)$.
   Then consistency implies that $\langle b,\tilde C\rangle\notin{\sim}{\EuScript D}$ for every $\tilde C\cap C=\varnothing$.
@@ -895,7 +884,136 @@ Analogously, (2) can be rephrased as
   The second case is when ${\sim}\varphi(x\,;b\,;C)$ is consistent with $p(x)$.
   This implies that $\langle b,\tilde C\rangle\notin{\EuScript D}$ for every $\tilde C\cap C=\varnothing$.
   Then $\langle b,C\rangle\in{\sim}{\EuScript D}$,  therefore ${\sim}\varphi(x\,;b\,;C)\in p$.
+
+  3$\Rightarrow$1.
+  Let $B$ be a given finite subset of ${\EuScript U}^z$.
+  The finite consistency of $p(x)$ provides some $a$ such that for every finite $B$ an $a$ such that
+
+  \ceq{\hfill \langle b,C\rangle\in {\EuScript D}}{\Rightarrow}{\phantom{\sim}\varphi(a\,;b\,;C)}\quad and 
+  
+  \ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$. 
+
+  By what remarked above, these yield (1) and (2) in Definition~\ref{def_approx_X}.
+  
+  1$\Rightarrow$2. Clear.
+
+  2$\Rightarrow$3.
+  We claim the the following type is finitely consistent
+
+  \ceq{\hfill p'(x)}{=}{\big\{\phantom{\sim}\varphi(x\,;b\,;C)\ :\ \langle b,C\rangle\in{\EuScript D}\big\}\ \ \cup}\smallskip
+
+  \ceq{}{~}{\big\{{\sim}\varphi(x\,;b\,;C^\varepsilon)\ :\ \langle b,C\rangle\in{\sim}{\EuScript D},\text{ and all }\varepsilon\big\}.}
+  
+  Let $B$ and $\varepsilon$ be given.
+  Let $a$ be as in Definition~\ref{def_e_approx_X}.
+  Then, by what remarked above, $a\models p'(x)\restriction B, \varepsilon$.
+  Now, by saturation the is some $a \models p'(x)\restriction B$.
+  Then $a \models p(x)\restriction B$ by Fact~\ref{fact_otto}.
 \end{proof}
+
+\begin{lemma}\label{lem_epsilon_stability_definability}
+  Let $\varphi(x\,;z\,;X)$ be $\varepsilon$-stable.
+  Assume that ${\EuScript D}$ is $\varepsilon$-approximable by $\varphi(x\,;z\,;X)$.
+  Then there are some $\langle a_{i,j}\ :\ i< k,\ j<m\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
+
+  \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i< k}\ \bigwedge_{j<m}\ \varphi(a_{i,j}\,;b\,;C^\varepsilon)}\medskip
+
+  \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i< k}\ \bigwedge_{j<m}\ \varphi(a_{i,j}\,;b\,;C)}
+\end{lemma}
+
+\begin{proof}
+  The lemma is an immediate consequence of the following three.
+\end{proof}
+
+\begin{lemma}
+  Under the assumptions of Lemma~\ref{lem_epsilon_stability_definability}.
+  If ${\EuScript D}$ is approximable from below then there is a sequence $\langle a_i\ :\ i<k\rangle$ such that for every $b\in{\EuScript U}^z$\medskip
+
+  \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i<k}\ \varphi(a_i\,;b\,;C^\varepsilon)}\medskip 
+
+  \ceq{2.\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i<k}\ \varphi(a_i\,;b\,;C)} 
+\end{lemma}
+
+\begin{proof}
+We define recursively the required parameters $a_i$ together with some auxiliary parameters $b_i$.
+The element $a_n$ is choosen such that
+
+\ceq{3.\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\varphi(a_n\,;b\,;C)}\hfill for every $b\in{\EuScript U}^z$
+
+and
+
+\ceq{4.\hfill \langle b_i,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a_n\,;b_i\,;C)}\hfill for every $i<n$.\smallskip
+
+This is possible because ${\EuScript D}$ is approximated from below.
+Note that (3) immediately guarantees (2).
+Now choose $b_n$ and $C_n\cap C^\varepsilon=\varnothing$ such that
+
+\ceq{5.\hfill \langle b_n,C\rangle\in{\EuScript D}}{\&}{\bigwedge_{i=0}^n\ {\sim}\varphi(a_i\,;b_n\,;C_n)}%\smallskip
+
+If such $b_n$ and $C_n$ do not exist, then 
+
+\ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\neg\,{\sim}\bigvee_{i=0}^n\ \varphi(a_i\,;b\,;\tilde C)}\ \hfill for every $b\in{\EuScript U}^z$ and every $\tilde C\cap C^\varepsilon=\varnothing$%\smallskip
+
+which is equivalent to (1) by Fact~\ref{fact_otto} and proves the lemma.
+Suppose for a contradiction that the construction never ends.
+Then, from (4) we otain $\varphi(a_n\,;b_i\,;C)$ for every $i<n$ while from (5) we obtain ${\sim}\varphi(a_i\,;b_n\,;C_n)$, for every $i\le n$.
+This contradicts stability.
+\end{proof}
+
+\begin{lemma}
+  Under the assumptions of Lemma~\ref{lem_epsilon_stability_definability}.
+  Let $m$ be maximal so that a sequence as in (3) of Theorem~\ref{thm_epsilon_stable} exists.
+  Let $\bar x=\langle x_i\ :\ i\le m\rangle$ where the $x_i$ are copies of $x$.
+  Then the formula\smallskip
+
+  \ceq{\hfill\sigma(\bar x\,;z\,;X)}{=}{\bigwedge_{i\le m}\ \varphi(x_i\,;z\,;X)}\medskip
+
+  approximate ${\EuScript D}$ from below.
+\end{lemma}
+
+\begin{proof}
+  Negate the claim and let $B$ witness that $\sigma(\bar x)$ does not approximate ${\EuScript D}$ from below.
+  Suppose that $a_0,\dots,a_{n-1}$ and $b_0,\dots,b_{n-1}\notin{\EuScript D}$ have been defined.
+  Choose $a_n$ such that for every $b\in B\cup\{b_0,\dots,b_{n-1}\}$
+
+  \ceq{1.\hfill\langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a_n\,;b\,;C)}\quad and
+
+  \ceq{2.\hfill\langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\varphi(a_n\,;b\,;C^\varepsilon)}
+  
+  Note that the latter implication is equivalent to 
+  
+  \ceq{3.\hfill \langle b,C\rangle\notin{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a_n\,;b\,;\tilde C)}\hfill for some $\tilde C\cap C^\varepsilon=\varnothing$.
+
+  We write $C_i$ for the $\tilde C$ that witnesses (3) for $b_i$.
+  Now, as the lemma is assumed to fail, we can choose $b_n$ such that
+
+  \ceq{4.\hfill \langle b_n,C\rangle\notin{\EuScript D}}{\&}{\bigwedge_{i=0}^n\ \varphi(a_i\,;b_n\,;C).}
+
+  We claim that the sequence has to stop after $\le m$ steps. 
+  In fact, as (4) ensures $\langle b_i,C\rangle\notin{\EuScript D}$ for every $i$, from (3) we obtain ${\sim}\varphi(a_n\,;b_i\,;C_i)$ for every $i<n$.
+  On the other hand, by (4) we have that $\varphi(a_i\,;b_n\,;C)$ for every $i<n$.
+  Therefore, after reversing the order, the sequence $\langle a_i\,;b_i\,;C_i\ :\ i\le m\rangle$ contradicts the maximality of $m$.
+\end{proof}
+
+\begin{lemma}
+  If $\varphi(x\,;z\,;C)$ is $\varepsilon$-stable then $\sigma(\bar x\,;z\,;C)$ in the previous lemma is $\varepsilon$-stable.
+\end{lemma}
+
+\begin{proof}
+  Let $k$ be suffinciely large so that every $m$-coloring of a graph of size $k$ has a monocromatic subgraph of size $>m$.
+  Let $\langle \bar a_i\,;b_i\,;C_i\ :\ i<k\rangle$ be a sequence witnessing instability as in (3) of Theorem~\ref{thm_epsilon_stable}.
+  Then for every pair $i<n$ there is some $j<m$ such that ${\sim}\varphi(a_{j,n}\,;b_i\,;C_i)$.
+  By the choice of $k$ there is a $j<m$ such that ${\sim}\varphi(a_{j,n}\,;b_i\,;C_i)$ obtains for $>m$ many $i$.
+  Then we can extract a subsequence that contradicts the maximality of $m$.
+\end{proof}
+
+\begin{theorem}[ (conjecture)]\label{thm_stable_definable}
+  Let $\varphi(x\,;z\,;X)$ be stable.
+  Let ${\EuScript D}$ be approximable by $\varphi(x\,;z\,;X)$.
+  Then there is $\pi(z\,;X)$, a small set of formulas of the form $\varphi(a\,;z\,;X)$, with $a\in{\EuScript U}^x$, such that
+
+  \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftrightarrow}{\pi(b\,;C)}\hfill for every $b\in{\EuScript U}^z$ and every $C$.
+\end{theorem}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
