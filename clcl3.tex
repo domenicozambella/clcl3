@@ -110,9 +110,11 @@
 \newtheorem{notation}[thm]{Notation}\tcolorboxenvironment{notation}{mythm}
 \newtheorem{note}[thm]{Note}\tcolorboxenvironment{note}{mythm}
 \newtheorem{remark}[thm]{Remark}\tcolorboxenvironment{remark}{mythm}
+\newtheorem{definition_theorem}[thm]{Definition\,/\,Theorem}\tcolorboxenvironment{definition_theorem}{mythm}
 \newtheorem{exercise}[thm]{Exercise}
 \newtheorem{example}[thm]{Example}
 \newtheorem{question}[thm]{Question}
+
 
 \makeatletter
 \providecommand{\proofNameStyle}{\bfseries}
@@ -177,14 +179,14 @@
 \section{Structures with a standard sort}
 
 Let \emph{$S$\/} be some Hausdorff compact topological space.
-We associate to $S$ a first order structure in a language \emph{${\EuScript L}_{\sf S}$\/} that has a symbol for each regular compact subset $C\subseteq S$ and a function symbol for each continuous functions $f:S^n\to S$.
+We associate to $S$ a first order structure in a language \emph{${\EuScript L}_{\sf S}$\/} that has a symbol for each regular compact subset $C\subseteq S^n$ and a function symbol for each continuous functions $f:S^n\to S$.
 According to the context, $C$ and $f$ denote either the symbols of ${\EuScript L}_{\sf S}$ or their interpretation in the structure $S$.
 
-Throughout these notes the letter $C$ always denotes a regular compact subset of $S$, or a tuple of such sets.
+Throughout these notes the letter $C$ always denotes a regular compact subset of $S^n$, or a tuple of such sets.
 
-Finally, note that we could allow in ${\EuScript L}_{\sf S}$ relation symbols for all compact subsets of $S^n$, for any $n$.
-But this would clutter the notation adding very little to the theory.
-When needed, we will assume this generalization and leave the detail to the reader.
+% Finally, note that we could allow in ${\EuScript L}_{\sf S}$ relation symbols for all compact subsets of $S^n$, for any $n$.
+% But this would clutter the notation adding very little to the theory.
+% When needed, we will assume this generalization and leave the detail to the reader.
 
 We also fix an arbitrary first-order language which we denote by \emph{${\EuScript L}_{\sf H}$\/} and call the language of the home sort.
 
@@ -205,8 +207,8 @@ We write \emph{$x\in C$\/} for the predicate associated to a compact set $C$, an
 \begin{definition}
   We call atomic formulas those of the form
   \begin{itemize}
-  \item[i.] atomic and negated atomic formulas of ${\EuScript L}_{\sf H}$ with exlusion of equalities and inequalities
-  \item[ii.] $\tau\in C$, where $\tau$ is a term of sort ${\sf H}^n\times {\sf S}^m\to {\sf S}$, and $C\subseteq S$ is a regular compact set.
+  \item[i.] atomic and negated atomic formulas of ${\EuScript L}_{\sf H}$ but not equalities and inequalities
+  \item[ii.] $\tau\in C$, where $\tau$ is a $k$-tuple terms of sort ${\sf H}^n\times {\sf S}^m\to {\sf S}$, and $C\subseteq S^k$.
   \end{itemize}
 \end{definition}
 
@@ -233,15 +235,15 @@ We write \emph{$x\in C$\/} for the predicate associated to a compact set $C$, an
   Every standard structure has a ${\EuScript F}$-saturated ${\EuScript F}$-elementary extension.
 \end{theorem}
 
-We introduce variables of some new sorts ${\sf X}$ with the sole scope of conveniently describing classes of ${\EuScript F}$-formulas that only differ by the sets/predicates $C\subseteq S$ that occur.
+We introduce some new sorts ${\sf X}_k$ with the sole scope of conveniently describing classes of ${\EuScript F}$-formulas that only differ by the sets/predicates $C\subseteq S^k$ they contain.
 Let ${\EuScript F}_{\sf X}$ be defined as ${\EuScript F}$ but replacing (ii) with\smallskip
 
 \begin{itemize}
-  \item[iii.] $\tau(x\,;\xi)\in X$, where $X$ is a variable of sort ${\sf X}$.
+  \item[iii.] $\tau(x\,;\xi)\in X$, where $X$ is a variable of sort ${\sf X}_k$.
 \end{itemize}
 
-Formulas in ${\EuScript F}_{\sf X}$ are denoted by $\varphi(x\,;\xi;X)$, where $X=X_1,\dots,X_k$ be a tuple of variables sort ${\sf X}$.
-If $C=C _1,\dots,C_k$ is a tuple of regular compact subsets of $S$ then $\varphi(x\,;\xi;C)$, is a formula in ${\EuScript F}$.
+Formulas in ${\EuScript F}_{\sf X}$ are denoted by $\varphi(x\,;\xi;X)$, where $X=X_1,\dots,X_n$ be a tuple of variables of sort ${\sf X}_{k_1},\dots,{\sf X}_{k_n}$.
+If $C=C _1,\dots,C_n$ is a tuple of regular compact subsets of  $S^{k_1},\dots,S^{k_n}$, then $\varphi(x\,;\xi;C)$, is a formula in ${\EuScript F}$.
 This we call an \emph{instance\/} of $\varphi(x\,;\xi;X)$.
 All formulas in ${\EuScript F}$ are instances of formulas in ${\EuScript F}_{\sf X}$.
 
@@ -363,24 +365,24 @@ In what follows we fix a large saturated standard structure which we denote by \
 % Then $C_\varphi$ is a closed set.
 % Note that either $C_\varphi$ or $C_{\sim\varphi}$ is empty by Fact~\ref{fact_trivial}.
 
-Let $\varepsilon$ a compact neighborhood of the diagonal of $S^2$.
-If $C$ is a tuple of compact subsets of $S$, we write $C^\varepsilon$ for the tuple whose elements are $\varepsilon$-close to the corresponding elements of $C$.
-For $b,b'\in{\EuScript U}^n$ we write $b\sim_\varepsilon b'$ if $\langle\tau(b,c),\tau(b',c)\rangle\in\varepsilon$ for every term $\tau(z,w)$ of sort ${\sf H}^{n+|w|}\to{\sf S}$ and every $c\in{\EuScript U}^w$.
+% Let $\varepsilon$ a compact neighborhood of the diagonal of $S^2$.
+% If $C$ is a tuple of compact subsets of $S$, we write $C^\varepsilon$ for the tuple whose elements are $\varepsilon$-close to the corresponding elements of $C$.
+% For $b,b'\in{\EuScript U}^n$ we write $b\sim_\varepsilon b'$ if $\langle\tau(b,c),\tau(b',c)\rangle\in\varepsilon$ for every term $\tau(z,w)$ of sort ${\sf H}^{n+|w|}\to{\sf S}$ and every $c\in{\EuScript U}^w$.
 
-Then the equivalence relations $\sim_\varepsilon$ form the base for a uniformity.
-The coursest uniformity that makes every term $\tau(z,c)$ uniformly continuous
+% Then the equivalence relations $\sim_\varepsilon$ form the base for a uniformity.
+% The coursest uniformity that makes every term $\tau(z,c)$ uniformly continuous
 
-\begin{fact}
-  The following are equivalent 
-  \begin{itemize}
-    \item [1.]  $b\sim_\varepsilon b'$.
-    \item [2.] For every $\varphi(x\,;z\,;X)$, every $c$, every $C$
+% \begin{fact}
+%   The following are equivalent 
+%   \begin{itemize}
+%     \item [1.]  $b\sim_\varepsilon b'$.
+%     \item [2.] For every $\varphi(x\,;z\,;X)$, every $c$, every $C$
     
-    \ceq{\hfill \varphi(c\,;b\,;C)}{\Rightarrow}{\varphi(c\,;b'\,;C^\varepsilon)}
+%     \ceq{\hfill \varphi(c\,;b\,;C)}{\Rightarrow}{\varphi(c\,;b'\,;C^\varepsilon)}
 
-    and the same holds swapping $b$ and $b'$.
-  \end{itemize}
-\end{fact}
+%     and the same holds swapping $b$ and $b'$.
+%   \end{itemize}
+% \end{fact}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -392,8 +394,8 @@ The coursest uniformity that makes every term $\tau(z,c)$ uniformly continuous
 \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
 \def\ceq#1#2#3{\parbox[t]{23ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
-Write \emph{$K(S)$\/} for the set of compact subsets of $S$.
-In this section ${\EuScript D}$ and ${\EuScript C}$ range over the subsets of $\subseteq K(S)^n$, for some $n$.
+Write \emph{$K(S^n)$\/} for the set of compact subsets of $S^n$.
+In this section the variable $X$ has sort ${\sf X}_{n_1},\dots, {\sf X}_{n_k}$ and ${\EuScript D}$ and ${\EuScript C}$ range over the subsets of $K(S^{n_1})\times\dots\times K(S^{n_k})$.
 We define 
 
 \ceq{\hfill\emph{${\sim}{\EuScript D}$}}{=}{\big\{\tilde C\ :\ \tilde C\cap C\neq\varnothing\text{ for every }C\in{\EuScript D}\big\}.}
@@ -401,7 +403,7 @@ We define
 The following fact motivates the definition.
 
 \begin{fact}\label{fact_~definibile}
-  For every $\varphi(X)\in{\EuScript F}_{\sf X}({\EuScript U})$, if ${\EuScript D}=\{C\,:\,\varphi(C)\}$ then ${\sim}{\EuScript D}=\{\tilde C\,:\,{\sim}\varphi(\tilde C)\}$
+  For every $\varphi(X)$, if ${\EuScript D}=\{C\,:\,\varphi(C)\}$ then ${\sim}{\EuScript D}=\{\tilde C\,:\,{\sim}\varphi(\tilde C)\}$
 \end{fact}
 
 \begin{proof}
@@ -451,7 +453,7 @@ We say that ${\EuScript D}$ is \emph{closed\/} if
 
 \ceq{\hfill C\in{\EuScript D}}{\Leftrightarrow}{C'\in{\EuScript D}}\hfill for every neighborhood $C'$ of $C$.
 
-Note that we are requiring closure in two distintic contexts: topological, and Boolean algebraic (upward clousere by inclusion).
+Note that we are requiring closure in two distintic contexts: topological, and Boolean (upward clousere by inclusion).
 
 
 \begin{theorem}
@@ -485,14 +487,17 @@ It is not difficult to see that (2) holds if and only if ${\EuScript D}$ is clos
 \end{proof}
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Attempt 1}
+\section{Finitaly stable formulas}
 \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
 \def\ceq#1#2#3{\parbox[t]{22ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+There is more than one way to define stability in our context.
+In this section we present the strongest possible definition.
+It is not the most interesting one, but it is very similar to the classical definition, so it is useful for comparison.
 
 Let $\varphi(x\,;z\,;X)$ be a formulas in ${\EuScript F}_{\sf X}({\EuScript U})$.
 The variables of sort ${\sf H}$ are partitioned in two tuples $x\,;z$ which may be infinite.
@@ -518,28 +523,9 @@ From Fact~\ref{fact_otto} we easily obtain the following equivalent definition w
 
 In a classical context, i.e.\@ reling on ${\EuScript L}$-saturation, we can replace $m$ in Definition~\ref{def_finitary_stable} by $\omega$.
 But this may not be true if only have ${\EuScript F}$-saturation.
-Therefore we intruduce the non finitary version of saturation as a separate notion.
-Namely, we say that $\varphi(x\,;z\,;C)$ is \emph{stable\/} if the equivalent conditions in the following fact hold.
+Therefore we intruduce the non finitary version of saturation as a separate notion in the following section.
 
-\begin{theorem}[ (conjecture)]\label{thm_epsilon_stable}
-  The following are equivalent\smallskip
-
-  \begin{itemize}
-    \item [1.]  there is no sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for some $\tilde C\cap C=\varnothing$ and every $i<n$
-
-    \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C)}
-
-   \item [2.] there is no sequence $\langle a_i\,;b_i\,;C_i\ :\ i<\omega\rangle$ such that for some neighboorhood $C'$ of $C$ and for every $i<n$
-  
-    \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;C_n)}\quad and\quad $C'\cap C_n=\varnothing$.
-
-    \item [3.]  for every neighboorhood $C'$ of $C$ there is a maximal $m$ such that some sequence $\langle a_i\,;b_i\,;C_i\ :\ i<m\rangle$ is such that for every $i<n$\smallskip
-
-    \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;C_n)}\quad and\quad $C'\cap C_n=\varnothing$.    
-  \end{itemize}
-\end{theorem}
-
-The following two definition are classical, i.e.\@ they rely on the full language ${\EuScript L}$.
+The following definitions are classical, i.e.\@ they rely on the full language ${\EuScript L}$.
 Their ${\EuScript F}$-homologue we will be introduced later.
 
 \begin{definition}\label{def_globaltype}\strut
@@ -564,7 +550,7 @@ is a global $\varphi(x\,;z\,;C)$-type\smallskip
 
 The following theorem says that if $\varphi(x\,;z\,;C)$ is finitarily stable then global $\varphi(x\,;z\,;C)$-types are definable.
 The proof of the classical case applies verbatim because no saturation is required.
-We state it only for comparison with its non finitary counterpart, see Theorem~\ref{thm_stable_definable}.
+We state it only for comparison with its non finitary counterpart, see Theorem~\ref{thm_epsilon_stability_definability}.
 
 \begin{theorem}
   Let $\varphi(x\,;z\,;C)$ be finitarily stable.
@@ -574,7 +560,762 @@ We state it only for comparison with its non finitary counterpart, see Theorem~\
   \ceq{\hfill b\in{\EuScript D}}{\Leftrightarrow}{\bigvee_{i< k}\ \bigwedge_{j<m}\ \varphi(a_{i,j}\,;b\,;C)}
 \end{theorem}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Attempt 2}
+\def\medrel#1{\parbox{5ex}{\hfil $#1$}}
+\def\ceq#1#2#3{\parbox[t]{22ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+In this section  ${\EuScript D}$ is always a subset of ${\EuScript U}^z\times K(S)$ or, more generally, a subset of  ${\EuScript U}^z\times K(S^{n_1})\times\dots\times K(S^{n_k})$.
+We write ${\sim}{\EuScript D}$ for the set obtained by applying the definition in Section~\ref{pseudocomplement} to all fibers of ${\EuScript D}$.
+We say that ${\EuScript D}$ is involutive/closed if all its fibers are such.
+
+We write $\varepsilon$ for a compact neighborhood of the diagonal of $S^2$.
+If $C$ is a compact subsets of $S$, we write $C^\varepsilon$ for the set whose elements are $\varepsilon$-close to elements of $C$.
+This definition extends naturally to when $C=C_1,\dots,C_k$ where each $C_i$ is a compact subset of $S^{n_i}$.
+
+\begin{definition}\strut
+  We say that $\varphi(x\,;z\,;X)$ is \emph{stable\/} if there is no sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for some $C$, some $\tilde C\cap C=\varnothing$, and for every $i<n$\smallskip
+
+    \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C)}\smallskip
+
+\end{definition}
+
+
+\begin{definition_theorem}[ (conjecture)]\label{defthm_epsilon_stable}\strut
+  We say that $\varphi(x\,;z\,;X)$ is \emph{$\varepsilon$-stable\/} if the following equivalent conditions hold\smallskip
+  
+  \begin{itemize}
+    \item [1.]  there is no sequence $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<\omega\rangle$ such that for every $i<n$\smallskip
+  
+    \ceq{\hfill \varphi(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}\quad and\quad $C_i^\varepsilon\cap\tilde C_i=\varnothing$.\smallskip
+
+    \item [2.]  there is a maximal $m$ such that some sequence $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<m\rangle$ is such that for every $i<n$
+
+    \ceq{\hfill \varphi(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}\quad and\quad $C_i^\varepsilon\cap\tilde C_i=\varnothing$.\smallskip    
+  \end{itemize}
+\end{definition_theorem}
+
+\begin{proof}
+  2$\Rightarrow$1. Any counter example to (1) immediately provides a counterexample to (2).
+
+  
+  \noindent\llap{\textcolor{red}{\Large\warning}\kern1.5ex}\ignorespaces
+  1$\Rightarrow$2. ???
+\end{proof}
+
+\begin{theorem}[ (conjecture)]\label{thm_epsilon_stable}
+  The following are equivalent\smallskip
+  \begin{itemize}
+    \item [1.] $\varphi(x\,;z\,;X)$ is stable.
+    \item [2.] $\varphi(x\,;z\,;X)$ is $\varepsilon$-stable for every $\varepsilon$.
+  \end{itemize}
+\end{theorem}
+
+\begin{proof}
+  2$\Rightarrow$1. Given any counter example to (1), let $\varepsilon$ be such that $C^\varepsilon\cap\tilde C=\varnothing$.
+  To obtain a counter example to (2), set $C_i=C$ and $\tilde C_i=\tilde C$ for every $i<\omega$. 
+
+  \noindent\llap{\textcolor{red}{\Large\warning}\kern1.5ex}\ignorespaces
+  1$\Rightarrow$2. 
+  Negate (2). 
+  Let $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<\omega\rangle$ be a counter example to (1) in Definition~\ref{defthm_epsilon_stable}. 
+  By the compactness of $K(S)$ in the Vietoris topology, there are $C$ and $\tilde C$ such that for infinitely many $i<\omega$ we have
+  
+  \hfil $C_i\subseteq C^{\varepsilon/2}$,\quad $C\subseteq C_i^{\varepsilon/2}$\hfil and \hfil$\tilde C_i\subseteq\tilde C^{\varepsilon/2}$,\quad $\tilde C\subseteq\tilde C_i^{\varepsilon/2}$.\hfil
+
+  Then $C^{\varepsilon/2}\cap\tilde C^{\varepsilon/2}\varnothing$ and therefore together with a suitable subsequence of $\langle a_i\,;b_i\ :\ i<\omega\rangle$ yield a counter example to stability. 
+\end{proof}
+
+\begin{definition}\strut
+  A \emph{global $\varphi(x\,;z\,;X)$-type\/} is a maximally (finitely) consistent set of formulas of the form $\varphi(x\,;b\,;C)$ or ${\sim}\varphi(x\,;b\,;C)$ for some $b\in{\EuScript U}^{|z|}$ and some $C$.
+\end{definition}
+
+It is convenient to have a different characterization of global types, therefore  the following definition.
+
+\begin{definition}\label{def_approx_X}\strut
+  We say that ${\EuScript D}$ is \emph{approximable\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that\smallskip
+
+  \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a\,;b\,;C)}\quad and\smallskip
+
+  \ceq{2.\hfill\langle b,C\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$.\smallskip
+
+We say approximable \emph{from below\/} if the second implication holds for every $b\in{\EuScript U}^z$.
+\end{definition}
+
+The proof of the main theorem requires the following stronger notion of approximation.
+
+\begin{definition}\label{def_e_approx_X}\strut
+  We say that ${\EuScript D}$ is \emph{$\varepsilon$-approximable\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that\smallskip
+
+  \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a\,;b\,;C)}\quad and\smallskip
+
+  \ceq{2.\hfill\langle b,C\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C^\varepsilon)}\hfill for every $b\in B$ and every $C$.\smallskip
+\end{definition}
+
+We remark that, by Facts~\ref{fact_~definibile} and~\ref{fact_~inclusione}, when ${\EuScript D}$ is involutive 
+%(1) can be rephrased as
+%
+% \ceq{\hfill{\sim}\varphi(a\,;b\,;C)}{\Rightarrow}{\langle b,C\rangle\in{\sim}{\EuScript D}}\hfill for every $b\in B$ and every $C$.
+%
+% Analogously, 
+(2) can be rephrased as
+
+\ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C^\varepsilon)}\hfill for every $b\in B$ and every $C$.
+
+\begin{fact}
+  For every involutive ${\EuScript D}$ the following are equivalent
+  \begin{itemize}
+    \item [1.] ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$
+    \item [2.] ${\EuScript D}$ is $\varepsilon$-approximable by $\varphi(x\,;z\,;X)$ for some $\varepsilon$
+    \item [3.] the following is a global $\varphi(x\,;z\,;X)$-type\smallskip
+    
+    \noindent\kern-\labelwidth\kern-\labelsep
+    \ceq{\hfill p(x)}{=}{\big\{\phantom{\sim}\varphi(x\,;b\,;C)\ :\ \langle b,C\rangle\in{\EuScript D}\big\}\ \ \cup}\smallskip
+
+    \noindent\kern-\labelwidth\kern-\labelsep
+    \ceq{}{~}{\big\{{\sim}\varphi(x\,;b\,;C)\ :\ \langle b,C\rangle\in{\sim}{\EuScript D}\big\}.}
+  
+  \end{itemize}
+\end{fact}
+
+\begin{proof}
+  First we prove that $p(x)$ is maximal as soon as it is consistent~--~in fact, this only depends on ${\EuScript D}$ being involutive.
+  We need to consider two cases.
+  First, assume that $\varphi(x\,;b\,;C)$ is consistent with $p(x)$.
+  Then consistency implies that $\langle b,\tilde C\rangle\notin{\sim}{\EuScript D}$ for every $\tilde C\cap C=\varnothing$.
+  But this implies that $C\in{\sim}{\sim}{\EuScript D}={\EuScript D}$, therefore $\varphi(x\,;b\,;C)\in p$.
+  The second case is when ${\sim}\varphi(x\,;b\,;C)$ is consistent with $p(x)$.
+  This implies that $\langle b,\tilde C\rangle\notin{\EuScript D}$ for every $\tilde C\cap C=\varnothing$.
+  Then $\langle b,C\rangle\in{\sim}{\EuScript D}$,  therefore ${\sim}\varphi(x\,;b\,;C)\in p$.
+
+  3$\Rightarrow$1.
+  Let $B$ be a given finite subset of ${\EuScript U}^z$.
+  The finite consistency of $p(x)$ provides some $a$ such that for every finite $B$ an $a$ such that
+
+  \ceq{\hfill \langle b,C\rangle\in {\EuScript D}}{\Rightarrow}{\phantom{\sim}\varphi(a\,;b\,;C)}\quad and 
+  
+  \ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$. 
+
+  By what remarked above, these yield (1) and (2) in Definition~\ref{def_approx_X}.
+  
+  1$\Rightarrow$2. Clear.
+
+  2$\Rightarrow$3.
+  Let $\varepsilon'$ witness (2).
+  We claim the the following type is finitely consistent
+
+  \ceq{\hfill p'(x)}{=}{\big\{\phantom{\sim}\varphi(x\,;b\,;C)\ :\ \langle b,C\rangle\in{\EuScript D}\big\}\ \ \cup}\smallskip
+
+  \ceq{}{~}{\big\{{\sim}\varphi(x\,;b\,;C^\varepsilon)\ :\ \langle b,C\rangle\in{\sim}{\EuScript D},\text{ and }\varepsilon\subseteq\varepsilon'\big\}.}
+  
+  Let $B$ and $\varepsilon\subseteq\varepsilon'$ be given.
+  Let $a$ be as in Definition~\ref{def_e_approx_X}.
+  Then, by what remarked above, $a\models p'(x)\restriction B, \varepsilon$.
+  Now, by saturation the is some $a \models p'(x)\restriction B$.
+  Then $a \models p(x)\restriction B$ by Fact~\ref{fact_otto}.
+\end{proof}
+
+\begin{theorem}\label{thm_epsilon_stability_definability}
+  Let $\varphi(x\,;z\,;X)$ be stable.
+  Assume that ${\EuScript D}$ is $\varepsilon$-approximable by $\varphi(x\,;z\,;X)$.
+  Then there are some $\langle a_{i,j}\ :\ i< k,\ j<m\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
+
+  \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i< k}\ \bigwedge_{j<m}\ \varphi(a_{i,j}\,;b\,;C^\varepsilon)}\medskip
+
+  \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i< k}\ \bigwedge_{j<m}\ \varphi(a_{i,j}\,;b\,;C)}
+\end{theorem}
+
+\begin{proof}
+  The theorem is an immediate consequence of the following three lemmas.
+\end{proof}
+
+\begin{lemma}
+  Let $\varphi(x\,;z\,;X)$ be $\varepsilon$-stable.
+  Assume that ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$ from below.
+  Then there is are some $\langle a_i\ :\ i<k\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
+
+  \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i<k}\ \varphi(a_i\,;b\,;C^\varepsilon)}\medskip 
+
+  \ceq{2.\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i<k}\ \varphi(a_i\,;b\,;C)} 
+\end{lemma}
+
+\begin{proof}
+Let $\varepsilon$ be given
+  We define recursively the required parameters $a_i$ together with some auxiliary parameters $b_i$.
+The element $a_n$ is choosen such that
+
+\ceq{3.\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\varphi(a_n\,;b\,;C)}\hfill for every $b\in{\EuScript U}^z$ and every $C$
+
+and
+
+\ceq{4.\hfill \langle b_i,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a_n\,;b_i\,;C)}\hfill for every $i<n$ and every $C$.\smallskip
+
+This is possible because ${\EuScript D}$ is approximated from below.
+Note that (3) immediately guarantees (2).
+Now, assume (1) fails for $k=n$, and choose $b_n$ and $C_n$ witnessing this.
+Then, by Fact~\ref{fact_otto}, for some $\tilde C_n\cap C_n^\varepsilon=\varnothing$
+
+\ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}}{\&}{\bigwedge_{i=0}^n\ {\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}%\smallskip
+
+Suppose for a contradiction that the construction never ends.
+Then, from (4) we otain $\varphi(a_n\,;b_i\,;C_n)$ for every $i<n$ while from (5) we obtain ${\sim}\varphi(a_i\,;b_n\,;\tilde C_n)$, for every $i\le n$.
+This contradicts stability.
+\end{proof}
+
+\begin{lemma}
+  Let $\varphi(x\,;z\,;X)$ be stable.
+  Assume that ${\EuScript D}$ is $\varepsilon$-approximable by $\varphi(x\,;z\,;X)$.
+  Let $m$ be maximal so that a sequence as in (3) of Theorem~\ref{thm_epsilon_stable} exists.
+  Let $\bar x=\langle x_i\ :\ i\le m\rangle$ where the $x_i$ are copies of $x$.
+  Then the formula\smallskip
+
+  \ceq{\hfill\sigma(\bar x\,;z\,;X)}{=}{\bigwedge_{i\le m}\ \varphi(x_i\,;z\,;X)}\smallskip
+
+  approximate ${\EuScript D}$ from below.
+\end{lemma}
+
+\begin{proof}
+  Negate the claim and let $B$ witness that $\sigma(\bar x)$ does not approximate ${\EuScript D}$ from below.
+  Suppose that $a_0,\dots,a_{n-1}$ and $b_0,\dots,b_{n-1}\notin{\EuScript D}$ have been defined.
+  Choose $a_n$ such that for every $b\in B\cup\{b_0,\dots,b_{n-1}\}$ and every $C$
+
+  \ceq{1.\hfill\langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a_n\,;b\,;C)}\quad and
+
+  \ceq{2.\hfill\langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\varphi(a_n\,;b\,;C^\varepsilon)}
+  
+  Note that the latter implication is equivalent to: for every $C$ there is some  $\tilde C\cap C^\varepsilon=\varnothing$ such that 
+  
+  \ceq{3.\hfill \langle b,C\rangle\notin{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a_n\,;b\,;\tilde C)}.%\hfill  for every $b\in B\cup\{b_0,\dots,b_{n-1}\}$.
+
+  Now, as the lemma is assumed to fail, we can choose $b_n$ and $C_n$ such that
+
+  \ceq{4.\hfill \langle b_n,C_n\rangle\notin{\EuScript D}}{\&}{\bigwedge_{i=0}^n\ \varphi(a_i\,;b_n\,;C_n)}
+
+  Note that (4) ensure that $\langle b_i,C_i\rangle\notin{\EuScript D}$ for every $i$.
+  The there is some $\tilde C_i$ that witnesses (3) for $b_i,C_i$.
+  We claim that the procedure has to stop after $\le m$ steps. 
+  In fact, from (3) we obtain ${\sim}\varphi(a_n\,;b_i\,;\tilde C_i)$ for every $i<n$.
+  On the other hand, by (4) we have that $\varphi(a_i\,;b_n\,;C_n)$ for every $i<n$.
+  Therefore, $\langle a_{m-i}\,;b_{m-i}\,;C_{m-i}\,;\tilde C_{m-i}\ :\ i\le m\rangle$ contradicts the maximality of $m$.
+\end{proof}
+
+\begin{lemma}
+  If $\varphi(x\,;z\,;C)$ is stable then $\sigma(\bar x\,;z\,;C)$ in the previous lemma is $\varepsilon$-stable.
+\end{lemma}
+
+\begin{proof}
+  Let $\varepsilon$ be given and let $m$ be maximal such that a sequence as in (3) of Theorem~\ref{thm_epsilon_stable} exists.
+  Let $k$ be suffinciely large so that every $m$-coloring of a graph of size $k$ has a monocromatic subgraph of size $>m$.
+  Let $\langle \bar a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<k\rangle$ be a sequence witnessing instability as in (3) of Theorem~\ref{thm_epsilon_stable}.
+  Then for every pair $i<n$ there is some $j<m$ such that ${\sim}\varphi(a_{j,n}\,;b_i\,;\tilde C_i)$.
+  By the choice of $k$ there is a $j<m$ such that ${\sim}\varphi(a_{j,n}\,;b_i\,;\tilde C_i)$ obtains for $>m$ many $i$.
+  Then we can extract a subsequence that contradicts the maximality of $m$.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Stable functions}
+\def\medrel#1{\parbox{5ex}{\hfil $#1$}}
+\def\ceq#1#2#3{\parbox[t]{33ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+In this section we specialize the notions introduced in the previous section to formulas $\varphi(x\,;z\,;X)$ of the form $\tau(x\,;z)\in X$ where $\tau(x\,;z)$ is an $S$-valued ${\EuScript F}$-definable function.
+Notice that ${\sim}\big(\tau(x\,;z)\in X\big)=\tau(x\,;z)\in X$.
+
+We say that $\tau(x\,;z)$ is \emph{stable\/} if so is $\tau(x\,;z)\in X$.
+The following fact is a suggestive characterization of the stability of functions.
+
+\begin{fact}
+  Let $\tau(x\,;z)$ be as above.
+  Then the following are equivalent
+  \begin{itemize}
+    \item [1.] the formula $\tau(x\,;z)\in X$ is unstable
+    \item [2.] there is a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that\smallskip
+    
+    \noindent\kern-\labelwidth\kern-\labelsep
+    \ceq{\hfill \lim_{i\to\infty}\lim_{j\to\infty}\tau(a_i\,;b_j)}{\neq}{\lim_{j\to\infty}\lim_{i\to\infty}\tau(a_i\,;b_j)}
+
+    \item [3.] there is a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ and some $\varepsilon>0$ such that for every $i<j<\omega$\smallskip
+    
+    \noindent\kern-\labelwidth\kern-\labelsep
+    \ceq{\hfill\big|\tau(a_i\,;b_j)\ -\ \tau(a_j\,;b_i)\big|}{\ge}{\varepsilon.}
+
+    % \item [3.] for some sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ and some neighborhood $\varepsilon$ of the diagonal of $S^2$\smallskip
+
+    % \ceq{\hfill \big\langle\tau(a_i\,;b_j),\ \tau(a_j\,;b_i)\big\rangle}{\notin}{\varepsilon}\smallskip
+
+    % for every $i<j<\omega$.
+  \end{itemize}
+\end{fact}
+
+\begin{proof}
+  2$\Leftrightarrow$3 Clear.
+
+  1$\Rightarrow$2.
+  Let $C\cap\tilde C=\varnothing$ and $\langle a_i\,;b_i\ :\ i<\omega\rangle$ be as given by (1).
+  That is, $\tau(a_i\,;b_j)\in C$ and $\tau(a_j\,;b_i)\in \tilde C$ hold for every $i<j<\omega$.
+  We can restrict to a subsequence such that the two limits exist; $C$ contains the limit on the left; and $\tilde C$ contains the limit on the right~--~which therefore are distinct.%\ \cup\ \tilde C\times C
+
+  2$\Rightarrow$1. Let $C$ and $\tilde C$ be disjoint neighborhoods of the two limits in (2).
+  Then (1) is witnessed by a tail of the sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$.
+\end{proof}
+
+% Let ${\EuScript D}\subseteq{\EuScript U}^{z}\times K(S)$.
+
+Let $f:{\EuScript U}^{z}\to S$ be a function.
+We define
+
+\ceq{\hfill{\EuScript D\!}_f}{=}{\big\{\langle b,C\rangle\ \ :\ \ f(b)\in C,\ \ b\in{\EuScript U}^{z},\ \ C\in K(S)\big\}}
+
+Note that ${\sim}{\EuScript D\!}_f={\EuScript D\!}_f$ therefore, by Fact~\ref{fact_~definibile} and~\ref{fact_~inclusione} the implications in Definition~\ref{def_approx_X}.
+
+We also note that no set of the form ${\EuScript D\!}_f$ is $\varepsilon$-approximable by $\tau(x\,;z)\in X$.
+The 
+
+\begin{fact}
+  The following are equivalent
+  \begin{itemize}
+    \item [1] ${\EuScript D\!}_f$ is approximable by $\tau(x\,;z)\in X$
+    \item [2] for every finite $B\subseteq{\EuScript U}^{z}$ there is an $a\in{\EuScript U}^{x}$ such that\smallskip
+    
+    \noindent\kern-\labelwidth\kern-\labelsep
+    \ceq{\hfill\langle f(b),\ \tau(a\,;b)\rangle}{\in}{\varepsilon}\hfill for every $b\in B$ and every $\varepsilon$.
+  \end{itemize}
+  
+\end{fact}
+
+In this section we require that ${\EuScript D}$ has the following property
+
+% \ceq{}{}{}
+For every $b\in{\EuScript U}^z$ and every $C\in K(S)$, there is some $\tilde C\cap C=\varnothing$ such that
+
+be the set of all $z$-tuples of elements of ${\EuScript U}$.
+We say that $f:{\EuScript U}^{z}\to S$ is \emph{$\varepsilon$-approximable\/} by $\tau(x\,;z)$ if for every finite $B\subseteq{\EuScript U}^z$ and there is an $a\in{\EuScript U}^x$ such that
+
+\ceq{\hfill \big|f(b)\;,\tau(a\,;b)\big|}{\le}{\varepsilon}\hfill for every $b\in B$.
+
+We say \emph{approximable\/} for $\varepsilon$-approximable for every $\varepsilon>0$.
+
+\begin{theorem}
+  Let $S=[0,1]$.
+  Let $\tau(x\,;z)$ be a stable type-definable function.
+  Let $f:{\EuScript U}^{z}\to S$ be approximable by $\tau(x\,;z)$.
+  Then $f$ is type-definable. 
+\end{theorem}
+
+\begin{proof}
+  The following three lemmas show that if $\tau(x\,;z)$ is $\varepsilon$-approximable, then there are some $\langle a_{i,j}\ :\ i<n,\ j<\omega\rangle$ such that\medskip
+
+  \ceq{\hfill\big|f(b)\ -\ \max_{i=0,\dots,n-1}\ \inf_{j<\omega}\ \tau(a_{i,j}\,;b)\big|}{\le}{3\varepsilon}\hfill for every $b\in{\EuScript U}^z$.
+
+  Then $f$ is the limit of type-definable functions, hence type-definable.
+\end{proof}
+
+We say that $f:{\EuScript U}^{x;z}\to[0,1]$ is $\varepsilon$-approximable \emph{from below\/} if the parameter $a\in{\EuScript U}^x$ that witnesses approximability satisfies $\tau(a\,;b)\le f(b)+\varepsilon$ for every $b\in {\EuScript U}^z$.
+
+\begin{lemma}
+  Assume that the $f$ in the theorem is $\varepsilon$-approximable from below.
+  Then there are some $\langle a_i\:\ i< n\rangle$ such that\smallskip
+
+  \ceq{\hfill\big|f(b)\ -\ \max_{i=0,\dots,n-1}\ \tau(a_i\,;b)\big|}{\le}{\varepsilon}\hfill for every $b\in{\EuScript U}^z$.
+\end{lemma}
+
+\begin{proof}
+  Negate the lemma.
+  We construct inductively a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ that contradicts the stability of $\tau(x\,;z)$.
+  Then, let $b_n$ be such that (if $n=0$ pick $b_n$ arbitrarily)
+
+  \ceq{1.\hfill\big|f(b_n)\ -\max_{i=0,\dots,n-1}\ \tau(a_i\,;b_n)\big|}{>}{\varepsilon}
+
+  By approximability from below, for some $a_n$ we have
+
+  \ceq{2.\hfill\tau(a_n\,;b_i)\ -\ f(b_i)}{\le}{\varepsilon}\hfill for every $i\le n$
+
+  \ceq{3.\hfill\tau(a_n\,;b)}{\le}{ f(b)+\varepsilon}\hfill for every $b\in{\EuScript U}^{z}$.
+
+  We prove instability by showing that for every $i<n$
+
+  \ceq{4.\hfill \tau(a_n\,;b_i)\ -\ \tau(a_i\,;b_n)}{>}{\varepsilon}
+
+  Note that by virtue of (3) 
+
+  \ceq{\hfill \max_{i=0,\dots,n-1}\ \tau(a_i\,;b_n)-f(b_n)}{\le}{\varepsilon}
+
+  Then (1) ensures that
+
+  \ceq{1'.\hfill f(b_n)\ -\max_{i=0,\dots,n-1}\ \tau(a_i\,;b_n)}{>}{\varepsilon}
+
+  Using ($1'$) we obtain
+
+  \ceq{\hfill \tau(a_n\,;b_i)-\tau(a_i\,;b_n)}{>}{\tau(a_n\,;b_i)-f(b_n)+\varepsilon}
+
+  then from (2) we obtain
+
+  \ceq{}{>}{f(b_i)-f(b_n)+2\varepsilon}
+
+  By refining the sequence we can assume that $|f(b_i)-f(b_n)|<\varepsilon$ for every $i,n\in\omega$.
+  This yields (4).
+\end{proof}
+
+\begin{lemma}
+  Under the assumptions of the theorem. 
+  Let $\bar x=\langle x_i\ :\ i<\omega\rangle$ where the $x_i$ are copies of $x$.
+  Then the function\smallskip
+
+  \ceq{\hfill\sigma(\bar x\,;z)}{=}{\inf_{i<\omega}\ \tau(x_i\,;z)}
+
+  $3\varepsilon$-approximates $f$ from below.
+\end{lemma}
+
+\begin{proof}
+  Negate the claim and let $B$ witness that $\sigma(\bar x\,;z)$ does not $\varepsilon$-approximate $f$ from below.
+  We construct inductively a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ that contradicts the stability of $\tau(x\,;z)$.
+  Then, let $a_n$ be such that
+
+  \ceq{1.\hfill\big|\tau(a_n\,;b)\ -\ f(b)\big|}{\le}{\varepsilon}\hfill for every $b\in B\cup\{b_0,\dots,b_n\}$
+
+  then let $b_n$ be such that
+
+  \ceq{2.\hfill\min_{i=0,\dots,n}\tau(a_i\,;b_n)}{>}{ f(b_n)+3\varepsilon.}
+
+  We show that the sequence we constructed contradicts stability.
+  In fact, by (2)
+
+  \ceq{\hfill\tau(a_i\,;b_n)\ -\ \tau(a_n\,;b_i)}{>}{f(b_n)+3\varepsilon-\tau(a_n\,;b_i).}
+
+  Then, by (1)
+
+  \ceq{\hfill\tau(a_i\,;b_n)\ -\ \tau(a_n\,;b_i)}{>}{f(b_n)+3\varepsilon-f(b_i) - \varepsilon}
+
+  As in the previous lemma, after refining the sequence we we obtain a contradiction.
+\end{proof}
+
+\begin{lemma}
+  If $\tau(\bar x\,;z)$ is stable, then $\sigma(\bar x\,;z)$ in the previous lemma is stable. 
+\end{lemma}
+
+\begin{proof}
+  It suffices to show that
+
+  \ceq{\hfill\sigma(x_1,x_2\,;z)}{=}{\min_{i=1,2}\ \tau(x_i\,;z)}
+
+  is stable.
+  Suppose not.
+  Pick $\langle a_{1,i},a_{2,i}\,;b_i\ :\ i<\omega\rangle$ and $\varepsilon>0$  such that for every $i<j<\omega$
+
+  \ceq{\hfill\big|\sigma(a_{1,i},a_{2,i}\,;b_j)-\sigma(a_{1,j},a_{2,j}\,;b_i)\big|}{\ge}{\varepsilon}
+
+  By Ramsey's theorem, we can refine the sequence so that one of the following holds for every $i<j$
+
+\ceq{\hfill\sigma(a_{1,i},a_{2,i}\,;b_j)-\sigma(a_{1,j},a_{2,j}\,;b_i)}{\ge}{\varepsilon}
+  
+\ceq{\hfill-\sigma(a_{1,i},a_{2,i}\,;b_j)+\sigma(a_{1,j},a_{2,j}\,;b_i)}{\ge}{\varepsilon}
+
+Assume the first~--~the second case is symmetric.
+Again by Ramsey's theorem, we can refine the sequence so that for every $i<j$ either  $\tau(a_{1,i}\,;b_j)\le\tau(a_{2,i}\,;b_j)$ or conversely $\tau(a_{1,i}\,;b_j)\ge\tau(a_{2,i}\,;b_j)$.
+In the first case we obtain
+
+\ceq{\hfill\tau(a_{1,i}\,;b_j)-\tau(a_{2,j}\,;b_i)}{\ge}{\varepsilon}
+
+in the second case we obtain
+
+\ceq{\hfill\tau(a_{2,i}\,;b_j)-\tau(a_{1,j}\,;b_i)}{\ge}{\varepsilon.}
+
+In both cases we contradict the stability of $\tau(x\,;z)$.
+\end{proof}
+
+
+
+% If $\varphi(X)\in{\EuScript F}_{\sf X}$ and ${\EuScript D}=\{C:\varphi(C)\}$ then ${\sim}{\EuScript D}=\{C:{\sim}\varphi(C)\}$.
 \begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Attempt 1}
+\def\medrel#1{\parbox{5ex}{\hfil $#1$}}
+\def\ceq#1#2#3{\parbox[t]{22ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+Let $\varphi(x\,;z\,;X)$ be \emph{type-definable\/} that is, definable by an infinite (small) conjunction of formulas in ${\EuScript F}_{\sf X}({\EuScript U})$.
+The variables of sort ${\sf H}$ are partitioned in two tuples $x\,;z$ which may be infinite.
+
+We say that $\varphi(x\,;z\,;X)$ is \emph{unstable\/} if there is a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for some $C\cap\tilde C=\varnothing$ and every $i<n<\omega$
+
+\ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C)}
+
+We say that $\varphi(x\,;z\,;X)$ is \emph{stable\/} if it is not unstable.
+\setcounter{thm}{19}
+\begin{theorem}[ (conjecture)]
+  The following are equivalent
+  \begin{itemize}
+    \item [1.] $\varphi(x\,;z\,;X)$ is stable
+    \item [2.] there is no sequence $\langle a_i\,;b_i\,;C_i\ :\ i<\omega\rangle$ such that for some $C$, some neighboorhood $C'$ of $C$,  and every $i<n<\omega$
+
+\ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;C_n)}
+
+and $C'\cap C_n=\varnothing$.
+\end{itemize}
+\end{theorem}
+
+
+If ${\EuScript D}\subseteq{\EuScript U}^z\times K(S)$ then ${\sim}{\EuScript D}$ is obtained by applying the definition in Section~\ref{pseudocomplement} to all fibers of ${\EuScript D}$.
+
+
+
+\begin{theorem}[ (conjecture)]
+  Let $\varphi(x\,;z\,;X)$ be stable.
+  Let ${\EuScript D}\subseteq {\EuScript U}^z\times K(S)^{|X|}$ be involutive and approximable by $\varphi(x\,;z\,;X)$.
+  Then there are some $\langle a_{i,j}\ :\ i\le n,\ j<\omega\rangle$ such that for every $b\in{\EuScript U}^z$\medskip
+
+  \ceq{\hfill\langle b,C\rangle\in{\EuScript D}}{\Leftrightarrow}{\bigvee_{i\le n}\ \bigwedge_{j<\omega}\ \varphi(a_{i,j}\,;b\,;C)}
+\end{theorem}
+
+\begin{proof}
+  
+\end{proof}
+
+We say that ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$ if \emph{from below\/} if in the definition above the implication in (2) holds for every $b\in{\EuScript U}^z$ and $C\in K(S)$.
+
+\begin{lemma}
+  Under the assumptions of the theorem.
+  If ${\EuScript D}$ is approximable from below then there are some $\langle a_i\ :\ i\le n\rangle$ such that for every $b\in{\EuScript U}^z$\medskip
+
+  \ceq{\hfill\bigvee_{i\le n}\ \varphi(a_i\,;b\,;C)}{\Leftrightarrow}{\langle b, C\rangle\in{\EuScript D}} 
+\end{lemma}
+
+\begin{proof}
+The sequences $a_0,\dots,a_n$ is defined recursively together with an auxiliary sequence $b_0,\dots,b_{n-1}$.
+The elements in the sequence $a_0,\dots,a_n$ are choosen to obtain 
+
+\ceq{1.\hfill\bigvee_{i=0}^n\ \varphi(a_i\,;b\,;C)}{\Rightarrow}{\langle b, C\rangle\in{\EuScript D}}\hfill for every $b\in{\EuScript U}^z$ and every $C$
+
+and
+
+\ceq{2.\hfill\langle b_i, C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a_n\,;b_i\,;C)}\hfill for every $i<n$ and every $C$.\smallskip
+
+This is possible because ${\EuScript D}$ is approximated from below.
+Now choose $b_n$ and $C_n$ such that
+
+\ceq{3.\hfill\bigwedge_{i=0}^n\ {\sim}\varphi(a_i\,;b_n\,;C_n)\ }{\text{and}}{\ \langle b_n,C_n\rangle\notin{\sim}{\EuScript D}}%\smallskip
+
+If such $b_n$ and $C_n$ do not exist, then 
+
+\ceq{\hfill{\sim}\bigvee_{i=0}^n\ \varphi(a_i\,;b\,;C)\ }{\Rightarrow}{\ \langle b,C\rangle\in{\sim}{\EuScript D}}\hfill for every $b\in{\EuScript U}^z$ and every $C$%\smallskip
+
+which is equivalent to the converse of (1) and proves the lemma.
+Suppose for a contradiction that the construction never ends.
+Then, from (2) we otain $\varphi(a_n\,;b_i\,;C)$ for every $i<n$ and from (3) we obtain ${\sim}\varphi(a_i\,;b_n\,;C_n)$, again for every $i<n$.
+This contradicts stability.
+\end{proof}
+
+\begin{lemma}
+  Under the assumptions of the theorem.
+  Let $\bar x=\langle x_m\ :\ i<\omega\rangle$ where the $x_i$ are copies of $x$ and $m$ is the maximal .
+  Then the formula\medskip
+
+  \ceq{\hfill\sigma(\bar x\,;z\,;X)}{=}{\bigwedge_{i<m}\ \varphi(x_i\,;z\,;X)}
+
+  approximate ${\EuScript D}$ from below.
+\end{lemma}
+
+\begin{proof}
+  Negate the claim and let $B$ and $C$ witness that $\sigma(\bar x)$ does not approximate ${\EuScript D}$ from below.
+  Suppose that $a_0,\dots,a_{n-1}$ and $b_0,\dots,b_{n-1}$ have been defined.
+  Choose $a_n$ such that 
+
+  \ceq{1.\hfill \langle b,C\rangle\in {\EuScript D}}{\Rightarrow}{\varphi(a_n\,;b\,;C)}
+
+  \ceq{2.\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a_n\,;b\,;C)}\hfill for every $b\in B\cup\{b_0,\dots,b_{n-1}\}$.
+
+  Now, as the lemma is assume to fail, we can choose $b_n$ such that
+
+  \ceq{3.\hfill\bigwedge_{i=0}^n\ \varphi(a_i\,;b_n\,;C)\ }{\text{and}}{\ \langle b_n,C\rangle\notin{\EuScript D}.}
+
+  Moreover, as ${\EuScript D}$ is involutive, there is $C_n\cap C=\varnothing$ such that $\langle b_n,C_n\rangle\in{\sim}{\EuScript D}$.
+  
+  We claim that the sequence we obtain contradicts stability.
+  In fact, the construction guarantees that $\langle b_i,C_i\rangle\in{\sim}{\EuScript D}$ for every $i$, then from (2) we obtain that ${\sim}\varphi(a_n\,;b_i\,;C_i)$ for every $i<n$.
+  On the other hand, by (1) we have that $\varphi(a_n\,;b_i\,;C)$ for every $i<n$.
+\end{proof}
+
+\begin{lemma}
+  If $\varphi(x\,;z\,;C)$ is stable then $\sigma(\bar x\,;z\,;X)$ in the previous lemma is stable.
+\end{lemma}
+
+\begin{proof}
+  Assume $\sigma(x_1,x_2\,;z\,;X)$ in unstable.
+  Let $\langle a_{1,i},a_{2,i}\,;b_i\,;C_i\ :\ i<\omega\rangle$ be a sequence witnessing instability.
+  then for every $i<n<\omega$ either ${\sim}\varphi(a_{1,n}\,;b_i\,;C_i)$ or ${\sim}\varphi(a_{2,n}\,;b_i\,;C_i)$
+
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Externally definable sets}
+
+\emph{global $\varphi(x\,;z\,;X)$-type\/} is a maximally consistent set of formulas that are instances of $\varphi(x\,;b\,;X)$ and/or ${\sim}\varphi(x\,;b\,;X)$ for some $b\in{\EuScript U}^{|z|}$.
+
+% \begin{fact}
+%   Let $p(x)$ be a global $\varphi(x\,;z\,;X)$-type.
+% \end{fact}
+
+Let $p(x)$ be a global $\varphi(x\,;z\,;X)$-type.
+We define 
+
+\ceq{\hfill\emph{${\EuScript D}_{p,\varphi,C}$}}{=}{\big\{b\in{\EuScript U}^{z}\ :\ \varphi(x\,;b\,;C)\in p\big\}}
+
+\begin{fact}\ \vskip-0.5\baselineskip
+  
+  \ceq{\hfill\neg{\EuScript D}_{p,\varphi,C}}{=}{\bigcup\Big\{{\EuScript D}_{p,{\sim}\varphi,\tilde C}\ \ :\ \ \tilde C\cap C=\varnothing\Big\}}
+\end{fact}
+
+\begin{proof}
+  ($\subseteq$).
+  Let $b\notin{\EuScript D}_{p,\varphi,C}$.
+  Let $A\subseteq{\EuScript U}$ be such that every instance of $\varphi(x\,;b\,;X)$ and ${\sim}\varphi(x\,;b\,;X)$ that is consistent with $p(x)\restriction A$ is finitely consistent with $p(x)$.
+  Finally pick $a\models p(x)\restriction A$.
+  As $\neg\varphi(a,b,C)$, from Fact~\ref{fact_maximal} we obtain that  ${\sim}\varphi(a\,;b\,;\tilde C)$ holds for some $\tilde C\cap C=\varnothing$.
+  Then ${\sim}\varphi(x\,;b\,;\tilde C)$ is consistent with $p(x)\restriction A$.
+  By maximality of $p(x)$, we have ${\sim}\varphi(x\,;b\,;\tilde C)\in p$.
+  Then $b\in{\EuScript D}_{p,{\sim}\varphi,\tilde C}$.
+  
+  ($\supseteq$).
+  Similar.
+\end{proof}
+
+\begin{fact}
+  Let $\varphi(x\,;z\,;X)$ and $C$ be given.
+  Then for every ${\EuScript D}\subseteq {\EuScript U}^{z}$ the following are equivalent
+  \begin{itemize}
+    \item [1.] ${\EuScript D}={\EuScript D}_{p,\varphi,C}$ for some global $\varphi(x\,;z\,;X)$-type $p(x)$
+    \item [2.] for every finite set $B\subseteq{\EuScript U}^{z}$ there is an $a\in{\EuScript U}^{x}$ such that
+    
+    \ceq{\hfill B\ \cap\ {\EuScript D}}{=}{B\ \cap\ \varphi(a\,;{\EuScript U}^x\,;C).}
+
+  \end{itemize}
+\end{fact}
+
+\begin{proof}
+  Let $B_0=B\smallsetminus{\EuScript D}$ and $B_1=B\cap{\EuScript D}$.
+
+  1$\Rightarrow$2. 
+  By the above fact, there is a $\tilde C\cap C=\varnothing$ such that $b\in{\EuScript D}_{p,\sim\varphi,\tilde C}$  form every $b\in B_0$.
+  Let $a$ realize the type containing $\varphi(x\,;b\,;C)$ for every $b\in B_1$ and ${\sim}\varphi(x\,;b\,;\tilde C)$ for every $b\in B_0$. 
+
+  2$\Rightarrow$1. 
+  There is a set $\tilde C\cap C=\varnothing$ such that ${\sim}\varphi(x\,;b\,;\tilde C)$  for every $b\in B_0$.
+  Let $p(x)$ be any global $\varphi(x\,;z\,;X)$-type containing $\varphi(x\,;b\,;C)$ for every $b\in B_1$ and ${\sim}\varphi(x\,;b\,;\tilde C)$ for every $b\in B_0$.
+  Such type exists as (2) guarantees consistency.
+\end{proof}
+
+Let ${\EuScript D}\subseteq {\EuScript U}^{z}\times S^{\scriptscriptstyle|X|}$.
+For $\alpha\in S^{\scriptscriptstyle|X|}$, we write ${\EuScript D}_\alpha$ for the set of all $b\in{\EuScript U}^{z}$ such that $\langle b,\alpha\rangle\in{\EuScript D}$.
+We say that ${\EuScript D}$ is \emph{externally definable\/} by $\varphi(x\,;z\,;X)$ if there is a global $\varphi(x\,;z\,;X)$-type $p(x)$ such that for every $\alpha$
+
+\ceq{\hfill{\EuScript D}_\alpha}{=}{\bigcap\big\{{\EuScript D}_{p,\varphi,C}\ :\ \alpha\in C^\circ\big\}}
+
+We say that ${\EuScript D}$ is \emph{approximable\/} by $\varphi(x\,;z\,;X)$ if for every $\alpha\in S^{\scriptscriptstyle|X|}$ and every finite $B\subseteq{\EuScript U}^{z}$ there is an $a\in{\EuScript U}^{|x|}$ such that
+
+\ceq{\hfill B\ \cap\ {\EuScript D}_\alpha}{=}{B\ \cap\ \bigcap\big\{\varphi(a\,;{\EuScript U}^{z}\,;C)\ :\ \alpha\in C^\circ\big\}}
+
+\begin{fact}
+  Let $\varphi(x\,;z\,;X)$ be given.
+  Then, for every ${\EuScript D}\subseteq {\EuScript U}^{z}\times S^{\scriptscriptstyle|X|}$ the following are equivalent
+  \begin{itemize}
+    \item [1.] ${\EuScript D}$ is externally definable by $\varphi(x\,;z\,;X)$
+    \item [2.] ${\EuScript D}$ is approximated by $\varphi(x\,;z\,;X)$.
+  \end{itemize}
+\end{fact}
+
+We say that ${\EuScript D}$ is approximable \emph{from below\/} if for every $B\subseteq{\EuScript D}$ there is
+an $a\in{\EuScript U}^{|x|}$ such that
+
+\ceq{\hfill B}{\subseteq}{\varphi(a\,;{\EuScript U}^z\,;C)}\medrel{\subseteq}${\EuScript D}$.
+
+
+
+\vskip3ex
+Garbage after this line
+\vskip-\baselineskip
+\hrulefill
+\vskip3ex
+
+We define ${\EuScript D}_p\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$ as follows
+
+\ceq{\hfill{\EuScript D}_{p}}{=}{\Big\{\,\langle b,\alpha\rangle\ :\  \varphi(x\,;b\,;C)\in p\ \textrm{ for every }C\textrm{ neighborhood of }\alpha\Big\}.}
+
+% \ceq{\hfill\tilde {\EuScript D}_{p}}{=}{\Big\{\langle b,\alpha\rangle\ :\  {\sim}\varphi(x\,;b\,;\tilde C)\in p \textrm{ for every }C\rotatebox[origin=c]{180}{$\notin$}\alpha\Big\}.}
+
+\begin{fact}\ \vskip-0.5\baselineskip
+
+  \ceq{\hfill\neg {\EuScript D}_{p}}{=}{\Big\{\,\langle b,\alpha\rangle\ :\  {\sim}\varphi(x\,;b\,;\tilde C)\in p\ \textrm{  for every }\tilde C\,\rotatebox[origin=c]{180}{$\notin$}\,\alpha\;\Big\}.}
+\end{fact}
+
+\begin{proof}
+  Let $a\models p(x)\restriction b$.
+  Let $C$ be the intersection of all neighborhoods of $\alpha$ such that $\varphi(a\,;b\,;C')$.
+  Assume $\langle b,\alpha\rangle\notin{\EuScript D}_p$, in other words $\varphi(a\,;b\,;C)$, then $C$ is a neighborhood of $\alpha$.
+  By Fact~\ref{fact_maximal} we have $\varphi(a\,;b\,;C)$.
+  Let $\tilde C\subseteq C\smallsetminus\{\alpha\}$ be such that $C$ is a neighborhood of $\tilde C$.
+  Then $\neg\varphi(a\,;b\,;\tilde C)$.
+  Therefor by the definition of ${\EuScript D}_p$.
+
+  Then we can find $\tilde C$ such that $\alpha\notin\tilde C$ and $C$ is a neighborhood of $\tilde C$.
+  contains two dijoint compacts
+  Then ${\sim}\varphi(x\,;b\,;\tilde C')\in p$ by the definition of ${\EuScript D}_p$.
+
+
+  Then ${\sim}\varphi(x\,;b\,;\tilde C')\in p$ for every neighborhood $\tilde C'$ of $\alpha$ disjoint from $C'$.
+  Then for every neighborhood $C$ of $\alpha$, we have $\varphi(x\,;b\,;C)\in p$.
+\end{proof}
+
+We say that ${\EuScript D}$ is \emph{externally defined\/} by $p(x)$ and $\varphi(x\,;z\,;X)$ if ${\EuScript D}_p\subseteq{\EuScript D}$ and $\tilde{\EuScript D}_p\subseteq\neg{\EuScript D}$.
+
+We say that ${\EuScript D}\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$ is \emph{approximated\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$ there is an $a\in{\EuScript U}^{|x|}$ such that 
+
+\ceq{\hfill \langle b,\alpha\rangle\in B\cap{\EuScript D}}{\Rightarrow}{\varphi(a\,;b\,;C) \textrm{ for every neighborhood } C \textrm{ of }\alpha}
+
+\ceq{\hfill \langle b,\alpha\rangle\in B\smallsetminus{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C) \textrm{ for every }C\textrm{ such that }\alpha\notin C}
+
+\begin{fact}
+  For every ${\EuScript D}\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$, the following are equivalent
+  \begin{itemize}
+    \item [1.] ${\EuScript D}$ is externally definable by some global $\varphi$-type
+    \item [2.]  ${\EuScript D}$ is approximated by $\varphi(x\,;z\,;X)$.
+  \end{itemize}
+\end{fact}
+
+\begin{proof}
+  (1)$\Rightarrow$(2). Let $B\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$ be finite.
+  For $\langle b,\alpha\rangle\in B\cap{\EuScript D}$ let $C_{\langle b,\alpha\rangle}$ be some neightborhood of $\alpha$. % such that $\varphi(x\,;b\,;C_{\langle b,\alpha\rangle})\in p$.
+  Let $C$ be the union of all these neighborhoods.
+  For $\langle b,\alpha\rangle\in B\smallsetminus{\EuScript D}$ let $\tilde C_{\langle b,\alpha\rangle}$ be some neightborhood of $\alpha$. % such that ${\sim}\varphi(x\,;b\,;\tilde C_{\langle b,\alpha\rangle})\in p$.
+  Let $\tilde C$ be the union of all these neighborhoods.
+  By the finiteness of $B$, we can require that $C$ and $\tilde C$ are disjoint. 
+  Then (2) follows from the concistency of $p(x)$.
+
+  (2)$\Rightarrow$(1). Note that the condition of approximability asserts the finite concistency of the type $p(x)$ that is union of the following two sets of formulas
+
+\noindent\kern5ex $\Big\{\varphi(x\,;b\,;C)\ :\ \langle b,\alpha\rangle\in{\EuScript D}\textrm{ and }C\textrm{ neighborhood of }\alpha\Big\}$
+
+
+\noindent\kern5ex $\Big\{{\sim}\varphi(x\,;b\,;C)\ :\ \langle b,\alpha\rangle\notin{\EuScript D}\textrm{ and }\alpha\notin C\Big\}$
+
+The inclusion ${\EuScript D}\subseteq{\EuScript D}_p$ is immediate.
+For the converse inclusion, let $\langle b,\alpha\rangle\notin{\EuScript D}$ and let $\tilde C$ be a neighborhood of $\alpha$ such that ${\sim}\varphi(x\,;b\,;\tilde C)$.
+\end{proof}
+
+  
 \begin{proof}
   The theorem is an immediate consequence of the following three lemma.
 \end{proof}
@@ -787,724 +1528,6 @@ This contradicts stability.
 \end{theorem}
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Attempt 2}
-\def\medrel#1{\parbox{5ex}{\hfil $#1$}}
-\def\ceq#1#2#3{\parbox[t]{22ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
-
-In this section  ${\EuScript D}$ is always a subset of ${\EuScript U}^z\times K(S)^n$, where $n$ has to be inferred from the context (typically, $n=|X|$).
-We write ${\sim}{\EuScript D}$ for the set obtained by applying the definition in Section~\ref{pseudocomplement} to all fibers of ${\EuScript D}$.
-We say that ${\EuScript D}$ is involutive/closed if all its fibers are such.
-
-We write $\varepsilon$ for a compact neighborhood of the diagonal of $S^2$.
-If $C$ is a compact subsets of $S$, we write $C^\varepsilon$ for the set whose elements are $\varepsilon$-close to elements of $C$.
-If $C$ is a tuple, the definition above applies componentwise.
-
-We say that $\varphi(x\,;z\,;X)$ is \emph{$\varepsilon$-stable\/} if the equivalent conditions in the following fact hold.
-
-\begin{theorem}[ (conjecture)]\label{thm_epsilon_stable}
-  The following are equivalent\smallskip
-
-  \begin{itemize}
-    \item [1.]  there is no sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for some $C$, some $\tilde C\cap C^\varepsilon=\varnothing$, and for every $i<n$
-
-    \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C)}\smallskip
-
-   \item [2.] there is no sequence $\langle a_i\,;b_i\,;C_i\ :\ i<\omega\rangle$ such that for some $C$ and for every $i<n$
-  
-    \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;C_n)}\quad and\quad $C^\varepsilon\cap C_n=\varnothing$.\smallskip
-
-    \item [3.]  there is a maximal $m$ such that some sequence $\langle a_i\,;b_i\,;C_i\ :\ i<m\rangle$ is such that for some $C$ and for every $i<n$
-
-    \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;C_n)}\quad and\quad $C^\varepsilon\cap C_n=\varnothing$.\smallskip    
-  \end{itemize}
-\end{theorem}
-
-\begin{definition}\strut
-  A \emph{global $\varphi(x\,;z\,;X)$-type\/} is a maximally (finitely) consistent set of formulas of the form $\varphi(x\,;b\,;C)$ or ${\sim}\varphi(x\,;b\,;C)$ for some $b\in{\EuScript U}^{|z|}$ and some $C$.
-\end{definition}
-
-\begin{definition}\label{def_approx_X}\strut
-  We say that ${\EuScript D}$ is \emph{approximable\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that\smallskip
-
-  \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a\,;b\,;C)}\quad and\smallskip
-
-  \ceq{2.\hfill\langle b,C\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$.\smallskip
-
-We say approximable \emph{from below\/} if the second implication holds for every $b\in{\EuScript U}^z$.
-\end{definition}
-
-The proof of the main theorem requires the following stronger notion of approximation.
-
-\begin{definition}\label{def_e_approx_X}\strut
-  We say that ${\EuScript D}$ is \emph{$\varepsilon$-approximable\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that\smallskip
-
-  \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a\,;b\,;C)}\quad and\smallskip
-
-  \ceq{2.\hfill\langle b,C\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C^\varepsilon)}\hfill for every $b\in B$ and every $C$.\smallskip
-\end{definition}
-
-We remark that, by Facts~\ref{fact_~definibile} and~\ref{fact_~inclusione}, when ${\EuScript D}$ is involutive 
-%(1) can be rephrased as
-%
-% \ceq{\hfill{\sim}\varphi(a\,;b\,;C)}{\Rightarrow}{\langle b,C\rangle\in{\sim}{\EuScript D}}\hfill for every $b\in B$ and every $C$.
-%
-% Analogously, 
-(2) can be rephrased as
-
-\ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C^\varepsilon)}\hfill for every $b\in B$ and every $C$.
-
-\begin{fact}
-  For every involutive ${\EuScript D}$ the following are equivalent
-  \begin{itemize}
-    \item [1.] ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$
-    \item [2.] ${\EuScript D}$ is $\varepsilon$-approximable by $\varphi(x\,;z\,;X)$ for every $\varepsilon$
-    \item [3.] the following is a global $\varphi(x\,;z\,;X)$-type\smallskip
-    
-    \noindent\kern-\labelwidth\kern-\labelsep
-    \ceq{\hfill p(x)}{=}{\big\{\phantom{\sim}\varphi(x\,;b\,;C)\ :\ \langle b,C\rangle\in{\EuScript D}\big\}\ \ \cup}\smallskip
-
-    \noindent\kern-\labelwidth\kern-\labelsep
-    \ceq{}{~}{\big\{{\sim}\varphi(x\,;b\,;C)\ :\ \langle b,C\rangle\in{\sim}{\EuScript D}\big\}.}
-  
-  \end{itemize}
-\end{fact}
-
-\begin{proof}
-  First we prove that $p(x)$ is maximal as soon as it is consistent~--~in fact, this only depends on ${\EuScript D}$ being involutive.
-  We need to consider two cases.
-  First, assume that $\varphi(x\,;b\,;C)$ is consistent with $p(x)$.
-  Then consistency implies that $\langle b,\tilde C\rangle\notin{\sim}{\EuScript D}$ for every $\tilde C\cap C=\varnothing$.
-  But this implies that $C\in{\sim}{\sim}{\EuScript D}={\EuScript D}$, therefore $\varphi(x\,;b\,;C)\in p$.
-  The second case is when ${\sim}\varphi(x\,;b\,;C)$ is consistent with $p(x)$.
-  This implies that $\langle b,\tilde C\rangle\notin{\EuScript D}$ for every $\tilde C\cap C=\varnothing$.
-  Then $\langle b,C\rangle\in{\sim}{\EuScript D}$,  therefore ${\sim}\varphi(x\,;b\,;C)\in p$.
-
-  3$\Rightarrow$1.
-  Let $B$ be a given finite subset of ${\EuScript U}^z$.
-  The finite consistency of $p(x)$ provides some $a$ such that for every finite $B$ an $a$ such that
-
-  \ceq{\hfill \langle b,C\rangle\in {\EuScript D}}{\Rightarrow}{\phantom{\sim}\varphi(a\,;b\,;C)}\quad and 
-  
-  \ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$. 
-
-  By what remarked above, these yield (1) and (2) in Definition~\ref{def_approx_X}.
-  
-  1$\Rightarrow$2. Clear.
-
-  2$\Rightarrow$3.
-  We claim the the following type is finitely consistent
-
-  \ceq{\hfill p'(x)}{=}{\big\{\phantom{\sim}\varphi(x\,;b\,;C)\ :\ \langle b,C\rangle\in{\EuScript D}\big\}\ \ \cup}\smallskip
-
-  \ceq{}{~}{\big\{{\sim}\varphi(x\,;b\,;C^\varepsilon)\ :\ \langle b,C\rangle\in{\sim}{\EuScript D},\text{ and all }\varepsilon\big\}.}
-  
-  Let $B$ and $\varepsilon$ be given.
-  Let $a$ be as in Definition~\ref{def_e_approx_X}.
-  Then, by what remarked above, $a\models p'(x)\restriction B, \varepsilon$.
-  Now, by saturation the is some $a \models p'(x)\restriction B$.
-  Then $a \models p(x)\restriction B$ by Fact~\ref{fact_otto}.
-\end{proof}
-
-\begin{lemma}\label{lem_epsilon_stability_definability}
-  Let $\varphi(x\,;z\,;X)$ be $\varepsilon$-stable.
-  Assume that ${\EuScript D}$ is $\varepsilon$-approximable by $\varphi(x\,;z\,;X)$.
-  Then there are some $\langle a_{i,j}\ :\ i< k,\ j<m\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
-
-  \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i< k}\ \bigwedge_{j<m}\ \varphi(a_{i,j}\,;b\,;C^\varepsilon)}\medskip
-
-  \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i< k}\ \bigwedge_{j<m}\ \varphi(a_{i,j}\,;b\,;C)}
-\end{lemma}
-
-\begin{proof}
-  The lemma is an immediate consequence of the following three.
-\end{proof}
-
-\begin{lemma}
-  Under the assumptions of Lemma~\ref{lem_epsilon_stability_definability}.
-  If ${\EuScript D}$ is approximable from below then there is a sequence $\langle a_i\ :\ i<k\rangle$ such that for every $b\in{\EuScript U}^z$\medskip
-
-  \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i<k}\ \varphi(a_i\,;b\,;C^\varepsilon)}\medskip 
-
-  \ceq{2.\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i<k}\ \varphi(a_i\,;b\,;C)} 
-\end{lemma}
-
-\begin{proof}
-We define recursively the required parameters $a_i$ together with some auxiliary parameters $b_i$.
-The element $a_n$ is choosen such that
-
-\ceq{3.\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\varphi(a_n\,;b\,;C)}\hfill for every $b\in{\EuScript U}^z$
-
-and
-
-\ceq{4.\hfill \langle b_i,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a_n\,;b_i\,;C)}\hfill for every $i<n$.\smallskip
-
-This is possible because ${\EuScript D}$ is approximated from below.
-Note that (3) immediately guarantees (2).
-Now choose $b_n$ and $C_n\cap C^\varepsilon=\varnothing$ such that
-
-\ceq{5.\hfill \langle b_n,C\rangle\in{\EuScript D}}{\&}{\bigwedge_{i=0}^n\ {\sim}\varphi(a_i\,;b_n\,;C_n)}%\smallskip
-
-If such $b_n$ and $C_n$ do not exist, then 
-
-\ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\neg\,{\sim}\bigvee_{i=0}^n\ \varphi(a_i\,;b\,;\tilde C)}\ \hfill for every $b\in{\EuScript U}^z$ and every $\tilde C\cap C^\varepsilon=\varnothing$%\smallskip
-
-which is equivalent to (1) by Fact~\ref{fact_otto} and proves the lemma.
-Suppose for a contradiction that the construction never ends.
-Then, from (4) we otain $\varphi(a_n\,;b_i\,;C)$ for every $i<n$ while from (5) we obtain ${\sim}\varphi(a_i\,;b_n\,;C_n)$, for every $i\le n$.
-This contradicts stability.
-\end{proof}
-
-\begin{lemma}
-  Under the assumptions of Lemma~\ref{lem_epsilon_stability_definability}.
-  Let $m$ be maximal so that a sequence as in (3) of Theorem~\ref{thm_epsilon_stable} exists.
-  Let $\bar x=\langle x_i\ :\ i\le m\rangle$ where the $x_i$ are copies of $x$.
-  Then the formula\smallskip
-
-  \ceq{\hfill\sigma(\bar x\,;z\,;X)}{=}{\bigwedge_{i\le m}\ \varphi(x_i\,;z\,;X)}\medskip
-
-  approximate ${\EuScript D}$ from below.
-\end{lemma}
-
-\begin{proof}
-  Negate the claim and let $B$ witness that $\sigma(\bar x)$ does not approximate ${\EuScript D}$ from below.
-  Suppose that $a_0,\dots,a_{n-1}$ and $b_0,\dots,b_{n-1}\notin{\EuScript D}$ have been defined.
-  Choose $a_n$ such that for every $b\in B\cup\{b_0,\dots,b_{n-1}\}$
-
-  \ceq{1.\hfill\langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a_n\,;b\,;C)}\quad and
-
-  \ceq{2.\hfill\langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\varphi(a_n\,;b\,;C^\varepsilon)}
-  
-  Note that the latter implication is equivalent to 
-  
-  \ceq{3.\hfill \langle b,C\rangle\notin{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a_n\,;b\,;\tilde C)}\hfill for some $\tilde C\cap C^\varepsilon=\varnothing$.
-
-  We write $C_i$ for the $\tilde C$ that witnesses (3) for $b_i$.
-  Now, as the lemma is assumed to fail, we can choose $b_n$ such that
-
-  \ceq{4.\hfill \langle b_n,C\rangle\notin{\EuScript D}}{\&}{\bigwedge_{i=0}^n\ \varphi(a_i\,;b_n\,;C).}
-
-  We claim that the sequence has to stop after $\le m$ steps. 
-  In fact, as (4) ensures $\langle b_i,C\rangle\notin{\EuScript D}$ for every $i$, from (3) we obtain ${\sim}\varphi(a_n\,;b_i\,;C_i)$ for every $i<n$.
-  On the other hand, by (4) we have that $\varphi(a_i\,;b_n\,;C)$ for every $i<n$.
-  Therefore, after reversing the order, the sequence $\langle a_i\,;b_i\,;C_i\ :\ i\le m\rangle$ contradicts the maximality of $m$.
-\end{proof}
-
-\begin{lemma}
-  If $\varphi(x\,;z\,;C)$ is $\varepsilon$-stable then $\sigma(\bar x\,;z\,;C)$ in the previous lemma is $\varepsilon$-stable.
-\end{lemma}
-
-\begin{proof}
-  Let $k$ be suffinciely large so that every $m$-coloring of a graph of size $k$ has a monocromatic subgraph of size $>m$.
-  Let $\langle \bar a_i\,;b_i\,;C_i\ :\ i<k\rangle$ be a sequence witnessing instability as in (3) of Theorem~\ref{thm_epsilon_stable}.
-  Then for every pair $i<n$ there is some $j<m$ such that ${\sim}\varphi(a_{j,n}\,;b_i\,;C_i)$.
-  By the choice of $k$ there is a $j<m$ such that ${\sim}\varphi(a_{j,n}\,;b_i\,;C_i)$ obtains for $>m$ many $i$.
-  Then we can extract a subsequence that contradicts the maximality of $m$.
-\end{proof}
-
-\begin{theorem}[ (conjecture)]\label{thm_stable_definable}
-  Let $\varphi(x\,;z\,;X)$ be stable.
-  Let ${\EuScript D}$ be approximable by $\varphi(x\,;z\,;X)$.
-  Then there is $\pi(z\,;X)$, a small set of formulas of the form $\varphi(a\,;z\,;X)$, with $a\in{\EuScript U}^x$, such that
-
-  \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftrightarrow}{\pi(b\,;C)}\hfill for every $b\in{\EuScript U}^z$ and every $C$.
-\end{theorem}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Stable functions}
-\def\medrel#1{\parbox{5ex}{\hfil $#1$}}
-\def\ceq#1#2#3{\parbox[t]{33ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
-
-Let $\varphi(x\,;z\,;X)$ be \emph{type-definable\/} that is, definable by an infinite (small) conjunction of formulas in ${\EuScript F}_{\sf X}({\EuScript U})$.
-The variables of sort ${\sf H}$ are partitioned in two tuples $x\,;z$ which may be infinite.
-
-We say that $\varphi(x\,;z\,;X)$ is \emph{unstable\/} if there are some $C\cap\tilde C=\varnothing$ and a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for every $i<j<\omega$
-
-\ceq{\hfill \varphi(a_i\,;b_j\,;C)}{\wedge}{{\sim}\varphi(a_j\,;b_i\,;\tilde C)}
-
-We say that $\varphi(x\,;z\,;X)$ is \emph{stable\/} if it is not unstable.
-
-% \begin{theorem}[ (conjecture)]\label{thm_stable}
-%   If $\varphi(x\,;z\,;X)$ is stable, then for every $\varphi(x\,;z\,;X)$-type $p(x)$ and every compact set $C$ then\smallskip
-
-%   \ceq{\hfill{\EuScript D}_{p,\varphi,C}}{=}{\bigcup_{i=1}^{n}\ \bigcap_{j=1}^{n}\ \varphi(a_{i,j}\,;{\EuScript U}^z\,;C)}\smallskip
-
-%    for some $\langle a_{i,j}\ :\ 1\le i,j\le n\rangle$.
-% \end{theorem}
-In this section we consider formulas of a particular form which is of some interest. 
-We deal with the general case in the next section.
-
-Assume \emph{$S=[0,1]$\/} throughout this section.
-
-Let $\tau:{\EuScript U}^{x;z}\to S$ be a function definable by an infinite conjunction of formulas in ${\EuScript F}$.
-We say that $\tau(x\,;z)$ is \emph{stable\/} if so is $\tau(x\,;z)\in X$.
-The following fact is a suggestive characterization of the stability of functions.
-
-\begin{fact}
-  Let $\tau(x\,;z)$ be as above.
-  Then the following are equivalent
-  \begin{itemize}
-    \item [1.] the formula $\tau(x\,;z)\in X$ is unstable
-    \item [2.] there is a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that\smallskip
-    
-    \noindent\kern-\labelwidth\kern-\labelsep
-    \ceq{\hfill \lim_{i\to\infty}\lim_{j\to\infty}\tau(a_i\,;b_j)}{\neq}{\lim_{j\to\infty}\lim_{i\to\infty}\tau(a_i\,;b_j)}
-
-    \item [3.] there is a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ and some $\varepsilon>0$ such that for every $i<j<\omega$\smallskip
-    
-    \noindent\kern-\labelwidth\kern-\labelsep
-    \ceq{\hfill\big|\tau(a_i\,;b_j)\ -\ \tau(a_j\,;b_i)\big|}{\ge}{\varepsilon.}
-
-    % \item [3.] for some sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ and some neighborhood $\varepsilon$ of the diagonal of $S^2$\smallskip
-
-    % \ceq{\hfill \big\langle\tau(a_i\,;b_j),\ \tau(a_j\,;b_i)\big\rangle}{\notin}{\varepsilon}\smallskip
-
-    % for every $i<j<\omega$.
-  \end{itemize}
-\end{fact}
-
-\begin{proof}
-  2$\Leftrightarrow$3 Clear.
-
-  1$\Rightarrow$2.
-  Let $C\cap\tilde C=\varnothing$ and $\langle a_i\,;b_i\ :\ i<\omega\rangle$ be as given by (1).
-  That is, $\tau(a_i\,;b_j)\in C$ and $\tau(a_j\,;b_i)\in \tilde C$ hold for every $i<j<\omega$.
-  We can restrict to a subsequence such that the two limits exist; $C$ contains the limit on the left; and $\tilde C$ contains the limit on the right~--~which therefore are distinct.%\ \cup\ \tilde C\times C
-
-  2$\Rightarrow$1. Let $C$ and $\tilde C$ be disjoint neighborhoods of the two limits in (2).
-  Then (1) is witnessed by a tail of the sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$.
-\end{proof}
-
-We say that $f:{\EuScript U}^{z}\to S$ is \emph{$\varepsilon$-approximable\/} by $\tau(x\,;z)$ if for every finite $B\subseteq{\EuScript U}^z$ and there is an $a\in{\EuScript U}^x$ such that
-
-\ceq{\hfill \big|f(b)\;,\tau(a\,;b)\big|}{\le}{\varepsilon}\hfill for every $b\in B$.
-
-We say \emph{approximable\/} for $\varepsilon$-approximable for every $\varepsilon>0$.
-
-\begin{theorem}
-  Let $S=[0,1]$.
-  Let $\tau(x\,;z)$ be a stable type-definable function.
-  Let $f:{\EuScript U}^{z}\to S$ be approximable by $\tau(x\,;z)$.
-  Then $f$ is type-definable. 
-\end{theorem}
-
-\begin{proof}
-  The following three lemmas show that if $\tau(x\,;z)$ is $\varepsilon$-approximable, then there are some $\langle a_{i,j}\ :\ i<n,\ j<\omega\rangle$ such that\medskip
-
-  \ceq{\hfill\big|f(b)\ -\ \max_{i=0,\dots,n-1}\ \inf_{j<\omega}\ \tau(a_{i,j}\,;b)\big|}{\le}{3\varepsilon}\hfill for every $b\in{\EuScript U}^z$.
-
-  Then $f$ is the limit of type-definable functions, hence type-definable.
-\end{proof}
-
-We say that $f:{\EuScript U}^{x;z}\to[0,1]$ is $\varepsilon$-approximable \emph{from below\/} if the parameter $a\in{\EuScript U}^x$ that witnesses approximability satisfies $\tau(a\,;b)\le f(b)+\varepsilon$ for every $b\in {\EuScript U}^z$.
-
-\begin{lemma}
-  Assume that the $f$ in the theorem is $\varepsilon$-approximable from below.
-  Then there are some $\langle a_i\:\ i< n\rangle$ such that\smallskip
-
-  \ceq{\hfill\big|f(b)\ -\ \max_{i=0,\dots,n-1}\ \tau(a_i\,;b)\big|}{\le}{\varepsilon}\hfill for every $b\in{\EuScript U}^z$.
-\end{lemma}
-
-\begin{proof}
-  Negate the lemma.
-  We construct inductively a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ that contradicts the stability of $\tau(x\,;z)$.
-  Then, let $b_n$ be such that (if $n=0$ pick $b_n$ arbitrarily)
-
-  \ceq{1.\hfill\big|f(b_n)\ -\max_{i=0,\dots,n-1}\ \tau(a_i\,;b_n)\big|}{>}{\varepsilon}
-
-  By approximability from below, for some $a_n$ we have
-
-  \ceq{2.\hfill\tau(a_n\,;b_i)\ -\ f(b_i)}{\le}{\varepsilon}\hfill for every $i\le n$
-
-  \ceq{3.\hfill\tau(a_n\,;b)}{\le}{ f(b)+\varepsilon}\hfill for every $b\in{\EuScript U}^{z}$.
-
-  We prove instability by showing that for every $i<n$
-
-  \ceq{4.\hfill \tau(a_n\,;b_i)\ -\ \tau(a_i\,;b_n)}{>}{\varepsilon}
-
-  Note that by virtue of (3) 
-
-  \ceq{\hfill \max_{i=0,\dots,n-1}\ \tau(a_i\,;b_n)-f(b_n)}{\le}{\varepsilon}
-
-  Then (1) ensures that
-
-  \ceq{1'.\hfill f(b_n)\ -\max_{i=0,\dots,n-1}\ \tau(a_i\,;b_n)}{>}{\varepsilon}
-
-  Using ($1'$) we obtain
-
-  \ceq{\hfill \tau(a_n\,;b_i)-\tau(a_i\,;b_n)}{>}{\tau(a_n\,;b_i)-f(b_n)+\varepsilon}
-
-  then from (2) we obtain
-
-  \ceq{}{>}{f(b_i)-f(b_n)+2\varepsilon}
-
-  By refining the sequence we can assume that $|f(b_i)-f(b_n)|<\varepsilon$ for every $i,n\in\omega$.
-  This yields (4).
-\end{proof}
-
-\begin{lemma}
-  Under the assumptions of the theorem. 
-  Let $\bar x=\langle x_i\ :\ i<\omega\rangle$ where the $x_i$ are copies of $x$.
-  Then the function\smallskip
-
-  \ceq{\hfill\sigma(\bar x\,;z)}{=}{\inf_{i<\omega}\ \tau(x_i\,;z)}
-
-  $3\varepsilon$-approximates $f$ from below.
-\end{lemma}
-
-\begin{proof}
-  Negate the claim and let $B$ witness that $\sigma(\bar x\,;z)$ does not $\varepsilon$-approximate $f$ from below.
-  We construct inductively a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ that contradicts the stability of $\tau(x\,;z)$.
-  Then, let $a_n$ be such that
-
-  \ceq{1.\hfill\big|\tau(a_n\,;b)\ -\ f(b)\big|}{\le}{\varepsilon}\hfill for every $b\in B\cup\{b_0,\dots,b_n\}$
-
-  then let $b_n$ be such that
-
-  \ceq{2.\hfill\min_{i=0,\dots,n}\tau(a_i\,;b_n)}{>}{ f(b_n)+3\varepsilon.}
-
-  We show that the sequence we constructed contradicts stability.
-  In fact, by (2)
-
-  \ceq{\hfill\tau(a_i\,;b_n)\ -\ \tau(a_n\,;b_i)}{>}{f(b_n)+3\varepsilon-\tau(a_n\,;b_i).}
-
-  Then, by (1)
-
-  \ceq{\hfill\tau(a_i\,;b_n)\ -\ \tau(a_n\,;b_i)}{>}{f(b_n)+3\varepsilon-f(b_i) - \varepsilon}
-
-  As in the previous lemma, after refining the sequence we we obtain a contradiction.
-\end{proof}
-
-\begin{lemma}
-  If $\tau(\bar x\,;z)$ is stable, then $\sigma(\bar x\,;z)$ in the previous lemma is stable. 
-\end{lemma}
-
-\begin{proof}
-  It suffices to show that
-
-  \ceq{\hfill\sigma(x_1,x_2\,;z)}{=}{\min_{i=1,2}\ \tau(x_i\,;z)}
-
-  is stable.
-  Suppose not.
-  Pick $\langle a_{1,i},a_{2,i}\,;b_i\ :\ i<\omega\rangle$ and $\varepsilon>0$  such that for every $i<j<\omega$
-
-  \ceq{\hfill\big|\sigma(a_{1,i},a_{2,i}\,;b_j)-\sigma(a_{1,j},a_{2,j}\,;b_i)\big|}{\ge}{\varepsilon}
-
-  By Ramsey's theorem, we can refine the sequence so that one of the following holds for every $i<j$
-
-\ceq{\hfill\sigma(a_{1,i},a_{2,i}\,;b_j)-\sigma(a_{1,j},a_{2,j}\,;b_i)}{\ge}{\varepsilon}
-  
-\ceq{\hfill-\sigma(a_{1,i},a_{2,i}\,;b_j)+\sigma(a_{1,j},a_{2,j}\,;b_i)}{\ge}{\varepsilon}
-
-Assume the first~--~the second case is symmetric.
-Again by Ramsey's theorem, we can refine the sequence so that for every $i<j$ either  $\tau(a_{1,i}\,;b_j)\le\tau(a_{2,i}\,;b_j)$ or conversely $\tau(a_{1,i}\,;b_j)\ge\tau(a_{2,i}\,;b_j)$.
-In the first case we obtain
-
-\ceq{\hfill\tau(a_{1,i}\,;b_j)-\tau(a_{2,j}\,;b_i)}{\ge}{\varepsilon}
-
-in the second case we obtain
-
-\ceq{\hfill\tau(a_{2,i}\,;b_j)-\tau(a_{1,j}\,;b_i)}{\ge}{\varepsilon.}
-
-In both cases we contradict the stability of $\tau(x\,;z)$.
-\end{proof}
-
-
-
-% If $\varphi(X)\in{\EuScript F}_{\sf X}$ and ${\EuScript D}=\{C:\varphi(C)\}$ then ${\sim}{\EuScript D}=\{C:{\sim}\varphi(C)\}$.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Attempt 1}
-\def\medrel#1{\parbox{5ex}{\hfil $#1$}}
-\def\ceq#1#2#3{\parbox[t]{22ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
-
-Let $\varphi(x\,;z\,;X)$ be \emph{type-definable\/} that is, definable by an infinite (small) conjunction of formulas in ${\EuScript F}_{\sf X}({\EuScript U})$.
-The variables of sort ${\sf H}$ are partitioned in two tuples $x\,;z$ which may be infinite.
-
-We say that $\varphi(x\,;z\,;X)$ is \emph{unstable\/} if there is a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for some $C\cap\tilde C=\varnothing$ and every $i<n<\omega$
-
-\ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C)}
-
-We say that $\varphi(x\,;z\,;X)$ is \emph{stable\/} if it is not unstable.
-\setcounter{thm}{19}
-\begin{theorem}[ (conjecture)]
-  The following are equivalent
-  \begin{itemize}
-    \item [1.] $\varphi(x\,;z\,;X)$ is stable
-    \item [2.] there is no sequence $\langle a_i\,;b_i\,;C_i\ :\ i<\omega\rangle$ such that for some $C$, some neighboorhood $C'$ of $C$,  and every $i<n<\omega$
-
-\ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;C_n)}
-
-and $C'\cap C_n=\varnothing$.
-\end{itemize}
-\end{theorem}
-
-
-If ${\EuScript D}\subseteq{\EuScript U}^z\times K(S)$ then ${\sim}{\EuScript D}$ is obtained by applying the definition in Section~\ref{pseudocomplement} to all fibers of ${\EuScript D}$.
-
-
-
-\begin{theorem}[ (conjecture)]
-  Let $\varphi(x\,;z\,;X)$ be stable.
-  Let ${\EuScript D}\subseteq {\EuScript U}^z\times K(S)^{|X|}$ be involutive and approximable by $\varphi(x\,;z\,;X)$.
-  Then there are some $\langle a_{i,j}\ :\ i\le n,\ j<\omega\rangle$ such that for every $b\in{\EuScript U}^z$\medskip
-
-  \ceq{\hfill\langle b,C\rangle\in{\EuScript D}}{\Leftrightarrow}{\bigvee_{i\le n}\ \bigwedge_{j<\omega}\ \varphi(a_{i,j}\,;b\,;C)}
-\end{theorem}
-
-\begin{proof}
-  
-\end{proof}
-
-We say that ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$ if \emph{from below\/} if in the definition above the implication in (2) holds for every $b\in{\EuScript U}^z$ and $C\in K(S)$.
-
-\begin{lemma}
-  Under the assumptions of the theorem.
-  If ${\EuScript D}$ is approximable from below then there are some $\langle a_i\ :\ i\le n\rangle$ such that for every $b\in{\EuScript U}^z$\medskip
-
-  \ceq{\hfill\bigvee_{i\le n}\ \varphi(a_i\,;b\,;C)}{\Leftrightarrow}{\langle b, C\rangle\in{\EuScript D}} 
-\end{lemma}
-
-\begin{proof}
-The sequences $a_0,\dots,a_n$ is defined recursively together with an auxiliary sequence $b_0,\dots,b_{n-1}$.
-The elements in the sequence $a_0,\dots,a_n$ are choosen to obtain 
-
-\ceq{1.\hfill\bigvee_{i=0}^n\ \varphi(a_i\,;b\,;C)}{\Rightarrow}{\langle b, C\rangle\in{\EuScript D}}\hfill for every $b\in{\EuScript U}^z$ and every $C$
-
-and
-
-\ceq{2.\hfill\langle b_i, C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a_n\,;b_i\,;C)}\hfill for every $i<n$ and every $C$.\smallskip
-
-This is possible because ${\EuScript D}$ is approximated from below.
-Now choose $b_n$ and $C_n$ such that
-
-\ceq{3.\hfill\bigwedge_{i=0}^n\ {\sim}\varphi(a_i\,;b_n\,;C_n)\ }{\text{and}}{\ \langle b_n,C_n\rangle\notin{\sim}{\EuScript D}}%\smallskip
-
-If such $b_n$ and $C_n$ do not exist, then 
-
-\ceq{\hfill{\sim}\bigvee_{i=0}^n\ \varphi(a_i\,;b\,;C)\ }{\Rightarrow}{\ \langle b,C\rangle\in{\sim}{\EuScript D}}\hfill for every $b\in{\EuScript U}^z$ and every $C$%\smallskip
-
-which is equivalent to the converse of (1) and proves the lemma.
-Suppose for a contradiction that the construction never ends.
-Then, from (2) we otain $\varphi(a_n\,;b_i\,;C)$ for every $i<n$ and from (3) we obtain ${\sim}\varphi(a_i\,;b_n\,;C_n)$, again for every $i<n$.
-This contradicts stability.
-\end{proof}
-
-\begin{lemma}
-  Under the assumptions of the theorem.
-  Let $\bar x=\langle x_m\ :\ i<\omega\rangle$ where the $x_i$ are copies of $x$ and $m$ is the maximal .
-  Then the formula\medskip
-
-  \ceq{\hfill\sigma(\bar x\,;z\,;X)}{=}{\bigwedge_{i<m}\ \varphi(x_i\,;z\,;X)}
-
-  approximate ${\EuScript D}$ from below.
-\end{lemma}
-
-\begin{proof}
-  Negate the claim and let $B$ and $C$ witness that $\sigma(\bar x)$ does not approximate ${\EuScript D}$ from below.
-  Suppose that $a_0,\dots,a_{n-1}$ and $b_0,\dots,b_{n-1}$ have been defined.
-  Choose $a_n$ such that 
-
-  \ceq{1.\hfill \langle b,C\rangle\in {\EuScript D}}{\Rightarrow}{\varphi(a_n\,;b\,;C)}
-
-  \ceq{2.\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a_n\,;b\,;C)}\hfill for every $b\in B\cup\{b_0,\dots,b_{n-1}\}$.
-
-  Now, as the lemma is assume to fail, we can choose $b_n$ such that
-
-  \ceq{3.\hfill\bigwedge_{i=0}^n\ \varphi(a_i\,;b_n\,;C)\ }{\text{and}}{\ \langle b_n,C\rangle\notin{\EuScript D}.}
-
-  Moreover, as ${\EuScript D}$ is involutive, there is $C_n\cap C=\varnothing$ such that $\langle b_n,C_n\rangle\in{\sim}{\EuScript D}$.
-  
-  We claim that the sequence we obtain contradicts stability.
-  In fact, the construction guarantees that $\langle b_i,C_i\rangle\in{\sim}{\EuScript D}$ for every $i$, then from (2) we obtain that ${\sim}\varphi(a_n\,;b_i\,;C_i)$ for every $i<n$.
-  On the other hand, by (1) we have that $\varphi(a_n\,;b_i\,;C)$ for every $i<n$.
-\end{proof}
-
-\begin{lemma}
-  If $\varphi(x\,;z\,;C)$ is stable then $\sigma(\bar x\,;z\,;X)$ in the previous lemma is stable.
-\end{lemma}
-
-\begin{proof}
-  Assume $\sigma(x_1,x_2\,;z\,;X)$ in unstable.
-  Let $\langle a_{1,i},a_{2,i}\,;b_i\,;C_i\ :\ i<\omega\rangle$ be a sequence witnessing instability.
-  then for every $i<n<\omega$ either ${\sim}\varphi(a_{1,n}\,;b_i\,;C_i)$ or ${\sim}\varphi(a_{2,n}\,;b_i\,;C_i)$
-
-\end{proof}
-
-\begin{comment}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Externally definable sets}
-
-\emph{global $\varphi(x\,;z\,;X)$-type\/} is a maximally consistent set of formulas that are instances of $\varphi(x\,;b\,;X)$ and/or ${\sim}\varphi(x\,;b\,;X)$ for some $b\in{\EuScript U}^{|z|}$.
-
-% \begin{fact}
-%   Let $p(x)$ be a global $\varphi(x\,;z\,;X)$-type.
-% \end{fact}
-
-Let $p(x)$ be a global $\varphi(x\,;z\,;X)$-type.
-We define 
-
-\ceq{\hfill\emph{${\EuScript D}_{p,\varphi,C}$}}{=}{\big\{b\in{\EuScript U}^{z}\ :\ \varphi(x\,;b\,;C)\in p\big\}}
-
-\begin{fact}\ \vskip-0.5\baselineskip
-  
-  \ceq{\hfill\neg{\EuScript D}_{p,\varphi,C}}{=}{\bigcup\Big\{{\EuScript D}_{p,{\sim}\varphi,\tilde C}\ \ :\ \ \tilde C\cap C=\varnothing\Big\}}
-\end{fact}
-
-\begin{proof}
-  ($\subseteq$).
-  Let $b\notin{\EuScript D}_{p,\varphi,C}$.
-  Let $A\subseteq{\EuScript U}$ be such that every instance of $\varphi(x\,;b\,;X)$ and ${\sim}\varphi(x\,;b\,;X)$ that is consistent with $p(x)\restriction A$ is finitely consistent with $p(x)$.
-  Finally pick $a\models p(x)\restriction A$.
-  As $\neg\varphi(a,b,C)$, from Fact~\ref{fact_maximal} we obtain that  ${\sim}\varphi(a\,;b\,;\tilde C)$ holds for some $\tilde C\cap C=\varnothing$.
-  Then ${\sim}\varphi(x\,;b\,;\tilde C)$ is consistent with $p(x)\restriction A$.
-  By maximality of $p(x)$, we have ${\sim}\varphi(x\,;b\,;\tilde C)\in p$.
-  Then $b\in{\EuScript D}_{p,{\sim}\varphi,\tilde C}$.
-  
-  ($\supseteq$).
-  Similar.
-\end{proof}
-
-\begin{fact}
-  Let $\varphi(x\,;z\,;X)$ and $C$ be given.
-  Then for every ${\EuScript D}\subseteq {\EuScript U}^{z}$ the following are equivalent
-  \begin{itemize}
-    \item [1.] ${\EuScript D}={\EuScript D}_{p,\varphi,C}$ for some global $\varphi(x\,;z\,;X)$-type $p(x)$
-    \item [2.] for every finite set $B\subseteq{\EuScript U}^{z}$ there is an $a\in{\EuScript U}^{x}$ such that
-    
-    \ceq{\hfill B\ \cap\ {\EuScript D}}{=}{B\ \cap\ \varphi(a\,;{\EuScript U}^x\,;C).}
-
-  \end{itemize}
-\end{fact}
-
-\begin{proof}
-  Let $B_0=B\smallsetminus{\EuScript D}$ and $B_1=B\cap{\EuScript D}$.
-
-  1$\Rightarrow$2. 
-  By the above fact, there is a $\tilde C\cap C=\varnothing$ such that $b\in{\EuScript D}_{p,\sim\varphi,\tilde C}$  form every $b\in B_0$.
-  Let $a$ realize the type containing $\varphi(x\,;b\,;C)$ for every $b\in B_1$ and ${\sim}\varphi(x\,;b\,;\tilde C)$ for every $b\in B_0$. 
-
-  2$\Rightarrow$1. 
-  There is a set $\tilde C\cap C=\varnothing$ such that ${\sim}\varphi(x\,;b\,;\tilde C)$  for every $b\in B_0$.
-  Let $p(x)$ be any global $\varphi(x\,;z\,;X)$-type containing $\varphi(x\,;b\,;C)$ for every $b\in B_1$ and ${\sim}\varphi(x\,;b\,;\tilde C)$ for every $b\in B_0$.
-  Such type exists as (2) guarantees consistency.
-\end{proof}
-
-Let ${\EuScript D}\subseteq {\EuScript U}^{z}\times S^{\scriptscriptstyle|X|}$.
-For $\alpha\in S^{\scriptscriptstyle|X|}$, we write ${\EuScript D}_\alpha$ for the set of all $b\in{\EuScript U}^{z}$ such that $\langle b,\alpha\rangle\in{\EuScript D}$.
-We say that ${\EuScript D}$ is \emph{externally definable\/} by $\varphi(x\,;z\,;X)$ if there is a global $\varphi(x\,;z\,;X)$-type $p(x)$ such that for every $\alpha$
-
-\ceq{\hfill{\EuScript D}_\alpha}{=}{\bigcap\big\{{\EuScript D}_{p,\varphi,C}\ :\ \alpha\in C^\circ\big\}}
-
-We say that ${\EuScript D}$ is \emph{approximable\/} by $\varphi(x\,;z\,;X)$ if for every $\alpha\in S^{\scriptscriptstyle|X|}$ and every finite $B\subseteq{\EuScript U}^{z}$ there is an $a\in{\EuScript U}^{|x|}$ such that
-
-\ceq{\hfill B\ \cap\ {\EuScript D}_\alpha}{=}{B\ \cap\ \bigcap\big\{\varphi(a\,;{\EuScript U}^{z}\,;C)\ :\ \alpha\in C^\circ\big\}}
-
-\begin{fact}
-  Let $\varphi(x\,;z\,;X)$ be given.
-  Then, for every ${\EuScript D}\subseteq {\EuScript U}^{z}\times S^{\scriptscriptstyle|X|}$ the following are equivalent
-  \begin{itemize}
-    \item [1.] ${\EuScript D}$ is externally definable by $\varphi(x\,;z\,;X)$
-    \item [2.] ${\EuScript D}$ is approximated by $\varphi(x\,;z\,;X)$.
-  \end{itemize}
-\end{fact}
-
-We say that ${\EuScript D}$ is approximable \emph{from below\/} if for every $B\subseteq{\EuScript D}$ there is
-an $a\in{\EuScript U}^{|x|}$ such that
-
-\ceq{\hfill B}{\subseteq}{\varphi(a\,;{\EuScript U}^z\,;C)}\medrel{\subseteq}${\EuScript D}$.
-
-
-
-\vskip3ex
-Garbage after this line
-\vskip-\baselineskip
-\hrulefill
-\vskip3ex
-
-We define ${\EuScript D}_p\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$ as follows
-
-\ceq{\hfill{\EuScript D}_{p}}{=}{\Big\{\,\langle b,\alpha\rangle\ :\  \varphi(x\,;b\,;C)\in p\ \textrm{ for every }C\textrm{ neighborhood of }\alpha\Big\}.}
-
-% \ceq{\hfill\tilde {\EuScript D}_{p}}{=}{\Big\{\langle b,\alpha\rangle\ :\  {\sim}\varphi(x\,;b\,;\tilde C)\in p \textrm{ for every }C\rotatebox[origin=c]{180}{$\notin$}\alpha\Big\}.}
-
-\begin{fact}\ \vskip-0.5\baselineskip
-
-  \ceq{\hfill\neg {\EuScript D}_{p}}{=}{\Big\{\,\langle b,\alpha\rangle\ :\  {\sim}\varphi(x\,;b\,;\tilde C)\in p\ \textrm{  for every }\tilde C\,\rotatebox[origin=c]{180}{$\notin$}\,\alpha\;\Big\}.}
-\end{fact}
-
-\begin{proof}
-  Let $a\models p(x)\restriction b$.
-  Let $C$ be the intersection of all neighborhoods of $\alpha$ such that $\varphi(a\,;b\,;C')$.
-  Assume $\langle b,\alpha\rangle\notin{\EuScript D}_p$, in other words $\varphi(a\,;b\,;C)$, then $C$ is a neighborhood of $\alpha$.
-  By Fact~\ref{fact_maximal} we have $\varphi(a\,;b\,;C)$.
-  Let $\tilde C\subseteq C\smallsetminus\{\alpha\}$ be such that $C$ is a neighborhood of $\tilde C$.
-  Then $\neg\varphi(a\,;b\,;\tilde C)$.
-  Therefor by the definition of ${\EuScript D}_p$.
-
-  Then we can find $\tilde C$ such that $\alpha\notin\tilde C$ and $C$ is a neighborhood of $\tilde C$.
-  contains two dijoint compacts
-  Then ${\sim}\varphi(x\,;b\,;\tilde C')\in p$ by the definition of ${\EuScript D}_p$.
-
-
-  Then ${\sim}\varphi(x\,;b\,;\tilde C')\in p$ for every neighborhood $\tilde C'$ of $\alpha$ disjoint from $C'$.
-  Then for every neighborhood $C$ of $\alpha$, we have $\varphi(x\,;b\,;C)\in p$.
-\end{proof}
-
-We say that ${\EuScript D}$ is \emph{externally defined\/} by $p(x)$ and $\varphi(x\,;z\,;X)$ if ${\EuScript D}_p\subseteq{\EuScript D}$ and $\tilde{\EuScript D}_p\subseteq\neg{\EuScript D}$.
-
-We say that ${\EuScript D}\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$ is \emph{approximated\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$ there is an $a\in{\EuScript U}^{|x|}$ such that 
-
-\ceq{\hfill \langle b,\alpha\rangle\in B\cap{\EuScript D}}{\Rightarrow}{\varphi(a\,;b\,;C) \textrm{ for every neighborhood } C \textrm{ of }\alpha}
-
-\ceq{\hfill \langle b,\alpha\rangle\in B\smallsetminus{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C) \textrm{ for every }C\textrm{ such that }\alpha\notin C}
-
-\begin{fact}
-  For every ${\EuScript D}\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$, the following are equivalent
-  \begin{itemize}
-    \item [1.] ${\EuScript D}$ is externally definable by some global $\varphi$-type
-    \item [2.]  ${\EuScript D}$ is approximated by $\varphi(x\,;z\,;X)$.
-  \end{itemize}
-\end{fact}
-
-\begin{proof}
-  (1)$\Rightarrow$(2). Let $B\subseteq {\EuScript U}^{|z|}\times S^{\scriptscriptstyle|X|}$ be finite.
-  For $\langle b,\alpha\rangle\in B\cap{\EuScript D}$ let $C_{\langle b,\alpha\rangle}$ be some neightborhood of $\alpha$. % such that $\varphi(x\,;b\,;C_{\langle b,\alpha\rangle})\in p$.
-  Let $C$ be the union of all these neighborhoods.
-  For $\langle b,\alpha\rangle\in B\smallsetminus{\EuScript D}$ let $\tilde C_{\langle b,\alpha\rangle}$ be some neightborhood of $\alpha$. % such that ${\sim}\varphi(x\,;b\,;\tilde C_{\langle b,\alpha\rangle})\in p$.
-  Let $\tilde C$ be the union of all these neighborhoods.
-  By the finiteness of $B$, we can require that $C$ and $\tilde C$ are disjoint. 
-  Then (2) follows from the concistency of $p(x)$.
-
-  (2)$\Rightarrow$(1). Note that the condition of approximability asserts the finite concistency of the type $p(x)$ that is union of the following two sets of formulas
-
-\noindent\kern5ex $\Big\{\varphi(x\,;b\,;C)\ :\ \langle b,\alpha\rangle\in{\EuScript D}\textrm{ and }C\textrm{ neighborhood of }\alpha\Big\}$
-
-
-\noindent\kern5ex $\Big\{{\sim}\varphi(x\,;b\,;C)\ :\ \langle b,\alpha\rangle\notin{\EuScript D}\textrm{ and }\alpha\notin C\Big\}$
-
-The inclusion ${\EuScript D}\subseteq{\EuScript D}_p$ is immediate.
-For the converse inclusion, let $\langle b,\alpha\rangle\notin{\EuScript D}$ and let $\tilde C$ be a neighborhood of $\alpha$ such that ${\sim}\varphi(x\,;b\,;\tilde C)$.
-\end{proof}
-
-  
-\end{comment}
 
 \vskip10ex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
