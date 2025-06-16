@@ -647,16 +647,6 @@ It is convenient to have a different characterization of global types, therefore
 We say approximable \emph{from below\/} if the second implication holds for every $b\in{\EuScript U}^z$.
 \end{definition}
 
-The proof of the main theorem requires the following stronger notion of approximation.
-
-\begin{definition}\label{def_e_approx_X}\strut
-  We say that ${\EuScript D}$ is \emph{$\varepsilon$-approximable\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that\smallskip
-
-  \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a\,;b\,;C)}\quad and\smallskip
-
-  \ceq{2.\hfill\langle b,C\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C^\varepsilon)}\hfill for every $b\in B$ and every $C$.\smallskip
-\end{definition}
-
 We remark that, by Facts~\ref{fact_~definibile} and~\ref{fact_~inclusione}, when ${\EuScript D}$ is involutive 
 %(1) can be rephrased as
 %
@@ -665,14 +655,13 @@ We remark that, by Facts~\ref{fact_~definibile} and~\ref{fact_~inclusione}, when
 % Analogously, 
 (2) can be rephrased as
 
-\ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C^\varepsilon)}\hfill for every $b\in B$ and every $C$.
+\ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$.
 
 \begin{fact}
   For every involutive ${\EuScript D}$ the following are equivalent
   \begin{itemize}
     \item [1.] ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$
-    \item [2.] ${\EuScript D}$ is $\varepsilon$-approximable by $\varphi(x\,;z\,;X)$ for some $\varepsilon$
-    \item [3.] the following is a global $\varphi(x\,;z\,;X)$-type\smallskip
+    \item [2.] the following is a global $\varphi(x\,;z\,;X)$-type\smallskip
     
     \noindent\kern-\labelwidth\kern-\labelsep
     \ceq{\hfill p(x)}{=}{\big\{\phantom{\sim}\varphi(x\,;b\,;C)\ :\ \langle b,C\rangle\in{\EuScript D}\big\}\ \ \cup}\smallskip
@@ -693,7 +682,7 @@ We remark that, by Facts~\ref{fact_~definibile} and~\ref{fact_~inclusione}, when
   This implies that $\langle b,\tilde C\rangle\notin{\EuScript D}$ for every $\tilde C\cap C=\varnothing$.
   Then $\langle b,C\rangle\in{\sim}{\EuScript D}$,  therefore ${\sim}\varphi(x\,;b\,;C)\in p$.
 
-  3$\Rightarrow$1.
+  2$\Rightarrow$1.
   Let $B$ be a given finite subset of ${\EuScript U}^z$.
   The finite consistency of $p(x)$ provides some $a$ such that for every finite $B$ an $a$ such that
 
@@ -703,22 +692,22 @@ We remark that, by Facts~\ref{fact_~definibile} and~\ref{fact_~inclusione}, when
 
   By what remarked above, these yield (1) and (2) in Definition~\ref{def_approx_X}.
   
-  1$\Rightarrow$2. Clear.
-
-  2$\Rightarrow$3.
-  Let $\varepsilon'$ witness (2).
-  We claim the the following type is finitely consistent
-
-  \ceq{\hfill p'(x)}{=}{\big\{\phantom{\sim}\varphi(x\,;b\,;C)\ :\ \langle b,C\rangle\in{\EuScript D}\big\}\ \ \cup}\smallskip
-
-  \ceq{}{~}{\big\{{\sim}\varphi(x\,;b\,;C^\varepsilon)\ :\ \langle b,C\rangle\in{\sim}{\EuScript D},\text{ and }\varepsilon\subseteq\varepsilon'\big\}.}
-  
-  Let $B$ and $\varepsilon\subseteq\varepsilon'$ be given.
-  Let $a$ be as in Definition~\ref{def_e_approx_X}.
-  Then, by what remarked above, $a\models p'(x)\restriction B, \varepsilon$.
-  Now, by saturation the is some $a \models p'(x)\restriction B$.
-  Then $a \models p(x)\restriction B$ by Fact~\ref{fact_otto}.
+  1$\Rightarrow$2. 
+  Let $B$ be given.
+  Let $a$ be as in Definition~\ref{def_approx_X}.
+  Then, by what remarked above, $a\models p(x)\restriction B$.
 \end{proof}
+
+The proof of the main theorem requires the following stronger notion of approximation.
+
+\begin{definition}\label{def_e_approx_X}\strut
+  We say that ${\EuScript D}$ is \emph{$\varepsilon$-approximable\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that\smallskip
+
+  \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a\,;b\,;C)}\quad and\smallskip
+
+  \ceq{2.\hfill\langle b,C\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C^\varepsilon)}\hfill for every $b\in B$ and every $C$.\smallskip
+\end{definition}
+
 
 \begin{theorem}\label{thm_epsilon_stability_definability}
   Let $\varphi(x\,;z\,;X)$ be stable.
@@ -797,7 +786,153 @@ This contradicts stability.
   \ceq{4.\hfill \langle b_n,C_n\rangle\notin{\EuScript D}}{\&}{\bigwedge_{i=0}^n\ \varphi(a_i\,;b_n\,;C_n)}
 
   Note that (4) ensure that $\langle b_i,C_i\rangle\notin{\EuScript D}$ for every $i$.
-  The there is some $\tilde C_i$ that witnesses (3) for $b_i,C_i$.
+  Then there is some $\tilde C_i$ that witnesses (3) for $\langle b_i,C_i\rangle\notin{\EuScript D}$.
+  We claim that the procedure has to stop after $\le m$ steps. 
+  In fact, from (3) we obtain ${\sim}\varphi(a_n\,;b_i\,;\tilde C_i)$ for every $i<n$.
+  On the other hand, by (4) we have that $\varphi(a_i\,;b_n\,;C_n)$ for every $i<n$.
+  Therefore, $\langle a_{m-i}\,;b_{m-i}\,;C_{m-i}\,;\tilde C_{m-i}\ :\ i\le m\rangle$ contradicts the maximality of $m$.
+\end{proof}
+
+\begin{lemma}
+  If $\varphi(x\,;z\,;C)$ is stable then $\sigma(\bar x\,;z\,;C)$ in the previous lemma is $\varepsilon$-stable.
+\end{lemma}
+
+\begin{proof}
+  Let $\varepsilon$ be given and let $m$ be maximal such that a sequence as in (3) of Theorem~\ref{thm_epsilon_stable} exists.
+  Let $k$ be suffinciely large so that every $m$-coloring of a graph of size $k$ has a monocromatic subgraph of size $>m$.
+  Let $\langle \bar a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<k\rangle$ be a sequence witnessing instability as in (3) of Theorem~\ref{thm_epsilon_stable}.
+  Then for every pair $i<n$ there is some $j<m$ such that ${\sim}\varphi(a_{j,n}\,;b_i\,;\tilde C_i)$.
+  By the choice of $k$ there is a $j<m$ such that ${\sim}\varphi(a_{j,n}\,;b_i\,;\tilde C_i)$ obtains for $>m$ many $i$.
+  Then we can extract a subsequence that contradicts the maximality of $m$.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Attempt 3}
+\def\medrel#1{\parbox{5ex}{\hfil $#1$}}
+\def\ceq#1#2#3{\parbox[t]{22ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+The following is a weaker notion of approximation.
+
+
+\begin{definition}\label{def_e_approx_X}\strut
+  We say that ${\EuScript D}$ is \emph{$\varepsilon$-approximable\/} by $\varphi(x\,;z\,;X)$ \emph{from below\/} if for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that for every $C$\smallskip
+
+  \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and and\smallskip
+
+  \ceq{2.\hfill\langle b,C^\varepsilon\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C)}\hfill for every $b\in{\EuScript U}^z$.\smallskip
+\end{definition}
+
+
+% We remark that, by Facts~\ref{fact_~definibile} and~\ref{fact_~inclusione}, when ${\EuScript D}$ is involutive 
+% %(1) can be rephrased as
+% %
+% % \ceq{\hfill{\sim}\varphi(a\,;b\,;C)}{\Rightarrow}{\langle b,C\rangle\in{\sim}{\EuScript D}}\hfill for every $b\in B$ and every $C$.
+% %
+% % Analogously, 
+% (2) can be rephrased as
+
+% \ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}_\varepsilon}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$,
+
+% where ${\EuScript D}_\varepsilon=\big\{C^\varepsilon\ :\ C\in{\EuScript D}\big\}$.
+
+% \begin{fact}
+%   For every involutive ${\EuScript D}$ the following are equivalent
+%   \begin{itemize}
+%     \item [1.] ${\EuScript D}$ is approximable
+%     \item [2.] ${\EuScript D}$ is $\varepsilon$-approximable by $\varphi(x\,;z\,;X)$ for every $\varepsilon$
+    
+%   \end{itemize}
+% \end{fact}
+
+% \begin{proof}
+%   Immediate.
+% \end{proof}
+
+
+
+\begin{theorem}\label{thm_epsilon_stability_definability}
+  Let $\varphi(x\,;z\,;X)$ be stable.
+  Assume that ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$.
+  Then for every $\varepsilon$ there are some $\langle a_{i,j}\ :\ i< k,\ j<m\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
+
+  \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i< k}\ \bigwedge_{j<m}\ \varphi(a_{i,j}\,;b\,;C^\varepsilon)}\medskip
+
+  \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i< k}\ \bigwedge_{j<m}\ \varphi(a_{i,j}\,;b\,;C)}
+\end{theorem}
+
+\begin{proof}
+  The theorem is an immediate consequence of the following three lemmas.
+\end{proof}
+
+\begin{lemma}
+  Let $\varphi(x\,;z\,;X)$ be stable.
+  Assume that ${\EuScript D}$ is $\varepsilon$-approximable by $\varphi(x\,;z\,;X)$ from below.
+  Then there is are some $\langle a_i\ :\ i<k\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
+
+  \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i<k}\ \varphi(a_i\,;b\,;C^\varepsilon)}\medskip 
+
+  \ceq{2.\hfill \langle b,C^\varepsilon\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i<k}\ \varphi(a_i\,;b\,;C)} 
+\end{lemma}
+
+\begin{proof}
+  We define recursively the required parameters $a_i$ together with some auxiliary parameters $b_i$.
+  The element $a_n$ is choosen such that
+
+\ceq{3.\hfill \langle b,C^\varepsilon\rangle\in{\EuScript D}}{\Leftarrow}{\varphi(a_n\,;b\,;C)}\hfill for every $b\in{\EuScript U}^z$ and every $C$
+
+and
+
+\ceq{4.\hfill \langle b_i,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a_n\,;b_i\,;C)}\hfill for every $i<n$ and every $C$.\smallskip
+
+This is possible because ${\EuScript D}$ is $\varepsilon$-approximated from below.
+Note that (3) immediately guarantees (2).
+Now, assume (1) fails for $k=n$, and choose $b_n$ and $C_n$ witnessing this.
+Then, by Fact~\ref{fact_otto}, for some $\tilde C_n\cap C_n^\varepsilon=\varnothing$
+
+\ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}}{\&}{\bigwedge_{i<n}\ {\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}%\smallskip
+
+Suppose for a contradiction that the construction never ends.
+Then, as (5) guarantees that $\langle b_i,C_i\rangle\in{\EuScript D}$ for every $i$, from (4) we otain $\varphi(a_n\,;b_i\,;C_n)$ for every $i<n$.
+From (5) we also obtain ${\sim}\varphi(a_i\,;b_n\,;\tilde C_n)$, for every $i\le n$.
+This contradicts stability.
+\end{proof}
+
+\begin{lemma}
+  Let $\varphi(x\,;z\,;X)$ be $\varepsilon$-stable.
+  Assume that ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$.
+  Let $m$ be maximal so that a sequence as in (3) of Theorem~\ref{thm_epsilon_stable} exists.
+  Let $\bar x=\langle x_i\ :\ i\le m\rangle$ where the $x_i$ are copies of $x$.
+  Then the formula\smallskip
+
+  \ceq{\hfill\sigma(\bar x\,;z\,;X)}{=}{\bigwedge_{i\le m}\ \varphi(x_i\,;z\,;X)}\smallskip
+
+  $\varepsilon$-approximate ${\EuScript D}$ from below.
+\end{lemma}
+
+\begin{proof}
+  Negate the claim and let $B$ witness that $\sigma(\bar x)$ does not approximate ${\EuScript D}$ from below.
+  Suppose that $a_0,\dots,a_{n-1}$ and $b_0,\dots,b_{n-1}\notin{\EuScript D}$ have been defined.
+  Choose $a_n$ such that for every $b\in B\cup\{b_0,\dots,b_{n-1}\}$ and every $C$
+
+  \ceq{1.\hfill\langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a_n\,;b\,;C)}\quad and
+
+  \ceq{2.\hfill\langle b,C^\varepsilon\rangle\in{\EuScript D}}{\Leftarrow}{\varphi(a_n\,;b\,;C^\varepsilon)}
+  
+  Note that the latter implication is equivalent to: for every $C$ there is some  $\tilde C\cap C^\varepsilon=\varnothing$ such that 
+  
+  \ceq{3.\hfill \langle b,C^\varepsilon\rangle\notin{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a_n\,;b\,;\tilde C)}.%\hfill  for every $b\in B\cup\{b_0,\dots,b_{n-1}\}$.
+
+  Now, as the lemma is assumed to fail, we can choose $b_n$ and $C_n$ such that
+
+  \ceq{4.\hfill \langle b_n,C_n^\varepsilon\rangle\notin{\EuScript D}}{\&}{\bigwedge_{i=0}^n\ \varphi(a_i\,;b_n\,;C_n)}
+
+  Note that (4) ensure that $\langle b_i,C_i^\varepsilon\rangle\notin{\EuScript D}$ for every $i$.
+  The there is some $\tilde C_i$ that witnesses (3) for $\langle b_i,C_i^\varepsilon\rangle\notin{\EuScript D}$.
   We claim that the procedure has to stop after $\le m$ steps. 
   In fact, from (3) we obtain ${\sim}\varphi(a_n\,;b_i\,;\tilde C_i)$ for every $i<n$.
   On the other hand, by (4) we have that $\varphi(a_i\,;b_n\,;C_n)$ for every $i<n$.
