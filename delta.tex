@@ -1,0 +1,107 @@
+% !TEX root = clcl3.tex
+\section{An approximate version of approximability}
+
+We ripropose Theorem~\ref{thm_epsilon_stability_definability} using using the weaker notion $\delta$-approximability which is natural when discussing definable functions in the next section.
+
+\begin{definition}\label{def_approx_X}\strut
+  We say that ${\EuScript D}$ is \emph{$\delta$-approximable\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that\smallskip
+
+  \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a\,;b\,;C^\delta)}\quad and\smallskip
+
+  \ceq{2.\hfill\langle b,C^\delta\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$.\smallskip
+
+   We say  $\delta$-approximable from \emph{from $\varepsilon$-below\/} if we can also require that\smallskip
+
+  \ceq{2'.\hfill\langle b,C^{\delta+\varepsilon}\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C)}\hfill for every $b\in{\EuScript U}$ and every $C$.
+
+\end{definition}
+It is evident that, when ${\EuScript D}$ is closed as defined in Section~\ref{K(S)} then approximable is equivalent to $\delta$-approximable for every $\delta$.
+
+ Now we restate a variant of Theorem~\ref{thm_epsilon_stability_definability}.
+ The proof closely follows that in the previous section.
+
+\begin{theorem}\label{thm_epsilon_delta_stability_definability}
+  Let $\varphi(x\,;z\,;X)$ be stable.
+  Assume that ${\EuScript D}$ is $\delta$-approximable by $\varphi(x\,;z\,;X)$.
+  Then for every $\varepsilon$ there are some $\langle a_{i,j}\ :\ i< k,\ j<m\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
+
+  \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i< k}\ \bigwedge_{j<m}\ \varphi(a_{i,j}\,;b\,;C^{\delta+\varepsilon})}\medskip
+
+  \ceq{\hfill \langle b,C^{\delta+\varepsilon}\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i< k}\ \bigwedge_{j<m}\ \varphi(a_{i,j}\,;b\,;C)}
+\end{theorem}
+
+\begin{proof}
+  The theorem is an immediate consequence of the following two lemmas and Lemma~\ref{lem_sigma_stable} in the previous section.
+\end{proof}
+
+
+
+\begin{lemma}
+  Let $\varphi(x\,;z\,;X)$ be stable.
+  Assume that ${\EuScript D}$ is $\delta$-approximable by $\varphi(x\,;z\,;X)$ from $\varepsilon$-below.
+  Then there is are some $\langle a_i\ :\ i<k\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
+
+  \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i<k}\ \varphi(a_i\,;b\,;C^{\delta+\varepsilon})}\medskip 
+
+  \ceq{2.\hfill \langle b,C^{\delta+\varepsilon}\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i<k}\ \varphi(a_i\,;b\,;C)} 
+\end{lemma}
+
+\begin{proof}
+  We define recursively the required parameters $a_i$ together with some auxiliary parameters $b_i$.
+  The element $a_n$ is choosen such that
+
+\ceq{3.\hfill \langle b,C^{\delta+\varepsilon}\rangle\in{\EuScript D}}{\Leftarrow}{\varphi(a_n\,;b\,;C)}\hfill for every $b\in{\EuScript U}^z$ and every $C$
+
+and
+
+\ceq{4.\hfill \langle b_i,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a_n\,;b_i\,;C^\delta)}\hfill for every $i<n$ and every $C$.\smallskip
+
+This is possible because ${\EuScript D}$ is $\delta$-approximated from $\varepsilon$-below.
+Note that (3) immediately guarantees (2).
+Now, assume (1) fails for $k=n$, and choose $b_n$ and $C_n$ witnessing this.
+Then, by Fact~\ref{fact_otto}, for some $\tilde C_n\cap C_n^{\delta+\varepsilon}=\varnothing$
+
+\ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}}{\&}{\bigwedge_{i<n}\ {\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}%\smallskip
+
+Suppose for a contradiction that the construction never ends.
+Then, as (5) guarantees that $\langle b_i,C_i\rangle\in{\EuScript D}$ for every $i$, from (4) we otain $\varphi(a_n\,;b_i\,;C_n^\delta)$ for every $i<n$.
+From (5) we also obtain ${\sim}\varphi(a_i\,;b_n\,;\tilde C_n)$, for every $i\le n$.
+This contradicts $\varepsilon$-stability.
+\end{proof}
+
+\begin{lemma}
+  Let $\varphi(x\,;z\,;X)$ be $\varepsilon$-stable.
+  Assume that ${\EuScript D}$ is $\delta$-approximable by $\varphi(x\,;z\,;X)$.
+  Let $m$ be maximal so that a sequence as in (3) of Theorem~\ref{thm_epsilon_stable} exists.
+  Let $\bar x=\langle x_i\ :\ i\le m\rangle$ where the $x_i$ are copies of $x$.
+  Then the formula\smallskip
+
+  \ceq{\hfill\sigma(\bar x\,;z\,;X)}{=}{\bigwedge_{i\le m}\ \varphi(x_i\,;z\,;X)}\smallskip
+
+  $\delta$-approximate ${\EuScript D}$ from $\varepsilon$-below.
+\end{lemma}
+
+\begin{proof}
+  Negate the claim and let $B$ witness that $\sigma(\bar x)$ does not $\delta$-approximate ${\EuScript D}$ from $\varepsilon$-below.
+  Suppose that $a_0,\dots,a_{n-1}$ and $b_0,\dots,b_{n-1}$ have been defined.
+  Choose $a_n$ such that for every $b\in B\cup\{b_0,\dots,b_{n-1}\}$ and every $C$
+
+  \ceq{1.\hfill\langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a_n\,;b\,;C^\delta)}\quad and
+
+  \ceq{2.\hfill\langle b,C^{\varepsilon+\delta}\rangle\in{\EuScript D}}{\Leftarrow}{\varphi(a_n\,;b\,;C^\varepsilon)}
+  
+  Note that the latter implication is equivalent to: for every $C$ there is some  $\tilde C\cap C^\varepsilon=\varnothing$ such that 
+  
+  \ceq{3.\hfill \langle b,C^{\varepsilon+\delta}\rangle\notin{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a_n\,;b\,;\tilde C)}.%\hfill  for every $b\in B\cup\{b_0,\dots,b_{n-1}\}$.
+
+  Now, as the lemma is assumed to fail, we can choose $b_n$ and $C_n$ such that
+
+  \ceq{4.\hfill \langle b_n,C_n^{\varepsilon+\delta}\rangle\notin{\EuScript D}}{\&}{\bigwedge_{i=0}^n\ \varphi(a_i\,;b_n\,;C_n)}
+
+  Note that (4) ensure that $\langle b_i,C_i^{\delta+\varepsilon}\rangle\notin{\EuScript D}$ for every $i$.
+  The there is some $\tilde C_i$ that witnesses (3) for $\langle b_i,C_i^{\delta+\varepsilon}\rangle\notin{\EuScript D}$.
+  We claim that the procedure has to stop after $\le m$ steps. 
+  In fact, from (3) we obtain ${\sim}\varphi(a_n\,;b_i\,;\tilde C_i)$ for every $i<n$.
+  On the other hand, by (4) we have that $\varphi(a_i\,;b_n\,;C_n)$ for every $i<n$.
+  Therefore, $\langle a_{m-i}\,;b_{m-i}\,;C_{m-i}\,;\tilde C_{m-i}\ :\ i\le m\rangle$ contradicts the maximality of $m$.
+\end{proof}
