@@ -1,7 +1,8 @@
 % !TEX root = clcl3.tex
 \section{An approximate version of approximability}
 
-We ripropose Theorem~\ref{thm_epsilon_stability_definability} using using the weaker notion $\delta$-approximability which is natural when discussing definable functions in the next section.
+We present a second version of Theorem~\ref{thm_epsilon_stability_definability} which uses a weaker variant of $\delta$-approx\-imability.
+This notion applies naturally to definable functions which we discuss in the next section.
 
 \begin{definition}\label{def_approx_X}\strut
   We say that ${\EuScript D}$ is \emph{$\delta$-approximable\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that\smallskip
@@ -17,8 +18,8 @@ We ripropose Theorem~\ref{thm_epsilon_stability_definability} using using the we
 \end{definition}
 It is evident that, when ${\EuScript D}$ is closed as defined in Section~\ref{K(S)} then approximable is equivalent to $\delta$-approximable for every $\delta$.
 
- Now we restate a variant of Theorem~\ref{thm_epsilon_stability_definability}.
- The proof closely follows that in the previous section.
+ We restate a variant of Theorem~\ref{thm_epsilon_stability_definability}.
+ The proof follows closely that in the previous section.
 
 \begin{theorem}\label{thm_epsilon_delta_stability_definability}
   Let $\varphi(x\,;z\,;X)$ be stable.
@@ -72,7 +73,7 @@ This contradicts $\varepsilon$-stability.
 \begin{lemma}
   Let $\varphi(x\,;z\,;X)$ be $\varepsilon$-stable.
   Assume that ${\EuScript D}$ is $\delta$-approximable by $\varphi(x\,;z\,;X)$.
-  Let $m$ be maximal so that a sequence as in (3) of Theorem~\ref{thm_epsilon_stable} exists.
+  Let $m$ be maximal so that a sequence as in (3) of Definition/Theorem~\ref{defthm_epsilon_stable} exists.
   Let $\bar x=\langle x_i\ :\ i\le m\rangle$ where the $x_i$ are copies of $x$.
   Then the formula\smallskip
 

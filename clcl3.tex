@@ -179,13 +179,12 @@
 \section{Structures with a standard sort}
 
 Let \emph{$S$\/} be some Hausdorff compact topological space.
-We associate to $S$ a first order structure in a language \emph{${\EuScript L}_{\sf S}$\/} that has a symbol for each regular compact subset $C\subseteq S^n$ and a function symbol for each continuous functions $f:S^n\to S$.
+We associate to $S$ a first order structure in a language \emph{${\EuScript L}_{\sf S}$\/} that has a symbol for each compact subset $C\subseteq S$ and a function symbol for each continuous functions $f:S^n\to S$.
 According to the context, $C$ and $f$ denote either the symbols of ${\EuScript L}_{\sf S}$ or their interpretation in the structure $S$.
 
-Throughout these notes the letter $C$ always denotes a regular compact subset of $S^n$, or a tuple of such sets.
-
-% Finally, note that we could allow in ${\EuScript L}_{\sf S}$ relation symbols for all compact subsets of $S^n$, for any $n$.
-% But this would clutter the notation adding very little to the theory.
+Throughout these notes the letter $C$ always denotes a compact subset of $S$, or a tuple of such sets.
+Finally, note that we could allow in ${\EuScript L}_{\sf S}$ relation symbols for all compact subsets of $S^n$, for any $n$.
+But this would clutter the notation adding very little to the theory.
 % When needed, we will assume this generalization and leave the detail to the reader.
 
 We also fix an arbitrary first-order language which we denote by \emph{${\EuScript L}_{\sf H}$\/} and call the language of the home sort.
@@ -208,13 +207,13 @@ We write \emph{$x\in C$\/} for the predicate associated to a compact set $C$, an
   We call atomic formulas those of the form
   \begin{itemize}
   \item[i.] atomic and negated atomic formulas of ${\EuScript L}_{\sf H}$ but not equalities and inequalities
-  \item[ii.] $\tau\in C$, where $\tau$ is a $k$-tuple terms of sort ${\sf H}^n\times {\sf S}^m\to {\sf S}$, and $C\subseteq S^k$.
+  \item[ii.] $\tau\in C$, where $\tau$ is a $k$-tuple terms of sort ${\sf H}^n\times {\sf S}^m\to {\sf S}$, and $C$ a compact.
   \end{itemize}
 \end{definition}
 
 % \begin{remark}
 %   A smaller fragment of ${\EuScript F}$ may be of interest in some specific contexts.
-%   This is obtained by excluding equalities and inequalities from (i) and requiring that $C$ in (ii) is a regular compact set.
+%   This is obtained by excluding equalities and inequalities from (i) and requiring that $C$ in (ii) is a compact set.
 %   The discussion below applies to this smaller fragment as well.
 % \end{remark}
 
@@ -231,27 +230,39 @@ We write \emph{$x\in C$\/} for the predicate associated to a compact set $C$, an
 
  In \cite{Z} it is observed that, under the assumption of equicontinuity, the proof in \cite{clcl} extends to the case $n{\cdot}m> 0$.
 
- \begin{theorem}[ (Compactness)]%
+ \begin{theorem}[ (Compactness)]\label{thm_compactness}
   Every standard structure has a ${\EuScript F}$-saturated ${\EuScript F}$-elementary extension.
 \end{theorem}
 
-We introduce some new sorts ${\sf X}_k$ with the sole scope of conveniently describing classes of ${\EuScript F}$-formulas that only differ by the sets/predicates $C\subseteq S^k$ they contain.
-Let ${\EuScript F}_{\sf X}$ be defined as ${\EuScript F}$ but replacing (ii) with\smallskip
+To a standard structure $\langle M,S\rangle$ we associate a canonical expansion $\big\langle M,S,K(S)\big\rangle$, where $K(S)$ is the set of compact subsets of $S$ endowed with the Vietoris topology.
+The sort of $K(S)$ is denoted by \emph{${\sf K}$\/} and is treated as a second standard sort.
+To the atomic formulas in Definition~\ref{def_0} we add the atomic formulas of the form
 
 \begin{itemize}
-  \item[iii.] $\tau(x\,;\xi)\in X$, where $X$ is a variable of sort ${\sf X}_k$.
+  \item[iii.] $\tau(x\,;\xi)\in X$, where $X$ is a variable of sort ${\sf K}$.
 \end{itemize}
 
-Formulas in ${\EuScript F}_{\sf X}$ are denoted by $\varphi(x\,;\xi;X)$, where $X=X_1,\dots,X_n$ be a tuple of variables of sort ${\sf X}_{k_1},\dots,{\sf X}_{k_n}$.
-If $C=C _1,\dots,C_n$ is a tuple of regular compact subsets of  $S^{k_1},\dots,S^{k_n}$, then $\varphi(x\,;\xi;C)$, is a formula in ${\EuScript F}$.
+After closing under the (positive) logic connectives, we obtain the set of formulas that we denote by ${\EuScript F}_{\sf K}$.
+% We introduce a new sort ${\sf K}$ with the sole scope of conveniently describing classes of ${\EuScript F}$-formulas that only differ by the sets/predicates $C$ they contain.
+% Let ${\EuScript F}_{\sf K}$ be defined as ${\EuScript F}$ but replacing (ii) with\smallskip
+%
+% \begin{itemize}
+%   \item[iii.] $\tau(x\,;\xi)\in X$, where $X$ is a variable of sort ${\sf K}$.
+% \end{itemize}
+Formulas in ${\EuScript F}_{\sf K}$ are denoted by $\varphi(x\,;\xi;X)$, where $X=X_1,\dots,X_n$ be a tuple of variables of sort ${\sf K}$.
+If $C=C _1,\dots,C_n$ is a tuple of compact subsets, then $\varphi(x\,;\xi;C)$, is a formula in ${\EuScript F}$.
 This we call an \emph{instance\/} of $\varphi(x\,;\xi;X)$.
-All formulas in ${\EuScript F}$ are instances of formulas in ${\EuScript F}_{\sf X}$.
+All formulas in ${\EuScript F}$ are instances of formulas in ${\EuScript F}_{\sf K}$.
+
+\noindent\llap{\textcolor{red}{\Large\warning}\kern1.5ex}\ignorespaces
+In Appendix A we prove that Theorem~\ref{thm_compactness} extends to these expanded standard structures.
 
 \begin{definition}
-   Let $\varphi\in{\EuScript F}_{\sf X}$ be a formula~--~possibly with some (hidden) free variables.
-   The \emph{pseudonegation\/} of $\varphi\in{\EuScript F}_{\sf X}$ is the formula obtained by replacing in $\varphi$ the atomic formulas in  ${\EuScript L}_{\sf H}$ by their negation and every connective $\wedge$, $\vee$, $\forall$, $\exists$
+   Let $\varphi\in{\EuScript F}_{\sf K}$ be a formula~--~possibly with some (hidden) free variables.
+   The \emph{pseudonegation\/} of $\varphi\in{\EuScript F}_{\sf K}$ is the formula obtained by replacing the atomic formulas in  ${\EuScript L}_{\sf H}$ by their negation and every connective $\wedge$, $\vee$, $\forall$, $\exists$
    %$\forall\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$ 
    by their respective duals $\vee$, $\wedge$, $\exists$, $\forall$.
+   The atomic formulas of the form $\tau\in X$ remain unchanged.\smallskip
   % $\exists\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$.
    
   The pseudonegation of $\varphi$ is denoted by \emph{${\sim}\varphi$.}
@@ -262,7 +273,7 @@ All formulas in ${\EuScript F}$ are instances of formulas in ${\EuScript F}_{\sf
 The following fact is immediate and will be used without further mention.
 
 \begin{fact}\label{fact_trivial}
-  The following hold for every $C\subseteq C'$ and $\tilde C\cap C=\varnothing$, every standard structure $M$, and every formula $\varphi(X)\in{\EuScript F}_{\sf X}(M)$
+  The following hold for every $C\subseteq C'$ and $\tilde C\cap C=\varnothing$, every standard structure $M$, and every ${\EuScript F}_{\sf K}(M)$-formula $\varphi(X)$
 
   \ceq{\hfill M}{\models}{\phantom{\sim}\varphi(C)\ \rightarrow\phantom{\neg}\varphi(C')}\smallskip
 
@@ -275,12 +286,12 @@ The following fact is immediate and will be used without further mention.
   
   \ceq{\hfill M}{\models}{\varphi(C)\ \rightarrow\ \neg\,{\sim}\varphi(\tilde C)\ \rightarrow\ \varphi(C')}\smallskip
 
-  for every $M$, and every $\varphi(X)\in{\EuScript F}_{\sf X}(M)$.
+  for every $M$, and every ${\EuScript F}_{\sf K}(M)$-formula $\varphi(X)$.
   Conversely, for every $\tilde C\cap C=\varnothing$ there is a $C'\supseteq C$ such that
 
   \ceq{\hfill M}{\models}{\varphi(C)\ \rightarrow\ \varphi(C')\ \rightarrow\ \neg\,{\sim}\varphi(\tilde C)}.\smallskip
 
-  for every $M$, and every $\varphi(X)\in{\EuScript F}_{\sf X}(M)$.
+  for every $M$, and every ${\EuScript F}_{\sf K}(M)$-formula $\varphi(X)$.
 \end{fact}
 
 \begin{proof}
@@ -292,7 +303,7 @@ The following fact is immediate and will be used without further mention.
 The above fact has the following useful consequence.
 
 \begin{fact}\label{fact_otto}
-  Let $\varphi(X)\in{\EuScript F}_{\sf X}(M)$, where $M$ is a standard structure.
+  Let $\varphi(X)$ be a ${\EuScript F}_{\sf K}(M)$-formula, where $M$ is a standard structure.
   Then the following are equivalent for every tuple $C$\smallskip
   
     \ceq{\hfill M}{\models}{\phantom{\neg}\varphi(C)\ \leftarrow\ \bigwedge\Big\{\ \varphi(C')\ :\ C'\textrm{ neighborhood of }C\Big\} }\smallskip
@@ -328,10 +339,10 @@ Note that the fact also holds if we restrict the above $C'$ and $\tilde C$ to ra
 \end{proof}
 
 We say that $M$ is \emph{${\EuScript F}$-maximal\/} if it models all ${\EuScript F}(M)$-sentences that hold in some of its ${\EuScript F}$-elementary extensions.
-By the following fact ${\EuScript F}$-saturated structures are ${\EuScript F}$-maximal.
+By Fact~\ref{fact_saturation} and the following, ${\EuScript F}$-saturated standard structures are ${\EuScript F}$-maximal.
 
 \begin{fact}\label{fact_maximal}
-  Let $\varphi(X)\in{\EuScript F}_{\sf X}(M)$.
+  Let $\varphi(X)$ be an ${\EuScript F}_{\sf K}(M)$-formula, where $M$ is a standard model.
   Then the following are equivalent
   \begin{itemize}
     \item [1.] $M$ is ${\EuScript F}$-maximal
@@ -358,7 +369,7 @@ By the following fact ${\EuScript F}$-saturated structures are ${\EuScript F}$-m
 In what follows we fix a large saturated standard structure which we denote by \emph{${\EuScript U}$.}
 
 % Unless otherwise specified, we work inside ${\EuScript U}$.
-% Let $\varphi(X)\in{\EuScript F}_{\sf X}({\EuScript U})$ be given. Define
+% Let $\varphi(X)\in{\EuScript F}_{\sf K}({\EuScript U})$ be given. Define
 
 % \ceq{\hfill C_{\varphi}}{=}{\big\{\alpha\ :\ \varphi(C) \text{ holds for every } C \text{ neighborhood of } \alpha \big\}}
 
@@ -394,8 +405,8 @@ In what follows we fix a large saturated standard structure which we denote by \
 \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
 \def\ceq#1#2#3{\parbox[t]{23ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
-Write \emph{$K(S^n)$\/} for the set of compact subsets of $S^n$.
-In this section the variable $X$ has sort ${\sf X}_{n_1},\dots, {\sf X}_{n_k}$ and ${\EuScript D}$ and ${\EuScript C}$ range over the subsets of $K(S^{n_1})\times\dots\times K(S^{n_k})$.
+Write \emph{$K(S)$\/} for the set of compact subsets of $S$.
+In this section ${\EuScript D}$ and ${\EuScript C}$ range over subsets of $K(S)^n$.
 We define 
 
 \ceq{\hfill\emph{${\sim}{\EuScript D}$}}{=}{\big\{\tilde C\ :\ \tilde C\cap C\neq\varnothing\text{ for every }C\in{\EuScript D}\big\}.}
@@ -403,7 +414,9 @@ We define
 The following fact motivates the definition.
 
 \begin{fact}\label{fact_~definibile}
-  For every $\varphi(X)$, if ${\EuScript D}=\{C\,:\,\varphi(C)\}$ then ${\sim}{\EuScript D}=\{\tilde C\,:\,{\sim}\varphi(\tilde C)\}$
+  For any ${\EuScript F}_{\sf K}(M)$-formula $\varphi(X)$.
+  Let ${\EuScript D}=\{C\,:\,\varphi(C)\}$.
+  Then ${\sim}{\EuScript D}=\{\tilde C\,:\,{\sim}\varphi(\tilde C)\}$.
 \end{fact}
 
 \begin{proof}
@@ -496,10 +509,10 @@ It is not difficult to see that (2) holds if and only if ${\EuScript D}$ is clos
 \def\ceq#1#2#3{\parbox[t]{22ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
 There is more than one way to define stability in our context.
-In this section we present the strongest possible definition.
+In this section we present the strongest possible requirement.
 It is not the most interesting one, but it is very similar to the classical definition, so it is useful for comparison.
 
-Let $\varphi(x\,;z\,;X)$ be a formulas in ${\EuScript F}_{\sf X}({\EuScript U})$.
+Let $\varphi(x\,;z\,;X)$ be a formulas in ${\EuScript F}_{\sf K}({\EuScript U})$.
 The variables of sort ${\sf H}$ are partitioned in two tuples $x\,;z$ which may be infinite.
 The following is the classical definition of stability which we dub \textit{finitary\/} for the reason explained below.
 
@@ -527,11 +540,12 @@ But this may not be true if only have ${\EuScript F}$-saturation.
 Therefore we dedicate a separate section to the non finitary version of stability.
 
 The following definitions are classical, i.e.\@ they rely on the full language ${\EuScript L}$.
-Their ${\EuScript F}$-homologue we will be introduced later.
 
 \begin{definition}\label{def_globaltype}\strut
   A \emph{global $\varphi(x\,;z\,;C)$-type\/} is a maximally (finitely) consistent set of formulas of the form $\varphi(x\,;b\,;C)$ or $\neg\varphi(x\,;b\,;C)$ for some $b\in{\EuScript U}^{|z|}$.
 \end{definition}
+
+Global $\varphi(x\,;z\,;C)$-types should not be confused with $\varphi(x\,;z\,;X)$-types which are introduced in the following section.
 
 In this section the symbol ${\EuScript D}$ always denotes a subset of ${\EuScript U}^z$.
 
@@ -547,11 +561,11 @@ In fact, it is clear that ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;C)
   \noindent\kern-\labelwidth\kern-\labelsep
   \ceq{\hfill p(x)}{=}{\big\{\varphi(x\,;b\,;C)\ :\ b\in{\EuScript D}\big\}\ \ \cup\ \ \big\{\neg\varphi(x\,;b\,;C)\ :\ b\notin{\EuScript D}\big\}}
 
-is a global $\varphi(x\,;z\,;C)$-type\smallskip
+is a global $\varphi(x\,;z\,;C)$-type.\smallskip
 
-The following theorem says that if $\varphi(x\,;z\,;C)$ is finitarily stable then global $\varphi(x\,;z\,;C)$-types are definable.
+The following theorem is often rephrased by saying that, when $\varphi(x\,;z\,;C)$ is finitarily stable, then all global $\varphi(x\,;z\,;C)$-types are definable.
 The proof of the classical case applies verbatim because no saturation is required.
-We state it only for comparison with its non finitary counterpart, see Theorem~\ref{thm_epsilon_stability_definability}.
+We state it here only for comparison with its non-finitary counterpart, see Theorem~\ref{thm_epsilon_stability_definability}.
 
 \begin{theorem}
   Let $\varphi(x\,;z\,;C)$ be finitarily stable.
@@ -571,15 +585,17 @@ We state it only for comparison with its non finitary counterpart, see Theorem~\
 \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
 \def\ceq#1#2#3{\parbox[t]{22ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
-In this section  ${\EuScript D}$ is always a subset of ${\EuScript U}^z\times K(S)$ or, more generally, a subset of  ${\EuScript U}^z\times K(S^{n_1})\times\dots\times K(S^{n_k})$.
+In this section  ${\EuScript D}$ is always a subset of ${\EuScript U}^z\times K(S)^n$, where $n$ has to be inferred from the context (tipically, $n=|X|$).
 We write ${\sim}{\EuScript D}$ for the set obtained by applying the definition in Section~\ref{K(S)} to all fibers of ${\EuScript D}$.
 We say that ${\EuScript D}$ is involutive/closed if all its fibers are such.
 
-The letters $\varepsilon$ and $\delta$ always denote a compact neighborhood of the diagonal of $S^2$.
+The letters $\varepsilon$ and $\delta$ always denote definable compact symmetric neighborhood of the diagonal of $S^2$.
 By $\varepsilon+\delta$ we denote the composition $\varepsilon\circ\varepsilon$, where the two sets are viewed as relations.
 
-If $C$ is a compact subsets of $S$, we write $C^\varepsilon$ for the set whose elements are $\varepsilon$-close to elements of $C$.
-This definition extends naturally to when $C=C_1,\dots,C_k$ where each $C_i$ is a compact subset of $S^{n_i}$.
+If $C$ is a subsets of $S$, we write $C^\varepsilon$ for the set whose elements are $\varepsilon$-close to elements of $C$.
+We write $C^{\epsilon\circ}$ for the set of elements that are $\varepsilon\!^\circ$-close to some  element of $C$, where $\varepsilon\!^\circ$ is the interior of $\varepsilon$.
+Then $C^{\epsilon\circ}$ is open.
+This definition extends naturally to when $C=C_1,\dots,C_k$.
 
 \begin{definition}\strut
   We say that $\varphi(x\,;z\,;X)$ is \emph{stable\/} if there is no sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for some $C$, some $\tilde C\cap C=\varnothing$, and for every $i<n$\smallskip
@@ -588,27 +604,55 @@ This definition extends naturally to when $C=C_1,\dots,C_k$ where each $C_i$ is 
 
 \end{definition}
 
+It is convenient to work with the following weaker notion of stability. Note that $\varepsilon$-stable implies $\varepsilon'$-stable for every $\varepsilon\subseteq\varepsilon'$.
+
 
 \begin{definition_theorem}\label{defthm_epsilon_stable}\strut
   We say that $\varphi(x\,;z\,;X)$ is \emph{$\varepsilon$-stable\/} if the following equivalent conditions hold\smallskip
   
   \begin{itemize}
-    \item [1.]  there is no sequence $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<\omega\rangle$ such that for every $i<n$\smallskip
+    \item [1.]  there is no sequence $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<\omega\rangle$ such that for every $i<n<\omega$\smallskip
   
     \ceq{\hfill \varphi(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}\quad and\quad $C_i^\varepsilon\cap\tilde C_i=\varnothing$.\smallskip
 
-    \item [2.]  there is a maximal $m$ such that some sequence $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<m\rangle$ is such that for every $i<n$
+    \item [2.]  there is a maximal $m$ such that some sequence $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<m\rangle$ is such that for every $i<n<m$
 
-    \ceq{\hfill \varphi(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}\quad and\quad $C_i^\varepsilon\cap\tilde C_i=\varnothing$.\smallskip    
+    \ceq{\hfill \varphi(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}\quad and\quad $C_i^\varepsilon\cap\tilde C_i=\varnothing$.\smallskip
   \end{itemize}
 \end{definition_theorem}
 
+
 \begin{proof}
+\def\medrel#1{\parbox{5ex}{\hfil $#1$}}
+\def\ceq#1#2#3{\parbox[t]{29ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+%
   2$\Rightarrow$1. Any counter example to (1) immediately provides a counterexample to (2).
 
   
   \noindent\llap{\textcolor{red}{\Large\warning}\kern1.5ex}\ignorespaces
-  1$\Rightarrow$2. ???
+  1$\Rightarrow$2.
+  Negate (2). 
+  For a given $m$ let $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<m\rangle$ be a witness of (2).
+  Note that we can find an open neighborhood of the diagonal $\delta_m^\circ\supseteq\varepsilon$ such that for every $i<n<m$
+
+  \ceq{\hfill \varphi(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}\quad and\quad $C_i^{\delta_m^\circ}\cap\tilde C_i=\varnothing$.\smallskip
+
+  Without loss of generality we can assume that $\delta_{m+1}^\circ\subseteq\delta_m^\circ$.
+
+  We use ${\EuScript F}_{\sf K}$-saturation in structures with two standard sorts $S$ and $K(S)$.
+  Consider the following type that has free variables $\langle x_i\,;z_i\,;X_i\,;\tilde X_i\ :\ i<\omega\rangle$, where $X_i$ and $\tilde X_i$ are tuples variables of sort ${\sf K}$
+
+    \ceq{\hfill p\big(x_i\,;z_i\,;X_i\,;\tilde X_i\ :\
+   i<\omega\big)}{=}{\Big\{\phantom{\sim}\varphi(x_n\,;z_i\;;X_i\,)\ \ :\ \ i<n<\omega\Big\}\quad\cup}
+    
+    \ceq{}{~}{\Big\{{\sim}\varphi(a_i\,;b_n\,;\tilde X_n)\ \ :\ \ i<n<\omega\Big\}\quad\cup}
+
+    \ceq{}{~}{\Big\{X_i^{\delta_m^\circ}\cap\tilde X_i=\varnothing\ \ :\ \ i<m<\omega\Big\}.}
+   
+   We leave to the reader to verify that the latter set translates into a set of ${\EuScript F}_{\sf K}$-formulas (because it requires that $\langle X_i,\tilde X_i\rangle$ belongs to some compact subsets of $K(S)^2$).
+
+   Let $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<\omega\rangle$ be a realization of the above type.
+   Clearly, this witnesses the negation of (1).
 \end{proof}
 
 \begin{theorem}\label{thm_epsilon_stable}
@@ -625,15 +669,17 @@ This definition extends naturally to when $C=C_1,\dots,C_k$ where each $C_i$ is 
 
   \noindent\llap{\textcolor{red}{\Large\warning}\kern1.5ex}\ignorespaces
   1$\Rightarrow$2. 
-  Negate (2). 
-  Let $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<\omega\rangle$ be a counter example to (1) in Definition~\ref{defthm_epsilon_stable}. 
-  By the compactness of $K(S)$ in the Vietoris topology, there are $C$ and $\tilde C$ such that for infinitely many $i<\omega$ we have
+  Negate (2).
+  Pick $\varepsilon$ and $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<\omega\rangle$ that are a counter example to (1) in Definition~\ref{defthm_epsilon_stable}.
+  By the compactness of $K(S)$ in the Vietoris topology, for every $\delta$ there are $C$ and $\tilde C$ such that for infinitely many $i<\omega$ we have
   
-  \hfil $C_i\subseteq C^{\delta}$,\quad $C\subseteq C_i^{\delta}$\hfil and \hfil$\tilde C_i\subseteq\tilde C^{\delta}$,\quad $\tilde C\subseteq\tilde C_i^{\delta}$,\hfil
+  \hfil $C_i\subseteq C^{\delta}$,\quad $C\subseteq C_i^{\delta}$\hfil and \hfil$\tilde C_i\subseteq\tilde C^{\delta}$,\quad $\tilde C\subseteq\tilde C_i^{\delta}$.\hfil
 
-  where $\delta$ is a neighborhood of the diagonal such that $2\delta\subseteq\varepsilon$
-  Then, by the definition of $\varepsilon$-stability, we have that for infinitely many $i<\omega$ the following holds
-  Then $C^{\delta}\cap\tilde C^{\delta}\varnothing$, therefore a suitable subsequence of $\langle a_i\,;b_i\ :\ i<\omega\rangle$ yields a counter example to stability. 
+  Pick $\delta$ such that $2\delta\subseteq\varepsilon$.
+  Refine the sequence so that the inclusions above hold for every $i$.
+  Then, as $C_i^{2\delta}\cap\tilde C_i=\varnothing$, for every $i<\omega$.
+  Then $C^\delta\cap\tilde C_i=\varnothing$, for every $i<\omega$.
+  And finally $C\cap\tilde C=\varnothing$.
 \end{proof}
 
 \begin{definition}\strut
@@ -703,7 +749,7 @@ We remark that, by Facts~\ref{fact_~definibile} and~\ref{fact_~inclusione}, when
 
 The proof of the main theorem of this section requires the following notion of approximation.
 The definition is inspired by the classical notion of approximation from below in~\cite{Z15} where it is used as rephrasing of the notion of honest definability in~\cite{CS}.
-Here this notion plays a purely technical role, but we submit it is potentially interesing in itself.
+Here this notion plays a purely technical role, but we submit it as potentially interesing in itself.
 
 \begin{definition}\label{def_e_approx_X}\strut
   We say that ${\EuScript D}$ is \emph{approximable\/} by $\varphi(x\,;z\,;X)$ \emph{from $\varepsilon$-below\/} if for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that for every $C$\smallskip
@@ -752,11 +798,12 @@ Here this notion plays a purely technical role, but we submit it is potentially 
 \end{theorem}
 
 \begin{proof}
-  The theorem is an immediate consequence of the following three lemmas.
+  Note that we can take $\varepsilon$ ssufficiently small that $\varphi(x\,;z\,;X)$ is $\varepsilon$-stable. 
+  Then theorem is an immediate consequence of the following three lemmas.
 \end{proof}
 
 \begin{lemma}
-  Let $\varphi(x\,;z\,;X)$ be stable.
+  Let $\varphi(x\,;z\,;X)$ be $\varepsilon$-stable.
   Assume that ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$ from $\varepsilon$-below.
   Then there is are some $\langle a_i\ :\ i<k\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
 
@@ -785,13 +832,13 @@ Then, by Fact~\ref{fact_otto}, for some $\tilde C_n\cap C_n^\varepsilon=\varnoth
 Suppose for a contradiction that the construction never ends.
 Then, as (5) guarantees that $\langle b_i,C_i\rangle\in{\EuScript D}$ for every $i$, from (4) we otain $\varphi(a_n\,;b_i\,;C_n)$ for every $i<n$.
 From (5) we also obtain ${\sim}\varphi(a_i\,;b_n\,;\tilde C_n)$, for every $i\le n$.
-This contradicts stability.
+This contradicts $\varepsilon$-stability.
 \end{proof}
 
 \begin{lemma}
   Let $\varphi(x\,;z\,;X)$ be $\varepsilon$-stable.
   Assume that ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$.
-  Let $m$ be maximal so that a sequence as in (3) of Theorem~\ref{thm_epsilon_stable} exists.
+  Let $m$ be maximal so that a sequence as in (3) of Definition/Theorem~\ref{defthm_epsilon_stable} exists.
   Let $\bar x=\langle x_i\ :\ i\le m\rangle$ where the $x_i$ are copies of $x$.
   Then the formula\smallskip
 
@@ -835,7 +882,7 @@ This contradicts stability.
   Let $\langle \bar a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<k\rangle$ be a sequence witnessing instability as in (3) of Theorem~\ref{thm_epsilon_stable}.
   Then for every pair $i<n$ there is some $j<m$ such that ${\sim}\varphi(a_{j,n}\,;b_i\,;\tilde C_i)$.
   By the choice of $k$ there is a $j<m$ such that ${\sim}\varphi(a_{j,n}\,;b_i\,;\tilde C_i)$ obtains for $>m$ many $i$.
-  Then we can extract a subsequence that contradicts the maximality of $m$.
+  Therefore we can extract a subsequence that contradicts the maximality of $m$.
 \end{proof}
 
 \subfile{delta}
