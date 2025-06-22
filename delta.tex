@@ -1,7 +1,7 @@
 % !TEX root = clcl3.tex
 \section{An approximate version of approximability}
 
-We present a second version of Theorem~\ref{thm_epsilon_stability_definability} which uses a weaker variant of $\delta$-approx\-imability.
+We present a second version of Theorem~\ref{thm_epsilon_stability_definability} which uses a weaker variant of approximability.
 This notion applies naturally to definable functions which we discuss in the next section.
 
 \begin{definition}\label{def_approx_X}\strut
@@ -35,8 +35,6 @@ It is evident that, when ${\EuScript D}$ is closed as defined in Section~\ref{K(
   The theorem is an immediate consequence of the following two lemmas and Lemma~\ref{lem_sigma_stable} in the previous section.
 \end{proof}
 
-
-
 \begin{lemma}
   Let $\varphi(x\,;z\,;X)$ be stable.
   Assume that ${\EuScript D}$ is $\delta$-approximable by $\varphi(x\,;z\,;X)$ from $\varepsilon$-below.
@@ -51,23 +49,23 @@ It is evident that, when ${\EuScript D}$ is closed as defined in Section~\ref{K(
   We define recursively the required parameters $a_i$ together with some auxiliary parameters $b_i$.
   The element $a_n$ is choosen such that
 
-\ceq{3.\hfill \langle b,C^{\delta+\varepsilon}\rangle\in{\EuScript D}}{\Leftarrow}{\varphi(a_n\,;b\,;C)}\hfill for every $b\in{\EuScript U}^z$ and every $C$
+  \ceq{3.\hfill \langle b,C^{\delta+\varepsilon}\rangle\in{\EuScript D}}{\Leftarrow}{\varphi(a_n\,;b\,;C)}\hfill for every $b\in{\EuScript U}^z$ and every $C$
 
-and
+  and
 
-\ceq{4.\hfill \langle b_i,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a_n\,;b_i\,;C^\delta)}\hfill for every $i<n$ and every $C$.\smallskip
+  \ceq{4.\hfill \langle b_i,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a_n\,;b_i\,;C^\delta)}\hfill for every $i<n$ and every $C$.\smallskip
 
-This is possible because ${\EuScript D}$ is $\delta$-approximated from $\varepsilon$-below.
-Note that (3) immediately guarantees (2).
-Now, assume (1) fails for $k=n$, and choose $b_n$ and $C_n$ witnessing this.
-Then, by Fact~\ref{fact_otto}, for some $\tilde C_n\cap C_n^{\delta+\varepsilon}=\varnothing$
+  This is possible because ${\EuScript D}$ is $\delta$-approximated from $\varepsilon$-below.
+  Note that (3) immediately guarantees (2).
+  Now, assume (1) fails for $k=n$, and choose $b_n$ and $C_n$ witnessing this.
+  Then, by Fact~\ref{fact_otto}, for some $\tilde C_n\cap C_n^{\delta+\varepsilon}=\varnothing$
 
-\ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}}{\&}{\bigwedge_{i<n}\ {\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}%\smallskip
+  \ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}}{\&}{\bigwedge_{i<n}\ {\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}%\smallskip
 
-Suppose for a contradiction that the construction never ends.
-Then, as (5) guarantees that $\langle b_i,C_i\rangle\in{\EuScript D}$ for every $i$, from (4) we otain $\varphi(a_n\,;b_i\,;C_n^\delta)$ for every $i<n$.
-From (5) we also obtain ${\sim}\varphi(a_i\,;b_n\,;\tilde C_n)$, for every $i\le n$.
-This contradicts $\varepsilon$-stability.
+  Suppose for a contradiction that the construction never ends.
+  Then, as (5) guarantees that $\langle b_i,C_i\rangle\in{\EuScript D}$ for every $i$, from (4) we otain $\varphi(a_n\,;b_i\,;C_n^\delta)$ for every $i<n$.
+  From (5) we also obtain ${\sim}\varphi(a_i\,;b_n\,;\tilde C_n)$, for every $i\le n$.
+  This contradicts $\varepsilon$-stability.
 \end{proof}
 
 \begin{lemma}

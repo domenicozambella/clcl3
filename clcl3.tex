@@ -170,7 +170,16 @@
 \raggedbottom
 
 \begin{abstract}
+  Continuous logic~\cite{BBHU} has replaced Henson-Iovino logic~\cite{HI}, as a
+  formalism to study model theory of continuous structures.
+  One of the first articles on the subject, \cite{BU}, defines local stability within continuous logic - as noted by Henson, this escaped~\cite{HI}'s approach.
+  Subsequently, this has been used as a major argument to advocate in favor of \cite{BBHU}'s over~\cite{HI}'s approach.\smallskip
 
+  \noindent Recently, a classical approach to continuous structures has been proposed
+  in \cite{clcl} and~\cite{Z} that properly extend the class of structures that
+  falls under the scope of~\cite{BBHU} or~\cite{HI}. 
+  These articles introduced the notion of structures with a standard sort.
+  We discuss local stability in this context and to prove that every set externally definable by a stable formula is definable.
 \end{abstract}
 
 \def\medrel#1{\parbox{6ex}{\hfil $#1$}}
@@ -223,9 +232,9 @@ We write \emph{$x\in C$\/} for the predicate associated to a compact set $C$, an
  Let $x$ and $\xi$ be variables of sort ${\sf H}$, respectively ${\sf S}$.
  A standard structure $M$ is \emph{${\EuScript F}$-saturated\/} if it realizes every type $p(x\,;\xi)\subseteq{\EuScript F}(A)$, for any $A\subseteq M$ of cardinality smaller than $|M|$, that is finitely consistent in $M$.
  The following theorem is proved in \cite{clcl} for signatures that do not contain symbols sort ${\sf H}^n\times{\sf S}^m\to {\sf S}$ with $n{\cdot}m>0$.
- A similar framework has been independently introduced in \cite{PC}~--~only without quantifiers of sort {\sf H} and with an approximate notion of satisfaction.
+ A similar framework has been independently introduced in \cite{CP}~--~only without quantifiers of sort {\sf H} and with an approximate notion of satisfaction.
  The corresponding compactness theorem is proved there with a similar method.
- The setting in \cite{PC} is a generalization of that used by Henson and Iovino for Banach spaces~\cite{HI}.
+ The setting in \cite{CP} is a generalization of that used by Henson and Iovino for Banach spaces~\cite{HI}.
  By the elimination of quantifiers of sort {\sf S}, proved in \cite{clcl}*{Proposition 3.6}, the two approaches are equivalent~--~up to approximations.
 
  In \cite{Z} it is observed that, under the assumption of equicontinuity, the proof in \cite{clcl} extends to the case $n{\cdot}m> 0$.
@@ -256,6 +265,7 @@ All formulas in ${\EuScript F}$ are instances of formulas in ${\EuScript F}_{\sf
 
 \noindent\llap{\textcolor{red}{\Large\warning}\kern1.5ex}\ignorespaces
 In Appendix A we prove that Theorem~\ref{thm_compactness} extends to these expanded standard structures.
+We use this in the proof of Theorem~\ref{defthm_epsilon_stable}.
 
 \begin{definition}
    Let $\varphi\in{\EuScript F}_{\sf K}$ be a formula~--~possibly with some (hidden) free variables.
@@ -529,9 +539,9 @@ The reader may wish to compare it with Definition/Theorem~\ref{defthm_epsilon_st
   The following are equivalent
   \begin{itemize}
     \item [1.]  $\varphi(x\,;z\,;C)$ is finitarily stable
-    \item [2.]  for some $m$ there is no sequence $\langle a_i\,;b_i\,;C_i\ :\ i<m\rangle$ such that for every $i<n$\smallskip
+    \item [2.]  for some $m$ there is no sequence $\langle a_i\,;b_i\,;\tilde C_i\ :\ i<m\rangle$ such that for every $i<n$\smallskip
 
-    \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;C_n)}\quad and\quad $C\cap C_n=\varnothing$.
+    \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}\quad and\quad $C\cap\tilde C_i=\varnothing$.
   \end{itemize}
 \end{fact}
 
@@ -593,8 +603,8 @@ The letters $\varepsilon$ and $\delta$ always denote definable compact symmetric
 By $\varepsilon+\delta$ we denote the composition $\varepsilon\circ\varepsilon$, where the two sets are viewed as relations.
 
 If $C$ is a subsets of $S$, we write $C^\varepsilon$ for the set whose elements are $\varepsilon$-close to elements of $C$.
-We write $C^{\epsilon\circ}$ for the set of elements that are $\varepsilon\!^\circ$-close to some  element of $C$, where $\varepsilon\!^\circ$ is the interior of $\varepsilon$.
-Then $C^{\epsilon\circ}$ is open.
+We write $C^{\varepsilon\circ}$ for the set of elements that are $\varepsilon\!^\circ$-close to some  element of $C$, where $\varepsilon\!^\circ$ is the interior of $\varepsilon$.
+Then $C^{\varepsilon\circ}$ is open.
 This definition extends naturally to when $C=C_1,\dots,C_k$.
 
 \begin{definition}\strut
@@ -605,7 +615,6 @@ This definition extends naturally to when $C=C_1,\dots,C_k$.
 \end{definition}
 
 It is convenient to work with the following weaker notion of stability. Note that $\varepsilon$-stable implies $\varepsilon'$-stable for every $\varepsilon\subseteq\varepsilon'$.
-
 
 \begin{definition_theorem}\label{defthm_epsilon_stable}\strut
   We say that $\varphi(x\,;z\,;X)$ is \emph{$\varepsilon$-stable\/} if the following equivalent conditions hold\smallskip
@@ -798,8 +807,7 @@ Here this notion plays a purely technical role, but we submit it as potentially 
 \end{theorem}
 
 \begin{proof}
-  Note that we can take $\varepsilon$ ssufficiently small that $\varphi(x\,;z\,;X)$ is $\varepsilon$-stable. 
-  Then theorem is an immediate consequence of the following three lemmas.
+  The theorem is an immediate consequence of the following three lemmas.
 \end{proof}
 
 \begin{lemma}
@@ -905,7 +913,7 @@ This contradicts $\varepsilon$-stability.
 %%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%
-\newcommand\biburl[1]{\url{#1}}
+
 \BibSpec{arXiv}{%
   +{}{\PrintAuthors}{author}
   +{,}{ \textit}{title}
@@ -927,6 +935,14 @@ This contradicts $\varepsilon$-stability.
 \begin{bibdiv}
 \begin{biblist}[]\normalsize
 
+  \bib{A}{article}{
+    label={A},
+    author={Auslander, Josef},
+    title={Topological Dynamics},
+    journal={Scholarpedia},
+    date={2008},
+    note={\href{http://scholarpedia.org/article/Topological_dynamics}{scholarpedia.3449}},
+}\smallskip
 \bib{clcl}{article}{
     label={AAVV},
     author = {Agostini, Claudio},
@@ -935,21 +951,12 @@ This contradicts $\varepsilon$-stability.
     author = {Motto Ros, Luca},
     author = {Zambella, Domenico},
     title = {Continuous logic in a classical setting},
-    note={t.a. in Bull. Iranian Math. Soc.},
+    note={t.a. in Bull. Iranian Math. Soc. \href{https://arxiv.org/abs/2402.01245}{arXiv:2402.01245}},
     date = {2025},
   }\smallskip
 
-  \bib{A}{webpage}{
-    label={A},
-    author={Auslander, Josef},
-    title={Topological Dynamics},
-    portal={Scholarpedia},
-    doi={doi:10.4249/ scholarpedia.3449},
-    date={2008},
-}\smallskip
-
-  \bib{BY}{article}{
-    label={BY},
+  \bib{B}{article}{
+    label={B},
     author={Ben Yaacov, Ita\"{\i}},
     title={Model theoretic stability and definability of types, after A.
     Grothendieck},
@@ -960,22 +967,9 @@ This contradicts $\varepsilon$-stability.
     pages={491--496},
     % issn={1079-8986},
     % review={\MR{3294276}},
-    % doi={10.1017/bsl.2014.33},
+    % doi={10.1017/bsl.2014.33},1306.5852
+    note={\href{https://arxiv.org/abs/1306.5852}{arXiv:1306.5852}},
  }\smallskip
-\bib{BU}{article}{
-   label={BU},
-   author={Ben Yaacov, Ita\"i},
-   author={Usvyatsov, Alexander},
-   title={Continuous first order logic and local stability},
-   journal={Trans. Amer. Math. Soc.},
-   volume={362},
-   date={2010},
-  %  number={10},
-   pages={5213--5259},
-  %  issn={0002-9947},
-  %  review={\MR{2657678}},
-  %  doi={10.1090/S0002-9947-10-04837-3},
-}\smallskip
 \bib{BBHU}{article}{
   label={BBHU},
   author={Ben Yaacov, Ita\"{\i}},
@@ -997,11 +991,41 @@ This contradicts $\varepsilon$-stability.
   %  review={\MR{2436146}},
   %  doi={10.1017/CBO9780511735219.011},
 }\smallskip
+\bib{BU}{article}{
+   label={BU},
+   author={Ben Yaacov, Ita\"i},
+   author={Usvyatsov, Alexander},
+   title={Continuous first order logic and local stability},
+   journal={Trans. Amer. Math. Soc.},
+   volume={362},
+   date={2010},
+  %  number={10},
+   pages={5213--5259},
+  %  issn={0002-9947},
+  %  review={\MR{2657678}},
+  %  doi={10.1090/S0002-9947-10-04837-3},
+  note={\href{https://arxiv.org/abs/0801.4303}{arXiv:0801.4303}},
+}\smallskip
+\bib{CP}{article}{
+    label={CP},
+   author={Chavarria, Nicolas},
+   author={Pillay, Anand},
+   title={On pp-elimination and stability in a continuous setting},
+   journal={Ann. Pure Appl. Logic},
+   volume={174},
+   date={2023},
+  %  number={5},
+   pages={1--14},
+  %  issn={0168-0072},
+  %  review={\MR{4554677}},
+  %  doi={10.1016/j.apal.2023.103258},
+  note={\href{https://arxiv.org/abs/2107.14329}{arXiv:2107.14329}},
+}\smallskip
 \bib{CS}{article}{
+  label={CS},
   author={Chernikov, Artem},
   author={Simon, Pierre},
   title={Externally definable sets and dependent pairs},
-  status={\href{https://arxiv.org/abs/1007.4468}{arXiv:1007.4468}},
   journal={Israel J. Math.},
   volume={194},
   date={2013},
@@ -1010,6 +1034,7 @@ This contradicts $\varepsilon$-stability.
   %note={},
   %issn={0021-2172},
   %doi={10.1007/s11856-012-0061-9},
+  note={\href{https://arxiv.org/abs/1007.4468}{arXiv:1007.4468}},
 }\smallskip
 % \bib{G}{article}{
 %   label={G},
@@ -1092,6 +1117,7 @@ This contradicts $\varepsilon$-stability.
     publisher={Chapman and Hall/CRC},
   % https://doi.org/10.1201/9780429263637
     date = {2023},
+    note={\href{https://arxiv.org/abs/2005.11851}{arXiv:2005.11851}},
 }
 }\smallskip
 % \bib{Z}{arXiv}{
@@ -1113,20 +1139,6 @@ This contradicts $\varepsilon$-stability.
 %   %  review={\MR{3372605}},
 %   %  doi={10.1007/s00153-015-0424-0},
 % }
-\bib{PC}{article}{
-    label={PC},
-   author={Chavarria, Nicolas},
-   author={Pillay, Anand},
-   title={On pp-elimination and stability in a continuous setting},
-   journal={Ann. Pure Appl. Logic},
-   volume={174},
-   date={2023},
-  %  number={5},
-   pages={1--14},
-  %  issn={0168-0072},
-  %  review={\MR{4554677}},
-  %  doi={10.1016/j.apal.2023.103258},
-}\smallskip
 \bib{Z15}{article}{
    label={Z15},
    author={Zambella, Domenico},
@@ -1136,18 +1148,17 @@ This contradicts $\varepsilon$-stability.
    date={2015},
   %  number={5-6},
    pages={511--520},
+   note={\href{https://arxiv.org/abs/1412.5781}{arXiv:1412.5781}},
   %  issn={0933-5846},
   %  review={\MR{3372605}},
   %  doi={10.1007/s00153-015-0424-0},
 }\smallskip
-\bib{Z}{arXiv}{
+\bib{Z}{article}{
   label={Z},
   author = {Zambella, Domenico},
   title = {Standard analysis},
-  eprint={2311.15711},
-  doi = {10.48550/arXiv.2311.15711},
-  url = {https://arxiv.org/abs/},
-  publisher = {arXiv},
+  % doi = {10.48550/arXiv.2311.15711},
+  note={\href{https://arxiv.org/abs/2311.15711}{arXiv:2311.15711}},
   date = {2023},
 }\smallskip
 
