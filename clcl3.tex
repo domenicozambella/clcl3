@@ -177,7 +177,7 @@
 
   \noindent Recently, a classical approach to continuous structures has been proposed  in \cite{clcl} and~\cite{Z} that properly extend the class of structures that
   falls under the scope of~\cite{HI} or~\cite{BBHU}.
-  These articles introduced the notion of structures with a standard sort. As a test case, we discuss local stability in this context and prove that every set externally definable by a stable formula is definable in some approximate sense.
+  These articles introduced the notion of structures with a standard sort. As a test case, we discuss local stability in this context and prove that every set externally definable by a stable formula is definable in some appropiate sense.
 \end{abstract}
 
 \def\medrel#1{\parbox{6ex}{\hfil $#1$}}
@@ -189,10 +189,10 @@
 Let \emph{$S$\/} be some Hausdorff compact topological space.
 We associate to $S$ a first order structure in a language \emph{${\EuScript L}_{\sf S}$\/} that has a symbol for each compact subset $C\subseteq S$ and a function symbol for each continuous functions $f:S^n\to S$.
 According to the context, $C$ and $f$ denote either the symbols of ${\EuScript L}_{\sf S}$ or their interpretation in the structure $S$.
-
 Throughout these notes the letter $C$ always denotes a compact subset of $S$, or a tuple of such sets.
+
 Finally, note that we could allow in ${\EuScript L}_{\sf S}$ relation symbols for all compact subsets of $S^n$, for any $n$.
-But this would clutter the notation adding very little to the theory.
+But this would clutter the notation, therefore it is preferable to entrust to the reader the straightforward generalization.%adding very little to the theory.
 
 % Finally, note that we could allow in ${\EuScript L}_{\sf S}$ relation symbols for all compact subsets of $S^n$, for any $n$.
 % But this would clutter the notation adding very little to the theory.
@@ -217,16 +217,15 @@ We write \emph{$x\in C$\/} for the predicate associated to a compact set $C$, an
 \begin{definition}
   We call atomic formulas those of the form
   \begin{itemize}
-  \item[i.] atomic and negated atomic formulas of ${\EuScript L}_{\sf H}$ but not equalities and inequalities
-  \item[ii.] $\tau\in C$, where $\tau$ is a $k$-tuple terms of sort ${\sf H}^n\times {\sf S}^m\to {\sf S}$, and $C$ a compact.
+  \item[i.] atomic and negated atomic formulas of ${\EuScript L}_{\sf H}$
+  % \item[ii.] $\tau\in C$, where $\tau$ is a $k$-tuple terms of sort ${\sf H}^n\times {\sf S}^m\to {\sf S}$, and $C$ a compact.
+  \item[ii.] $\tau\in C$, where $\tau$ is a term of sort ${\sf H}^n\times {\sf S}^m\to {\sf S}$, and $C$ a compact.
   \end{itemize}
 \end{definition}
 
-% \begin{remark}
-%   A smaller fragment of ${\EuScript F}$ may be of interest in some specific contexts.
-%   This is obtained by excluding equalities and inequalities from (i) and requiring that $C$ in (ii) is a compact set.
-%   The discussion below applies to this smaller fragment as well.
-% \end{remark}
+We remark that smaller fragment of ${\EuScript F}$ may be of interest in some specific contexts.
+This is obtained by excluding equalities and inequalities from (i) and requiring that $C$ in (ii) is regular.
+The discussion below applies to this smaller fragment as well.
 
  Let $M\subseteq N$ be standard structures.
  We say that $M$ is an \emph{${\EuScript F}$-elementary\/} substructure of $N$ if the latter models all ${\EuScript F}(M)$-sentences that are true in $M$.
@@ -245,15 +244,27 @@ We write \emph{$x\in C$\/} for the predicate associated to a compact set $C$, an
   Every standard structure has a ${\EuScript F}$-saturated ${\EuScript F}$-elementary extension.
 \end{theorem}
 
-We introduce some new sorts ${\sf X}_k$ with the sole scope of conveniently describing classes of ${\EuScript F}$-formulas that only differ by the sets/predicates $C\subseteq S^k$ they contain.
-Let ${\EuScript F}_{\sf X}$ be defined as ${\EuScript F}$ but replacing (ii) with\smallskip
+% We introduce some new sorts ${\sf X}_k$ with the sole scope of conveniently describing classes of ${\EuScript F}$-formulas that only differ by the sets/predicates $C\subseteq S^k$ they contain.
+% Let ${\EuScript F}_{\sf X}$ be defined as ${\EuScript F}$ but supplementing (ii) with\smallskip
+
+% \begin{itemize}
+%   \item[iii.] $\tau(x\,;\xi)\in X$, where $X$ is a variable of sort ${\sf X}_k$.
+% \end{itemize}
+
+% Formulas in ${\EuScript F}_{\sf X}$ are denoted by $\varphi(x\,;\xi;X)$, where $X=X_1,\dots,X_n$ be a tuple of variables of sort ${\sf X}_{k_1},\dots,{\sf X}_{k_n}$.
+% If $C=C _1,\dots,C_n$ is a tuple of compact subsets of  $S^{k_1},\dots,S^{k_n}$, then $\varphi(x\,;\xi;C)$, is a formula in ${\EuScript F}$.
+% This we call an \emph{instance\/} of $\varphi(x\,;\xi;X)$.
+% All formulas in ${\EuScript F}$ are instances of formulas in ${\EuScript F}_{\sf X}$.
+
+We introduce a new sort ${\sf X}$ with the scope of conveniently describing classes of ${\EuScript F}$-for\-mulas that only differ by the sets/predicates $C\subseteq S$ they contain.
+Let ${\EuScript F}_{\sf X}$ be defined as ${\EuScript F}$ but replacing (ii) by\smallskip
 
 \begin{itemize}
-  \item[iii.] $\tau(x\,;\xi)\in X$, where $X$ is a variable of sort ${\sf X}_k$.
+  \item[iii.] $\tau(x\,;\xi)\in X$, where $X$ is a variable of sort ${\sf X}$.
 \end{itemize}
 
-Formulas in ${\EuScript F}_{\sf X}$ are denoted by $\varphi(x\,;\xi;X)$, where $X=X_1,\dots,X_n$ be a tuple of variables of sort ${\sf X}_{k_1},\dots,{\sf X}_{k_n}$.
-If $C=C _1,\dots,C_n$ is a tuple of compact subsets of  $S^{k_1},\dots,S^{k_n}$, then $\varphi(x\,;\xi;C)$, is a formula in ${\EuScript F}$.
+Formulas in ${\EuScript F}_{\sf X}$ are denoted by $\varphi(x\,;\xi;X)$, where $X=X_1,\dots,X_n$ be a tuple of variables of sort ${\sf X}$.
+If $C=C _1,\dots,C_n$ is a tuple of compact subsets, then $\varphi(x\,;\xi;C)$, is a formula in ${\EuScript F}$.
 This we call an \emph{instance\/} of $\varphi(x\,;\xi;X)$.
 All formulas in ${\EuScript F}$ are instances of formulas in ${\EuScript F}_{\sf X}$.
 
@@ -269,15 +280,20 @@ All formulas in ${\EuScript F}$ are instances of formulas in ${\EuScript F}_{\sf
   Clearly, when $X$ does not occur in $\varphi$, we have ${\sim}\varphi\leftrightarrow\neg\varphi$.
 \end{definition}
 
+It is sometimes conveniet to work with infinite conjunctions of formulas.
+In the following $\sigma(x\,;z\,;X)$ denotes an ${\EuScript F}_{\sf X}$-type.
+We write ${\sim}\sigma(x\,;z\,;X)$ for the infinite disjunction of the formulas ${\sim}\varphi(x\,;z\,;X)$ for $\varphi(x\,;z\,;X)\in\sigma$.
 
+% Types are assumed to have cardinality $<\kappa$.
 The following fact is immediate and will be used without further mention.
+% $\varphi(x\,;z\,;X)$ denotes an ${\EuScript F}_{\sf X}$-formula and 
 
 \begin{fact}\label{fact_trivial}
-  The following hold for every $C\subseteq C'$ and $\tilde C\cap C=\varnothing$, every standard structure $M$, and every ${\EuScript F}_{\sf X}(M)$-formula $\varphi(X)$
+  The following hold for every $C\subseteq C'$ and $\tilde C\cap C=\varnothing$, every standard structure $M$, and every ${\EuScript F}_{\sf X}(M)$-type $\sigma(X)$\smallskip
 
-  \ceq{\hfill M}{\models}{\phantom{\sim}\varphi(C)\ \rightarrow\phantom{\neg}\varphi(C')}\smallskip
+  \ceq{\hfill M}{\models}{\phantom{\sim}\sigma(C)\ \rightarrow\phantom{\neg}\sigma(C')}\smallskip
 
-  \ceq{\hfill M}{\models}{{\sim}\varphi(\tilde C)\ \rightarrow\neg\varphi(C).}\smallskip
+  \ceq{\hfill M}{\models}{{\sim}\sigma(\tilde C)\ \rightarrow\neg\sigma(C).}\smallskip
   
 \end{fact}
 
@@ -303,18 +319,14 @@ The following fact is immediate and will be used without further mention.
 The above fact has the following useful consequence.
 
 \begin{fact}\label{fact_otto}
-  Let $\varphi(X)$ be a ${\EuScript F}_{\sf X}(M)$-formula, where $M$ is a standard structure.
-  Then the following are equivalent for every tuple $C$\smallskip
+  The following are equivalent for every standard structure $M$ , every ${\EuScript F}_{\sf X}(M)$-type $\sigma(X)$, and every $C$\smallskip
   
-    \ceq{\hfill M}{\models}{\phantom{\neg}\varphi(C)\ \leftarrow\ \bigwedge\Big\{\ \varphi(C')\ :\ C'\textrm{ neighborhood of }C\Big\} }\smallskip
+    \ceq{\hfill M}{\models}{\phantom{\neg}\sigma(C)\ \leftarrow\ \bigwedge\Big\{\ \sigma(C')\ :\ C'\textrm{ neighborhood of }C\Big\} }\smallskip
 
-    \ceq{\hfill M}{\models}{\neg\varphi(C)\ \rightarrow\ \bigvee\Big\{{\sim}\varphi(\tilde C)\ :\ \tilde C\cap C=\varnothing\Big\}.}\smallskip
+    \ceq{\hfill M}{\models}{\neg\sigma(C)\ \rightarrow\ \bigvee\Big\{{\sim}\sigma(\tilde C)\ :\ \tilde C\cap C=\varnothing\Big\}.}\smallskip
 
   (The converse implications are trivial~--~therefore not displayed.)
 \end{fact}
-
-
-Note that the fact also holds if we restrict the above $C'$ and $\tilde C$ to range over the subsets of some neighboorhood of $C$.
 
 \begin{fact}\label{fact_saturation}
   The equivalent conditions in Fact~\ref{fact_otto} hold in all ${\EuScript F}$-saturated structures.
@@ -324,7 +336,8 @@ Note that the fact also holds if we restrict the above $C'$ and $\tilde C$ to ra
   \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
   \def\ceq#1#2#3{\parbox[t]{39ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
-  Prove the first of the two implications by induction on the syntax of $\varphi(X)$.
+  It suffices to prove the claim for formulas.
+  We prove the first of the two implications by induction on the syntax of $\varphi(X)$.
   The existential quantifier of sort {\sf H} is the only connective that requires attention.
   Assume inductively that
 
@@ -342,11 +355,11 @@ We say that $M$ is \emph{${\EuScript F}$-maximal\/} if it models all ${\EuScript
 By Fact~\ref{fact_saturation} and the following, ${\EuScript F}$-saturated standard structures are ${\EuScript F}$-maximal.
 
 \begin{fact}\label{fact_maximal}
-  Let $\varphi(X)$ be an ${\EuScript F}_{\sf X}(M)$-formula, where $M$ is a standard model.
+  Let $M$ be a standard structure.
   Then the following are equivalent
   \begin{itemize}
     \item [1.] $M$ is ${\EuScript F}$-maximal
-    \item [2.] the equivalent conditions in Fact~\ref{fact_otto} hold for every $\varphi(C)$. 
+    \item [2.] the conditions in Fact~\ref{fact_otto} hold for every type (equivalently, for every formula). 
   \end{itemize}
 \end{fact}
 
@@ -366,7 +379,14 @@ By Fact~\ref{fact_saturation} and the following, ${\EuScript F}$-saturated stand
   As $\tilde C\cap C=\varnothing$, this contradicts Fact~\ref{fact_saturation}.
 \end{proof}
 
-In what follows we fix a large saturated standard structure which we denote by \emph{${\EuScript U}$.}
+\begin{notation}
+We denote by $\kappa$ the cardinality of ${\EuScript U}$.
+We assume that $\kappa$ is a Ramsey cardinal.
+However, the willing reader may check that we can do without large cardinals by carefull application of the Erd\H{o}s-Rado Theorem, see \cite{TZ}*{Appendix C.3}.\smallskip
+
+In the following $\sigma(x\,;z\,;X)$ always denotes an ${\EuScript F}_{\sf X}({\EuScript U})$-type of small (i.e.\@ $<\kappa$) cardinality.
+\end{notation}
+
 
 % Unless otherwise specified, we work inside ${\EuScript U}$.
 % Let $\varphi(X)\in{\EuScript F}_{\sf X}({\EuScript U})$ be given. Define
@@ -414,21 +434,20 @@ We define
 The following fact motivates the definition.
 
 \begin{fact}\label{fact_~definibile}
-  For any ${\EuScript F}_{\sf X}(M)$-formula $\varphi(X)$.
-  Let ${\EuScript D}=\{C\,:\,\varphi(C)\}$.
-  Then ${\sim}{\EuScript D}=\{\tilde C\,:\,{\sim}\varphi(\tilde C)\}$.
+  Let ${\EuScript D}=\{C\,:\,\sigma(C)\}$.
+  Then ${\sim}{\EuScript D}=\{\tilde C\,:\,{\sim}\sigma(\tilde C)\}$.
 \end{fact}
 
 \begin{proof}
   We need to prove that 
 
-  \ceq{\hfill{\sim}\varphi(\tilde C)}{\Leftrightarrow}{\text{for every } C,\ \text{ if } C\cap\tilde C=\varnothing\ \text{ then } \neg\varphi(C)}
+  \ceq{\hfill{\sim}\sigma(\tilde C)}{\Leftrightarrow}{\text{for every } C,\ \text{ if } C\cap\tilde C=\varnothing\ \text{ then } \neg\sigma(C)}
 
   Implication $\Rightarrow$ follows immediately from Fact~\ref{fact_trivial}.
   To prove  $\Leftarrow$ assume the r.h.s.
-  Then $\neg\varphi(S\smallsetminus O)$ holds for every open set  $O\supseteq\tilde C$.
-  From the second implication in Fact~\ref{fact_otto} we obtain ${\sim}\varphi(\tilde C')$ for some $\tilde C\subseteq\tilde C'\subseteq O$.
-  As $O$ is arbitrary, we obtain $\varphi(\tilde C)$ from the second implication in  Fact~\ref{fact_otto}.
+  Then $\neg\sigma(S\smallsetminus O)$ holds for every open set  $O\supseteq\tilde C$.
+  From the second implication in Fact~\ref{fact_otto} we obtain ${\sim}\sigma(\tilde C')$ for some $\tilde C\subseteq\tilde C'\subseteq O$.
+  As $O$ is arbitrary, we obtain $\sigma(\tilde C)$ from the second implication in  Fact~\ref{fact_otto}.
 \end{proof}
 
 We prove a couple of straightforward inclusions.
@@ -510,10 +529,10 @@ It is not difficult to see that (2) holds if and only if ${\EuScript D}$ is clos
 
 There is more than one way to define stability in our context.
 In this section we present the strongest possible requirement.
-It is not the most interesting one, but it is very similar to the classical definition, so it is useful for comparison~--~though it is not required in the sequel.
+It is not the most interesting one, but it is very similar to the classical definition~--~though not required in the sequel, it is useful for comparison.
 
-Let $\varphi(x\,;z\,;X)$ be a formulas in ${\EuScript F}_{\sf X}({\EuScript U})$.
-The variables of sort ${\sf H}$ are partitioned in two tuples $x\,;z$ which may be infinite.
+% Let $\varphi(x\,;z\,;X)$ be a formulas in ${\EuScript F}_{\sf X}({\EuScript U})$.
+% The variables of sort ${\sf H}$ are partitioned in two tuples $x\,;z$ which may be infinite.
 The following is the classical definition of stability which we dub \textit{finitary\/} for the reason explained below.
 
 \begin{definition}\label{def_finitary_stable}\strut
@@ -523,7 +542,7 @@ We say that $\varphi(x\,;z\,;C)$ is  \emph{finitarily stable\/} if for some $m<\
 \end{definition}
 
 From Fact~\ref{fact_otto} we easily obtain the following equivalent definition which only mentions formulas in ${\EuScript F}$.
-The reader may wish to compare it with Definition~\ref{def_stable_inf}.
+The reader may wish to compare it with Definition~\ref{def_stable}.
 
 \begin{fact}\label{fact_stability_semicalssic}
   The following are equivalent
@@ -565,7 +584,7 @@ is a global $\varphi(x\,;z\,;C)$-type.\smallskip
 
 The following theorem is often rephrased by saying that, when $\varphi(x\,;z\,;C)$ is finitarily stable, then all global $\varphi(x\,;z\,;C)$-types are definable.
 The proof of the classical case applies verbatim because no saturation is required.
-We state it here only for comparison with its non-finitary counterpart, see Theorem~\ref{thm_epsilon_stability_definability}.
+We state it here only for comparison with its non-finitary counterpart, see Theorem~\ref{thm_stability_definability}.
 
 \begin{theorem}
   Let $\varphi(x\,;z\,;C)$ be finitarily stable.
@@ -589,83 +608,31 @@ In this section  ${\EuScript D}$ is always a subset of ${\EuScript U}^z\times K(
 We write ${\sim}{\EuScript D}$ for the set obtained by applying the definition in Section~\ref{K(S)} to all fibers of ${\EuScript D}$.
 We say that ${\EuScript D}$ is involutive/closed if all its fibers are such.
 
-The letters $\varepsilon$ and $\delta$ always denote definable compact symmetric neighborhood of the diagonal of $S^2$.
-By $\varepsilon+\delta$ we denote the composition $\varepsilon\circ\delta$, where the two sets are viewed as relations.
-
-If $C$ is a subsets of $S$, we write $C^\varepsilon$ for the set whose elements are $\varepsilon$-close to elements of $C$.
+% The letters $\varepsilon$ and $\delta$ always denote definable compact symmetric neighborhood of the diagonal of $S^2$.
+% By $\varepsilon+\delta$ we denote the composition $\varepsilon\circ\delta$, where the two sets are viewed as relations.
+% If $C$ is a subsets of $S$, we write $C^\varepsilon$ for the set whose elements are $\varepsilon$-close to elements of $C$.
 % We write $C^{\varepsilon\circ}$ for the set of elements that are $\varepsilon\!^\circ$-close to some  element of $C$, where $\varepsilon\!^\circ$ is the interior of $\varepsilon$.
-% Then $C^{\varepsilon\circ}$ is open.
-This definition extends naturally to when $C=C_1,\dots,C_k$.
+% % Then $C^{\varepsilon\circ}$ is open.
+% This definition extends naturally to when $C=C_1,\dots,C_k$.
 
-\begin{definition}\label{def_stable_inf}\strut
-  We say that $\varphi(x\,;z\,;X)$ is \emph{stable\/} if there is no sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for some $C$, some $\tilde C\cap C=\varnothing$, and for every $i<n$\smallskip
+\begin{definition}\label{def_stable}\strut
+  We say that $\sigma(x\,;z\,;X)$ is \emph{stable\/} if there is no sequence $\langle a_i\,;b_i\ :\ i<\kappa\rangle$ such that for some $C$, some $\tilde C\cap C=\varnothing$\smallskip
 
-  \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C)}\smallskip
+  \ceq{\hfill \sigma(a_n\,;b_i\,;C)}{\wedge}{{\sim}\sigma(a_i\,;b_n\,;\tilde C)}\hfill for every $i<n<\kappa$\smallskip
 
+  or for every $n<i<\kappa$.
 \end{definition}
 
-We need to generalize the definition to countable ${\EuScript F}_{\sf X}$-types that is sets of countably many ${\EuScript F}_{\sf X}$-formulas.
+Note that when $\sigma(x\,;z\,;X)$ is a formula we can replace $\kappa$ with $\omega$ in the above definition.
+For types we can equivalently require that there is no sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for some $C$, some $\tilde C\cap C=\varnothing$, some formula $\varphi(x\,;z\,;X)\in\sigma$\smallskip
 
+  \ceq{\hfill \sigma(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C)}\hfill for every $i<n<\kappa$\smallskip
 
-\begin{definition}\label{def_stable_inf}\strut
-  We say that  $\sigma(x\,;z\,;X)$, a countable ${\EuScript F}_{\sf X}$-type, is \emph{stable\/} if there is no sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for some $C$, some $\tilde C\cap C=\varnothing$, some $\varphi(x\,;z\,;X)\in\sigma$, and for every $i<n$\smallskip
+or for every $n<i<\kappa$.
 
-  \ceq{\hfill \sigma(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C)}\smallskip
+Note also that, by the pegeonhole principle, we can strengthen the requirement in Definition~\ref{def_stable} by requiring that there is no $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<\omega\rangle$ such that $\tilde C_i\cap C_i=\varnothing$ and\smallskip
 
-\end{definition}
-
-Write ${\sim}\sigma(x\,;z\,;X)$ for the infinite disjunction of formulas ${\sim}\varphi(x\,;z\,;X)$ for  $\varphi(x\,;z\,;X)\in\sigma$.
-Then $\sigma(x\,;z\,;X)$ is stable if there is no sequence $\langle a_i\,;b_i\ :\ i<\kappa\rangle$ such that for some $C$, some $\tilde C\cap C=\varnothing$, and for every $i<n$\smallskip
-
-\ceq{\hfill \sigma(a_n\,;b_i\,;C)}{\wedge}{{\sim}\sigma(a_i\,;b_n\,;\tilde C)}\smallskip
-
-
-\begin{definition}\label{def_stable_inf}\strut
-  We say that $\varphi(x\,;z\,;X)$ is \emph{stable\/} if there is no sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for some $C$, some $\tilde C\cap C=\varnothing$, and for every $i<n$\smallskip
-
-  \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C)}\smallskip
-
-\end{definition}
-
-It is convenient to work with the following weaker notion of stability.
-Note that $\varepsilon$-stable implies $\varepsilon'$-stable for every $\varepsilon\subseteq\varepsilon'$.
-
-\begin{definition}\label{def_epsilon_stable}\strut
-  We say that $\varphi(x\,;z\,;X)$ is \emph{$\varepsilon$-stable\/} if the following equivalent conditions hold\smallskip
-  
-  \begin{itemize}
-    \item [1.]  there is no sequence $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<\kappa\rangle$ such that for every $i<n<\kappa$\smallskip
-  
-    \ceq{\hfill \varphi(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}\quad and\quad $C_i^\varepsilon\cap\tilde C_i=\varnothing$.\smallskip
-  \end{itemize}
-\end{definition}
-
-\begin{theorem}\label{thm_epsilon_stable}
-  The following are equivalent\smallskip
-  \begin{itemize}
-    \item [1.] $\varphi(x\,;z\,;X)$ is stable.
-    \item [2.] $\varphi(x\,;z\,;X)$ is $\varepsilon$-stable for every $\varepsilon$.
-  \end{itemize}
-\end{theorem}
-
-\begin{proof}
-  2$\Rightarrow$1. Given any counter example to (1), let $\varepsilon$ be such that $C^\varepsilon\cap\tilde C=\varnothing$.
-  To obtain a counter example to (2), set $C_i=C$ and $\tilde C_i=\tilde C$ for every $i<\kappa$. 
-
-  \noindent\llap{\textcolor{red}{\Large\warning}\kern1.5ex}\ignorespaces
-  1$\Rightarrow$2. 
-  Negate (2).
-  Pick $\varepsilon$ and $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<\kappa\rangle$ that are a counter example to (1) in Definition~\ref{def_epsilon_stable}.
-  By the compactness of $K(S)$ in the Vietoris topology, for every $\delta$ there are $C$ and $\tilde C$ such that for infinitely many $i<\kappa$ we have
-  
-  \hfil $C_i\subseteq C^{\delta}$,\quad $C\subseteq C_i^{\delta}$\hfil and \hfil$\tilde C_i\subseteq\tilde C^{\delta}$,\quad $\tilde C\subseteq\tilde C_i^{\delta}$.\hfil
-
-  Pick $\delta$ such that $2\delta\subseteq\varepsilon$.
-  Refine the sequence so that the inclusions above hold for every $i$.
-  Then, as $C_i^{2\delta}\cap\tilde C_i=\varnothing$, for every $i<\kappa$.
-  Then $C^\delta\cap\tilde C_i=\varnothing$, for every $i<\kappa$.
-  And finally $C\cap\tilde C=\varnothing$.
-\end{proof}
+  \ceq{\hfill \sigma(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}\hfill for every $i<n<\kappa$.\smallskip
 
 \begin{definition}\strut 
   Let $\varphi(x\,;z\,;X)$ be a ${\EuScript F}_{\sf X}$-formula.
@@ -675,7 +642,7 @@ Note that $\varepsilon$-stable implies $\varepsilon'$-stable for every $\varepsi
 It is convenient to have a different characterization of global types, therefore  the following definition.
 
 \begin{definition}\label{def_approx_X}\strut
-  We say that ${\EuScript D}$ is \emph{approximable\/} by $\varphi(x\,;z\,;X)$ if for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that\smallskip
+  We say that ${\EuScript D}$ is \emph{approximable\/} by $\sigma(x\,;z\,;X)$ if for every small set $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that\smallskip
 
   \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a\,;b\,;C)}\quad and\smallskip
 
@@ -690,7 +657,7 @@ We remark that, by Facts~\ref{fact_~definibile} and~\ref{fact_~inclusione}, when
 % Analogously, 
 (2) can be rephrased as
 
-\ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$.
+\ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\sigma(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$.
 
 \begin{fact}
   Let $\varphi(x\,;z\,;X)$ be a ${\EuScript F}_{\sf X}$-formula.
@@ -720,7 +687,7 @@ We remark that, by Facts~\ref{fact_~definibile} and~\ref{fact_~inclusione}, when
 
   2$\Rightarrow$1.
   Let $B$ be a given finite subset of ${\EuScript U}^z$.
-  The finite consistency of $p(x)$ provides some $a$ such that for every finite $B$ an $a$ such that
+  The consistency of $p(x)\restriction B$ provides some $a$ such that for every finite $B$ an $a$ such that
 
   \ceq{\hfill \langle b,C\rangle\in {\EuScript D}}{\Rightarrow}{\phantom{\sim}\varphi(a\,;b\,;C)}\quad and 
   
@@ -739,11 +706,11 @@ The definition is inspired by the classical notion of approximation from below i
 Here this notion plays a purely technical role, but we submit it as potentially interesing in itself.
 
 \begin{definition}\label{def_e_approx_X}\strut
-  We say that ${\EuScript D}$ is \emph{approximable\/} by $\varphi(x\,;z\,;X)$ \emph{from $\varepsilon$-below\/} if for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that for every $C$\smallskip
+  We say that ${\EuScript D}$ is \emph{approximable\/} by $\sigma(x\,;z\,;X)$ \emph{from below\/} if for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that for every $C$\smallskip
 
-  \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and\smallskip
+  \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\sigma(a\,;b\,;C)}\hfill for every $b\in B$ and\smallskip
 
-  \ceq{2.\hfill\langle b,C^\varepsilon\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C)}\hfill for every $b\in{\EuScript U}^z$.\smallskip
+  \ceq{2.\hfill\langle b,C\rangle\in {\EuScript D}}{\Leftarrow}{\sigma(a\,;b\,;C)}\hfill for every $b\in{\EuScript U}^z$.\smallskip
 \end{definition}
 
 
@@ -774,14 +741,14 @@ Here this notion plays a purely technical role, but we submit it as potentially 
 
 
 
-\begin{theorem}\label{thm_epsilon_stability_definability}
-  Let $\varphi(x\,;z\,;X)$ be stable.
-  Assume that ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$.
-  Then for every $\varepsilon$ there are some $\langle a_{i,j}\ :\ i,j<\omega\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
+\begin{theorem}\label{thm_stability_definability}
+  Let $\sigma(x\,;z\,;X)$ be stable.
+  Assume that ${\EuScript D}$ is approximable by $\sigma(x\,;z\,;X)$.
+  Then there are some $\langle a_{i,j}\ :\ i<\lambda,j<\mu\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
 
-  \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i<\omega}\ \bigwedge_{j<\omega}\ \varphi(a_{i,j}\,;b\,;C^\varepsilon)}\medskip
+  \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftrightarrow}{\bigvee_{i<\lambda}\ \bigwedge_{j<\mu}\ \sigma(a_{i,j}\,;b\,;C)}\medskip
 
-  \ceq{\hfill \langle b,C^\varepsilon\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i<\omega}\ \bigwedge_{j<\omega}\ \varphi(a_{i,j}\,;b\,;C)}
+  % \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i<\lambda}\ \bigwedge_{j<\mu}\ \sigma(a_{i,j}\,;b\,;C)}
 \end{theorem}
 
 \begin{proof}
@@ -789,89 +756,87 @@ Here this notion plays a purely technical role, but we submit it as potentially 
 \end{proof}
 
 \begin{lemma}
-  Let $\varphi(x\,;z\,;X)$ be $\varepsilon$-stable.
-  Assume that ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$ from $\varepsilon$-below.
-  Then there is are some $\langle a_i\ :\ i<k\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
+  Let $\sigma(x\,;z\,;X)$ be stable.
+  Assume that ${\EuScript D}$ is approximable by $\sigma(x\,;z\,;X)$ from below.
+  Then there is are some $\langle a_i\ :\ i<\lambda\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
 
-  \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i<k}\ \varphi(a_i\,;b\,;C^\varepsilon)}\medskip 
+  \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i<\lambda}\ \sigma(a_i\,;b\,;C)}\medskip 
 
-  \ceq{2.\hfill \langle b,C^\varepsilon\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i<k}\ \varphi(a_i\,;b\,;C)} 
+  \ceq{2.\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i<\lambda}\ \sigma(a_i\,;b\,;C)} 
 \end{lemma}
 
 \begin{proof}
   We define recursively the required parameters $a_i$ together with some auxiliary parameters $b_i$.
   The element $a_n$ is choosen such that
 
-\ceq{3.\hfill \langle b,C^\varepsilon\rangle\in{\EuScript D}}{\Leftarrow}{\varphi(a_n\,;b\,;C)}\hfill for every $b\in{\EuScript U}^z$ and every $C$
+\ceq{3.\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\sigma(a_n\,;b\,;C)}\hfill for every $b\in{\EuScript U}^z$ and every $C$
 
 and
 
-\ceq{4.\hfill \langle b_i,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a_n\,;b_i\,;C)}\hfill for every $i<n$ and every $C$.\smallskip
+\ceq{4.\hfill \langle b_i,C\rangle\in{\EuScript D}}{\Rightarrow}{\sigma(a_n\,;b_i\,;C)}\hfill for every $i<n$ and every $C$.\smallskip
 
-This is possible because ${\EuScript D}$ is $\varepsilon$-approximated from below.
+This is possible because ${\EuScript D}$ is approximated from below.
 Note that (3) immediately guarantees (2).
-Now, assume (1) fails for $k=n$, and choose $b_n$ and $C_n$ witnessing this.
-Then, by Fact~\ref{fact_otto}, for some $\tilde C_n\cap C_n^\varepsilon=\varnothing$
+Now, assume (1) fails for $\lambda=n$, and choose $b_n$ and $C_n$ witnessing this.
+Then, by Fact~\ref{fact_otto}, for some $\tilde C_n\cap C_n=\varnothing$
 
-\ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}}{\&}{\bigwedge_{i<n}\ {\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}%\smallskip
+\ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}}{\&}{\bigwedge_{i<n}\ {\sim}\sigma(a_i\,;b_n\,;\tilde C_n)}%\smallskip
 
 Suppose for a contradiction that the construction never ends.
-Then, as (5) guarantees that $\langle b_i,C_i\rangle\in{\EuScript D}$ for every $i$, from (4) we otain $\varphi(a_n\,;b_i\,;C_n)$ for every $i<n$.
-From (5) we also obtain ${\sim}\varphi(a_i\,;b_n\,;\tilde C_n)$, for every $i\le n$.
-This contradicts $\varepsilon$-stability.
+Then, as (5) guarantees that $\langle b_i,C_i\rangle\in{\EuScript D}$ for every $i$, from (4) we otain $\sigma(a_n\,;b_i\,;C_n)$ for every $i<n$.
+From (5) we also obtain ${\sim}\sigma(a_i\,;b_n\,;\tilde C_n)$, for every $i\le n$.
+This contradicts stability (as remarked after Definition~\ref{def_stable}).
 \end{proof}
 
 \begin{lemma}
-  Let $\varphi(x\,;z\,;X)$ be $\varepsilon$-stable.
-  Assume that ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$.
-  Let $m$ be maximal so that a sequence as in (3) of Definition/Theorem~\ref{defthm_epsilon_stable} exists.
-  Let $\bar x=\langle x_i\ :\ i\le m\rangle$ where the $x_i$ are copies of $x$.
-  Then the formula\smallskip
+  Let $\sigma(x\,;z\,;X)$ be stable. Then for some $\mu<\kappa$ the type\medskip 
 
-  \ceq{\hfill\sigma(\bar x\,;z\,;X)}{=}{\bigwedge_{i\le m}\ \varphi(x_i\,;z\,;X)}\smallskip
-
-  approximate ${\EuScript D}$ from $\varepsilon$-below.
+  \ceq{\hfill\pi(\bar x\,;z\,;X)}{=}{\bigwedge_{i<\mu}\ \sigma(x_i\,;z\,;X),}\smallskip
+  
+  where the $x_i$ are copies of $x$ and $\bar x=\langle x_i\ :\ i<\mu\rangle$,
+  approximates ${\EuScript D}$ from below.
 \end{lemma}
 
 \begin{proof}
-  Negate the claim and let $B$ witness that $\sigma(\bar x)$ does not approximate ${\EuScript D}$ from $\varepsilon$-below.
-  Suppose that $a_0,\dots,a_{n-1}$ and $b_0,\dots,b_{n-1}$ have been defined.
-  Choose $a_n$ such that for every $b\in B\cup\{b_0,\dots,b_{n-1}\}$ and every $C$
+  Negate the claim and let $B$ witness that $\pi(\bar x)$ does not approximate ${\EuScript D}$ from below.
+  Suppose that $\langle a_i:i<n\rangle$ and $\langle b_i:i<n\rangle$ have been defined.
+  Choose $a_n$ such that for every $b\in B\cup\{b_i:i<n\}$ and every $C$
 
   \ceq{1.\hfill\langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a_n\,;b\,;C)}\quad and
 
-  \ceq{2.\hfill\langle b,C^\varepsilon\rangle\in{\EuScript D}}{\Leftarrow}{\varphi(a_n\,;b\,;C^\varepsilon)}
+  \ceq{2.\hfill\langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\varphi(a_n\,;b\,;C)}
   
-  Note that the latter implication is equivalent to: for every $C$ there is some  $\tilde C\cap C^\varepsilon=\varnothing$ such that 
+  Note that the latter implication is equivalent to: for every $C$ there is some  $\tilde C\cap C=\varnothing$ such that 
   
-  \ceq{3.\hfill \langle b,C^\varepsilon\rangle\notin{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a_n\,;b\,;\tilde C)}.%\hfill  for every $b\in B\cup\{b_0,\dots,b_{n-1}\}$.
+  \ceq{3.\hfill \langle b,C\rangle\notin{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a_n\,;b\,;\tilde C)}.%\hfill  for every $b\in B\cup\{b_0,\dots,b_{n-1}\}$.
 
   Now, as the lemma is assumed to fail, we can choose $b_n$ and $C_n$ such that
 
-  \ceq{4.\hfill \langle b_n,C_n^\varepsilon\rangle\notin{\EuScript D}}{\&}{\bigwedge_{i=0}^n\ \varphi(a_i\,;b_n\,;C_n)}
+  \ceq{4.\hfill \langle b_n,C_n\rangle\notin{\EuScript D}}{\&}{\bigwedge_{i=0}^n\ \varphi(a_i\,;b_n\,;C_n)}
 
-  Note that (4) ensure that $\langle b_i,C_i^\varepsilon\rangle\notin{\EuScript D}$ for every $i$.
-  The there is some $\tilde C_i$ that witnesses (3) for $\langle b_i,C_i^\varepsilon\rangle\notin{\EuScript D}$.
-  We claim that the procedure has to stop after $\le m$ steps. 
+  Note that (4) ensure that $\langle b_i,C_i\rangle\notin{\EuScript D}$ for every $i$.
+  The there is some $\tilde C_i$ that witnesses (3) for $\langle b_i,C_i\rangle\notin{\EuScript D}$.
+  We claim that the procedure has to stop after $<\kappa$ steps.
   In fact, from (3) we obtain ${\sim}\varphi(a_n\,;b_i\,;\tilde C_i)$ for every $i<n$.
   On the other hand, by (4) we have that $\varphi(a_i\,;b_n\,;C_n)$ for every $i<n$.
-  Therefore, $\langle a_{m-i}\,;b_{m-i}\,;C_{m-i}\,;\tilde C_{m-i}\ :\ i\le m\rangle$ contradicts the maximality of $m$.
+  Therefore, $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<\kappa\rangle$ contradicts stability (as remarked after Definition~\ref{def_stable}).
 \end{proof}
 
 \begin{lemma}\label{lem_sigma_stable}
-  If $\varphi(x\,;z\,;C)$ is stable then $\sigma(\bar x\,;z\,;C)$ in the previous lemma is $\varepsilon$-stable.
+  If $\sigma(x\,;z\,;X)$ is stable then $\pi(\bar x\,;z\,;X)$ in the previous lemma is stable.
 \end{lemma}
 
 \begin{proof}
-  Let $\varepsilon$ be given and let $m$ be maximal such that a sequence as in (3) of Theorem~\ref{thm_epsilon_stable} exists.
-  Let $k$ be sufficiently large so that every $m$-coloring of a graph of size $k$ has a monocromatic subgraph of size $>m$.
-  Let $\langle \bar a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<k\rangle$ be a sequence witnessing instability as in (3) of Theorem~\ref{thm_epsilon_stable}.
-  Then for every pair $i<n$ there is some $j<m$ such that ${\sim}\varphi(a_{j,n}\,;b_i\,;\tilde C_i)$.
-  By the choice of $k$ there is a $j<m$ such that ${\sim}\varphi(a_{j,n}\,;b_i\,;\tilde C_i)$ obtains for $>m$ many $i$.
-  Therefore we can extract a subsequence that contradicts the maximality of $m$.
+  Suppose $\pi(\bar x\,;z\,;X)$ is unstable.
+  Let $\langle \bar a_i\,;b_i\ :\ i<k\rangle$ be a sequence witnessing instability.
+  Then for every pair $i<n$ there is some $j<\mu$ such that ${\sim}\sigma(a_{j,n}\,;b_i\,;\tilde C)$.
+  Interprete such $j$ as a color. 
+  As $\kappa$ is a Ramsey cardinal, every $\mu$-coloring of a complete graph of size $\kappa$ has a monocromatic subgraph of size $\kappa$.
+  That is, there is a $j<\mu$ such that ${\sim}\sigma(a_{j,n}\,;b_i\,;\tilde C)$ obtains for $\kappa$ many $i$.
+  Therefore we can extract a subsequence that contradicts the stability of $\sigma(x\,;z\,;X)$.
 \end{proof}
 
-\subfile{delta}
+% \subfile{delta}
 \subfile{functions}
 % \subfile{scribbles}
 
@@ -913,14 +878,14 @@ This contradicts $\varepsilon$-stability.
 \begin{bibdiv}
 \begin{biblist}[]\normalsize
 
-  \bib{A}{article}{
-    label={A},
-    author={Auslander, Josef},
-    title={Topological Dynamics},
-    journal={Scholarpedia},
-    date={2008},
-    note={\href{http://scholarpedia.org/article/Topological_dynamics}{scholarpedia.3449}},
-}\smallskip
+%   \bib{A}{article}{
+%     label={A},
+%     author={Auslander, Josef},
+%     title={Topological Dynamics},
+%     journal={Scholarpedia},
+%     date={2008},
+%     note={\href{http://scholarpedia.org/article/Topological_dynamics}{scholarpedia.3449}},
+% }\smallskip
 \bib{clcl}{article}{
     label={AAVV},
     author = {Agostini, Claudio},
@@ -1084,20 +1049,20 @@ This contradicts $\varepsilon$-stability.
    pages={1--110},
   %  review={\MR{1967834}},
 }\smallskip
-\bib{K}{article}{
-  label={K},
-  author = {Keisler, H. Jerome},
-  title = {Model Theory for Real-valued Structures},
-  book={
-    editor={Iovino, Jos\'e},
-    title ={{in} Beyond First Order Model Theory}, 
-    volume ={II},
-    publisher={Chapman and Hall/CRC},
-  % https://doi.org/10.1201/9780429263637
-    date = {2023},
-    note={\href{https://arxiv.org/abs/2005.11851}{arXiv:2005.11851}},
-}
-}\smallskip
+% \bib{K}{article}{
+%   label={K},
+%   author = {Keisler, H. Jerome},
+%   title = {Model Theory for Real-valued Structures},
+%   book={
+%     editor={Iovino, Jos\'e},
+%     title ={{in} Beyond First Order Model Theory}, 
+%     volume ={II},
+%     publisher={Chapman and Hall/CRC},
+%   % https://doi.org/10.1201/9780429263637
+%     date = {2023},
+%     note={\href{https://arxiv.org/abs/2005.11851}{arXiv:2005.11851}},
+% % }
+% }\smallskip
 % \bib{Z}{arXiv}{
 %   label = {Z},
 %   author = {Zambella, Domenco},
@@ -1117,6 +1082,21 @@ This contradicts $\varepsilon$-stability.
 %   %  review={\MR{3372605}},
 %   %  doi={10.1007/s00153-015-0424-0},
 % }
+\bib{TZ}{book}{
+  label={TZ},
+  author={Tent, Katrin},
+  author={Ziegler, Martin},
+  title={A course in model theory},
+  series={Lecture Notes in Logic},
+  volume={40},
+  publisher={Association for Symbolic Logic, La Jolla, CA; Cambridge
+  University Press, Cambridge},
+  date={2012},
+  pages={x+248},
+%  isbn={978-0-521-76324-0},
+%  review={\MR{2908005}},
+%  doi={10.1017/CBO9781139015417},
+}
 \bib{Z15}{article}{
    label={Z15},
    author={Zambella, Domenico},

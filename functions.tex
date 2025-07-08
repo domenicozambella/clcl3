@@ -1,16 +1,15 @@
 % !TEX root = clcl3.tex
 \section{Stable definable functions}
 \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
-\def\ceq#1#2#3{\parbox[t]{33ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+\def\ceq#1#2#3{\parbox[t]{28ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
-In this section we specialize the notions introduced in the previous sections to formulas $\varphi(x\,;z\,;X)$ of the form $\tau(x\,;z)\in X$ where $\tau(x\,;z)$ is an $S$-valued ${\EuScript F}$-definable function.
-Notice that ${\sim}\big(\tau(x\,;z)\in X\big)=\tau(x\,;z)\in X$.
+In this section we specialize the notions introduced in the previous sections to types $\sigma(x\,;z\,;X)$ of the form $\tau(x\,;z)\in X$ where $\tau(x\,;z)$ is an $S$-valued ${\EuScript F}$-type definable function.
 
-We say that $\tau(x\,;z)$ is \emph{stable\/} if so is $\tau(x\,;z)\in X$.
+We say that $\tau(x\,;z)$ is \emph{stable\/} if so is the type $\tau(x\,;z)\in X$.
 The following fact is a suggestive characterization of the stability of functions which has been first remarked in~\cite{B}.
 
 \begin{fact}
-  Let $\tau(x\,;z)$ be as above.
+  Let $\tau(x\,;z)$ be term in ${\EuScript L}$.
   Then the following are equivalent
   \begin{itemize}
     \item [1.] the formula $\tau(x\,;z)\in X$ is unstable
@@ -19,10 +18,10 @@ The following fact is a suggestive characterization of the stability of function
     \noindent\kern-\labelwidth\kern-\labelsep
     \ceq{\hfill \lim_{i\to\infty}\lim_{j\to\infty}\tau(a_i\,;b_j)}{\neq}{\lim_{j\to\infty}\lim_{i\to\infty}\tau(a_i\,;b_j)}
 
-    \item [3.] there is a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ and some $\varepsilon$ such that for every $i<j<\omega$\smallskip
+    % \item [3.] there is a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ and some $\varepsilon$ such that for every $i<j<\omega$\smallskip
     
-    \noindent\kern-\labelwidth\kern-\labelsep
-    \ceq{\hfill\big\langle\tau(a_i\,;b_j),\ \tau(a_j\,;b_i)\big\rangle}{\notin}{\varepsilon.}
+    % \noindent\kern-\labelwidth\kern-\labelsep
+    % \ceq{\hfill\big\langle\tau(a_i\,;b_j),\ \tau(a_j\,;b_i)\big\rangle}{\notin}{\varepsilon.}
 
     % \item [3.] for some sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ and some neighborhood $\varepsilon$ of the diagonal of $S^2$\smallskip
 
@@ -30,11 +29,16 @@ The following fact is a suggestive characterization of the stability of function
 
     % for every $i<j<\omega$.
   \end{itemize}
-\end{fact}
+\end{fact}  
+  Terms are a particular case of definable functions.
+  When $\tau(x\,;z)$ is a term we have that ${\sim}\big(\tau(x\,;z)\in X\big)=\tau(x\,;z)\in X$ which is used throughout in the proof below.
+  We suspect the fact holds in general though we have not been able to prove it.
 
+  \noindent\llap{\textcolor{red}{\Large\warning}\kern1.5ex}\ignorespaces%
+  \vspace{-\baselineskip-\parskip}
 \begin{proof}
-  2$\Leftrightarrow$3 Clear.
-
+  %2$\Leftrightarrow$3 Clear.
+  %
   1$\Rightarrow$2.
   Let $C\cap\tilde C=\varnothing$ and $\langle a_i\,;b_i\ :\ i<\omega\rangle$ be as given by (1).
   That is, $\tau(a_i\,;b_j)\in C$ and $\tau(a_j\,;b_i)\in \tilde C$ hold for every $i<j<\omega$.
@@ -51,22 +55,38 @@ We define
 {\def\medrel#1{\parbox{5ex}{\hfil $#1$}}
 \def\ceq#1#2#3{\parbox[t]{15ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
-\ceq{\hfill{\EuScript D\!}_f}{=}{\big\{\langle b,C\rangle\ \ :\ \ f(b)\in C,\ \ b\in{\EuScript U}^{z},\ \ C\in K(S)\big\}}}
+\ceq{\hfill{\EuScript D\!}_f}{=}{\big\{\langle b,C\rangle\ \ :\ \ f(b)\in C,\ \ b\in{\EuScript U}^{z},\ \ C\in K(S)\big\}}.}
 
 % Note that ${\sim}{\EuScript D\!}_f={\EuScript D\!}_f$ therefore, by Fact~\ref{fact_~definibile} and~\ref{fact_~inclusione} the implications in Definition~\ref{def_approx_X} are in fact equivalences.
+
+The following fact is immediate.
 
 \begin{fact}
   The following are equivalent
   \begin{itemize}
     \item [1] ${\EuScript D\!}_f$ is approximable by $\tau(x\,;z)\in X$
-    \item [2] for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that $\tau(a\,;b)=f(b)$ for every $b\in B$.\smallskip
+    \item [2] for every small $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that $\tau(a\,;b)=f(b)$ for every $b\in B$.\smallskip
   \end{itemize}
 \end{fact}
 
-\begin{fact}[ (conjecture)]
-  The following are equivalent
-  \begin{itemize}
-    \item [1] ${\EuScript D\!}_f$ is $\delta$-approximable by $\tau(x\,;z)\in X$
-    \item [2] for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that $\big\langle\tau(a\,;b)\,;f(b)\big\rangle\in\delta$ for every $b\in B$.
-  \end{itemize}
-\end{fact}
+We say that $f$ is approximable by $\tau(x\,;z)$ is the equivalent conditions above apply.
+The following is an easy consequence if Theorem~\ref{thm_stability_definability}
+
+\begin{theorem}
+  Let $S=[0,1]$.
+  Let $\tau(x\,;z)$ be stable.
+  Let $f$ be approximable by $\tau(x\,;z)$.
+  Then there are some $\langle a_{i,j}\ :\ i<\lambda,j<\mu\rangle$ such that \smallskip
+
+  \ceq{\hfill f(b)}{=}{\sup_{i<\lambda}\ \inf_{j<\mu}\ \tau(a_{i,j}\,;b)}\hfill for every $b\in{\EuScript U}^z$.
+  
+\end{theorem}
+
+
+% \begin{fact}[ (conjecture)]
+%   The following are equivalent
+%   \begin{itemize}
+%     \item [1] ${\EuScript D\!}_f$ is $\delta$-approximable by $\tau(x\,;z)\in X$
+%     \item [2] for every small $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that $\big\langle\tau(a\,;b)\,;f(b)\big\rangle\in\delta$ for every $b\in B$.
+%   \end{itemize}
+% \end{fact}

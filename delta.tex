@@ -1,7 +1,7 @@
 % !TEX root = clcl3.tex
 \section{An approximate version of approximability}
 
-We present a second version of Theorem~\ref{thm_epsilon_stability_definability} which uses a weaker variant of approximability.
+We present a second version of Theorem~\ref{thm_stability_definability} which uses a weaker variant of approximability.
 This notion applies naturally to definable functions which we discuss in the next section.
 
 \begin{definition}\label{def_approx_X}\strut
@@ -11,24 +11,24 @@ This notion applies naturally to definable functions which we discuss in the nex
 
   \ceq{2.\hfill\langle b,C^\delta\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$.\smallskip
 
-   We say  $\delta$-approximable from \emph{from $\varepsilon$-below\/} if we can also require that\smallskip
+   We say  $\delta$-approximable from \emph{from below\/} if we can also require that\smallskip
 
-  \ceq{2'.\hfill\langle b,C^{\delta+\varepsilon}\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C)}\hfill for every $b\in{\EuScript U}$ and every $C$.
+  \ceq{2'.\hfill\langle b,C^{\delta}\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C)}\hfill for every $b\in{\EuScript U}$ and every $C$.
 
 \end{definition}
 It is evident that, when ${\EuScript D}$ is closed as defined in Section~\ref{K(S)} then approximable is equivalent to $\delta$-approximable for every $\delta$.
 
- We restate a variant of Theorem~\ref{thm_epsilon_stability_definability}.
+ We restate a variant of Theorem~\ref{thm_stability_definability}.
  The proof follows closely that in the previous section.
 
 \begin{theorem}\label{thm_epsilon_delta_stability_definability}
-  Let $\varphi(x\,;z\,;X)$ be stable.
+  Let $\sigma(x\,;z\,;X)$ be stable.
   Assume that ${\EuScript D}$ is $\delta$-approximable by $\varphi(x\,;z\,;X)$.
-  Then for every $\varepsilon$ there are some $\langle a_{i,j}\ :\ i< k,\ j<m\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
+  Then there are some $\langle a_{i,j}\ :\ i< k,\ j<m\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
 
-  \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i< k}\ \bigwedge_{j<m}\ \varphi(a_{i,j}\,;b\,;C^{\delta+\varepsilon})}\medskip
+  \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i< k}\ \bigwedge_{j<m}\ \varphi(a_{i,j}\,;b\,;C^{\delta})}\medskip
 
-  \ceq{\hfill \langle b,C^{\delta+\varepsilon}\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i< k}\ \bigwedge_{j<m}\ \varphi(a_{i,j}\,;b\,;C)}
+  \ceq{\hfill \langle b,C^{\delta}\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i< k}\ \bigwedge_{j<m}\ \varphi(a_{i,j}\,;b\,;C)}
 \end{theorem}
 
 \begin{proof}
