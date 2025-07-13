@@ -649,6 +649,9 @@ It is convenient to have a different characterization of global types, therefore
   \ceq{2.\hfill\langle b,C\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$.\smallskip
 \end{definition}
 
+In the above definition we quantify over all $B$ of small cardinality.
+However, by compactness, the finite $B$ are sufficient (this is used without further mention in Section~\ref{almost}).
+
 We remark that, by Facts~\ref{fact_~definibile} and~\ref{fact_~inclusione}, when ${\EuScript D}$ is involutive 
 %(1) can be rephrased as
 %
@@ -705,7 +708,7 @@ The proof of the main theorem of this section requires the following notion of a
 The definition is inspired by the classical notion of approximation from below in~\cite{Z15} where it is used as rephrasing of the notion of honest definability in~\cite{CS}.
 Here this notion plays a purely technical role, but we submit it as potentially interesing in itself.
 
-\begin{definition}\label{def_e_approx_X}\strut
+\begin{definition}\label{def_approx_blw}\strut
   We say that ${\EuScript D}$ is \emph{approximable\/} by $\sigma(x\,;z\,;X)$ \emph{from below\/} if for every finite $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that for every $C$\smallskip
 
   \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\sigma(a\,;b\,;C)}\hfill for every $b\in B$ and\smallskip
@@ -839,6 +842,8 @@ This contradicts stability (as remarked after Definition~\ref{def_stable}).
 % \subfile{delta}
 \subfile{functions}
 % \subfile{scribbles}
+\subfile{almostfinitary}
+
 
 \vskip10ex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
