@@ -9,6 +9,7 @@
 \usepackage{datetime2} 
 \usepackage[colorlinks=true,linkcolor=blue,]{hyperref}
 \usepackage{tcolorbox}
+\usepackage{xstring}
 
 \usepackage{stackengine}
 \usepackage{scalerel}
@@ -155,6 +156,13 @@
 
 \expandafter\GetBranch\dotGitHEAD\relax
 
+\openin\myfilehandle=.git/refs/heads/\branch\relax
+
+\begingroup\endlinechar-1
+  \global\read\myfilehandle to \commit
+\endgroup
+\closein\myfilehandle
+
 \makeatother
 
 \linespread{1.1}
@@ -165,7 +173,7 @@
 \begin{document}
 \title{Local stability in structures with a standard sort}
 % \hfill\texttt{~}
-\hfill\texttt{Branch:\ \branch\ \DTMnow}
+\hfill\texttt{Branch \branch\ Commit \StrLeft{\commit}{7}\ \DTMnow}\par
 \maketitle
 \raggedbottom
 
@@ -175,16 +183,24 @@
   One of the first articles on the subject, \cite{BU}, defines local stability within continuous logic - as noted by Henson, this escaped~\cite{HI}'s approach.
   Subsequently, this has been used as a major argument to advocate in favor of \cite{BBHU}'s over~\cite{HI}'s approach.\smallskip
 
-  \noindent Recently, a classical approach to continuous structures has been proposed  in \cite{clcl} and~\cite{Z} that properly extend the class of structures that
+  \noindent
+  Recently, a classical approach to continuous structures has been proposed  in \cite{clcl} and~\cite{Z} that properly extend the class of structures that
   falls under the scope of~\cite{HI} or~\cite{BBHU}.
-  These articles introduced the notion of structures with a standard sort. As a test case, we discuss local stability in this context and prove that every set externally definable by a stable formula is definable in some appropiate sense.
+  These articles introduced the notion of structures with a standard sort.
+  We discuss local stability in this context.
+  We examine a few variants of the classical definition which are prima facie non equivalent.
+  For each we prove that sets externally definable by a stable formulas are definable in some appropiate sense.
 \end{abstract}
 
 \def\medrel#1{\parbox{6ex}{\hfil $#1$}}
 \def\ceq#1#2#3{\parbox[t]{13ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Structures with a standard sort}
-
 
 Let \emph{$S$\/} be some Hausdorff compact topological space.
 We associate to $S$ a first order structure in a language \emph{${\EuScript L}_{\sf S}$\/} that has a symbol for each compact subset $C\subseteq S$ and a function symbol for each continuous functions $f:S^n\to S$.
@@ -192,7 +208,7 @@ According to the context, $C$ and $f$ denote either the symbols of ${\EuScript L
 Throughout these notes the letter $C$ always denotes a compact subset of $S$, or a tuple of such sets.
 
 Finally, note that we could allow in ${\EuScript L}_{\sf S}$ relation symbols for all compact subsets of $S^n$, for any $n$.
-But this would clutter the notation, therefore it is preferable to entrust to the reader the straightforward generalization.%adding very little to the theory.
+But this would clutter the notation, therefore we prefer to entrust the straightforward generalization to the reader.%adding very little to the theory.
 
 % Finally, note that we could allow in ${\EuScript L}_{\sf S}$ relation symbols for all compact subsets of $S^n$, for any $n$.
 % But this would clutter the notation adding very little to the theory.
@@ -529,7 +545,7 @@ It is not difficult to see that (2) holds if and only if ${\EuScript D}$ is clos
 
 There is more than one way to define stability in our context.
 In this section we present the strongest possible requirement.
-It is not the most interesting one, but it is very similar to the classical definition~--~though not required in the sequel, it is useful for comparison.
+It is not the most interesting one, but it is very similar to the classical definition~--~the comparision may be useful though not stricly required for the sequel.
 
 % Let $\varphi(x\,;z\,;X)$ be a formulas in ${\EuScript F}_{\sf X}({\EuScript U})$.
 % The variables of sort ${\sf H}$ are partitioned in two tuples $x\,;z$ which may be infinite.
@@ -554,9 +570,9 @@ The reader may wish to compare it with Definition~\ref{def_stable}.
   \end{itemize}
 \end{fact}
 
-In a classical context, i.e.\@ reling on ${\EuScript L}$-saturation, we can replace $m$ in Definition~\ref{def_finitary_stable} by $\omega$.
+In a classical context, i.e.\@ relying on ${\EuScript L}$-saturation, one can replace $m$ in Definition~\ref{def_finitary_stable} by $\omega$.
 But this may not be true if only have ${\EuScript F}$-saturation.
-Therefore we dedicate a separate section to the non finitary version of stability.
+Therefore we dedicate a separate section to the non-finitary version of stability.
 
 The following definitions are classical, i.e.\@ they rely on the full language ${\EuScript L}$.
 
@@ -564,7 +580,7 @@ The following definitions are classical, i.e.\@ they rely on the full language $
   A \emph{global $\varphi(x\,;z\,;C)$-type\/} is a maximally (finitely) consistent set of formulas of the form $\varphi(x\,;b\,;C)$ or $\neg\varphi(x\,;b\,;C)$ for some $b\in{\EuScript U}^{|z|}$.
 \end{definition}
 
-Global $\varphi(x\,;z\,;C)$-types should not be confused with $\varphi(x\,;z\,;X)$-types which are introduced in the following section.
+Global $\varphi(x\,;z\,;C)$-types should not be confused with global $\varphi(x\,;z\,;X)$-types which are introduced in the following section.
 
 In this section the symbol ${\EuScript D}$ always denotes a subset of ${\EuScript U}^z$.
 
@@ -603,6 +619,12 @@ We state it here only for comparison with its non-finitary counterpart, see Theo
 \section{Stable formulas~--~the non-finitary case}
 \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
 \def\ceq#1#2#3{\parbox[t]{22ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+We discuss a version of stability that seems more appropriate in this context.
+There are two main differences with the previous section.
+First, here the attribute \textit{stable\/} refers to a whole class of formulas~--~all instances of some $\varphi(x\,;z\,;X)$.
+Second, the sequence witnessing the order property is required to be infinite.
+As we need to extend the definition of stability to types, sequences of length $\kappa$ (a large cardinal) are used.
 
 In this section  ${\EuScript D}$ is always a subset of ${\EuScript U}^z\times K(S)^n$, where $n$ has to be inferred from the context (tipically, $n=|X|$).
 We write ${\sim}{\EuScript D}$ for the set obtained by applying the definition in Section~\ref{K(S)} to all fibers of ${\EuScript D}$.

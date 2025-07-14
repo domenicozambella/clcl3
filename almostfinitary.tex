@@ -4,7 +4,7 @@
 \def\ceq#1#2#3{\parbox[t]{28ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
 In this section we present the notion of $\varepsilon$-stability and prove a version of Theorem~\ref{thm_stability_definability} which, albeit approximate,  only requires finite disjunction and congiunctions.
-Note that the requirement of $\varepsilon$-stability is stronger the smaller the $\varepsilon$ and it always implies stability~--~we do not know it coincides with it in the limit.
+Note that the requirement of $\varepsilon$-stability is stronger the smaller the $\varepsilon$ and it always implies stability as defined in Defintion~\ref{def_stable}~--~we do not know it coincides with it in the limit.
 
 \begin{definition}\label{def_epsilon_stable}\strut
   We say that $\varphi(x\,;z\,;X)$ is \emph{$\varepsilon$-stable\/} if there is a maximal $m$ such that some sequence $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<m\rangle$ is such that for every $i<n<m$
@@ -140,7 +140,7 @@ This contradicts $\varepsilon$-stability.
 \end{lemma}
 
 \begin{proof}
-  Let $m$ be maximal such that a sequence as in (3) of Theorem~\ref{thm_epsilon_stable} exists.
+  Let $m$ be maximal such that a sequence as in (3) of Definition~\ref{def_epsilon_stable} exists.
   Let $k$ be suffinciely large so that every $m$-coloring of a graph of size $k$ has a monocromatic subgraph of size $>m$.
   Let $\langle \bar a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<k\rangle$ be a sequence witnessing instability.
   Then for every pair $i<n$ there is some $j<m$ such that ${\sim}\varphi(a_{j,n}\,;b_i\,;\tilde C_i)$.
