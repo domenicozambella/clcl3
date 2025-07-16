@@ -173,7 +173,7 @@
 \begin{document}
 \title{Local stability in structures with a standard sort}
 % \hfill\texttt{~}
-\hfill\texttt{Branch \branch\ Commit \StrLeft{\commit}{7}\ \DTMnow}\par
+\hfill\texttt{Branch \branch\ Last\_commit \StrLeft{\commit}{7}\ \DTMnow}\par
 \maketitle
 \raggedbottom
 
@@ -314,12 +314,12 @@ The following fact is immediate and will be used without further mention.
 \end{fact}
 
 \begin{fact}
-  For every $C\subseteq C'$ there is a $\tilde C\subseteq C'$ disjoint from $C$ such that\smallskip
+  For every $C\subseteq C'$ there is a $\tilde C$ disjoint from $C$ such that\smallskip
   
   \ceq{\hfill M}{\models}{\varphi(C)\ \rightarrow\ \neg\,{\sim}\varphi(\tilde C)\ \rightarrow\ \varphi(C')}\smallskip
 
   for every $M$, and every ${\EuScript F}_{\sf X}(M)$-formula $\varphi(X)$.
-  Conversely, for every $\tilde C\cap C=\varnothing$ there is a $C'\supseteq C$ such that
+  Conversely, for every $\tilde C\cap C=\varnothing$ there is a $C'$ neighboorhood of $C$ such that
 
   \ceq{\hfill M}{\models}{\varphi(C)\ \rightarrow\ \varphi(C')\ \rightarrow\ \neg\,{\sim}\varphi(\tilde C)}.\smallskip
 
@@ -327,7 +327,7 @@ The following fact is immediate and will be used without further mention.
 \end{fact}
 
 \begin{proof}
-  When $\varphi(X)$ is the atomic formula $\tau\in X$, the first claim holds with $\tilde C=C'\smallsetminus O$ where $O$ is any open set $C\subseteq O\subseteq C'$.
+  When $\varphi(X)$ is the atomic formula $\tau\in X$, the first claim holds with $\tilde C=S\smallsetminus O$ where $O$ is any open set $C\subseteq O\subseteq C'$.
   The second claim holds with as $C'$ any neighborhood of $C$ disjoint from $\tilde C$.
   Induction on the syntax of $\varphi(X)$ proves the general case.
 \end{proof}
