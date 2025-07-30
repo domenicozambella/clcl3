@@ -3,7 +3,7 @@
 \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
 \def\ceq#1#2#3{\parbox[t]{28ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
-In this section we present the notion of $\varepsilon$-stability and prove a version of Theorem~\ref{thm_stability_definability} which, albeit approximate,  only requires finite disjunction and congiunctions.
+In this section we present the notion of $\varepsilon$-stability and prove a version of Theorem~\ref{thm_stability_definability} which, albeit approximate,  only requires finite disjunctions and conjunctions.
 Note that the requirement of $\varepsilon$-stability is stronger the smaller the $\varepsilon$ and it always implies stability as defined in Defintion~\ref{def_stable}~--~we do not know it coincides with it in the limit.
 
 \begin{definition}\label{def_epsilon_stable}\strut
@@ -68,7 +68,7 @@ The proof of the theorem requires the following version of Definition~\ref{def_a
 \begin{lemma}
   Let $\varphi(x\,;z\,;X)$ be $\varepsilon$-stable.
   Assume that ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$ from $\varepsilon$-below.
-  Then there is are some $\langle a_i\ :\ i<k\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
+  Then there is some $\langle a_i\ :\ i<k\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
 
   \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i<k}\ \varphi(a_i\,;b\,;C^\varepsilon)}\medskip 
 
@@ -141,7 +141,7 @@ This contradicts $\varepsilon$-stability.
 
 \begin{proof}
   Let $m$ be maximal such that a sequence as in (3) of Definition~\ref{def_epsilon_stable} exists.
-  Let $k$ be suffinciely large so that every $m$-coloring of a graph of size $k$ has a monocromatic subgraph of size $>m$.
+  Let $k$ be suffinciently large so that every $m$-coloring of a graph of size $k$ has a monocromatic subgraph of size $>m$.
   Let $\langle \bar a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<k\rangle$ be a sequence witnessing instability.
   Then for every pair $i<n$ there is some $j<m$ such that ${\sim}\varphi(a_{j,n}\,;b_i\,;\tilde C_i)$.
   By the choice of $k$ there is a $j<m$ such that ${\sim}\varphi(a_{j,n}\,;b_i\,;\tilde C_i)$ obtains for $>m$ many $i$.
