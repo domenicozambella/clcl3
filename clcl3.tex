@@ -661,10 +661,24 @@ We say that ${\EuScript D}$ is involutive if all its fibers are.
 
 \end{definition}
 
-Note that when $\sigma(x\,;z\,;X)$ is a formula we can replace $\kappa$ with $\omega$ in the above definition.
-For types we can equivalently require that there is no sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for some $C$, some $\tilde C\cap C=\varnothing$, some formula $\varphi(x\,;z\,;X)\in\sigma$\smallskip
+Note that when $\sigma(x\,;z\,;X)$ is a formula by compactness we can replace $\kappa$ with $\omega$ in the above definition.
+
+\begin{remark}\label{rem_stable}
+  In Definition~\ref{def_stable} we can equivalently require the following.
+  There is no sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for some $C$, some $\tilde C\cap C=\varnothing$, and some formula $\varphi(x\,;z\,;X)\in\sigma$\smallskip
 
   \ceq{\hfill \sigma(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C)}\hfill for every $i<n<\kappa$ or for every $n<i<\kappa$.\smallskip
+\end{remark}
+
+\begin{proof}
+  The conjunction in Definition~\ref{def_stable} holds when
+  $\sigma(a_n\,;b_i\,;C)\wedge{\sim}\varphi(a_i\,;b_n\,;\tilde C)$
+  holds for some $\varphi(x\,;z\,;X)\in\sigma$.
+  The formula $\varphi(x\,;z\,;X)$ depends on $i$ and $n$ but, since $\kappa$ is a Ramsey cardinal, we can refine the sequence to obtain that the same $\varphi(x\,;z\,;X)$ for all $i<n<\kappa$.
+
+  Once we replace ${\sim}\sigma(x\,;z\,;X)$ by ${\sim}\varphi(x\,;z\,;X)$ compactness applies and the existence of a sequence of length $\omega$ is equivalent to the existence of a sequence of length $\kappa$.
+\end{proof}
+
 
 Note also that, by the pigeonhole principle, we can strengthen the requirement in Definition~\ref{def_stable} by requiring that there is no $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<\omega\rangle$ such that $\tilde C_i\cap C_i=\varnothing$ and\smallskip
 
@@ -685,17 +699,24 @@ It is convenient to have a different characterization of global types, therefore
   \ceq{2.\hfill\langle b,C\rangle\in {\EuScript D}}{\Leftarrow}{\sigma(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$.\smallskip
 \end{definition}
 
-We remark that, by Facts~\ref{fact_~definibile} and~\ref{fact_~inclusione}, when ${\EuScript D}$ is involutive 
-%(1) can be rephrased as
-%
-% \ceq{\hfill{\sim}\varphi(a\,;b\,;C)}{\Rightarrow}{\langle b,C\rangle\in{\sim}{\EuScript D}}\hfill for every $b\in B$ and every $C$.
-%
-% Analogously, 
-(2) can be rephrased as
+When $\sigma(x\,;z\,;X)$ is a formula and  ${\EuScript D}$ is involutive (2) in the above definition can be rephrased in a more convenint form.
 
-\ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\sigma(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$.
+\begin{remark}\label{rem_approx}
+  If ${\EuScript D}$ is involutive the following are equivalent
 
-By this remark it is easy to see that, by compactness, when $\sigma$ is a formula it is sufficient to verify the above definition for $B$ finite.
+  \ceq{2.\hfill\langle b,C\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$\phantom{.}\smallskip
+
+  \ceq{2'\hfill\langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$.
+\end{remark}
+
+\begin{proof}
+  Let ${\EuScript C}=\{C\,:\,\varphi(a,b,C)\}$.
+  This is also an an involutive set by Fact~\ref{fact_~definibile}.
+  Then (2) says ${\EuScript C}\subseteq{\EuScript D}$.
+  By Fact~\ref{fact_~inclusione} this is equivalent to ${\sim}{\EuScript D}\subseteq{\sim}{\EuScript C}$ which in turn is equivalent to (2$'$), again by Fact~\ref{fact_~definibile}.
+\end{proof}
+
+Under the assunption of the remark it is easy to verify by compactness that in Definition~\ref{def_approx} the requirement \textit{for every small\/} $B$ can be replaced by \textit{for every finite\/} $B$.
 
 \begin{fact}
   Let $\varphi(x\,;z\,;X)$ be a ${\EuScript F}_{\sf X}$-formula.
@@ -714,7 +735,7 @@ By this remark it is easy to see that, by compactness, when $\sigma$ is a formul
 \end{fact}
 
 \begin{proof}
-  First we prove that $p(x)$ is maximal as soon as it is consistent~--~in fact, this only depends on ${\EuScript D}$ being involutive.
+  First we prove that any $p(x)$ defined as in (2) is maximal as soon as it is consistent~--~in fact, this only depends on ${\EuScript D}$ being involutive.
   We need to consider two cases.
   First, assume that $\varphi(x\,;b\,;C)$ is consistent with $p(x)$.
   Then consistency implies that $\langle b,\tilde C\rangle\notin{\sim}{\EuScript D}$ for every $\tilde C\cap C=\varnothing$.
@@ -725,18 +746,18 @@ By this remark it is easy to see that, by compactness, when $\sigma$ is a formul
 
   2$\Rightarrow$1.
   Let $B$ be a given small subset of ${\EuScript U}^z$.
-  The consistency of $p(x)\restriction B$ provides some $a$ such that for every finite $B$ an $a$ such that
+  The consistency of $p(x)\restriction B$ provides some $a$ such that
 
   \ceq{\hfill \langle b,C\rangle\in {\EuScript D}}{\Rightarrow}{\phantom{\sim}\varphi(a\,;b\,;C)}\quad and 
   
   \ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$. 
 
-  By what remarked above, these yield (1) and (2) in Definition~\ref{def_approx_X}.
+  By Remark~\ref{rem_approx} above, these yield (1) and (2) in Definition~\ref{def_approx_X}.
   
   1$\Rightarrow$2. 
   Let $B$ be a given small set.
   Let $a$ be as in Definition~\ref{def_approx_X}.
-  Then, by what remarked above, $a\models p(x)\restriction B$.
+  Then $a\models p(x)\restriction B$ by Remark~\ref{rem_approx}.
 \end{proof}
 
 The proof of the main theorem of this section requires the following notion of approximation.
@@ -823,7 +844,7 @@ Then, by Fact~\ref{fact_otto}, for some $\tilde C_n\cap C_n=\varnothing$
 Suppose for a contradiction that the construction never ends.
 Then, as (5) guarantees that $\langle b_i,C_i\rangle\in{\EuScript D}$ for every $i$, from (4) we otain $\sigma(a_n\,;b_i\,;C_n)$ for every $i<n$.
 From (5) we also obtain ${\sim}\sigma(a_i\,;b_n\,;\tilde C_n)$, for every $i\le n$.
-This contradicts stability (as remarked after Definition~\ref{def_stable}).
+This contradicts stability (as noted after Remark~\ref{rem_stable}).
 \end{proof}
 
 \begin{lemma}
@@ -857,7 +878,7 @@ This contradicts stability (as remarked after Definition~\ref{def_stable}).
   We claim that the procedure has to stop after $<\kappa$ steps.
   In fact, from (3) we obtain ${\sim}\varphi(a_n\,;b_i\,;\tilde C_i)$ for every $i<n$.
   On the other hand, by (4) we have that $\varphi(a_i\,;b_n\,;C_n)$ for every $i<n$.
-  Therefore, $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<\kappa\rangle$ contradicts stability (as remarked after Definition~\ref{def_stable}).
+  Therefore, $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<\kappa\rangle$ contradicts stability (as noted after Remark~\ref{rem_stable}).
 \end{proof}
 
 \begin{lemma}\label{lem_sigma_stable}
