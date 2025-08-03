@@ -189,7 +189,7 @@
   These articles introduced the notion of structures with a standard sort.
   We discuss local stability in this context.
   We examine a few variants of the classical definition which are prima facie non equivalent.
-  For each we prove that sets externally definable by a stable formulas are definable in some appropiate sense.
+  For each we prove that sets externally definable by stable formulas are definable in some appropiate sense.
 \end{abstract}
 
 \def\medrel#1{\parbox{6ex}{\hfil $#1$}}
@@ -203,7 +203,7 @@
 \section{Structures with a standard sort}
 
 Let \emph{$S$\/} be a Hausdorff compact topological space.
-We associate to $S$ a first order structure in a language \emph{${\EuScript L}_{\sf S}$\/} that has a symbol for each compact subset $C\subseteq S$ and a function symbol for each continuous functions $f:S^n\to S$.
+We associate to $S$ a first order structure in a language \emph{${\EuScript L}_{\sf S}$\/} that has a relation symbol for each compact subset $C\subseteq S$ and a function symbol for each continuous function $f:S^n\to S$.
 Depending on the context, $C$ and $f$ denote either the symbols of ${\EuScript L}_{\sf S}$ or their interpretation in the structure $S$.
 Throughout these notes the letter $C$ always denotes a compact subset of $S$, or a tuple of such sets.
 
@@ -214,12 +214,12 @@ But this would clutter the notation, therefore we prefer to leave the straightfo
 % But this would clutter the notation adding very little to the theory.
 % When needed, we will assume this generalization and leave the detail to the reader.
 
-We also fix an arbitrary first-order language which we denote by \emph{${\EuScript L}_{\sf H}$\/} and call the language of the home sort.
+We also fix an arbitrary first order language which we denote by \emph{${\EuScript L}_{\sf H}$\/} and call the language of the home sort.
 
 \begin{definition}\label{def_0}
   Let \emph{${\EuScript L}$\/} be a two sorted language. 
   The two sorts are denoted by \emph{${\sf H}$} and \emph{${\sf S}$.} 
-  The language ${\EuScript L}$ expands ${\EuScript L}_{\sf H}$ and ${\EuScript L}_{\sf S}$ with symbols sort ${\sf H}^n\times{\sf S}^m\to {\sf S}$.
+  The language ${\EuScript L}$ expands ${\EuScript L}_{\sf H}$ and ${\EuScript L}_{\sf S}$ with symbols of sort ${\sf H}^n\times{\sf S}^m\to {\sf S}$.
   An \emph{${\EuScript L}$-structure\/} is a structure of signature ${\EuScript L}$ that interprets these symbols with equicontinuous functions (i.e.\@ uniformly continuous w.r.t.\@ the variables in ${\sf H}$).
 
   For a given $S$ a \emph{standard structure\/} is a two-sorted ${\EuScript L}$-structure of the form $\langle M,S\rangle$, where $M$ is any structure of signature ${\EuScript L}_{\sf H}$.
@@ -248,7 +248,7 @@ We say that $M$ is an \emph{${\EuScript F}$-elementary\/} substructure of $N$ if
 
 Let $x$ and $\xi$ be variables of sort ${\sf H}$, respectively ${\sf S}$.
 A standard structure $M$ is \emph{${\EuScript F}$-saturated\/} if it realizes every type $p(x\,;\xi)\subseteq{\EuScript F}(A)$, for any $A\subseteq M$ of cardinality smaller than $|M|$, that is finitely consistent in $M$.
-The following theorem is proved in \cite{clcl} for signatures that do not contain symbols sort ${\sf H}^n\times{\sf S}^m\to {\sf S}$ with $n{\cdot}m>0$.
+The following theorem is proved in \cite{clcl} for signatures that do not contain symbols of sort ${\sf H}^n\times{\sf S}^m\to {\sf S}$ with $n{\cdot}m>0$.
 A similar framework has been independently introduced in \cite{CP}~--~only without quantifiers of sort {\sf H} and with an approximate notion of satisfaction.
 The corresponding compactness theorem is proved there with a similar method.
 The setting in \cite{CP} is a generalization of that used by Henson and Iovino for Banach spaces~\cite{HI}.
@@ -272,7 +272,7 @@ In \cite{Z} it is observed that, under the assumption of equicontinuity, the pro
 % This we call an \emph{instance\/} of $\varphi(x\,;\xi;X)$.
 % All formulas in ${\EuScript F}$ are instances of formulas in ${\EuScript F}_{\sf X}$.
 
-We introduce a new sort ${\sf X}$ with the purpose of conveniently describing classes of ${\EuScript F}$-for\-mulas that only differ by the sets/predicates $C\subseteq S$ they contain.
+We introduce a new sort ${\sf X}$ with the purpose of conveniently describing classes of ${\EuScript F}$-for\-mulas that only differ by the relation symbol $C\subseteq S$ they contain.
 Let ${\EuScript F}_{\sf X}$ be defined as ${\EuScript F}$ but replacing (ii) by\smallskip
 
 \begin{itemize}
@@ -285,10 +285,10 @@ This we call an \emph{instance\/} of $\varphi(x\,;\xi;X)$.
 All formulas in ${\EuScript F}$ are instances of formulas in ${\EuScript F}_{\sf X}$.
 
 \begin{definition}
-  Let $\varphi\in{\EuScript F}_{\sf X}$ be a formula~--~possibly with some (hidden) free variables.
-  The \emph{pseudonegation\/} of $\varphi\in{\EuScript F}_{\sf X}$ is the formula obtained by replacing the atomic formulas in  ${\EuScript L}_{\sf H}$ by their negation and every connective $\wedge$, $\vee$, $\forall$, $\exists$
+  Let $\varphi\in{\EuScript F}_{\sf X}$ be a formula~--~possibly with some hidden free variables.
+  The \emph{pseudonegation\/} of $\varphi\in{\EuScript F}_{\sf X}$ is the formula obtained by replacing the atomic formulas in  ${\EuScript L}_{\sf H}$ by their negation and the logical symbols $\wedge$, $\vee$, $\forall$, $\exists$
   %$\forall\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$ 
-  by its respective dual $\vee$, $\wedge$, $\exists$, $\forall$.
+  by their respective dual $\vee$, $\wedge$, $\exists$, $\forall$.
   The atomic formulas of the form $\tau\in X$ remain unchanged.\smallskip
 % $\exists\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf H}{.8ex}\kern-.2ex}$, $\exists\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$, $\forall\raisebox{1.1ex}{\scaleto{\sf S}{.8ex}\kern-.2ex}$.
   
@@ -298,7 +298,7 @@ Clearly, when no variable of sort ${\sf X}$ occurs in $\varphi$, we have ${\sim}
 
 It is sometimes convenient to work with infinite conjunctions of formulas.
 In the following $\sigma(x\,;z\,;X)$ denotes an ${\EuScript F}_{\sf X}$-type.
-We write ${\sim}\sigma(x\,;z\,;X)$ for the infinite disjunction of the formulas ${\sim}\varphi(x\,;z\,;X)$ for $\varphi(x\,;z\,;X)\in\sigma$.
+We write ${\sim}\sigma(x\,;z\,;X)$ for the possibly infinite disjunction of the formulas ${\sim}\varphi(x\,;z\,;X)$ for $\varphi(x\,;z\,;X)\in\sigma$.
 
 % Types are assumed to have cardinality $<\kappa$.
 The following fact is immediate and will be used without further mention.
@@ -337,9 +337,9 @@ The above fact has the following useful consequence.
 \begin{fact}\label{fact_otto}
   The following are equivalent for every standard structure $M$ , every ${\EuScript F}_{\sf X}(M)$-type $\sigma(X)$, and every $C$\smallskip
   
-    \ceq{\hfill M}{\models}{\phantom{\neg}\sigma(C)\ \leftarrow\ \bigwedge\Big\{\ \sigma(C')\ :\ C'\textrm{ neighborhood of }C\Big\} }\smallskip
+    \ceq{1.\hfill M}{\models}{\phantom{\neg}\sigma(C)\ \leftarrow\ \bigwedge\Big\{\ \sigma(C')\ :\ C'\textrm{ neighborhood of }C\Big\} }\smallskip
 
-    \ceq{\hfill M}{\models}{\neg\sigma(C)\ \rightarrow\ \bigvee\Big\{{\sim}\sigma(\tilde C)\ :\ \tilde C\cap C=\varnothing\Big\}.}\smallskip
+    \ceq{2.\hfill M}{\models}{\neg\sigma(C)\ \rightarrow\ \bigvee\Big\{{\sim}\sigma(\tilde C)\ :\ \tilde C\cap C=\varnothing\Big\}.}\smallskip
 
   (The converse implications are trivial~--~therefore not displayed.)
 \end{fact}
@@ -367,7 +367,7 @@ The above fact has the following useful consequence.
     which is a consequence of saturation.
 \end{proof}
 
-We say that $M$ is \emph{${\EuScript F}$-maximal\/} if it models $\varphi\in{\EuScript F}(M)$ whenever $\varphi$ holds in some ${\EuScript F}$-elementary extensions of $M$.
+We say that $M$ is \emph{${\EuScript F}$-maximal\/} if it models $\varphi\in{\EuScript F}(M)$ whenever $\varphi$ holds in some ${\EuScript F}$-elemen\-tary extensions of $M$.
 By Fact~\ref{fact_saturation} and the following fact, all ${\EuScript F}$-saturated standard structures are ${\EuScript F}$-maximal.
 
 \begin{fact}\label{fact_maximal}
@@ -393,11 +393,11 @@ By Fact~\ref{fact_saturation} and the following fact, all ${\EuScript F}$-satura
   Suppose not.
   Then, by (2) in Fact~\ref{fact_otto}, $M\models{\sim}\varphi(\tilde C)$ for some $\tilde C\cap C'=\varnothing$.
   Then $N\models{\sim}\varphi(\tilde C)$ by ${\EuScript F}$-elementarity.
-  As $\tilde C\cap C=\varnothing$, this contradicts Fact~\ref{fact_saturation}.
+  As $\tilde C\cap C=\varnothing$, this contradicts Fact~\ref{fact_trivial}.
 \end{proof}
 
 \begin{notation}
-  Let ${\EuScript U}$ be an ${\EuScript F}$-saturated standard structure.
+  In what follows we work in a fixed ${\EuScript F}$-saturated standard structure ${\EuScript U}$.
   We denote by $\kappa$ the cardinality of ${\EuScript U}$.
   We assume that $\kappa$ is a Ramsey cardinal.
   However, the willing reader may check that we can do without large cardinals by careful application of the Erd\H{o}s-Rado Theorem, see \cite{TZ}*{Appendix C.3}.\smallskip
@@ -452,20 +452,20 @@ We define
 The following fact motivates the definition.
 
 \begin{fact}\label{fact_~definibile}
-  Let ${\EuScript D}=\{C\,:\,\sigma(C)\}$.
-  Then ${\sim}{\EuScript D}=\{\tilde C\,:\,{\sim}\sigma(\tilde C)\}$.
+  Let ${\EuScript D}=\{C\,:\,\varphi(C)\}$.
+  Then ${\sim}{\EuScript D}=\{\tilde C\,:\,{\sim}\varphi(\tilde C)\}$.
 \end{fact}
 
 \begin{proof}
   We need to prove that 
 
-  \ceq{\hfill{\sim}\sigma(\tilde C)}{\Leftrightarrow}{\text{for every } C,\ \text{ if } C\cap\tilde C=\varnothing\ \text{ then } \neg\sigma(C)}
+  \ceq{\hfill{\sim}\varphi(\tilde C)}{\Leftrightarrow}{\text{for every } C,\ \text{ if } C\cap\tilde C=\varnothing\ \text{ then } \neg\varphi(C)}
 
   The implication $\Rightarrow$ follows immediately from Fact~\ref{fact_trivial}.
   To prove $\Leftarrow$ assume the r.h.s.
-  Then $\neg\sigma(S\smallsetminus O)$ holds for every open set  $O\supseteq\tilde C$.
-  From the second implication in Fact~\ref{fact_otto} we obtain ${\sim}\sigma(\tilde C')$ for some $\tilde C\subseteq\tilde C'\subseteq O$.
-  As $O$ is arbitrary, we obtain $\sigma(\tilde C)$ from the second implication in Fact~\ref{fact_otto}.
+  Then $\neg\varphi(S\smallsetminus O)$ holds for every open set  $O\supseteq\tilde C$.
+  From the second implication in Fact~\ref{fact_otto} we obtain ${\sim}\varphi(\tilde C')$ for some $\tilde C\subseteq\tilde C'\subseteq O$.
+As $O$ is arbitrary, we obtain ${\sim}\varphi(\tilde C)$ from the first implication in Fact~\ref{fact_otto}.
 \end{proof}
 
 We prove a couple of straightforward inclusions.
@@ -499,17 +499,13 @@ We prove a couple of straightforward inclusions.
 \end{proof}
 
 We say that ${\EuScript D}$ is \emph{involutive\/} if ${\EuScript D}={\sim}{\sim}{\EuScript D}$.
-We say that ${\EuScript D}$ is \emph{closed\/} if 
-
-\ceq{\hfill C\in{\EuScript D}}{\Leftrightarrow}{C'\in{\EuScript D}} for every neighborhood $C'$ of $C$.
-
-Note that we are requiring closure in two distintic contexts: topological, and Boolean (upward closere by inclusion).
 
 \begin{theorem}
   The following are equivalent
   \begin{itemize}
     \item [1.] ${\EuScript D}$ is involutive 
-    \item [2.] ${\EuScript D}$ is closed.
+    \item [2.] \noindent\kern-\labelwidth\kern-\labelsep
+    \ceq{\hfill C\in{\EuScript D}}{\Leftrightarrow}{C'\in{\EuScript D}} for every neighborhood $C'$ of $C$.
   \end{itemize}
 \end{theorem}
 
@@ -529,10 +525,10 @@ It is not difficult to see that (2) holds if and only if ${\EuScript D}$ is clos
 
   1$\Rightarrow$2.
   It suffices to show that (2) holds with ${\sim}{\EuScript D}$ for ${\EuScript D}$.
-  The implication $\Rightarrow$ in the definition of closed is obvious.
+  The implication $\Rightarrow$ in (2) is obvious.
   To prove $\Leftarrow$, assume $C\notin{\sim}{\EuScript D}$.
-  Then $C\cap\tilde C$ for some $\tilde C\in{\EuScript D}$.
-  Let $C'$ be a neighboorhood of $C$ disjoint of $C$.
+  Then $C\cap\tilde C$ for some $\tilde C\in{\EuScript D}=\varnothing$.
+  Let $C'$ be a neighboorhood of $C$ disjoint from $\tilde C$.
   Then the r.h.s.\@ of the equivalence fails for $C'$.  
 \end{proof}
 
@@ -547,30 +543,45 @@ It is not difficult to see that (2) holds if and only if ${\EuScript D}$ is clos
 
 There is more than one way to define stability in our context.
 In this section we present the strongest possible requirement.
-It is not the most interesting one, but it is very similar to the classical definition~--~the comparision may be useful though not stricly required for the sequel.
+It is not the most interesting one, but it is very similar to the classical definition~--~the comparison may be useful though not stricly required for the sequel.
 
 % Let $\varphi(x\,;z\,;X)$ be a formulas in ${\EuScript F}_{\sf X}({\EuScript U})$.
 % The variables of sort ${\sf H}$ are partitioned in two tuples $x\,;z$ which may be infinite.
 The following is the classical definition of stability which we dub \textit{finitary\/} for the reason explained below.
 
 \begin{definition}\label{def_finitary_stable}\strut
-We say that $\varphi(x\,;z\,;C)$ is  \emph{finitarily stable\/} if for some $m<\omega$ there is no sequence $\langle a_i\,;b_i\ :\ i<m\rangle$ such that for every $i<n<m$\smallskip
+We say that $\varphi(x\,;z\,;C)$ is  \emph{finitarily stable\/} if for some $m<\omega$ there is no sequence $\langle a_i\,;b_i\ :\ i<m\rangle$ such that\smallskip
 
-\ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{\neg\varphi(a_i\,;b_n\,;C)}.
+\ceq{1.\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{\neg\varphi(a_i\,;b_n\,;C)} for every $i<n<m$.
 \end{definition}
 
-From Fact~\ref{fact_otto} we easily obtain the following equivalent definition which only mentions formulas in ${\EuScript F}$.
+The following is an equivalent definition which only mentions formulas in ${\EuScript F}$.
 The reader may wish to compare it with Definition~\ref{def_stable}.
 
 \begin{fact}\label{fact_stability_semicalssic}
   The following are equivalent
   \begin{itemize}
     \item [1.]  $\varphi(x\,;z\,;C)$ is finitarily stable
-    \item [2.]  for some $m$ there is no sequence $\langle a_i\,;b_i\ :\ i<m\rangle$ such that for some $\tilde C$ disjoint of $C$ and for every $i<n<m$\smallskip
-
-    \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C)}.
+    \item [2.]  for some $m$ there is no sequence $\langle a_i\,;b_i\ :\ i<m\rangle$ such that for some $\tilde C\cap C=\varnothing$\smallskip
+    
+    \noindent\kern-\labelwidth\kern-\labelsep
+    \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C)}\hfill for every $i<n<m$.
   \end{itemize}
 \end{fact}
+
+\begin{proof}
+  1$\Rightarrow$2.
+  By Fact~\ref{fact_trivial}.
+
+  2$\Rightarrow$1.
+  Negate (2).
+  Let $\langle a_i\,;b_i\ :\ i<m\rangle$ be such that (1) of Definition~\ref{def_finitary_stable} holds.
+  By Fact~\ref{fact_otto} there are $\tilde C_{n,i}$ such that 
+
+  \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_{n,i})}\hfill for every $i<n<m$.
+
+  Then the union of the $\tilde C_{n,i}$ is the set $\tilde C$ required to negate (2).
+\end{proof}
 
 In a classical context, i.e.\@ relying on ${\EuScript L}$-saturation, one can replace $m$ in Definition~\ref{def_finitary_stable} by $\omega$.
 But this may not be true if we only have ${\EuScript F}$-saturation.
@@ -602,7 +613,7 @@ is a global $\varphi(x\,;z\,;C)$-type.\smallskip
 
 The following theorem is often rephrased by saying that, when $\varphi(x\,;z\,;C)$ is finitarily stable, then all global $\varphi(x\,;z\,;C)$-types are definable.
 The proof of the classical case applies verbatim because no saturation is required.
-We state it here only for comparison with its non-finitary counterpart, see Theorem~\ref{thm_stability_definability}.
+We state it here only for comparison with its non-finitary counterpart, see Theorem~\ref{thm_stability_definability} and its approximated counterpart, see Theorem~\ref{thm_epsilon_stability_definability}.
 
 \begin{theorem}
   Let $\varphi(x\,;z\,;C)$ be finitarily stable.
@@ -630,7 +641,11 @@ As we need to extend the definition of stability to types, sequences of length $
 
 In this section  ${\EuScript D}$ is always a subset of ${\EuScript U}^z\times K(S)^n$, where $n$ has to be inferred from the context (tipically, $n=|X|$).
 We write ${\sim}{\EuScript D}$ for the set obtained by applying the definition in Section~\ref{K(S)} to all fibers of ${\EuScript D}$.
-We say that ${\EuScript D}$ is involutive/closed if all its fibers are.
+That is, if ${\EuScript D}_b$ is the $b$-fiber $\big\{C\,:\,\langle b\,;C\rangle\in{\EuScript D}\big\}$, we define
+
+\ceq{\hfill{\sim}{\EuScript D}}{=}{\bigcup_{b\in{\EuScript U}^z}\{b\}\times({\sim}{\EuScript D}_b)}
+
+We say that ${\EuScript D}$ is involutive if all its fibers are.
 
 % The letters $\varepsilon$ and $\delta$ always denote definable compact symmetric neighborhood of the diagonal of $S^2$.
 % By $\varepsilon+\delta$ we denote the composition $\varepsilon\circ\delta$, where the two sets are viewed as relations.
@@ -642,21 +657,18 @@ We say that ${\EuScript D}$ is involutive/closed if all its fibers are.
 \begin{definition}\label{def_stable}\strut
   We say that $\sigma(x\,;z\,;X)$ is \emph{stable\/} if there is no sequence $\langle a_i\,;b_i\ :\ i<\kappa\rangle$ such that for some $C$, some $\tilde C\cap C=\varnothing$\smallskip
 
-  \ceq{\hfill \sigma(a_n\,;b_i\,;C)}{\wedge}{{\sim}\sigma(a_i\,;b_n\,;\tilde C)}\hfill for every $i<n<\kappa$\smallskip
+  \ceq{\hfill \sigma(a_n\,;b_i\,;C)}{\wedge}{{\sim}\sigma(a_i\,;b_n\,;\tilde C)}\hfill for every $i<n<\kappa$ or for every $n<i<\kappa$.\smallskip
 
-  or for every $n<i<\kappa$.
 \end{definition}
 
 Note that when $\sigma(x\,;z\,;X)$ is a formula we can replace $\kappa$ with $\omega$ in the above definition.
 For types we can equivalently require that there is no sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for some $C$, some $\tilde C\cap C=\varnothing$, some formula $\varphi(x\,;z\,;X)\in\sigma$\smallskip
 
-  \ceq{\hfill \sigma(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C)}\hfill for every $i<n<\kappa$\smallskip
-
-or for every $n<i<\kappa$.
+  \ceq{\hfill \sigma(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C)}\hfill for every $i<n<\kappa$ or for every $n<i<\kappa$.\smallskip
 
 Note also that, by the pigeonhole principle, we can strengthen the requirement in Definition~\ref{def_stable} by requiring that there is no $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<\omega\rangle$ such that $\tilde C_i\cap C_i=\varnothing$ and\smallskip
 
-  \ceq{\hfill \sigma(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}\hfill for every $i<n<\kappa$.\smallskip
+  \ceq{\hfill \sigma(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}\hfill for every $i<n<\kappa$ or for every $n<i<\kappa$.\smallskip
 
 \begin{definition}\strut 
   Let $\varphi(x\,;z\,;X)$ be a ${\EuScript F}_{\sf X}$-formula.
