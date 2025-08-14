@@ -3,20 +3,20 @@
 \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
 \def\ceq#1#2#3{\parbox[t]{28ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
-In this section we specialize the notions introduced in the previous sections to types $\sigma(x\,;z\,;X)$ of the form $\tau(x\,;z)\in X$ where $\tau(x\,;z)$ is an $S$-valued ${\EuScript F}$-type definable function.
+In this section we specialize the notions introduced in the previous sections to types $\sigma(x\,;z\,;X)$ of the form $\tau(x\,;z)\in X$ where $\tau(x\,;z)$ is an $S$-valued ${\EuScript F}$-type-definable function.
 
 We say that $\tau(x\,;z)$ is \emph{stable\/} if so is the type $\tau(x\,;z)\in X$.
-The following fact is a suggestive characterization of the stability of functions which has been first remarked in~\cite{B}.
+The following fact is a interesting characterization of stability for functions which was first remarked in~\cite{B}.
 
-\begin{fact}
-  Let $\tau(x\,;z)$ be term in ${\EuScript L}$.
+\begin{fact}\label{fact_grothendieck}
+  Let $\tau(x\,;z)$ be a term in ${\EuScript L}$.
   Then the following are equivalent
   \begin{itemize}
     \item [1.] the formula $\tau(x\,;z)\in X$ is unstable
     \item [2.] there is a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that\smallskip
     
     \noindent\kern-\labelwidth\kern-\labelsep
-    \ceq{\hfill \lim_{i\to\infty}\lim_{j\to\infty}\tau(a_i\,;b_j)}{\neq}{\lim_{j\to\infty}\lim_{i\to\infty}\tau(a_i\,;b_j)}
+    \ceq{\hfill \lim_{i\to\infty}\lim_{j\to\infty}\tau(a_i\,;b_j)}{\neq}{\lim_{j\to\infty}\lim_{i\to\infty}\tau(a_i\,;b_j).}
 
     % \item [3.] there is a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ and some $\varepsilon$ such that for every $i<j<\omega$\smallskip
     
@@ -32,7 +32,7 @@ The following fact is a suggestive characterization of the stability of function
 \end{fact}  
   Terms are a particular case of definable functions.
   When $\tau(x\,;z)$ is a term we have that ${\sim}\big(\tau(x\,;z)\in X\big)=\tau(x\,;z)\in X$ which is used throughout in the proof below.
-  We suspect the fact holds in general though we have not been able to prove it.
+  We suspect that Fact~\ref{fact_grothendieck} holds for all ${\EuScript F}_{\sf X}$-formulas but we have not been able to prove this.
 
   \noindent\llap{\textcolor{red}{\Large\warning}\kern1.5ex}\ignorespaces%
   \vspace{-\baselineskip-\parskip}
@@ -42,7 +42,7 @@ The following fact is a suggestive characterization of the stability of function
   1$\Rightarrow$2.
   Let $C\cap\tilde C=\varnothing$ and $\langle a_i\,;b_i\ :\ i<\omega\rangle$ be as given by (1).
   That is, $\tau(a_i\,;b_j)\in C$ and $\tau(a_j\,;b_i)\in \tilde C$ hold for every $i<j<\omega$.
-  We can restrict to a subsequence such that the two limits exist; $C$ contains the limit on the left; and $\tilde C$ contains the limit on the right~--~which therefore are distinct.%\ \cup\ \tilde C\times C
+  We can find a subsequence such that the two limits exist; $C$ contains the limit on the left; and $\tilde C$ contains the limit on the right~--~which therefore are distinct.%\ \cup\ \tilde C\times C
 
   2$\Rightarrow$1. Let $C$ and $\tilde C$ be disjoint neighborhoods of the two limits in (2).
   Then (1) is witnessed by a tail of the sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$.
@@ -64,13 +64,13 @@ The following fact is immediate.
 \begin{fact}
   The following are equivalent
   \begin{itemize}
-    \item [1] ${\EuScript D\!}_f$ is approximable by $\tau(x\,;z)\in X$
-    \item [2] for every small $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that $\tau(a\,;b)=f(b)$ for every $b\in B$.\smallskip
+    \item [1.] ${\EuScript D\!}_f$ is approximable by $\tau(x\,;z)\in X$
+    \item [2.] for every small $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that $\tau(a\,;b)=f(b)$ for every $b\in B$.\smallskip
   \end{itemize}
 \end{fact}
 
-We say that $f$ is approximable by $\tau(x\,;z)$ if the equivalent conditions above apply.
-The following is an easy consequence if Theorem~\ref{thm_stability_definability}
+We say that $f$ is approximable by $\tau(x\,;z)$ if the equivalent conditions above hold.
+The following is an easy consequence of Theorem~\ref{thm_stability_definability}.
 
 \begin{theorem}
   Let $S=[0,1]$.

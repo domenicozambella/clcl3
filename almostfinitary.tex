@@ -4,10 +4,10 @@
 \def\ceq#1#2#3{\parbox[t]{28ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
 In this section we present the notion of $\varepsilon$-stability and prove a version of Theorem~\ref{thm_stability_definability} which, albeit approximate,  only requires finite disjunctions and conjunctions.
-Note that the requirement of $\varepsilon$-stability is stronger the smaller the $\varepsilon$ and it always implies stability as defined in Defintion~\ref{def_stable}~--~we do not know it coincides with it in the limit.
+Note that the requirement of $\varepsilon$-stability is stronger the smaller the $\varepsilon$ and it always implies stability as defined in Defintion~\ref{def_stable}~--~we do not know whether the two notions coincide in the limit.
 
 \begin{definition}\label{def_epsilon_stable}\strut
-  We say that $\varphi(x\,;z\,;X)$ is \emph{$\varepsilon$-stable\/} if there is a maximal $m$ such that some sequence $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<m\rangle$ is such that for every $i<n<m$
+  We say that $\varphi(x\,;z\,;X)$ is \emph{$\varepsilon$-stable\/} if there is a greatest $m$ for which there is some sequence $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<m\rangle$ such that for every $i<n<m$
 
     \ceq{\hfill \varphi(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}\quad and\quad $C_i^\varepsilon\cap\tilde C_i=\varnothing$.\smallskip
 \end{definition}
@@ -37,7 +37,7 @@ Note that the requirement of $\varepsilon$-stability is stronger the smaller the
 %   Immediate.
 % \end{proof}
 
-We state the main theorem of this section which is proved along the same lines as Theorem~\ref{thm_stability_definability}
+We state the main theorem of this section which is proved along the same lines as Theorem~\ref{thm_stability_definability}.
 
 \begin{theorem}\label{thm_epsilon_stability_definability}
   Let $\varphi(x\,;z\,;X)$ be $\varepsilon$-stable.

@@ -734,7 +734,7 @@ Under the assumption of the remark it is easy to verify by compactness that in D
 \end{fact}
 
 \begin{proof}
-  First we prove that any $p(x)$ defined as in (2) is maximal as soon as it is consistent~--~in fact, this only depends on ${\EuScript D}$ being involutive.
+  First we prove that any $p(x)$ defined as in (2) is maximal whenever it is consistent~--~in fact, this only depends on ${\EuScript D}$ being involutive.
   We need to consider two cases.
   First, assume that $\varphi(x\,;b\,;C)$ is consistent with $p(x)$.
   Then consistency implies that $\langle b,\tilde C\rangle\notin{\sim}{\EuScript D}$ for every $\tilde C\cap C=\varnothing$.
@@ -816,7 +816,7 @@ Here this notion plays a purely technical role, but we submit it as potentially 
 \begin{lemma}
   Let $\sigma(x\,;z\,;X)$ be stable.
   Assume that ${\EuScript D}$ is approximable by $\sigma(x\,;z\,;X)$ from below.
-  Then there is are some $\langle a_i\ :\ i<\lambda\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
+  Then there is some $\langle a_i\ :\ i<\lambda\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
 
   \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i<\lambda}\ \sigma(a_i\,;b\,;C)}\medskip 
 
@@ -825,7 +825,7 @@ Here this notion plays a purely technical role, but we submit it as potentially 
 
 \begin{proof}
   We define recursively the required parameters $a_i$ together with some auxiliary parameters $b_i$.
-  The element $a_n$ is choosen such that
+  The element $a_n$ is chosen so that
 
 \ceq{3.\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\sigma(a_n\,;b\,;C)}\hfill for every $b\in{\EuScript U}^z$ and every $C$
 
@@ -838,16 +838,18 @@ Note that (3) immediately guarantees (2).
 Now, assume (1) fails for $\lambda=n$, and choose $b_n$ and $C_n$ witnessing this.
 Then, by Fact~\ref{fact_otto}, for some $\tilde C_n\cap C_n=\varnothing$
 
-\ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}}{\&}{\bigwedge_{i<n}\ {\sim}\sigma(a_i\,;b_n\,;\tilde C_n)}%\smallskip
+\ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}\ \ }{\text{and}}{\ \ \bigwedge_{i<n}\ {\sim}\sigma(a_i\,;b_n\,;\tilde C_n)}%\smallskip
 
 Suppose for a contradiction that the construction never ends.
-Then, as (5) guarantees that $\langle b_i,C_i\rangle\in{\EuScript D}$ for every $i$, from (4) we otain $\sigma(a_n\,;b_i\,;C_n)$ for every $i<n$.
+Then, as (5) guarantees that $\langle b_i,C_i\rangle\in{\EuScript D}$ for every $i$, from (4) we obtain $\sigma(a_n\,;b_i\,;C_n)$ for every $i<n$.
 From (5) we also obtain ${\sim}\sigma(a_i\,;b_n\,;\tilde C_n)$, for every $i\le n$.
 This contradicts stability (as noted after Remark~\ref{rem_stable}).
 \end{proof}
 
 \begin{lemma}
-  Let $\sigma(x\,;z\,;X)$ be stable. Then for some $\mu<\kappa$ the type\medskip 
+  Let $\sigma(x\,;z\,;X)$ be stable.
+  Assume that ${\EuScript D}$ is approximable by $\sigma(x\,;z\,;X)$.
+  Then for some $\mu<\kappa$ the type\medskip 
 
   \ceq{\hfill\pi(\bar x\,;z\,;X)}{=}{\bigwedge_{i<\mu}\ \sigma(x_i\,;z\,;X),}\smallskip
   
@@ -860,23 +862,23 @@ This contradicts stability (as noted after Remark~\ref{rem_stable}).
   Suppose that $\langle a_i:i<n\rangle$ and $\langle b_i:i<n\rangle$ have been defined.
   Choose $a_n$ such that for every $b\in B\cup\{b_i:i<n\}$ and every $C$
 
-  \ceq{1.\hfill\langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a_n\,;b\,;C)}\quad and
+  \ceq{1.\hfill\langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\sigma(a_n\,;b\,;C)}\quad and
 
-  \ceq{2.\hfill\langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\varphi(a_n\,;b\,;C)}
+  \ceq{2.\hfill\langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\sigma(a_n\,;b\,;C)}
   
   Note that the latter implication is equivalent to: for every $C$ there is some  $\tilde C\cap C=\varnothing$ such that 
   
-  \ceq{3.\hfill \langle b,C\rangle\notin{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a_n\,;b\,;\tilde C)}.%\hfill  for every $b\in B\cup\{b_0,\dots,b_{n-1}\}$.
+  \ceq{3.\hfill \langle b,C\rangle\notin{\EuScript D}}{\Rightarrow}{{\sim}\sigma(a_n\,;b\,;\tilde C)}.%\hfill  for every $b\in B\cup\{b_0,\dots,b_{n-1}\}$.
 
   Now, as the lemma is assumed to fail, we can choose $b_n$ and $C_n$ such that
 
-  \ceq{4.\hfill \langle b_n,C_n\rangle\notin{\EuScript D}}{\&}{\bigwedge_{i=0}^n\ \varphi(a_i\,;b_n\,;C_n)}
+  \ceq{4.\hfill \langle b_n,C_n\rangle\notin{\EuScript D}\ \ }{\text{and}}{\ \ \bigwedge_{i=0}^n\ \sigma(a_i\,;b_n\,;C_n)}
 
-  Note that (4) ensure that $\langle b_i,C_i\rangle\notin{\EuScript D}$ for every $i$.
-  The there is some $\tilde C_i$ that witnesses (3) for $\langle b_i,C_i\rangle\notin{\EuScript D}$.
+  Note that (4) ensures that $\langle b_i,C_i\rangle\notin{\EuScript D}$ for every $i$.
+  Then there is some $\tilde C_i$ that witnesses (3) for $\langle b_i,C_i\rangle\notin{\EuScript D}$.
   We claim that the procedure has to stop after $<\kappa$ steps.
-  In fact, from (3) we obtain ${\sim}\varphi(a_n\,;b_i\,;\tilde C_i)$ for every $i<n$.
-  On the other hand, by (4) we have that $\varphi(a_i\,;b_n\,;C_n)$ for every $i<n$.
+  In fact, from (3) we obtain ${\sim}\sigma(a_n\,;b_i\,;\tilde C_i)$ for every $i<n$.
+  On the other hand, by (4) we have that $\sigma(a_i\,;b_n\,;C_n)$ for every $i<n$.
   Therefore, $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<\kappa\rangle$ contradicts stability (as noted after Remark~\ref{rem_stable}).
 \end{proof}
 
@@ -888,16 +890,16 @@ This contradicts stability (as noted after Remark~\ref{rem_stable}).
   Suppose $\pi(\bar x\,;z\,;X)$ is unstable.
   Let $\langle \bar a_i\,;b_i\ :\ i<k\rangle$ be a sequence witnessing instability.
   Then for every pair $i<n$ there is some $j<\mu$ such that ${\sim}\sigma(a_{j,n}\,;b_i\,;\tilde C)$.
-  Interprete such $j$ as a color. 
-  As $\kappa$ is a Ramsey cardinal, every $\mu$-coloring of a complete graph of size $\kappa$ has a monocromatic subgraph of size $\kappa$.
-  That is, there is a $j<\mu$ such that ${\sim}\sigma(a_{j,n}\,;b_i\,;\tilde C)$ obtains for $\kappa$ many $i$.
+  Interpret $j$ as a color. 
+  As $\kappa$ is a Ramsey cardinal, every $\mu$-coloring of a complete graph of size $\kappa$ has a monochromatic subgraph of size $\kappa$.
+  That is, there is $j<\mu$ such that ${\sim}\sigma(a_{j,n}\,;b_i\,;\tilde C)$ holds for $\kappa$ many $i$.
   Therefore we can extract a subsequence that contradicts the stability of $\sigma(x\,;z\,;X)$.
 \end{proof}
 
+\subfile{almostfinitary}
 % \subfile{delta}
 \subfile{functions}
 % \subfile{scribbles}
-\subfile{almostfinitary}
 
 
 \vskip10ex
