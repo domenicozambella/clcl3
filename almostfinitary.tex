@@ -4,13 +4,18 @@
 \def\ceq#1#2#3{\parbox[t]{28ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
 In this section we present the notion of $\varepsilon$-stability and prove a version of Theorem~\ref{thm_stability_definability} which, albeit approximate,  only requires finite disjunctions and conjunctions.
-Note that the requirement of $\varepsilon$-stability is stronger the smaller the $\varepsilon$ and it always implies stability as defined in Defintion~\ref{def_stable}~--~we do not know whether the two notions coincide in the limit.
+
+In this section, the letter $\varepsilon$ always denotes a definable compact neighborhood of the diagonal of $S^2$.
+% By $\varepsilon+\delta$ we denote the composition $\varepsilon\circ\varepsilon$, where the two sets are viewed as relations.
+If $C$ is a subset of $S$, we write $C^\varepsilon$ for the set whose elements are $\varepsilon$-close to elements of $C$.
 
 \begin{definition}\label{def_epsilon_stable}\strut
   We say that $\varphi(x\,;z\,;X)$ is \emph{$\varepsilon$-stable\/} if there is a greatest $m$ for which there is some sequence $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<m\rangle$ such that for every $i<n<m$
 
     \ceq{\hfill \varphi(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}\quad and\quad $C_i^\varepsilon\cap\tilde C_i=\varnothing$.\smallskip
 \end{definition}
+
+Note that the requirement of $\varepsilon$-stability is stronger the smaller the $\varepsilon$ and it always implies stability as defined in Defintion~\ref{def_stable}~--~we do not know whether the two notions coincide in the limit.
 
 % We remark that, by Facts~\ref{fact_~definibile} and~\ref{fact_~inclusione}, when ${\EuScript D}$ is involutive 
 % %(1) can be rephrased as
@@ -42,17 +47,16 @@ We state the main theorem of this section which is proved along the same lines a
 \begin{theorem}\label{thm_epsilon_stability_definability}
   Let $\varphi(x\,;z\,;X)$ be $\varepsilon$-stable.
   Assume that ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$.
-  Then there are some $\langle a_{i,j}\ :\ i< k,\ j<m\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
+  Then there are $k,m<\omega$ and $\langle a_{i,j}\ :\ i< k,\ j<m\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
 
   \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i< k}\ \bigwedge_{j<m}\ \varphi(a_{i,j}\,;b\,;C^\varepsilon)}\medskip
 
-  \ceq{\hfill \langle b,C^\varepsilon\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i< k}\ \bigwedge_{j<m}\ \varphi(a_{i,j}\,;b\,;C)}
+  \ceq{\hfill \langle b,C^\varepsilon\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i< k}\ \bigwedge_{j<m}\ \varphi(a_{i,j}\,;b\,;C).}
 \end{theorem}
 
 \begin{proof}
   The theorem is an immediate consequence of the following three lemmas.
 \end{proof}
-
 
 The proof of the theorem requires the following version of Definition~\ref{def_approx_blw}
 
@@ -72,12 +76,15 @@ The proof of the theorem requires the following version of Definition~\ref{def_a
 
   \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i<k}\ \varphi(a_i\,;b\,;C^\varepsilon)}\medskip 
 
-  \ceq{2.\hfill \langle b,C^\varepsilon\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i<k}\ \varphi(a_i\,;b\,;C)} 
+  \ceq{2.\hfill \langle b,C^\varepsilon\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i<k}\ \varphi(a_i\,;b\,;C).} 
 \end{lemma}
+
+The proof is entirely similar to that of Lemma~\ref{lem_1_inf}.
+It is nevertheless included to show the role of $C^\varepsilon$.
 
 \begin{proof}
   We define recursively the required parameters $a_i$ together with some auxiliary parameters $b_i$.
-  The element $a_n$ is choosen such that
+  The element $a_n$ is chosen so that
 
 \ceq{3.\hfill \langle b,C^\varepsilon\rangle\in{\EuScript D}}{\Leftarrow}{\varphi(a_n\,;b\,;C)}\hfill for every $b\in{\EuScript U}^z$ and every $C$
 
@@ -90,10 +97,10 @@ Note that (3) immediately guarantees (2).
 Now, assume (1) fails for $k=n$, and choose $b_n$ and $C_n$ witnessing this.
 Then, by Fact~\ref{fact_otto}, for some $\tilde C_n\cap C_n^\varepsilon=\varnothing$
 
-\ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}}{\&}{\bigwedge_{i<n}\ {\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}%\smallskip
+\ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}\ \ }{\text{and}}{\ \ \bigwedge_{i<n}\ {\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}%\smallskip
 
 Suppose for a contradiction that the construction never ends.
-Then, as (5) guarantees that $\langle b_i,C_i\rangle\in{\EuScript D}$ for every $i$, from (4) we otain $\varphi(a_n\,;b_i\,;C_n)$ for every $i<n$.
+Then, as (5) guarantees that $\langle b_i,C_i\rangle\in{\EuScript D}$ for every $i$, from (4) we obtain $\varphi(a_n\,;b_i\,;C_n)$ for every $i<n$.
 From (5) we also obtain ${\sim}\varphi(a_i\,;b_n\,;\tilde C_n)$, for every $i\le n$.
 This contradicts $\varepsilon$-stability.
 \end{proof}
@@ -107,7 +114,7 @@ This contradicts $\varepsilon$-stability.
 
   \ceq{\hfill\sigma(\bar x\,;z\,;X)}{=}{\bigwedge_{i\le m}\ \varphi(x_i\,;z\,;X)}\smallskip
 
-  approximate ${\EuScript D}$ from $\varepsilon$-below.
+  approximates ${\EuScript D}$ from $\varepsilon$-below.
 \end{lemma}
 
 \begin{proof}
@@ -125,10 +132,10 @@ This contradicts $\varepsilon$-stability.
 
   Now, as the lemma is assumed to fail, we can choose $b_n$ and $C_n$ such that
 
-  \ceq{4.\hfill \langle b_n,C_n^\varepsilon\rangle\notin{\EuScript D}}{\&}{\bigwedge_{i=0}^n\ \varphi(a_i\,;b_n\,;C_n)}
+  \ceq{4.\hfill \langle b_n,C_n^\varepsilon\rangle\notin{\EuScript D}\ \ }{\text{and}}{\ \ \bigwedge_{i=0}^n\ \varphi(a_i\,;b_n\,;C_n)}
 
-  Note that (4) ensure that $\langle b_i,C_i^\varepsilon\rangle\notin{\EuScript D}$ for every $i$.
-  The there is some $\tilde C_i$ that witnesses (3) for $\langle b_i,C_i^\varepsilon\rangle\notin{\EuScript D}$.
+  Note that (4) ensures that $\langle b_i,C_i^\varepsilon\rangle\notin{\EuScript D}$ for every $i$.
+  Then there is some $\tilde C_i$ that witnesses (3) for $\langle b_i,C_i^\varepsilon\rangle\notin{\EuScript D}$.
   We claim that the procedure has to stop after $\le m$ steps. 
   In fact, from (3) we obtain ${\sim}\varphi(a_n\,;b_i\,;\tilde C_i)$ for every $i<n$.
   On the other hand, by (4) we have that $\varphi(a_i\,;b_n\,;C_n)$ for every $i<n$.
@@ -141,7 +148,7 @@ This contradicts $\varepsilon$-stability.
 
 \begin{proof}
   Let $m$ be maximal such that a sequence as in (3) of Definition~\ref{def_epsilon_stable} exists.
-  Let $k$ be suffinciently large so that every $m$-coloring of a graph of size $k$ has a monocromatic subgraph of size $>m$.
+  Let $k$ be sufficiently large so that every $m$-coloring of a graph of size $k$ has a monocromatic subgraph of size $>m$.
   Let $\langle \bar a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<k\rangle$ be a sequence witnessing instability.
   Then for every pair $i<n$ there is some $j<m$ such that ${\sim}\varphi(a_{j,n}\,;b_i\,;\tilde C_i)$.
   By the choice of $k$ there is a $j<m$ such that ${\sim}\varphi(a_{j,n}\,;b_i\,;\tilde C_i)$ obtains for $>m$ many $i$.
