@@ -188,7 +188,7 @@
   falls under the scope of~\cite{HI} or~\cite{BBHU}.
   These articles introduced the notion of structures with a standard sort.
   We discuss local stability in this context.
-  We examine a three variants of order property which are prima facie non equivalent.
+  We examine three variants of order property which are prima facie non equivalent.
   For each variant we show that sets externally definable by stable formulas are definable in some appropiate sense.
 \end{abstract}
 
@@ -301,8 +301,7 @@ In the following $\sigma(x\,;z\,;X)$ denotes an ${\EuScript F}_{\sf X}$-type.
 We write ${\sim}\sigma(x\,;z\,;X)$ for the possibly infinite disjunction of the formulas ${\sim}\varphi(x\,;z\,;X)$ for $\varphi(x\,;z\,;X)\in\sigma$.
 
 % Types are assumed to have cardinality $<\kappa$.
-The following fact is immediate and will be used without further mention.
-% $\varphi(x\,;z\,;X)$ denotes an ${\EuScript F}_{\sf X}$-formula and 
+When $C$ and $\tilde C$ are tuples we read $C\subseteq C'$ and $\tilde C\cap C=\varnothing$ componentwise.
 
 \begin{fact}\label{fact_trivial}
   The following hold for every $C\subseteq C'$ and $\tilde C\cap C=\varnothing$, every standard structure $M$, and every ${\EuScript F}_{\sf X}(M)$-type $\sigma(X)$\smallskip
@@ -364,7 +363,7 @@ The above fact has the following useful consequence.
 
     \ceq{\hfill\bigwedge\Big\{\ \exists x\,\varphi(x\,;C')\ :\ C'\textrm{ neighborhood of }C\Big\}}{\rightarrow}{\exists x\,\bigwedge\Big\{\varphi(x\,;C')\ :\ C'\textrm{ neighborhood of }C\Big\} }
 
-    which is a consequence of saturation and the fact that if $C'$, $C''$ are compact neighbourhoods of $C$ then $\exists x \phi(x;C'\cap C'')$ is satisfiable.
+    which is a consequence of saturation and the fact that if $C'$, $C''$ are compact neighbourhoods of $C$ then $\exists x\, \varphi(x;C'\cap C'')$ is satisfiable.
     The proof for the existential quantifier of sort {\sf S} is similar.
 \end{proof}
 
@@ -450,6 +449,9 @@ We define
 
 \ceq{\hfill\emph{${\sim}{\EuScript D}$}}{=}{\big\{\tilde C\ :\ \tilde C\cap C\neq\varnothing\text{ for every }C\in{\EuScript D}\big\}.}
 
+Above we read $\tilde C\cap C\neq\varnothing$ as the negation of $\tilde C\cap C=\varnothing$.
+That is, some components of the tuples $\tilde C$ and $C$ have nonempty intersection.
+
 The following fact motivates the definition.
 
 \begin{fact}\label{fact_~definibile}
@@ -517,9 +519,10 @@ It is not difficult to see that (2) holds if and only if ${\EuScript D}$ is clos
   2$\Rightarrow$1.
   By Fact~\ref{fact_~inclusione} it suffices to prove ${\sim}{\sim}{\EuScript D}\subseteq{\EuScript D}$.
   Let $C\in{\sim}{\sim}{\EuScript D}$.
-  Let $O\supseteq C$ be open.
-  Then $S\smallsetminus O\notin{\sim}{\EuScript D}$.
-  Then $\tilde C\in{\EuScript D}$ for some $\tilde C\subseteq O$.
+  Let $O$ be a tuple of open sets containing $C$ componentwise.
+  Let $\tilde C$ be the componentwise complement of $O$.  
+  Then $\tilde C\notin{\sim}{\EuScript D}$.
+  As ${\sim}{\EuScript D}=\{\tilde C:  \hat C\cap\tilde C\neq\varnothing\text{ for every }\hat C\in{\EuScript D}\}$, we have that $\hat C\in{\EuScript D}$ for some $\hat C\subseteq O$.
   Assume (2).
   Then, by $\Rightarrow$ every $C'\supseteq O$ is in ${\EuScript D}$.
   As $O$ is arbitrary, $C\in {\EuScript D}$ by $\Leftarrow$.
