@@ -302,6 +302,7 @@ We write ${\sim}\sigma(x\,;z\,;X)$ for the possibly infinite disjunction of the 
 
 % Types are assumed to have cardinality $<\kappa$.
 When $C$ and $\tilde C$ are tuples we read $C\subseteq C'$ and $\tilde C\cap C=\varnothing$ componentwise.
+If every component of $C'$ contains an open set containing $C$, we say that $C'$ is a neighborhood of $C$.
 
 \begin{fact}\label{fact_trivial}
   The following hold for every $C\subseteq C'$ and $\tilde C\cap C=\varnothing$, every standard structure $M$, and every ${\EuScript F}_{\sf X}(M)$-type $\sigma(X)$\smallskip
@@ -513,7 +514,7 @@ We say that ${\EuScript D}$ is \emph{involutive\/} if ${\EuScript D}={\sim}{\sim
 \end{theorem}
 
 \noindent\llap{\textcolor{red}{\Large\warning}\kern1.5ex}\ignorespaces
-It is not difficult to see that (2) holds if and only if ${\EuScript D}$ is closed in the Vietoris topology and includes all the supersets of its elements.
+It is not difficult to see that (2) holds if and only if ${\EuScript D}$ is closed in the product of Vietoris topologies and includes all the supersets of its elements.
 
 \begin{proof}
   2$\Rightarrow$1.
@@ -554,9 +555,10 @@ It is not the most interesting one, but it is very similar to the classical defi
 The following is the classical definition of stability which we dub \textit{finitary\/} for the reason explained below.
 
 \begin{definition}\label{def_finitary_stable}\strut
-We say that $\varphi(x\,;z\,;C)$ is  \emph{finitarily stable\/} if for some $m<\omega$ there is no sequence $\langle a_i\,;b_i\ :\ i<m\rangle$ such that\smallskip
+  Let $x$ and $z$ be tuples of variables of sort ${\sf H}$.
+  We say that $\varphi(x\,;z\,;C)$ is  \emph{finitarily stable\/} if for some $m<\omega$ there is no sequence $\langle a_i\,;b_i\ :\ i<m\rangle$ such that\smallskip
 
-\ceq{1.\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{\neg\varphi(a_i\,;b_n\,;C)} for every $i<n<m$.
+  \ceq{1.\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{\neg\varphi(a_i\,;b_n\,;C)} for every $i<n<m$.
 \end{definition}
 
 The following is an equivalent definition which only mentions formulas in ${\EuScript F}$.
@@ -565,8 +567,8 @@ The reader may wish to compare it with Definition~\ref{def_stable}.
 \begin{fact}\label{fact_stability_semicalssic}
   The following are equivalent
   \begin{itemize}
-    \item [2.]  $\varphi(x\,;z\,;C)$ is finitarily stable
-    \item [3.]  for some $m$ there is no sequence $\langle a_i\,;b_i\ :\ i<m\rangle$ such that for some $\tilde C\cap C=\varnothing$\smallskip
+    \item [1.]  $\varphi(x\,;z\,;C)$ is finitarily stable
+    \item [2.]  for some $m$ there is no sequence $\langle a_i\,;b_i\ :\ i<m\rangle$ such that for some $\tilde C\cap C=\varnothing$\smallskip
     
     \noindent\kern-\labelwidth\kern-\labelsep
     \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C)}\hfill for every $i<n<m$.
@@ -574,17 +576,17 @@ The reader may wish to compare it with Definition~\ref{def_stable}.
 \end{fact}
 
 \begin{proof}
-  2$\Rightarrow$3.
+  1$\Rightarrow$2.
   By Fact~\ref{fact_trivial}.
 
-  3$\Rightarrow$2.
-  Negate (2).
+  2$\Rightarrow$1.
+  Negate (1).
   Let $\langle a_i\,;b_i\ :\ i<m\rangle$ be such that (1) of Definition~\ref{def_finitary_stable} holds.
   By Fact~\ref{fact_otto} there are $\tilde C_{n,i}\cap C=\varnothing$ such that 
 
   \ceq{\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_{n,i})}\hfill for every $i<n<m$.
 
-  Then the union of the $\tilde C_{n,i}$ is the set $\tilde C$ required to negate (3).
+  Then the union of the $\tilde C_{n,i}$ is the set $\tilde C$ required to negate (2).
 \end{proof}
 
 In a classical context, i.e.\@ relying on ${\EuScript L}$-saturation, one can replace $m$ in Definition~\ref{def_finitary_stable} by $\omega$.
@@ -637,7 +639,7 @@ We state it here only for comparison with its non-finitary counterpart, see Theo
 \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
 \def\ceq#1#2#3{\parbox[t]{22ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
-We discuss a version of stability that seems more appropriate in this context.
+We discuss a version of stability that seems more appropriate in this ntext.
 There are two main differences with the previous section.
 First, here the attribute \textit{stable\/} refers to a whole class of formulas~--~all instances of some $\varphi(x\,;z\,;X)$.
 Furthermore, the sequence witnessing the order property is required to be infinite.
@@ -659,6 +661,9 @@ We say that ${\EuScript D}$ is involutive if all its fibers are.
 % This definition extends naturally to when $C=C_1,\dots,C_k$.
 
 \begin{definition}\label{def_stable}\strut
+  Let $x$ and $z$ be tuples of variables of sort ${\sf H}$.
+  Recall that $\sigma(x\,;z\,;X)$ always denotes a small ${\EuScript F}_{\sf X}({\EuScript U})$-type.\smallskip
+
   We say that $\sigma(x\,;z\,;X)$ is \emph{stable\/} if there is no sequence $\langle a_i\,;b_i\ :\ i<\kappa\rangle$ such that for some $C$, some $\tilde C\cap C=\varnothing$\smallskip
 
   \ceq{\hfill \sigma(a_n\,;b_i\,;C)}{\wedge}{{\sim}\sigma(a_i\,;b_n\,;\tilde C)}\hfill for every $i<n<\kappa$ or for every $n<i<\kappa$.\smallskip
@@ -738,14 +743,6 @@ Under the assumption of the remark (in particular, for formulas in place of type
 \end{fact}
 
 \begin{proof}
-  First we prove that any $p(x)$ defined as in (2) is maximal whenever it is consistent~--~in fact, this only depends on ${\EuScript D}$ being involutive.
-  We need to consider two cases.
-  First, assume that $\varphi(x\,;b\,;C)$ is consistent with $p(x)$.
-  Then consistency implies that $\langle b,\tilde C\rangle\notin{\sim}{\EuScript D}$ for every $\tilde C\cap C=\varnothing$.
-  But this implies that $C\in{\sim}{\sim}{\EuScript D}={\EuScript D}$, therefore $\varphi(x\,;b\,;C)\in p$.
-  The second case is when ${\sim}\varphi(x\,;b\,;C)$ is consistent with $p(x)$.
-  This implies that $\langle b,\tilde C\rangle\notin{\EuScript D}$ for every $\tilde C\cap C=\varnothing$.
-  Then $\langle b,C\rangle\in{\sim}{\EuScript D}$,  therefore ${\sim}\varphi(x\,;b\,;C)\in p$.
 
   2$\Rightarrow$1.
   Let $B$ be a given small subset of ${\EuScript U}^z$.
@@ -757,8 +754,17 @@ Under the assumption of the remark (in particular, for formulas in place of type
 
   By Remark~\ref{rem_approx} above, these yield (1) and (2) in Definition~\ref{def_approx_X}.
   
-  1$\Rightarrow$2. 
-  Let $B$ be a given small set.
+  1$\Rightarrow$2.
+  First we prove that any $p(x)$ defined as in (2) is maximal whenever it is consistent~--~in fact, this only depends on ${\EuScript D}$ being involutive.
+  We need to consider two cases.
+  First, assume that $\varphi(x\,;b\,;C)$ is consistent with $p(x)$.
+  Then consistency implies that $\langle b,\tilde C\rangle\notin{\sim}{\EuScript D}$ for every $\tilde C\cap C=\varnothing$.
+  But this implies that $\langle b,\tilde C\rangle\in{\sim}{\sim}{\EuScript D}={\EuScript D}$, therefore $\varphi(x\,;b\,;C)\in p$.
+  The second case is when ${\sim}\varphi(x\,;b\,;C)$ is consistent with $p(x)$.
+  This implies that $\langle b,\tilde C\rangle\notin{\EuScript D}$ for every $\tilde C\cap C=\varnothing$.
+  Then $\langle b,C\rangle\in{\sim}{\EuScript D}$, therefore ${\sim}\varphi(x\,;b\,;C)\in p$.
+
+  Finally, to prove concistency, let $B$ be a given small set.
   Let $a$ be as in Definition~\ref{def_approx_X}.
   Then $a\models p(x)\restriction B$ by Remark~\ref{rem_approx}.
 \end{proof}
