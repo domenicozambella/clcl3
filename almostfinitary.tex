@@ -5,17 +5,24 @@
 
 In this section we present the notion of $\varepsilon$-stability and prove a version of Theorem~\ref{thm_stability_definability} which, albeit approximate,  only requires finite disjunctions and conjunctions.
 
-In this section, the letter $\varepsilon$ always denotes a definable compact neighborhood of the diagonal of $S^2$.
+In this section, the letter $\varepsilon$ always denotes a compact symmetric neighborhood of the diagonal of $S^2$.
 % By $\varepsilon+\delta$ we denote the composition $\varepsilon\circ\varepsilon$, where the two sets are viewed as relations.
 If $C$ is a subset of $S$, we write $C^\varepsilon$ for the set of points that are $\varepsilon$-close to points in $C$.
+That is
+
+\ceq{\hfill C^\varepsilon}{=}{\big\{\alpha\in S\ :\ \langle\xi,\alpha\rangle\in \varepsilon\ \text{ for some }\ \xi\in C\big\}}
+
+When $C$ is a tuple the definition above applies componentwise.
 
 \begin{definition}\label{def_epsilon_stable}\strut
-  We say that $\varphi(x\,;z\,;X)$ is \emph{$\varepsilon$-stable\/} if there is a greatest $m$ for which there is some sequence $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<m\rangle$ such that for every $i<n<m$
+  Let $\varphi(x\,;z\,;X)$, for $x$ and $z$ tuples of variables of sort ${\sf H}$, be a ${\EuScript F}_{\sf X}$-for\-mu\-la.
+  We say that $\varphi(x\,;z\,;X)$ is \emph{$\varepsilon$-stable\/} if for some $m<\omega$ is no sequence $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<m\rangle$ such that for every $i<n<m$\smallskip
 
-    \ceq{\hfill \varphi(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}\quad and\quad $C_i^\varepsilon\cap\tilde C_i=\varnothing$.\smallskip
+    \ceq{\hfill \varphi(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}\quad and\quad $C_i^\varepsilon\cap\tilde C_i=\varnothing$.
+    
 \end{definition}
 
-Note that the requirement of $\varepsilon$-stability is stronger the smaller the $\varepsilon$ and it always implies stability as defined in Defintion~\ref{def_stable}~--~we do not know whether the two notions coincide in the limit.
+Note that the requirement of $\varepsilon$-stability is stronger the smaller the $\varepsilon$ and it always implies stability as defined in Defintion~\ref{def_stable}~--~we do not know whether $\varepsilon$-stabile for all $\varepsilon$ implies stable.
 
 % We remark that, by Facts~\ref{fact_~definibile} and~\ref{fact_~inclusione}, when ${\EuScript D}$ is involutive 
 % %(1) can be rephrased as

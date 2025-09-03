@@ -555,10 +555,11 @@ It is not the most interesting one, but it is very similar to the classical defi
 The following is the classical definition of stability which we dub \textit{finitary\/} for the reason explained below.
 
 \begin{definition}\label{def_finitary_stable}\strut
-  Let $x$ and $z$ be tuples of variables of sort ${\sf H}$.
+  Let $\varphi(x\,;z\,;X)$, for $x$ and $z$ tuples of variables of sort ${\sf H}$, be a ${\EuScript F}_{\sf X}$-for\-mu\-la.  
+  Let $C$ be a fixed tuple of compact sets.
   We say that $\varphi(x\,;z\,;C)$ is  \emph{finitarily stable\/} if for some $m<\omega$ there is no sequence $\langle a_i\,;b_i\ :\ i<m\rangle$ such that\smallskip
 
-  \ceq{1.\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{\neg\varphi(a_i\,;b_n\,;C)} for every $i<n<m$.
+  \ceq{1.\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{\neg\varphi(a_i\,;b_n\,;C)}\hfill for every $i<n<m$.
 \end{definition}
 
 The following is an equivalent definition which only mentions formulas in ${\EuScript F}$.
@@ -689,6 +690,10 @@ Note that when $\sigma(x\,;z\,;X)$ is a formula by compactness we can replace $\
 \end{proof}
 
 Note also that, by the pigeonhole principle, we can strengthen the requirement in Definition~\ref{def_stable} by requiring that there is no $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<\kappa\rangle$ such that $\tilde C_i\cap C_i=\varnothing$ and\smallskip
+
+  \ceq{\hfill \sigma(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\sigma(a_i\,;b_n\,;\tilde C_n)}\hfill for every $i<n<\kappa$ or for every $n<i<\kappa$\smallskip
+
+or, as $\kappa$ is a Ramsey cardinal, such that\smallskip
 
   \ceq{\hfill \sigma(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}\hfill for every $i<n<\kappa$ or for every $n<i<\kappa$.\smallskip
 
@@ -898,7 +903,7 @@ This contradicts stability (as noted after Remark~\ref{rem_stable}).
 
 \begin{proof}
   Suppose $\pi(\bar x\,;z\,;X)$ is unstable.
-  Let $\langle \bar a_i\,;b_i\ :\ i<k\rangle$ be a sequence witnessing instability.
+  Let $\langle \bar a_i\,;b_i\ :\ i<\kappa\rangle$ be a sequence witnessing instability.
   Then for every pair $i<n$ there is some $j<\mu$ such that ${\sim}\sigma(a_{j,n}\,;b_i\,;\tilde C)$.
   Interpret $j$ as a color. 
   As $\kappa$ is a Ramsey cardinal, every $\mu$-coloring of a complete graph of size $\kappa$ has a monochromatic subgraph of size $\kappa$.
