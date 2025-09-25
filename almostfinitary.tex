@@ -16,10 +16,11 @@ When $C$ is a tuple the definition above applies componentwise.
 
 \begin{definition}\label{def_epsilon_stable}\strut
   Let $\varphi(x\,;z\,;X)$, for $x$ and $z$ tuples of variables of sort ${\sf H}$, be an ${\EuScript F}_{\sf X}$-for\-mu\-la.
-  We say that $\varphi(x\,;z\,;X)$ is \emph{$\varepsilon$-stable\/} if for some $m<\omega$ there is no sequence $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<m\rangle$ such that for every $i<n<m$\smallskip
+  We say that $\varphi(x\,;z\,;X)$ is \emph{$\varepsilon$-unstable\/} if for every $m<\omega$ there is a sequence $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<m\rangle$ such that for every $i<n<m$\smallskip
 
     \ceq{\hfill \varphi(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}\quad and\quad $C_i^\varepsilon\cap\tilde C_i=\varnothing$.
-    
+
+  We say \emph{$\varepsilon$-stable\/} for not $\varepsilon$-unstable.    
 \end{definition}
 
 Note that the requirement of $\varepsilon$-stability is stronger the smaller the $\varepsilon$ and it always implies stability as defined in Definition~\ref{def_stable}~--~we do not know whether stable implies $\varepsilon$-stabile for some $\varepsilon$.
@@ -102,20 +103,22 @@ and
 This is possible because ${\EuScript D}$ is $\varepsilon$-approximated from below.
 Note that (3) immediately guarantees (2).
 Now, assume (1) fails for $k=n$, and choose $b_n$ and $C_n$ witnessing this.
-Then, by Fact~\ref{fact_otto}, for some $\tilde C_n\cap C_n^\varepsilon=\varnothing$
+Then, by Fact~\ref{fact_otto}, for some $\tilde C_{i,n}\cap C_n^\varepsilon=\varnothing$
 
-\ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}\ \ }{\text{and}}{\ \ \bigwedge_{i<n}\ {\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}%\smallskip
+\ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}\ \ }{\text{and}}{\ \ \bigwedge_{i<n}\ {\sim}\varphi(a_i\,;b_n\,;\tilde C_{i,n})}%\smallskip
 
-Suppose for a contradiction that the construction never ends.
-Then, as (5) guarantees that $\langle b_i,C_i\rangle\in{\EuScript D}$ for every $i$, from (4) we obtain $\varphi(a_n\,;b_i\,;C_n)$ for every $i<n$.
-From (5) we also obtain ${\sim}\varphi(a_i\,;b_n\,;\tilde C_n)$, for every $i\le n$.
-This contradicts $\varepsilon$-stability.
+Let $m$ witness the $\varepsilon$-stability of $\varphi(x\,;z\,;X)$.
+Suppose for a contradiction that the construction curries on $m$ stages.
+Then, as (5) guarantees that $\langle b_i,C_i\rangle\in{\EuScript D}$ for every $i$, from (4) we obtain $\varphi(a_n\,;b_i\,;C_i)$ for every $i<n<m$.
+From (5) we also obtain, for every $i< n<m$, some $\tilde C_{i,n}\cap C_n=\varnothing$ such that ${\sim}\varphi(a_i\,;b_n\,;\tilde C_{i,n})$.
+By monotonicity, ${\sim}\varphi(a_i\,;b_n\,;\tilde C_n)$ for $\tilde C_n=\bigcup_{i< m}\tilde C_{i,n}$.
+This contradicts our choice of $m$.
 \end{proof}
 
 \begin{lemma}
   Let $\varphi(x\,;z\,;X)$ be $\varepsilon$-stable.
   Assume that ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$.
-  Let $m$ be maximal so that a sequence as in (3) of Definition~\ref{def_epsilon_stable} exists.
+  Let $m$ witness the $\varepsilon$-stability of  $\varphi(x\,;z\,;X)$, see Definition~\ref{def_epsilon_stable}.
   Let $\bar x=\langle x_i\ :\ i\le m\rangle$ where the $x_i$ are copies of $x$.
   Then the formula\smallskip
 
@@ -142,11 +145,12 @@ This contradicts $\varepsilon$-stability.
   \ceq{4.\hfill \langle b_n,C_n^\varepsilon\rangle\notin{\EuScript D}\ \ }{\text{and}}{\ \ \bigwedge_{i=0}^n\ \varphi(a_i\,;b_n\,;C_n)}
 
   Note that (4) ensures that $\langle b_i,C_i^\varepsilon\rangle\notin{\EuScript D}$ for every $i$.
-  Then there is some $\tilde C_i$ that witnesses (3) for $\langle b_i,C_i^\varepsilon\rangle\notin{\EuScript D}$.
-  We claim that the procedure has to stop after $\le m$ steps. 
-  In fact, from (3) we obtain ${\sim}\varphi(a_n\,;b_i\,;\tilde C_i)$ for every $i<n$.
-  On the other hand, by (4) we have that $\varphi(a_i\,;b_n\,;C_n)$ for every $i<n$.
-  Therefore, $\langle a_{m-i}\,;b_{m-i}\,;C_{m-i}\,;\tilde C_{m-i}\ :\ i\le m\rangle$ contradicts the maximality of $m$.
+  Then there is some $\tilde C_{i,n}\cap C^\varepsilon_i=\varnothing$ that witnesses (3) for $\langle b_i,C_i^\varepsilon\rangle\notin{\EuScript D}$.
+  We claim that the procedure has to stop after $< m$ steps. 
+  In fact, from (3) we obtain ${\sim}\varphi(a_n\,;b_i\,;\tilde C_{i,n})$ for every $i<n<m$.
+  Therefore, by monotonicity, ${\sim}\varphi(a_n\,;b_i\,;\tilde C_i)$ for $\tilde C_i=\bigcup_{n< m}\tilde C_{i,n}$.
+  On the other hand, by (4) we have that $\varphi(a_i\,;b_n\,;C_n)$ for every $i<n<m$.
+  Therefore, $\langle a_{m-1-i}\,;b_{m-1-i}\,;C_{m-1-i}\,;\tilde C_{m-1-i}\ :\ i< m\rangle$ contradicts the choice of $m$.
 \end{proof}
 
 \begin{lemma}\label{lem_sigma_stable}

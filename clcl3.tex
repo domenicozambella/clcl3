@@ -321,7 +321,7 @@ We say that $C'$ is a neighborhood of $C$ if every component of $C'$ contains an
   for every $M$, and every ${\EuScript F}_{\sf X}(M)$-formula $\varphi(X)$.
   Conversely, for every $\tilde C\cap C=\varnothing$ there is a neighboorhood $C'$ of $C$ such that
 
-  \ceq{\hfill M}{\models}{\varphi(C)\ \rightarrow\ \varphi(C')\ \rightarrow\ \neg\,{\sim}\varphi(\tilde C)}.\smallskip
+  \ceq{\hfill M}{\models}{\varphi(C)\ \rightarrow\ \varphi(C')\ \rightarrow\ \neg\,{\sim}\varphi(\tilde C)}\smallskip
 
   for every $M$, and every ${\EuScript F}_{\sf X}(M)$-formula $\varphi(X)$.
 \end{fact}
@@ -557,9 +557,11 @@ The following is the classical definition of stability which we dub \textit{fini
 \begin{definition}\label{def_finitary_stable}\strut
   Let $\varphi(x\,;z\,;X)$, for $x$ and $z$ tuples of variables of sort ${\sf H}$, be a ${\EuScript F}_{\sf X}$-for\-mu\-la.  
   Let $C$ be a fixed tuple of compact sets.
-  We say that $\varphi(x\,;z\,;C)$ is  \emph{finitarily stable\/} if for some $m<\omega$ there is no sequence $\langle a_i\,;b_i\ :\ i<m\rangle$ such that\smallskip
+  We say that $\varphi(x\,;z\,;C)$ is \emph{finitarily unstable\/} if for every $m<\omega$ there is a sequence $\langle a_i\,;b_i\ :\ i<m\rangle$ such that\smallskip
 
-  \ceq{1.\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{\neg\varphi(a_i\,;b_n\,;C)}\hfill for every $i<n<m$.
+  \ceq{1.\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{\neg\varphi(a_i\,;b_n\,;C)}\hfill for every $i<n<m$.\smallskip
+
+  We say finitarily \emph{stable\/} for not finitarily unstable.
 \end{definition}
 
 The following is an equivalent definition which only mentions formulas in ${\EuScript F}$.
@@ -597,7 +599,7 @@ Therefore we dedicate a separate section to the non-finitary version of stabilit
 The following definitions are classical, i.e.\@ they rely on the full language ${\EuScript L}$.
 
 \begin{definition}\label{def_globaltype}\strut
-  For a given $C$, a \emph{global $\varphi(x\,;z\,;C)$-type\/} is a maximally (finitely) consistent set of formulas of the form $\varphi(x\,;b\,;C)$ or $\neg\varphi(x\,;b\,;C)$ for some $b\in{\EuScript U}^{|z|}$.
+  For a given $C$, a \emph{global $\varphi(x\,;z\,;C)$-type\/} is a maximally (finitely) consistent set of formulas of the form $\varphi(x\,;b\,;C)$ or $\neg\varphi(x\,;b\,;C)$ for some $b\in{\EuScript U}^{z}$.
 \end{definition}
 
 Global $\varphi(x\,;z\,;C)$-types should not be confused with global $\varphi(x\,;z\,;X)$-types which are introduced in the following section.
@@ -665,10 +667,11 @@ We say that ${\EuScript D}$ is involutive if all its fibers are.
   Let $x$ and $z$ be tuples of variables of sort ${\sf H}$.
   Recall that $\sigma(x\,;z\,;X)$ always denotes a small ${\EuScript F}_{\sf X}({\EuScript U})$-type.\smallskip
 
-  We say that $\sigma(x\,;z\,;X)$ is \emph{stable\/} if there is no sequence $\langle a_i\,;b_i\ :\ i<\kappa\rangle$ such that for some $C$, some $\tilde C\cap C=\varnothing$\smallskip
+  We say that $\sigma(x\,;z\,;X)$ is \emph{unstable\/} if there are a sequence $\langle a_i\,;b_i\ :\ i<\kappa\rangle$, some $C$, and some $\tilde C\cap C=\varnothing$ such that\smallskip
 
   \ceq{\hfill \sigma(a_n\,;b_i\,;C)}{\wedge}{{\sim}\sigma(a_i\,;b_n\,;\tilde C)}\hfill for every $i<n<\kappa$ or for every $n<i<\kappa$.\smallskip
 
+  We say \emph{stable\/} for not unstable.    
 \end{definition}
 
 Note that when $\sigma(x\,;z\,;X)$ is a formula by compactness we can replace $\kappa$ with $\omega$ in the above definition.
@@ -699,7 +702,7 @@ or, as $\kappa$ is a Ramsey cardinal, such that\smallskip
 
 \begin{definition}\strut 
   Let $\varphi(x\,;z\,;X)$ be a ${\EuScript F}_{\sf X}$-formula.
-  A \emph{global $\varphi(x\,;z\,;X)$-type\/} is a maximally (finitely) consistent set of formulas of the form $\varphi(x\,;b\,;C)$ or ${\sim}\varphi(x\,;b\,;C)$ for some $b\in{\EuScript U}^{|z|}$ and some $C$.
+  A \emph{global $\varphi(x\,;z\,;X)$-type\/} is a maximally (finitely) consistent set of formulas of the form $\varphi(x\,;b\,;C)$ or ${\sim}\varphi(x\,;b\,;C)$ for some $b\in{\EuScript U}^{z}$ and some $C$.
 \end{definition}
 
 It is convenient to have a different characterization of global types, therefore  the following definition.
@@ -729,7 +732,7 @@ When $\sigma(x\,;z\,;X)$ is a formula and  ${\EuScript D}$ is involutive (2) in 
   By Fact~\ref{fact_~inclusione} this is equivalent to ${\sim}{\EuScript D}\subseteq{\sim}{\EuScript C}$ which in turn is equivalent to (2$'$), again by Fact~\ref{fact_~definibile}.
 \end{proof}
 
-Under the assumption of the remark (in particular, for formulas in place of types) it is easy to verify by compactness that in Definition~\ref{def_approx_X} the requirement \textit{for every small\/} $B$ can be replaced by \textit{for every finite\/} $B$.
+Under the assumptions of the remark (i.e. when ${\EuScript D}$ is involutive and $\sigma(x\,;z\,;X)$ is a formula), it is easy to verify by compactness that in Definition~\ref{def_approx_X} the requirement \textit{for every small\/} $B$ can be replaced by \textit{for every finite\/} $B$.
 
 \begin{fact}
   Let $\varphi(x\,;z\,;X)$ be a ${\EuScript F}_{\sf X}$-formula.
@@ -764,7 +767,7 @@ Under the assumption of the remark (in particular, for formulas in place of type
   We need to consider two cases.
   First, assume that $\varphi(x\,;b\,;C)$ is consistent with $p(x)$.
   Then consistency implies that $\langle b,\tilde C\rangle\notin{\sim}{\EuScript D}$ for every $\tilde C\cap C=\varnothing$.
-  But this implies that $\langle b,\tilde C\rangle\in{\sim}{\sim}{\EuScript D}={\EuScript D}$, therefore $\varphi(x\,;b\,;C)\in p$.
+  But this implies that $\langle b, C\rangle\in{\sim}{\sim}{\EuScript D}={\EuScript D}$, therefore $\varphi(x\,;b\,;C)\in p$.
   The second case is when ${\sim}\varphi(x\,;b\,;C)$ is consistent with $p(x)$.
   This implies that $\langle b,\tilde C\rangle\notin{\EuScript D}$ for every $\tilde C\cap C=\varnothing$.
   Then $\langle b,C\rangle\in{\sim}{\EuScript D}$, therefore ${\sim}\varphi(x\,;b\,;C)\in p$.
@@ -776,7 +779,7 @@ Under the assumption of the remark (in particular, for formulas in place of type
 
 The proof of the main theorem of this section requires the following notion of approximation.
 The definition is inspired by the classical notion of approximation from below in~\cite{Z15} where it is used as rephrasing of the notion of honest definability in~\cite{CS}.
-Here this notion plays a purely technical role, but we submit it as potentially interesing in itself.
+Here this notion plays a purely technical role, but we submit it as potentially interesting in itself.
 
 \begin{definition}\label{def_approx_blw}\strut
   We say that ${\EuScript D}$ is \emph{approximable\/} by $\sigma(x\,;z\,;X)$ \emph{from below\/} if for every small set $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that for every $C$\smallskip
@@ -851,14 +854,14 @@ and
 This is possible because ${\EuScript D}$ is approximated from below.
 Note that (3) immediately guarantees (2).
 Now, assume (1) fails for $\lambda=n$, and choose $b_n$ and $C_n$ witnessing this.
-Then, by Fact~\ref{fact_otto}, for some $\tilde C_n\cap C_n=\varnothing$
+Then, by Fact~\ref{fact_otto}, for some $\tilde C_{i,n}\cap C_n=\varnothing$
 
-\ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}\ \ }{\text{and}}{\ \ \bigwedge_{i<n}\ {\sim}\sigma(a_i\,;b_n\,;\tilde C_n)}%\smallskip
+\ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}\ \ }{\text{and}}{\ \ \bigwedge_{i<n}\ {\sim}\sigma(a_i\,;b_n\,;\tilde C_{i,n})}%\smallskip
 
-Suppose for a contradiction that the construction never ends.
-Then, as (5) guarantees that $\langle b_i,C_i\rangle\in{\EuScript D}$ for every $i$, from (4) we obtain $\sigma(a_n\,;b_i\,;C_n)$ for every $i<n$.
-From (5) we also obtain ${\sim}\sigma(a_i\,;b_n\,;\tilde C_n)$, for every $i\le n$.
-This contradicts stability (as noted after Remark~\ref{rem_stable}).
+Suppose for a contradiction that the construction curries on $\kappa$ stages.
+Then, as (5) guarantees that $\langle b_i,C_i\rangle\in{\EuScript D}$ for every $i$, from (4) we obtain $\sigma(a_n\,;b_i\,;C_i)$ for every $i<n$.
+From (5) we also obtain ${\sim}\sigma(a_i\,;b_n\,;\tilde C_{i,n})$, for every $i\le n$.
+Apply Ramsey with pairs $\langle C,\tilde C\rangle$ of compact subsets of $S$ as colors to obtain a subsequence $\langle a'_i\,;b'_i\ :\ i<\kappa\rangle$ that contradicts Definition~\ref{def_stable}.
 \end{proof}
 
 \begin{lemma}
@@ -890,11 +893,11 @@ This contradicts stability (as noted after Remark~\ref{rem_stable}).
   \ceq{4.\hfill \langle b_n,C_n\rangle\notin{\EuScript D}\ \ }{\text{and}}{\ \ \bigwedge_{i=0}^n\ \sigma(a_i\,;b_n\,;C_n)}
 
   Note that (4) ensures that $\langle b_i,C_i\rangle\notin{\EuScript D}$ for every $i$.
-  Then there is some $\tilde C_i$ that witnesses (3) for $\langle b_i,C_i\rangle\notin{\EuScript D}$.
+  Then there is some $\tilde C_{i,n}$ that witnesses (3) for $\langle b_i,C_i\rangle\notin{\EuScript D}$.
   We claim that the procedure has to stop after $<\kappa$ steps.
-  In fact, from (3) we obtain ${\sim}\sigma(a_n\,;b_i\,;\tilde C_i)$ for every $i<n$.
+  In fact, from (3) we obtain ${\sim}\sigma(a_n\,;b_i\,;\tilde C_{i,n})$ for every $i<n$.
   On the other hand, by (4) we have that $\sigma(a_i\,;b_n\,;C_n)$ for every $i<n$.
-  Therefore, $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<\kappa\rangle$ contradicts stability (as noted after Remark~\ref{rem_stable}).
+  Again, apply Ramsey with pairs $\langle C,\tilde C\rangle$ of compact subsets of $S$ as colors to obtain a subsequence $\langle a'_i\,;b'_i\ :\ i<\kappa\rangle$ that contradicts Definition~\ref{def_stable}.
 \end{proof}
 
 \begin{lemma}\label{lem_sigma_stable}
@@ -970,11 +973,12 @@ This contradicts stability (as noted after Remark~\ref{rem_stable}).
     author = {Barbina, Silvia},
     author = {Motto Ros, Luca},
     author = {Zambella, Domenico},
-    title = {Continuous logic in a classical setting},
-    note={t.a. in Bull. Iranian Math. Soc. \href{https://arxiv.org/abs/2402.01245}{arXiv:2402.01245}},
+    journal={Bull. Iran. Math. Soc.},
+    volume={51},
     date = {2025},
+    title = {Continuous logic in a classical setting},
+    note={\href{https://arxiv.org/abs/2402.01245}{arXiv:2402.01245}},
   }\smallskip
-
   \bib{B}{article}{
     label={B},
     author={Ben Yaacov, Ita\"{\i}},
