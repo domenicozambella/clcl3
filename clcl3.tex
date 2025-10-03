@@ -646,7 +646,7 @@ We discuss a version of stability that seems more appropriate in this context.
 There are two main differences with the previous section.
 First, here the attribute \textit{stable\/} refers to a whole class of formulas~--~all instances of some $\varphi(x\,;z\,;X)$.
 Furthermore, the sequence witnessing the order property is required to be infinite.
-As we need to extend the definition of stability to types, sequences of length $\kappa$ (a large cardinal) are used.
+As we need to extend the definition of stability to types, sequences of length $\kappa$ (the cardinality of ${\EuScript U}$, a Ramsey cardinal) are used.
 
 In this section  ${\EuScript D}$ is always a subset of ${\EuScript U}^z\times K(S)^n$, where $n$ has to be inferred from the context (tipically, $n=|X|$).
 We write ${\sim}{\EuScript D}$ for the set obtained by applying the definition in Section~\ref{K(S)} to all fibers of ${\EuScript D}$.
@@ -676,29 +676,29 @@ We say that ${\EuScript D}$ is involutive if all its fibers are.
 
 Note that when $\sigma(x\,;z\,;X)$ is a formula by compactness we can replace $\kappa$ with $\omega$ in the above definition.
 
-\begin{remark}\label{rem_stable}
-  In Definition~\ref{def_stable} we can equivalently require the following.
-  There is no sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ such that for some $C$, some $\tilde C\cap C=\varnothing$, and some formula $\varphi(x\,;z\,;X)\in\sigma$\smallskip
+% \begin{remark}\label{rem_stable}
+%   In Definition~\ref{def_stable} we can equivalently require the following.
+%   There is a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$, some $C$, some $\tilde C\cap C=\varnothing$, and some formula $\varphi(x\,;z\,;X)\in\sigma$ such that\smallskip
 
-  \ceq{\hfill \sigma(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C)}\hfill for every $i<n<\omega$ or for every $n<i<\omega$.\smallskip
-\end{remark}
+%   \ceq{\hfill \sigma(a_n\,;b_i\,;C)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C)}\hfill for every $i<n<\omega$ or for every $n<i<\omega$.\smallskip
+% \end{remark}
 
-\begin{proof}
-  The conjunction in Definition~\ref{def_stable} holds when
-  $\sigma(a_n\,;b_i\,;C)\wedge{\sim}\varphi(a_i\,;b_n\,;\tilde C)$
-  holds for some $\varphi(x\,;z\,;X)\in\sigma$.
-  The formula $\varphi(x\,;z\,;X)$ depends on $i$ and $n$ but, since $\kappa$ is a Ramsey cardinal, we can refine the sequence to obtain that the same $\varphi(x\,;z\,;X)$ works for all $i<n<\kappa$.
+% \begin{proof}
+%   The conjunction in Definition~\ref{def_stable} holds when
+%   $\sigma(a_n\,;b_i\,;C)\wedge{\sim}\varphi(a_i\,;b_n\,;\tilde C)$
+%   holds for some $\varphi(x\,;z\,;X)\in\sigma$.
+%   The formula $\varphi(x\,;z\,;X)$ depends on $i$ and $n$ but, since $\kappa$ is a Ramsey cardinal, we can refine the sequence to obtain that the same $\varphi(x\,;z\,;X)$ works for all $i<n<\kappa$.
 
-  Once we replace ${\sim}\sigma(x\,;z\,;X)$ by ${\sim}\varphi(x\,;z\,;X)$ compactness applies and the existence of a sequence of length $\kappa$is equivalent to the existence of a sequence of length $\omega$ .
-\end{proof}
+%   Once we replace ${\sim}\sigma(x\,;z\,;X)$ by ${\sim}\varphi(x\,;z\,;X)$ compactness applies and the existence of a sequence of length $\kappa$is equivalent to the existence of a sequence of length $\omega$ .
+% \end{proof}
 
-Note also that, by the pigeonhole principle, we can strengthen the requirement in Definition~\ref{def_stable} by requiring that there is no $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<\kappa\rangle$ such that $\tilde C_i\cap C_i=\varnothing$ and\smallskip
+% Note also that, by the pigeonhole principle, we can strengthen the requirement in Definition~\ref{def_stable} by requiring that there is no $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<\kappa\rangle$ such that $\tilde C_i\cap C_i=\varnothing$ and\smallskip
 
-  \ceq{\hfill \sigma(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\sigma(a_i\,;b_n\,;\tilde C_n)}\hfill for every $i<n<\kappa$ or for every $n<i<\kappa$\smallskip
+%   \ceq{\hfill \sigma(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\sigma(a_i\,;b_n\,;\tilde C_n)}\hfill for every $i<n<\kappa$ or for every $n<i<\kappa$\smallskip
 
-or, as $\kappa$ is a Ramsey cardinal, such that\smallskip
+% or, as $\kappa$ is a Ramsey cardinal, such that\smallskip
 
-  \ceq{\hfill \sigma(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}\hfill for every $i<n<\kappa$ or for every $n<i<\kappa$.\smallskip
+%   \ceq{\hfill \sigma(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}\hfill for every $i<n<\kappa$ or for every $n<i<\kappa$.\smallskip
 
 \begin{definition}\strut 
   Let $\varphi(x\,;z\,;X)$ be a ${\EuScript F}_{\sf X}$-formula.
@@ -732,7 +732,7 @@ When $\sigma(x\,;z\,;X)$ is a formula and  ${\EuScript D}$ is involutive (2) in 
   By Fact~\ref{fact_~inclusione} this is equivalent to ${\sim}{\EuScript D}\subseteq{\sim}{\EuScript C}$ which in turn is equivalent to (2$'$), again by Fact~\ref{fact_~definibile}.
 \end{proof}
 
-Under the assumptions of the remark (i.e. when ${\EuScript D}$ is involutive and $\sigma(x\,;z\,;X)$ is a formula), it is easy to verify by compactness that in Definition~\ref{def_approx_X} the requirement \textit{for every small\/} $B$ can be replaced by \textit{for every finite\/} $B$.
+Under the assumptions of the remark (i.e. when ${\EuScript D}$ is involutive and $\sigma(x\,;z\,;X)$ is a formula), it is easy to verify by compactness that in Definition~\ref{def_approx_X} the requirement \textit{for every small\/} $B$ can be replaced by \textit{for every finite\/} $B$ (indeed, one can verify that the proof of the following fact works also when $B$ is required to be finite).
 
 \begin{fact}
   Let $\varphi(x\,;z\,;X)$ be a ${\EuScript F}_{\sf X}$-formula.
@@ -820,9 +820,9 @@ Here this notion plays a purely technical role, but we submit it as potentially 
 \begin{theorem}\label{thm_stability_definability}
   Let $\sigma(x\,;z\,;X)$ be stable.
   Assume that ${\EuScript D}$ is approximable by $\sigma(x\,;z\,;X)$.
-  Then there are some $\langle a_{i,j}\ :\ i<\lambda,j<\mu\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
+  Then there are some $\langle a_{i,j}\ :\ i,j<\lambda\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
 
-  \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftrightarrow}{\bigvee_{i<\lambda}\ \bigwedge_{j<\mu}\ \sigma(a_{i,j}\,;b\,;C)}\medskip
+  \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftrightarrow}{\bigvee_{i<\lambda}\ \bigwedge_{j<\lambda}\ \sigma(a_{i,j}\,;b\,;C)}\medskip
 
   % \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i<\lambda}\ \bigwedge_{j<\mu}\ \sigma(a_{i,j}\,;b\,;C)}
 \end{theorem}
@@ -867,11 +867,11 @@ Apply Ramsey with pairs $\langle C,\tilde C\rangle$ of compact subsets of $S$ as
 \begin{lemma}
   Let $\sigma(x\,;z\,;X)$ be stable.
   Assume that ${\EuScript D}$ is approximable by $\sigma(x\,;z\,;X)$.
-  Then for some $\mu<\kappa$ the type\medskip 
+  Then for some $\lambda<\kappa$ the type\medskip 
 
-  \ceq{\hfill\pi(\bar x\,;z\,;X)}{=}{\bigwedge_{i<\mu}\ \sigma(x_i\,;z\,;X),}\smallskip
+  \ceq{\hfill\pi(\bar x\,;z\,;X)}{=}{\bigwedge_{i<\lambda}\ \sigma(x_i\,;z\,;X),}\smallskip
   
-  where the $x_i$ are copies of $x$ and $\bar x=\langle x_i\ :\ i<\mu\rangle$,
+  where the $x_i$ are copies of $x$ and $\bar x=\langle x_i\ :\ i<\lambda\rangle$,
   approximates ${\EuScript D}$ from below.
 \end{lemma}
 
@@ -907,10 +907,10 @@ Apply Ramsey with pairs $\langle C,\tilde C\rangle$ of compact subsets of $S$ as
 \begin{proof}
   Suppose $\pi(\bar x\,;z\,;X)$ is unstable.
   Let $\langle \bar a_i\,;b_i\ :\ i<\kappa\rangle$ be a sequence witnessing instability.
-  Then for every pair $i<n$ there is some $j<\mu$ such that ${\sim}\sigma(a_{j,n}\,;b_i\,;\tilde C)$.
+  Then for every pair $i<n$ there is some $j<\lambda$ such that ${\sim}\sigma(a_{j,n}\,;b_i\,;\tilde C)$.
   Interpret $j$ as a color. 
-  As $\kappa$ is a Ramsey cardinal, every $\mu$-coloring of a complete graph of size $\kappa$ has a monochromatic subgraph of size $\kappa$.
-  That is, there is $j<\mu$ such that ${\sim}\sigma(a_{j,n}\,;b_i\,;\tilde C)$ holds for $\kappa$ many $i$.
+  As $\kappa$ is a Ramsey cardinal, every $\lambda$-coloring of a complete graph of size $\kappa$ has a monochromatic subgraph of size $\kappa$.
+  That is, there is $j<\lambda$ such that ${\sim}\sigma(a_{j,n}\,;b_i\,;\tilde C)$ holds for $\kappa$ many $i$.
   Therefore we can extract a subsequence that contradicts the stability of $\sigma(x\,;z\,;X)$.
 \end{proof}
 
