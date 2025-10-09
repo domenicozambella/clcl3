@@ -102,15 +102,15 @@ and
 
 This is possible because ${\EuScript D}$ is $\varepsilon$-approximated from below.
 Note that (3) immediately guarantees (2).
-Now, assume (1) fails for $k=n$, and choose $b_n$ and $C_n$ witnessing this.
+Now, assume (1) fails for $k=n+1$, and choose $b_n$ and $C_n$ witnessing this.
 Then, by Fact~\ref{fact_otto}, for some $\tilde C_{i,n}\cap C_n^\varepsilon=\varnothing$
 
-\ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}\ \ }{\text{and}}{\ \ \bigwedge_{i<n}\ {\sim}\varphi(a_i\,;b_n\,;\tilde C_{i,n})}%\smallskip
+\ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}\ \ }{\text{and}}{\ \ \bigwedge_{i\le n}\ {\sim}\varphi(a_i\,;b_n\,;\tilde C_{i,n})}%\smallskip
 
 Let $m$ witness the $\varepsilon$-stability of $\varphi(x\,;z\,;X)$.
 Suppose for a contradiction that the construction curries on $m$ stages.
 Then, as (5) guarantees that $\langle b_i,C_i\rangle\in{\EuScript D}$ for every $i$, from (4) we obtain $\varphi(a_n\,;b_i\,;C_i)$ for every $i<n<m$.
-From (5) we also obtain, for every $i< n<m$, some $\tilde C_{i,n}\cap C_n=\varnothing$ such that ${\sim}\varphi(a_i\,;b_n\,;\tilde C_{i,n})$.
+From (5) we also obtain, for every $i< n<m$, some $\tilde C_{i,n}\cap C_n^\varepsilon=\varnothing$ such that ${\sim}\varphi(a_i\,;b_n\,;\tilde C_{i,n})$.
 By monotonicity, ${\sim}\varphi(a_i\,;b_n\,;\tilde C_n)$ for $\tilde C_n=\bigcup_{i< m}\tilde C_{i,n}$.
 This contradicts our choice of $m$.
 \end{proof}
@@ -160,8 +160,8 @@ This contradicts our choice of $m$.
 \begin{proof}
   Let $m$ be maximal such that a sequence as in (3) of Definition~\ref{def_epsilon_stable} exists.
   Let $k$ be sufficiently large so that every $m$-coloring of a graph of size $k$ has a monocromatic subgraph of size $>m$.
-  Let $\langle \bar a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<k\rangle$ be a sequence witnessing instability.
-  Then for every pair $i<n$ there is some $j<m$ such that ${\sim}\varphi(a_{j,n}\,;b_i\,;\tilde C_i)$.
-  By the choice of $k$ there is a $j<m$ such that ${\sim}\varphi(a_{j,n}\,;b_i\,;\tilde C_i)$ obtains for $>m$ many $i$.
+  Let $\langle \bar a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<k\rangle$ be a sequence witnessing the $\varepsilon$-instability.
+  Then for every pair $i<n$ there is some $j<m$ such that ${\sim}\varphi(a_{j,i}\,;b_n\,;\tilde C_i)$.
+  By the choice of $k$ there is a $j<m$ such that ${\sim}\varphi(a_{j,i}\,;b_n\,;\tilde C_i)$ obtains for $>m$ many $i$.
   Therefore we can extract a subsequence that contradicts the maximality of $m$.
 \end{proof}
