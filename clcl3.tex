@@ -184,9 +184,8 @@
   Subsequently, this has been used as a major argument to advocate in favor of \cite{BBHU}'s over~\cite{HI}'s approach.\smallskip
 
   \noindent
-  Recently, a classical approach to continuous structures has been proposed  in \cite{clcl} and~\cite{Z} that properly extend the class of structures that
-  falls under the scope of~\cite{HI} or~\cite{BBHU}.
-  These articles introduced the notion of structures with a standard sort.
+  Recently, a classical approach to continuous structures has been proposed  in \cite{clcl} and~\cite{Z} that extend the class of structures falling under the scope of~\cite{HI} or~\cite{BBHU}.
+  These articles introduce the notion of \textit{structures with a standard sort.}
   We discuss local stability in this context.
   We examine three variants of order property which are prima facie non equivalent.
   For each variant we show that sets externally definable by stable formulas are definable in some appropiate sense.
@@ -231,11 +230,11 @@ We denote by ${\EuScript F}$ the set of ${\EuScript L}$-formulas constructed ind
 We write \emph{$x\in C$\/} for the predicate associated to a compact set $C$, and denote by $|\mbox{-}|$ the length of a tuple.
 
 \begin{definition}
-  We call atomic formulas those of the form
+  The atomic formulas of ${\EuScript F}$ are
   \begin{itemize}
   \item[i.] atomic and negated atomic formulas of ${\EuScript L}_{\sf H}$
   % \item[ii.] $\tau\in C$, where $\tau$ is a $k$-tuple terms of sort ${\sf H}^n\times {\sf S}^m\to {\sf S}$, and $C$ a compact.
-  \item[ii.] $\tau\in C$, where $\tau$ is a term of sort ${\sf H}^n\times {\sf S}^m\to {\sf S}$, and $C$ a compact set.
+  \item[ii.] those of the form $\tau\in C$, where $\tau$ is a term of sort ${\sf H}^n\times {\sf S}^m\to {\sf S}$, and $C$ a compact set.
   \end{itemize}
 \end{definition}
 
@@ -296,6 +295,8 @@ The pseudonegation of $\varphi$ is denoted by \emph{${\sim}\varphi$.}
 Clearly, when no variable of sort ${\sf X}$ occurs in $\varphi$, we have ${\sim}\varphi\leftrightarrow\neg\varphi$.
 \end{definition}
 
+Note that, unlike $\neg\varphi$, the pseudonegation ${\sim}\varphi$ is again a formula in ${\EuScript F}_{\sf X}$.
+
 It is sometimes convenient to work with infinite conjunctions of formulas.
 In the following $\sigma(x\,;z\,;X)$ denotes an ${\EuScript F}_{\sf X}$-type.
 We write ${\sim}\sigma(x\,;z\,;X)$ for the possibly infinite disjunction of the formulas ${\sim}\varphi(x\,;z\,;X)$ for $\varphi(x\,;z\,;X)\in\sigma$.
@@ -354,7 +355,7 @@ The above fact has the following useful consequence.
 
   It suffices to prove the claim for formulas.
   We prove the first of the two implications by induction on the syntax of $\varphi(X)$.
-  The existential quantifiers of sort {\sf H} and {\sf S} is the only case that requires attention.
+  The existential quantifiers of sort {\sf H} and {\sf S} are the only cases that require attention.
   Assume inductively that
 
     \ceq{\hfill\bigwedge\Big\{\ \varphi(a\,;C')\ :\ C'\textrm{ neighborhood of }C\Big\}}{\rightarrow}{\varphi(a\,;C)}
@@ -463,7 +464,7 @@ The following fact motivates the definition.
 \begin{proof}
   We need to prove that 
 
-  \ceq{\hfill{\sim}\varphi(\tilde C)}{\Leftrightarrow}{\text{for every } C,\ \text{ if } C\cap\tilde C=\varnothing\ \text{ then } \neg\varphi(C)}
+  \ceq{\hfill{\sim}\varphi(\tilde C)}{\Leftrightarrow}{\text{for every } C,\ \text{ if } C\cap\tilde C=\varnothing\ \text{ then } \neg\varphi(C).}
 
   The implication $\Rightarrow$ follows immediately from Fact~\ref{fact_trivial}.
   To prove $\Leftarrow$ assume the r.h.s.
@@ -472,7 +473,7 @@ The following fact motivates the definition.
 As $O$ is arbitrary, we obtain ${\sim}\varphi(\tilde C)$ from the first implication in Fact~\ref{fact_otto}.
 \end{proof}
 
-We prove a couple of straightforward inclusions.
+We prove a few of straightforward inclusions.
 
 \begin{fact}\label{fact_~inclusione}
   For every ${\EuScript D}\subseteq{\EuScript C}$ we have ${\sim}{\EuScript C}\subseteq{\sim}{\EuScript D}$.  
@@ -499,7 +500,8 @@ We prove a couple of straightforward inclusions.
 \begin{proof}
   Only 2$\Rightarrow$1 requires a proof.
   From Fact~\ref{fact_~inclusione} we obtain ${\sim}{\sim}{\sim}{\EuScript C}\subseteq{\sim}{\EuScript C}$.
-  Assume (2) then ${\sim}{\sim}{\EuScript D}\subseteq{\EuScript D}$ which, again by Fact~\ref{fact_~inclusione}, suffices to prove (1).
+  Assume (2).
+  Then ${\sim}{\sim}{\EuScript D}\subseteq{\EuScript D}$ which, again by Fact~\ref{fact_~inclusione}, suffices to prove (1).
 \end{proof}
 
 We say that ${\EuScript D}$ is \emph{involutive\/} if ${\EuScript D}={\sim}{\sim}{\EuScript D}$.
@@ -555,13 +557,13 @@ It is not the most interesting one, but it is very similar to the classical defi
 The following is the classical definition of stability which we dub \textit{finitary\/} for the reason explained below.
 
 \begin{definition}\label{def_finitary_stable}\strut
-  Let $\varphi(x\,;z\,;X)$, for $x$ and $z$ tuples of variables of sort ${\sf H}$, be a ${\EuScript F}_{\sf X}$-for\-mu\-la.  
+  Let $\varphi(x\,;z\,;X)$, for $x$ and $z$ tuples of variables of sort ${\sf H}$, be an ${\EuScript F}_{\sf X}$-for\-mu\-la.  
   Let $C$ be a fixed tuple of compact sets.
   We say that $\varphi(x\,;z\,;C)$ is \emph{finitarily unstable\/} if for every $m<\omega$ there is a sequence $\langle a_i\,;b_i\ :\ i<m\rangle$ such that\smallskip
 
   \ceq{1.\hfill \varphi(a_n\,;b_i\,;C)}{\wedge}{\neg\varphi(a_i\,;b_n\,;C)}\hfill for every $i<n<m$.\smallskip
 
-  We say finitarily \emph{stable\/} for not finitarily unstable.
+  A formula is \emph{finitary stable\/} if it is not finitarily unstable.
 \end{definition}
 
 The following is an equivalent definition which only mentions formulas in ${\EuScript F}$.
@@ -671,10 +673,11 @@ We say that ${\EuScript D}$ is involutive if all its fibers are.
 
   \ceq{\hfill \sigma(a_n\,;b_i\,;C)}{\wedge}{{\sim}\sigma(a_i\,;b_n\,;\tilde C)}\hfill for every $i<n<\kappa$ or for every $n<i<\kappa$.\smallskip
 
-  We say \emph{stable\/} for not unstable.    
+      
+  A type is \emph{stable\/} if it is not unstable.
 \end{definition}
 
-Note that when $\sigma(x\,;z\,;X)$ is a formula by compactness we can replace $\kappa$ with $\omega$ in the above definition.
+By compactness, when $\sigma(x\,;z\,;X)$ is a formula we can replace $\kappa$ with $\omega$ in the previous definition.
 
 % \begin{remark}\label{rem_stable}
 %   In Definition~\ref{def_stable} we can equivalently require the following.
@@ -701,7 +704,7 @@ Note that when $\sigma(x\,;z\,;X)$ is a formula by compactness we can replace $\
 %   \ceq{\hfill \sigma(a_n\,;b_i\,;C_i)}{\wedge}{{\sim}\varphi(a_i\,;b_n\,;\tilde C_n)}\hfill for every $i<n<\kappa$ or for every $n<i<\kappa$.\smallskip
 
 \begin{definition}\strut 
-  Let $\varphi(x\,;z\,;X)$ be a ${\EuScript F}_{\sf X}$-formula.
+  Let $\varphi(x\,;z\,;X)$ be an ${\EuScript F}_{\sf X}$-formula.
   A \emph{global $\varphi(x\,;z\,;X)$-type\/} is a maximally (finitely) consistent set of formulas of the form $\varphi(x\,;b\,;C)$ or ${\sim}\varphi(x\,;b\,;C)$ for some $b\in{\EuScript U}^{z}$ and some $C$.
 \end{definition}
 
@@ -718,11 +721,11 @@ It is convenient to have a different characterization of global types, therefore
 When $\sigma(x\,;z\,;X)$ is a formula and  ${\EuScript D}$ is involutive (2) in the above definition can be rephrased in a more convenient form.
 
 \begin{remark}\label{rem_approx}
-  If ${\EuScript D}$ is involutive the following are equivalent for every small set $B\subseteq{\EuScript U}^z$\smallskip
+  If ${\EuScript D}$ is involutive the following are equivalent\smallskip
 
-  \ceq{2.\hfill\langle b,C\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$\phantom{.}\smallskip
+  \ceq{2.\hfill\langle b,C\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C)}\\smallskip
 
-  \ceq{2'\hfill\langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$.
+  \ceq{2'\hfill\langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C)}.
 \end{remark}
 
 \begin{proof}
@@ -732,10 +735,10 @@ When $\sigma(x\,;z\,;X)$ is a formula and  ${\EuScript D}$ is involutive (2) in 
   By Fact~\ref{fact_~inclusione} this is equivalent to ${\sim}{\EuScript D}\subseteq{\sim}{\EuScript C}$ which in turn is equivalent to (2$'$), again by Fact~\ref{fact_~definibile}.
 \end{proof}
 
-Under the assumptions of the remark (i.e. when ${\EuScript D}$ is involutive and $\sigma(x\,;z\,;X)$ is a formula), it is easy to verify by compactness that in Definition~\ref{def_approx_X} the requirement \textit{for every small\/} $B$ can be replaced by \textit{for every finite\/} $B$ (indeed, one can verify that the proof of the following fact works also when $B$ is required to be finite).
+Under the assumptions of the remark (i.e. when ${\EuScript D}$ is involutive and $\sigma(x\,;z\,;X)$ is a formula), it is easy to verify by compactness that in Definition~\ref{def_approx_X} the requirement \textit{for every small\/} $B$ can be replaced by \textit{for every finite\/} $B$ (indeed, one can verify that the proof of the following fact also works when $B$ is required to be finite).
 
 \begin{fact}
-  Let $\varphi(x\,;z\,;X)$ be a ${\EuScript F}_{\sf X}$-formula.
+  Let $\varphi(x\,;z\,;X)$ be an ${\EuScript F}_{\sf X}$-formula.
   For every involutive ${\EuScript D}$ the following are equivalent
   \begin{itemize}
     \item [1.] ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$
@@ -759,7 +762,7 @@ Under the assumptions of the remark (i.e. when ${\EuScript D}$ is involutive and
   
   \ceq{\hfill \langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C)}\hfill for every $b\in B$ and every $C$. 
 
-  By Remark~\ref{rem_approx} above, these yield (1) and (2) in Definition~\ref{def_approx_X}.
+  By Remark~\ref{rem_approx}, these yield (1) and (2) in Definition~\ref{def_approx_X}.
   
   1$\Rightarrow$2.
   First we prove that any $p(x)$ defined as in (2) is maximal whenever it is consistent~--~in fact, this only depends on ${\EuScript D}$ being involutive.
@@ -771,14 +774,14 @@ Under the assumptions of the remark (i.e. when ${\EuScript D}$ is involutive and
   This implies that $\langle b,\tilde C\rangle\notin{\EuScript D}$ for every $\tilde C\cap C=\varnothing$.
   Then $\langle b,C\rangle\in{\sim}{\EuScript D}$, therefore ${\sim}\varphi(x\,;b\,;C)\in p$.
 
-  Finally, to prove concistency, let $B$ be a given small set.
+  Finally, to prove consistency, let $B$ be a given small set.
   Let $a$ be as in Definition~\ref{def_approx_X}.
   Then $a\models p(x)\restriction B$ by Remark~\ref{rem_approx}.
 \end{proof}
 
 The proof of the main theorem of this section requires the following notion of approximation.
 The definition is inspired by the classical notion of approximation from below in~\cite{Z15} where it is used as rephrasing of the notion of honest definability in~\cite{CS}.
-Here this notion plays a purely technical role, but we submit it as potentially interesting in itself.
+Here this notion plays a purely technical role, but we present it as potentially interesting in its own right.
 
 \begin{definition}\label{def_approx_blw}\strut
   We say that ${\EuScript D}$ is \emph{approximable\/} by $\sigma(x\,;z\,;X)$ \emph{from below\/} if for every small set $B\subseteq{\EuScript U}^z$ there is an $a\in{\EuScript U}^x$ such that for every $C$\smallskip
@@ -833,7 +836,7 @@ Here this notion plays a purely technical role, but we submit it as potentially 
 \begin{lemma}\label{lem_1_inf}
   Let $\sigma(x\,;z\,;X)$ be stable.
   Assume that ${\EuScript D}$ is approximable by $\sigma(x\,;z\,;X)$ from below.
-  Then there is some $\langle a_i\ :\ i<\lambda\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
+  Then there are some $\langle a_i\ :\ i<\lambda\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
 
   \ceq{1.\hfill \langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\bigvee_{i<\lambda}\ \sigma(a_i\,;b\,;C)}\medskip 
 
@@ -852,12 +855,12 @@ and
 
 This is possible because ${\EuScript D}$ is approximated from below.
 Note that (3) immediately guarantees (2).
-Now, assume (1) fails for $\lambda=n$, and choose $b_n$ and $C_n$ witnessing this.
+Now, assume (1) fails for $\lambda=n+1$, and choose $b_n$ and $C_n$ witnessing this.
 Then, by Fact~\ref{fact_otto}, for some $\tilde C_{i,n}\cap C_n=\varnothing$
 
-\ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}\ \ }{\text{and}}{\ \ \bigwedge_{i<n}\ {\sim}\sigma(a_i\,;b_n\,;\tilde C_{i,n})}%\smallskip
+\ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}\ \ }{\text{and}}{\ \ \bigwedge_{i\le n}\ {\sim}\sigma(a_i\,;b_n\,;\tilde C_{i,n})}%\smallskip
 
-Suppose for a contradiction that the construction carries on $\kappa$ stages.
+Suppose for a contradiction that the construction carries on fore $\kappa$ stages.
 Then, as (5) guarantees that $\langle b_i,C_i\rangle\in{\EuScript D}$ for every $i$, from (4) we obtain $\sigma(a_n\,;b_i\,;C_i)$ for every $i<n$.
 From (5) we also obtain ${\sim}\sigma(a_i\,;b_n\,;\tilde C_{i,n})$, for every $i\le n$.
 Apply Ramsey with pairs $\langle C,\tilde C\rangle$ of compact subsets of $S$ as colors to obtain a subsequence $\langle a'_i\,;b'_i\ :\ i<\kappa\rangle$ that contradicts Definition~\ref{def_stable}.
