@@ -35,8 +35,8 @@ The following fact is an interesting characterization of stability for functions
   When $\tau(x\,;z)$ is a term, we have that ${\sim}\big(\tau(x\,;z)\in X\big)=\tau(x\,;z)\in X$, which is used throughout the proof below.
   We suspect that Fact~\ref{fact_grothendieck} holds for all ${\EuScript F}_{\sf X}$-formulas but we have not been able to prove this.
 
-  \noindent\llap{\textcolor{red}{\Large\warning}\kern1.5ex}\ignorespaces%
-  \vspace{-\baselineskip-\parskip}
+  % \noindent\llap{\textcolor{red}{\Large\warning}\kern1.5ex}\ignorespaces%
+  % \vspace{-\baselineskip-\parskip}
 \begin{proof}
   %2$\Leftrightarrow$3 Clear.
   %
@@ -79,9 +79,23 @@ The following is an easy consequence of Theorem~\ref{thm_stability_definability}
   Let $f$ be approximable by $\tau(x\,;z)$.
   Then there are some $\langle a_{i,j}\ :\ i,j<\lambda\rangle$ such that \smallskip
 
-  \ceq{\hfill f(b)}{=}{\sup_{i<\lambda}\ \mathop{\inf\vphantom{p}}_{j<\lambda}\ \tau(a_{i,j}\,;b)}\hfill for every $b\in{\EuScript U}^z$.
+  \ceq{1.\hfill f(b)}{=}{\sup_{i<\lambda}\ \mathop{\inf\vphantom{p}}_{j<\lambda}\ \tau(a_{i,j}\,;b)}\hfill for every $b\in{\EuScript U}^z$.
   
 \end{theorem}
+
+\begin{proof}[Half proof]
+  From Theorem~\ref{thm_stability_definability} we obtain that for every $0\le\alpha,\beta\le1$ and every $b\in{\EuScript U}^z$\medskip
+
+  \ceq{2.\hfill \alpha\le f(b)\le\beta}{\Leftrightarrow}{\bigvee_{i<\lambda}\ \bigwedge_{j<\lambda}\ \alpha\le \tau(a_{i,j}\,;b)\le\beta}
+
+  We claim that this implies (1).
+  Suppose not. 
+  Then for some $b\in{\EuScript U}^z$ and some $\varepsilon>0$
+  
+  \ceq{3.\hfill f(b)+\varepsilon}{<}{\inf_{j<\lambda}\ \tau(a_{i,j}\,;b)}\hfill for every $i<\lambda$.
+
+If (3), we contradict (2) with $\alpha=0$ and $\beta=f(b)+\varepsilon/2$.
+\end{proof}
 
 
 % \begin{fact}[ (conjecture)]
