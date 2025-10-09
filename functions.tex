@@ -77,24 +77,44 @@ The following is an easy consequence of Theorem~\ref{thm_stability_definability}
   Let $S=[0,1]$.
   Let $\tau(x\,;z)$ be stable.
   Let $f$ be approximable by $\tau(x\,;z)$.
-  Then there are some $\langle a_{i,j}\ :\ i,j<\lambda\rangle$ such that \smallskip
+  Then there are some $\langle a_{i,j}\ :\ i,j<\lambda\rangle$ such that for every $b\in{\EuScript U}^z$\smallskip
 
-  \ceq{1.\hfill f(b)}{=}{\sup_{i<\lambda}\ \mathop{\inf\vphantom{p}}_{j<\lambda}\ \tau(a_{i,j}\,;b)}\hfill for every $b\in{\EuScript U}^z$.
+  \ceq{1.\hfill f(b)}{=}{\sup_{i<\lambda}\ \mathop{\inf\vphantom{p}}_{j<\lambda}\ \tau(a_{i,j}\,;b).}
   
 \end{theorem}
 
 \begin{proof}[Half proof]
-  From Theorem~\ref{thm_stability_definability} we obtain that for every $0\le\alpha,\beta\le1$ and every $b\in{\EuScript U}^z$\medskip
+  From Theorem~\ref{thm_stability_definability} we obtain that for every $b\in{\EuScript U}^z$ \medskip
 
-  \ceq{2.\hfill \alpha\le f(b)\le\beta}{\Leftrightarrow}{\bigvee_{i<\lambda}\ \bigwedge_{j<\lambda}\ \alpha\le \tau(a_{i,j}\,;b)\le\beta}
+  \ceq{2.\hfill f(b)\in C}{\Leftrightarrow}{\bigvee_{i<\lambda}\ \bigwedge_{j<\lambda}\ \tau(a_{i,j}\,;b)\in C}\hfill for every $C$
 
-  We claim that this implies (1).
-  Suppose not. 
-  Then for some $b\in{\EuScript U}^z$ and some $\varepsilon>0$
+  We claim that (2) is equivalent to
   
-  \ceq{3.\hfill f(b)+\varepsilon}{<}{\inf_{j<\lambda}\ \tau(a_{i,j}\,;b)}\hfill for every $i<\lambda$.
+  \ceq{3.\hfill f(b)\in C}{\Leftrightarrow}{\bigwedge_{i<\lambda}\ \bigvee_{j<\lambda}\ \tau(a_{i,j}\,;b)\in C}\hfill for every $C$
+  
+  Assume (3) and that (2) fails for some $C$.
+  Without loss of generality
 
-If (3), we contradict (2) with $\alpha=0$ and $\beta=f(b)+\varepsilon/2$.
+  \ceq{\hfill f(b)\in C}{\&}{\neg\bigvee_{i<\lambda}\ \bigwedge_{j<\lambda}\ \tau(a_{i,j}\,;b)\in C}
+
+  Then for some $\tilde C\cap C=\varnothing$ 
+
+  \ceq{}{ }{\bigwedge_{i<\lambda}\ \bigvee_{j<\lambda}\ \tau(a_{i,j}\,;b)\in \tilde C}
+
+  By (3) we obtain a contradiction.
+  Then (3) implies (2).
+  The same argument proves the converse implication.
+
+  Now negate (1).
+  Then for some $b\in{\EuScript U}^z$ and some $\varepsilon>0$ one of the following obtains
+  
+  \ceq{4.\hfill f(b)-\varepsilon}{>}{\inf_{j<\lambda}\ \tau(a_{i,j}\,;b)}\hfill for every $i<\lambda$.
+
+  \ceq{5.\hfill f(b)-\varepsilon}{<}{\inf_{j<\lambda}\ \tau(a_{i,j}\,;b)}\hfill for some $i<\lambda$.
+
+
+Assuming (4), we contradict (2) with $C=[f(b)-\varepsilon/2,\ 1]$.
+On the other hand, if (5) we contradict (3) with $C=[0,\ f(b)+\varepsilon/2]$.
 \end{proof}
 
 
