@@ -88,30 +88,39 @@ The following is an easy consequence of Theorem~\ref{thm_stability_definability}
 
 Again we do not know if the theorem holds with definable function for terms.
 
-\begin{proof}[Half proof]
+\begin{proof}
   Let $b\in{\EuScript U}^z$ and $\varepsilon>0$ be given.
-  Write $\beta$ for $f(b)$.
   From (1) in Theorem~\ref{thm_epsilon_stability_definability} we obtain
 
-  \ceq{2.\hfill\bigvee_{i< m}\ \bigwedge_{j<m}\ \big|\tau(a_{i,j}\,;b)-\beta\big|\le\varepsilon.}{ }{}\
+  \ceq{2.\hfill\bigvee_{i< m}\ \bigwedge_{j<m}\ \big|\tau(a_{i,j}\,;b)-f(b)\big|\le\varepsilon.}{ }{}
 
-  We claim that we also have 
+  We claim that we also have
 
-  \ceq{3.\hfill\bigwedge_{i< m}\ \bigvee_{j<m}\ \big|\tau(a_{i,j}\,;b)-\beta\big|\ \le\ \varepsilon.}{ }{}
+  \ceq{3.\hfill\bigwedge_{i< m}\ \bigvee_{j<m}\ \big|\tau(a_{i,j}\,;b)-f(b)\big|\ \le\ \varepsilon.}{ }{}
 
-  In fact, negate (3).
-  Then for any $0<\varepsilon'<\varepsilon$\smallskip
+  Suppose not.
+  Pick $i$ such that the disjunction in (3) fails. 
+  Let $C=\{\tau(a_{i,j}\,;b):j<m\}$.
+  Then 
+
+  \ceq{\hfill\bigvee_{i< m}\ \bigwedge_{j<m}\ \tau(a_{i,j}\,;b)\in C}{ }{}\
+
+  and, by (2) in Theorem~\ref{thm_epsilon_stability_definability}, we obtain that $f(b)$ is at distance $\le\varepsilon$ from $C$.
+  This contradicts the choice of $C$. 
+
+  % In fact, negate (3).
+  % Then for any $0<\varepsilon'<\varepsilon$\smallskip
   
-  \ceq{\hfill\bigvee_{i< m}\ \bigwedge_{j<m}\ \big|\tau(a_{i,j}\,;b)-\beta\big|\ \ge\ \varepsilon'.}{ }{}
+  % \ceq{\hfill\bigvee_{i< m}\ \bigwedge_{j<m}\ \big|\tau(a_{i,j}\,;b)-f(b)\big|\ \ge\ \varepsilon'.}{ }{}
   
-  Apply (2) in Theorem~\ref{thm_epsilon_stability_definability} with $\varepsilon'/2$ for $\varepsilon$ to obtain that $|f(b)-\beta|\ge\varepsilon'/2$, a contradiction.
+  % Apply (2) in Theorem~\ref{thm_epsilon_stability_definability} with $\varepsilon'/2$ for $\varepsilon$ to obtain that $|f(b)-f(b)|\ge\varepsilon'/2$, a contradiction.
 
   Now, suppose (1) of the theorem fails for the given $\varepsilon$.
   Then for some $b\in{\EuScript U}^z$ of the following obtains
 
-  \ceq{4.\hfill \beta\ -\ \min_{j<m}\ \tau(a_{i,j}\,;b)}{>}{\varepsilon}\hfill for every $i<m$\phantom{.}
+  \ceq{4.\hfill f(b)\ -\ \min_{j<m}\ \tau(a_{i,j}\,;b)}{>}{\varepsilon}\hfill for every $i<m$\phantom{.}
 
-  \ceq{5.\hfill \min_{j<m}\ \tau(a_{i,j}\,;b)\ -\ \beta}{>}{\varepsilon}\hfill for some $i<m$.
+  \ceq{5.\hfill \min_{j<m}\ \tau(a_{i,j}\,;b)\ -\ f(b)}{>}{\varepsilon}\hfill for some $i<m$.
 
 But (4) contradicts (2) while (5) contradicts (3).
 \end{proof}
