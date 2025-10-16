@@ -3,7 +3,7 @@
 \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
 \def\ceq#1#2#3{\parbox[t]{28ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
-In this section we specialize the notions introduced in the previous sections to types $\sigma(x\,;z\,;X)$ of the form $\tau(x\,;z)\in X$ where $\tau(x\,;z)$ is an $S$-valued ${\EuScript F}$-type-definable function.
+In this section we specialize the notions introduced in the previous sections to types $\sigma(x\,;z\,;X)$ of the form $\tau(x\,;z)\in X$, where $\tau(x\,;z)$ is an $S$-valued ${\EuScript F}$-type-definable function.
 
 We say that $\tau(x\,;z)$ is \emph{stable\/} or \emph{$\varepsilon$-stable\/} if so is the type $\tau(x\,;z)\in X$.
 The following fact is an interesting characterization of stability for functions which was first remarked in~\cite{B}.
@@ -33,7 +33,7 @@ The following fact is an interesting characterization of stability for functions
 \end{fact}  
   Terms are a specific kind of definable functions.
   When $\tau(x\,;z)$ is a term, we have that ${\sim}\big(\tau(x\,;z)\in X\big)=\tau(x\,;z)\in X$, which is used throughout the proof below.
-  We suspect that Fact~\ref{fact_grothendieck} holds for $\tau(x\,;z)$ any $S$-valued ${\EuScript F}$-type-definable function but we have not been able to prove this.
+  We suspect that Fact~\ref{fact_grothendieck} holds more generally when $\tau(x\,;z)$ is an $S$-valued ${\EuScript F}$-type-definable function, but we have not been able to prove this.
 
   % \noindent\llap{\textcolor{red}{\Large\warning}\kern1.5ex}\ignorespaces%
   % \vspace{-\baselineskip-\parskip}
@@ -70,7 +70,7 @@ The following fact is immediate.
   \end{itemize}
 \end{fact}
 
-We say that $f$ is approximable by $\tau(x\,;z)$ if the equivalent conditions above hold.
+We say that $f$ is \emph{approximable\/} by $\tau(x\,;z)$ if the equivalent conditions above hold.
 The following is an easy consequence of Theorem~\ref{thm_stability_definability}.
 
 \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
@@ -86,15 +86,15 @@ The following is an easy consequence of Theorem~\ref{thm_stability_definability}
 
   2.  If $\tau(x\,;z)$ is $\varepsilon$-stable there are $m$ and $\langle a_{i,j}\ :\ i,j<m\rangle$ such that for every $b\in{\EuScript U}^z$\smallskip
 
-  \ceq{\hfill\Big|f(b)\ -\ \max_{i<m}\ \min_{j<m}\ \tau(a_{i,j}\,;b)\Big|}{\le}{\varepsilon}
+  \ceq{\hfill\Big|f(b)\ -\ \max_{i<m}\ \min_{j<m}\ \tau(a_{i,j}\,;b)\Big|}{\le}{\varepsilon.}
 \end{theorem}
 
-Again we do not know if the theorem holds with definable function for terms.
+% Again we do not know if the theorem holds with definable function for terms.
 
-%From the proof below it is clear that in the theorem the order of $\sup$ and $\inf$, respectively $\max$ and $\min$ can be reversed.
+From the proof it is clear that the order of $\sup$ and $\inf$, respectively $\max$ and $\min$ can be reversed.
 
 \begin{proof}
-  We prove the first claim of the theorem.
+  We prove the first claim.
   Let $C_i$ be the closure of the set $\{\tau(a_{i,j}\,;b)\,:\,j<\lambda\}$.
   By ($\Leftarrow$) in Theorem~\ref{thm_stability_definability}, $f(b)\in C_i$ for every $i<\lambda$.
   Then $f(b) \ge \inf_j \tau(a_{i,j}\,;b)$ for every $i<\lambda$.
@@ -104,7 +104,7 @@ Again we do not know if the theorem holds with definable function for terms.
   Therefore $f(b) = \inf_j \tau(a_{k,j}\,b)$.
   Then $f(b)\le \sup_i\inf_j \tau(a_{i,j}\,b)$.
   
-  We prove the second claim of the theorem.
+  We prove the second claim.
   Let $b\in{\EuScript U}^z$ be given.
   From (1) in Theorem~\ref{thm_epsilon_stability_definability} we obtain
 
@@ -132,13 +132,13 @@ Again we do not know if the theorem holds with definable function for terms.
   % Apply (2) in Theorem~\ref{thm_epsilon_stability_definability} with $\varepsilon'/2$ for $\varepsilon$ to obtain that $|f(b)-f(b)|\ge\varepsilon'/2$, a contradiction.
 
   Now, suppose (2) of the theorem fails for the given $\varepsilon$.
-  Then for some $b\in{\EuScript U}^z$ of the following obtains
+  Then for some $b\in{\EuScript U}^z$ one of the following obtains
 
   \ceq{5.\hfill f(b)\ -\ \min_{j<m}\ \tau(a_{i,j}\,;b)}{>}{\varepsilon}\hfill for every $i<m$\phantom{.}
 
   \ceq{6.\hfill \min_{j<m}\ \tau(a_{i,j}\,;b)\ -\ f(b)}{>}{\varepsilon}\hfill for some $i<m$.
 
-But (5) contradicts (3) while (6) contradicts (4).
+But (5) contradicts (3), while (6) contradicts (4).
 \end{proof}
 
 

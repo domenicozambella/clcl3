@@ -229,7 +229,7 @@ We denote by ${\EuScript F}$ the set of ${\EuScript L}$-formulas constructed ind
 
 We write \emph{$x\in C$\/} for the predicate associated to a compact set $C$, and denote by $|\mbox{-}|$ the length of a tuple.
 
-\begin{definition}
+\begin{definition}\label{def_atomic}
   The atomic formulas of ${\EuScript F}$ are
   \begin{itemize}
   \item[i.] atomic and negated atomic formulas of ${\EuScript L}_{\sf H}$
@@ -272,7 +272,7 @@ In \cite{Z} it is observed that, under the assumption of equicontinuity, the pro
 % All formulas in ${\EuScript F}$ are instances of formulas in ${\EuScript F}_{\sf X}$.
 
 We introduce a new sort ${\sf X}$ with the purpose of conveniently describing classes of ${\EuScript F}$-for\-mulas that only differ by the relation symbol $C\subseteq S$ they contain.
-Let ${\EuScript F}_{\sf X}$ be defined as ${\EuScript F}$ but replacing (ii) by\smallskip
+Let ${\EuScript F}_{\sf X}$ be defined as ${\EuScript F}$ but replacing (ii) in Definition~\ref{def_atomic} by\smallskip
 
 \begin{itemize}
   \item[iii.] $\tau(x\,;\xi)\in X$, where $X$ is a variable of sort ${\sf X}$.
@@ -473,7 +473,7 @@ The following fact motivates the definition.
 As $O$ is arbitrary, we obtain ${\sim}\varphi(\tilde C)$ from the first implication in Fact~\ref{fact_otto}.
 \end{proof}
 
-We prove a few of straightforward inclusions.
+We prove some straightforward inclusions.
 
 \begin{fact}\label{fact_~inclusione}
   For every ${\EuScript D}\subseteq{\EuScript C}$ we have ${\sim}{\EuScript C}\subseteq{\sim}{\EuScript D}$.  
@@ -549,12 +549,17 @@ It is not difficult to see that (2) holds if and only if ${\EuScript D}$ is clos
 \def\ceq#1#2#3{\parbox[t]{22ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
 There is more than one way to define stability in our context.
-In this section we present the strongest possible requirement.
+In this paper we consider three variants and for each we prove a suitable version of the theorem that says that externally definable sets are definable.
+All three proofs follow the same line of reasoning~--~a finitary version of the classical argument as presented e.g. in~\cite{Z?}.
+
+In this section we consider the strongest possible requirement of stability.
 It is not the most interesting one, but it is very similar to the classical definition~--~the comparison may be useful though not stricly required for the sequel.
+
 
 % Let $\varphi(x\,;z\,;X)$ be a formulas in ${\EuScript F}_{\sf X}({\EuScript U})$.
 % The variables of sort ${\sf H}$ are partitioned in two tuples $x\,;z$ which may be infinite.
-The following is the classical definition of stability which we dub \textit{finitary\/} for the reason explained below.
+The following definition of stability is the classical one.
+We dub it \textit{finitary\/} for the reason explained below.
 
 \begin{definition}\label{def_finitary_stable}\strut
   Let $\varphi(x\,;z\,;X)$, for $x$ and $z$ tuples of variables of sort ${\sf H}$, be an ${\EuScript F}_{\sf X}$-for\-mu\-la.  
@@ -622,16 +627,16 @@ In fact, it is clear that ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;C)
 
 is a global $\varphi(x\,;z\,;C)$-type.\smallskip
 
-The following theorem is often rephrased by saying that, when $\varphi(x\,;z\,;C)$ is finitarily stable, then all global $\varphi(x\,;z\,;C)$-types are definable.
+The following theorem is often rephrased by saying that, when $\varphi(x\,;z\,;C)$ is finitarily stable, all global $\varphi(x\,;z\,;C)$-types are definable.
 The proof of the classical case applies verbatim because no saturation is required.
-We state it here only for comparison with its non-finitary counterpart, see Theorem~\ref{thm_stability_definability} and its approximated counterpart, see Theorem~\ref{thm_epsilon_stability_definability}.
+We only state it here for comparison with its non-finitary counterpart, Theorem~\ref{thm_stability_definability}, and its approximate counterpart, Theorem~\ref{thm_epsilon_stability_definability}.
 
 \begin{theorem}
   Let $\varphi(x\,;z\,;C)$ be finitarily stable.
   Let ${\EuScript D}$ be approximable by $\varphi(x\,;z\,;C)$.
   Then there are some $\langle a_{i,j}\ :\ i< k,\ j<m\rangle$ such that for every $b\in{\EuScript U}^z$\medskip
 
-  \ceq{\hfill b\in{\EuScript D}}{\Leftrightarrow}{\bigvee_{i< k}\ \bigwedge_{j<m}\ \varphi(a_{i,j}\,;b\,;C)}
+  \ceq{\hfill b\in{\EuScript D}}{\Leftrightarrow}{\bigvee_{i< k}\ \bigwedge_{j<m}\ \varphi(a_{i,j}\,;b\,;C).}
 \end{theorem}
 
 
@@ -644,17 +649,17 @@ We state it here only for comparison with its non-finitary counterpart, see Theo
 \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
 \def\ceq#1#2#3{\parbox[t]{22ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
-We discuss a version of stability that seems more appropriate in this context.
-There are two main differences with the previous section.
+We discuss a version of stability that seems more appropriate in our context.
+There are a few differences with the previous section.
 First, here the attribute \textit{stable\/} refers to a whole class of formulas~--~all instances of some $\varphi(x\,;z\,;X)$.
 Furthermore, the sequence witnessing the order property is required to be infinite.
-As we need to extend the definition of stability to types, sequences of length $\kappa$ (the cardinality of ${\EuScript U}$, a Ramsey cardinal) are used.
+Finally, since we need to extend the definition of stability to types, sequences of length $\kappa$ (the cardinality of ${\EuScript U}$, a Ramsey cardinal) are used.
 
 In this section  ${\EuScript D}$ is always a subset of ${\EuScript U}^z\times K(S)^n$, where $n$ has to be inferred from the context (tipically, $n=|X|$).
 We write ${\sim}{\EuScript D}$ for the set obtained by applying the definition in Section~\ref{K(S)} to all fibers of ${\EuScript D}$.
 That is, if ${\EuScript D}_b$ is the $b$-fiber $\big\{C\,:\,\langle b\,;C\rangle\in{\EuScript D}\big\}$, we define
 
-\ceq{\hfill{\sim}{\EuScript D}}{=}{\bigcup_{b\in{\EuScript U}^z}\{b\}\times({\sim}{\EuScript D}_b)}
+\ceq{\hfill{\sim}{\EuScript D}}{=}{\bigcup_{b\in{\EuScript U}^z}\{b\}\times({\sim}{\EuScript D}_b).}
 
 We say that ${\EuScript D}$ is involutive if all its fibers are.
 
@@ -721,9 +726,9 @@ It is convenient to have a different characterization of global types, therefore
 When $\sigma(x\,;z\,;X)$ is a formula and  ${\EuScript D}$ is involutive (2) in the above definition can be rephrased in a more convenient form.
 
 \begin{remark}\label{rem_approx}
-  If ${\EuScript D}$ is involutive the following are equivalent\smallskip
+  If ${\EuScript D}$ is involutive, the following are equivalent\smallskip
 
-  \ceq{2.\hfill\langle b,C\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C)}\\smallskip
+  \ceq{2.\hfill\langle b,C\rangle\in {\EuScript D}}{\Leftarrow}{\varphi(a\,;b\,;C)}\smallskip
 
   \ceq{2'\hfill\langle b,C\rangle\in{\sim}{\EuScript D}}{\Rightarrow}{{\sim}\varphi(a\,;b\,;C)}.
 \end{remark}
@@ -780,7 +785,7 @@ Under the assumptions of the remark (i.e. when ${\EuScript D}$ is involutive and
 \end{proof}
 
 The proof of the main theorem of this section requires the following notion of approximation.
-The definition is inspired by the classical notion of approximation from below in~\cite{Z15} where it is used as rephrasing of the notion of honest definability in~\cite{CS}.
+The definition is inspired by the classical notion of approximation from below in~\cite{Z15} where it is used as rephrasing of the notion of \textit{honest definability\/} in~\cite{CS}.
 Here this notion plays a purely technical role, but we present it as potentially interesting in its own right.
 
 \begin{definition}\label{def_approx_blw}\strut
@@ -824,7 +829,7 @@ Here this notion plays a purely technical role, but we present it as potentially
   Assume that ${\EuScript D}$ is approximable by $\sigma(x\,;z\,;X)$.
   Then there are some $\langle a_{i,j}\ :\ i,j<\lambda\rangle$ such that for every $b\in{\EuScript U}^z$ and every $C$\medskip
 
-  \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftrightarrow}{\bigvee_{i<\lambda}\ \bigwedge_{j<\lambda}\ \sigma(a_{i,j}\,;b\,;C)}\medskip
+  \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftrightarrow}{\bigvee_{i<\lambda}\ \bigwedge_{j<\lambda}\ \sigma(a_{i,j}\,;b\,;C).}\medskip
 
   % \ceq{\hfill \langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\bigvee_{i<\lambda}\ \bigwedge_{j<\mu}\ \sigma(a_{i,j}\,;b\,;C)}
 \end{theorem}
@@ -858,9 +863,9 @@ Note that (3) immediately guarantees (2).
 Now, assume (1) fails for $\lambda=n+1$, and choose $b_n$ and $C_n$ witnessing this.
 Then, by Fact~\ref{fact_otto}, for some $\tilde C_{i,n}\cap C_n=\varnothing$
 
-\ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}\ \ }{\text{and}}{\ \ \bigwedge_{i\le n}\ {\sim}\sigma(a_i\,;b_n\,;\tilde C_{i,n})}%\smallskip
+\ceq{5.\hfill \langle b_n,C_n\rangle\in{\EuScript D}\ \ }{\text{and}}{\ \ \bigwedge_{i\le n}\ {\sim}\sigma(a_i\,;b_n\,;\tilde C_{i,n}).}%\smallskip
 
-Suppose for a contradiction that the construction carries on fore $\kappa$ stages.
+Suppose for a contradiction that the construction carries on for $\kappa$ stages.
 Then, as (5) guarantees that $\langle b_i,C_i\rangle\in{\EuScript D}$ for every $i$, from (4) we obtain $\sigma(a_n\,;b_i\,;C_i)$ for every $i<n$.
 From (5) we also obtain ${\sim}\sigma(a_i\,;b_n\,;\tilde C_{i,n})$, for every $i\le n$.
 Apply Ramsey with pairs $\langle C,\tilde C\rangle$ of compact subsets of $S$ as colors to obtain a subsequence $\langle a'_i\,;b'_i\ :\ i<\kappa\rangle$ that contradicts Definition~\ref{def_stable}.
@@ -884,7 +889,7 @@ Apply Ramsey with pairs $\langle C,\tilde C\rangle$ of compact subsets of $S$ as
 
   \ceq{1.\hfill\langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\sigma(a_n\,;b\,;C)}\quad and
 
-  \ceq{2.\hfill\langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\sigma(a_n\,;b\,;C)}
+  \ceq{2.\hfill\langle b,C\rangle\in{\EuScript D}}{\Leftarrow}{\sigma(a_n\,;b\,;C).}
   
   Note that the latter implication is equivalent to: for every $C$ there is some  $\tilde C\cap C=\varnothing$ such that 
   
@@ -892,7 +897,7 @@ Apply Ramsey with pairs $\langle C,\tilde C\rangle$ of compact subsets of $S$ as
 
   Now, as the lemma is assumed to fail, we can choose $b_n$ and $C_n$ such that
 
-  \ceq{4.\hfill \langle b_n,C_n\rangle\notin{\EuScript D}\ \ }{\text{and}}{\ \ \bigwedge_{i=0}^n\ \sigma(a_i\,;b_n\,;C_n)}
+  \ceq{4.\hfill \langle b_n,C_n\rangle\notin{\EuScript D}\ \ }{\text{and}}{\ \ \bigwedge_{i=0}^n\ \sigma(a_i\,;b_n\,;C_n).}
 
   Note that (4) ensures that $\langle b_i,C_i\rangle\notin{\EuScript D}$ for every $i$.
   Then there is some $\tilde C_{i,n}$ that witnesses (3) for $\langle b_i,C_i\rangle\notin{\EuScript D}$.
@@ -903,7 +908,7 @@ Apply Ramsey with pairs $\langle C,\tilde C\rangle$ of compact subsets of $S$ as
 \end{proof}
 
 \begin{lemma}\label{lem_sigma_stable}
-  If $\sigma(x\,;z\,;X)$ is stable then $\pi(\bar x\,;z\,;X)$ in the previous lemma is stable.
+  If $\sigma(x\,;z\,;X)$ is stable, then $\pi(\bar x\,;z\,;X)$ in the previous lemma is stable.
 \end{lemma}
 
 \begin{proof}
@@ -1202,7 +1207,14 @@ Apply Ramsey with pairs $\langle C,\tilde C\rangle$ of compact subsets of $S$ as
   note={\href{https://arxiv.org/abs/2311.15711}{arXiv:2311.15711}},
   date = {2023},
 }\smallskip
-
+\bib{Z?}{article}{
+  label={Z?},
+  author = {Zambella, Domenico},
+  title = {Crèche course in model theory},
+  % doi = {10.48550/arXiv.2311.15711},
+  note={\href{https://github.com/domenicozambella/creche}{Course notes}},
+  date = {2025},
+}\smallskip
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
