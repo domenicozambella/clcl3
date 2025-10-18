@@ -18,17 +18,6 @@ The following fact is an interesting characterization of stability for functions
     
     \noindent\kern-\labelwidth\kern-\labelsep
     \ceq{\hfill \lim_{i\to\infty}\lim_{j\to\infty}\tau(a_i\,;b_j)}{\neq}{\lim_{j\to\infty}\lim_{i\to\infty}\tau(a_i\,;b_j).}
-
-    % \item [3.] there is a sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ and some $\varepsilon$ such that for every $i<j<\omega$\smallskip
-    
-    % \noindent\kern-\labelwidth\kern-\labelsep
-    % \ceq{\hfill\big\langle\tau(a_i\,;b_j),\ \tau(a_j\,;b_i)\big\rangle}{\notin}{\varepsilon.}
-
-    % \item [3.] for some sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$ and some neighborhood $\varepsilon$ of the diagonal of $S^2$\smallskip
-
-    % \ceq{\hfill \big\langle\tau(a_i\,;b_j),\ \tau(a_j\,;b_i)\big\rangle}{\notin}{\varepsilon}\smallskip
-
-    % for every $i<j<\omega$.
   \end{itemize}
 \end{fact}  
   Terms are a specific kind of definable functions.
@@ -38,8 +27,6 @@ The following fact is an interesting characterization of stability for functions
   % \noindent\llap{\textcolor{red}{\Large\warning}\kern1.5ex}\ignorespaces%
   % \vspace{-\baselineskip-\parskip}
 \begin{proof}
-  %2$\Leftrightarrow$3 Clear.
-  %
   1$\Rightarrow$2.
   Let $C\cap\tilde C=\varnothing$ and $\langle a_i\,;b_i\ :\ i<\omega\rangle$ be as given by (1).
   That is, $\tau(a_i\,;b_j)\in C$ and $\tau(a_j\,;b_i)\in \tilde C$ hold for every $i<j<\omega$.
@@ -49,7 +36,6 @@ The following fact is an interesting characterization of stability for functions
   Then (1) is witnessed by a tail of the sequence $\langle a_i\,;b_i\ :\ i<\omega\rangle$.
 \end{proof}
 
-% Let ${\EuScript D}\subseteq{\EuScript U}^{z}\times K(S)$.
 
 Let $f:{\EuScript U}^{z}\to S$ be a function.
 We define
@@ -57,8 +43,6 @@ We define
 \def\ceq#1#2#3{\parbox[t]{15ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
 \ceq{\hfill{\EuScript D\!}_f}{=}{\big\{\langle b,C\rangle\ \ :\ \ f(b)\in C,\ \ b\in{\EuScript U}^{z},\ \ C\in K(S)\big\}}.}
-
-% Note that ${\sim}{\EuScript D\!}_f={\EuScript D\!}_f$ therefore, by Fact~\ref{fact_~definibile} and~\ref{fact_~inclusione} the implications in Definition~\ref{def_approx_X} are in fact equivalences.
 
 The following fact is immediate.
 
@@ -91,10 +75,11 @@ The following is an easy consequence of Theorem~\ref{thm_stability_definability}
 
 % Again we do not know if the theorem holds with definable function for terms.
 
-From the proof it is clear that the order of $\sup$ and $\inf$, respectively $\max$ and $\min$ can be reversed.
+From the proof it is clear that the order of $\sup$ and $\inf$, respectively $\max$ and $\min$, can be reversed.
 
 \begin{proof}
   We prove the first claim.
+  Let $\lambda$ and $\langle a_{i,j}\ :\ i,j<\lambda\rangle$ be as in Theorem~\ref{thm_stability_definability}.
   Let $C_i$ be the closure of the set $\{\tau(a_{i,j}\,;b)\,:\,j<\lambda\}$.
   By ($\Leftarrow$) in Theorem~\ref{thm_stability_definability}, $f(b)\in C_i$ for every $i<\lambda$.
   Then $f(b) \ge \inf_j \tau(a_{i,j}\,;b)$ for every $i<\lambda$.
@@ -105,8 +90,8 @@ From the proof it is clear that the order of $\sup$ and $\inf$, respectively $\m
   Then $f(b)\le \sup_i\inf_j \tau(a_{i,j}\,b)$.
   
   We prove the second claim.
-  Let $b\in{\EuScript U}^z$ be given.
-  From (1) in Theorem~\ref{thm_epsilon_stability_definability} we obtain
+  Let $m$ and $\langle a_{i,j}\ :\ i,j<m\rangle$ be as in Theorem~\ref{thm_epsilon_stability_definability} (without loss of generality $k=m$).
+  Then Theorem~\ref{thm_epsilon_stability_definability} gives
 
   \ceq{3.\hfill\bigvee_{i< m}\ \bigwedge_{j<m}\ \big|\tau(a_{i,j}\,;b)-f(b)\big|\le\varepsilon.}{ }{}
 
@@ -114,22 +99,16 @@ From the proof it is clear that the order of $\sup$ and $\inf$, respectively $\m
 
   \ceq{4.\hfill\bigwedge_{i< m}\ \bigvee_{j<m}\ \big|\tau(a_{i,j}\,;b)-f(b)\big|\ \le\ \varepsilon.}{ }{}
 
-  Suppose not.
-  Pick $i$ such that the disjunction in (4) fails. 
-  Let $C=\{\tau(a_{i,j}\,;b):j<m\}$.
+  For $i<m$, let $C_i=\{\tau(a_{i,j}\,;b):j<m\}$.
   Then 
 
-  \ceq{\hfill\bigvee_{i< m}\ \bigwedge_{j<m}\ \tau(a_{i,j}\,;b)\in C}{ }{}\
+  \ceq{\hfill\bigwedge_{j<m}\ \tau(a_{i,j}\,;b)\in C_i}{ }{},
 
-  and, by (2) in Theorem~\ref{thm_epsilon_stability_definability}, we obtain that $f(b)$ is at distance $\le\varepsilon$ from $C$.
-  This contradicts the choice of $C$.
+  hence by Theorem~\ref{thm_epsilon_stability_definability} (2) there is $k$ such that
+  
+  \ceq{\hfill\big|\tau(a_{i,k}\,;b)-f(b)\big|}{\le}{\varepsilon.}
 
-  % In fact, negate (3).
-  % Then for any $0<\varepsilon'<\varepsilon$\smallskip
-  
-  % \ceq{\hfill\bigvee_{i< m}\ \bigwedge_{j<m}\ \big|\tau(a_{i,j}\,;b)-f(b)\big|\ \ge\ \varepsilon'.}{ }{}
-  
-  % Apply (2) in Theorem~\ref{thm_epsilon_stability_definability} with $\varepsilon'/2$ for $\varepsilon$ to obtain that $|f(b)-f(b)|\ge\varepsilon'/2$, a contradiction.
+  Then (4) follows.
 
   Now, suppose (2) of the theorem fails for the given $\varepsilon$.
   Then for some $b\in{\EuScript U}^z$ one of the following obtains
