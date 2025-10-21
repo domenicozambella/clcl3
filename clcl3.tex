@@ -401,7 +401,7 @@ By Fact~\ref{fact_saturation} and the following fact, all ${\EuScript F}$-satura
 \begin{notation}
   In what follows we work in a fixed ${\EuScript F}$-saturated standard structure ${\EuScript U}$.
   We denote by $\kappa$ the cardinality of ${\EuScript U}$.
-  We assume that $\kappa$ is a Ramsey cardinal.
+  We assume that $\kappa$ is a Ramsey cardinal larger than the cardinality of the language.
   However, the willing reader may check that we can do without large cardinals by careful application of the Erd\H{o}s-Rado Theorem, see \cite{TZ}*{Appendix C.3}.\smallskip
 
   In the following $\sigma(x\,;z\,;X)$ always denotes an ${\EuScript F}_{\sf X}({\EuScript U})$-type of small (i.e.\@ $<\kappa$) cardinality.
@@ -446,7 +446,7 @@ By Fact~\ref{fact_saturation} and the following fact, all ${\EuScript F}$-satura
 \def\ceq#1#2#3{\parbox[t]{23ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
 Write \emph{$K(S)$\/} for the set of compact subsets of $S$.
-In this section ${\EuScript D}$ and ${\EuScript C}$ range over subsets of $K(S)^n$.
+In this section ${\EuScript D}$ and ${\EuScript C}$ range over subsets of $K(S)$.
 We define 
 
 \ceq{\hfill\emph{${\sim}{\EuScript D}$}}{=}{\big\{\tilde C\ :\ \tilde C\cap C\neq\varnothing\text{ for every }C\in{\EuScript D}\big\}.}
@@ -655,7 +655,7 @@ First, here the attribute \textit{stable\/} refers to a whole class of formulas~
 Furthermore, the sequence witnessing the order property is required to be infinite.
 Finally, since we need to extend the definition of stability to types, sequences of length $\kappa$ (the cardinality of ${\EuScript U}$, a Ramsey cardinal) are used.
 
-In this section  ${\EuScript D}$ is always a subset of ${\EuScript U}^z\times K(S)^n$, where $n$ has to be inferred from the context (tipically, $n=|X|$).
+In this section  ${\EuScript D}$ is always a subset of ${\EuScript U}^z\times K(S)$, where $n$ has to be inferred from the context (tipically, $n=|X|$).
 We write ${\sim}{\EuScript D}$ for the set obtained by applying the definition in Section~\ref{K(S)} to all fibers of ${\EuScript D}$.
 That is, if ${\EuScript D}_b$ is the $b$-fiber $\big\{C\,:\,\langle b\,;C\rangle\in{\EuScript D}\big\}$, we define
 
@@ -682,7 +682,7 @@ We say that ${\EuScript D}$ is involutive if all its fibers are.
   A type is \emph{stable\/} if it is not unstable.
 \end{definition}
 
-By compactness, when $\sigma(x\,;z\,;X)$ is a formula we can replace $\kappa$ with $\omega$ in the previous definition.
+By saturation, when $\sigma(x\,;z\,;X)$ is a formula we can replace $\kappa$ with $\omega$ in the previous definition.
 
 % \begin{remark}\label{rem_stable}
 %   In Definition~\ref{def_stable} we can equivalently require the following.
@@ -740,7 +740,7 @@ When $\sigma(x\,;z\,;X)$ is a formula and  ${\EuScript D}$ is involutive (2) in 
   By Fact~\ref{fact_~inclusione} this is equivalent to ${\sim}{\EuScript D}\subseteq{\sim}{\EuScript C}$ which in turn is equivalent to (2$'$), again by Fact~\ref{fact_~definibile}.
 \end{proof}
 
-Under the assumptions of the remark (i.e. when ${\EuScript D}$ is involutive and $\sigma(x\,;z\,;X)$ is a formula), it is easy to verify by compactness that in Definition~\ref{def_approx_X} the requirement \textit{for every small\/} $B$ can be replaced by \textit{for every finite\/} $B$ (indeed, one can verify that the proof of the following fact also works when $B$ is required to be finite).
+Under the assumptions of the remark (i.e. when ${\EuScript D}$ is involutive and $\sigma(x\,;z\,;X)$ is a formula), it is easy to verify by saturation that in Definition~\ref{def_approx_X} the requirement \textit{for every small\/} $B$ can be replaced by \textit{for every finite\/} $B$ (indeed, one can verify that the proof of the following fact also works when $B$ is required to be finite).
 
 \begin{fact}
   Let $\varphi(x\,;z\,;X)$ be an ${\EuScript F}_{\sf X}$-formula.
@@ -914,11 +914,12 @@ Apply Ramsey with pairs $\langle C,\tilde C\rangle$ of compact subsets of $S$ as
 \begin{proof}
   Suppose $\pi(\bar x\,;z\,;X)$ is unstable.
   Let $\langle \bar a_i\,;b_i\ :\ i<\kappa\rangle$ be a sequence witnessing instability.
-  Then for every pair $i<n$ there is some $j<\lambda$ such that ${\sim}\sigma(a_{j,n}\,;b_i\,;\tilde C)$.
+  Suppose ${\sim}\pi(\bar a_i\,;b_n\,;\tilde C)$ holds for every $i<n<\kappa$ (the case $n<i<\kappa$ is identical).
+  For every $i<n$ we can pick some $j<\lambda$ such that ${\sim}\sigma(a_{i,j}\,;b_n\,;\tilde C)$.
   Interpret $j$ as a color. 
   As $\kappa$ is a Ramsey cardinal, every $\lambda$-coloring of a complete graph of size $\kappa$ has a monochromatic subgraph of size $\kappa$.
-  That is, there is $j<\lambda$ such that ${\sim}\sigma(a_{j,n}\,;b_i\,;\tilde C)$ holds for $\kappa$ many $i$.
-  Therefore we can extract a subsequence that contradicts the stability of $\sigma(x\,;z\,;X)$.
+  That is, there is some fixed $j<\lambda$ such that ${\sim}\sigma(a_{i,j}\,;b_n\,;\tilde C)$ holds for $i<n$ restricted to range over a subsequence of length $\kappa$.
+  Such a subsequence contradicts the stability of $\sigma(x\,;z\,;X)$.
 \end{proof}
 
 \subfile{almostfinitary}
