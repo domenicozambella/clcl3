@@ -120,8 +120,8 @@ This contradicts our choice of $m$.
 \begin{lemma}
   Let $\varphi(x\,;z\,;X)$ be $\varepsilon$-stable.
   Assume that ${\EuScript D}$ is approximable by $\varphi(x\,;z\,;X)$.
-  Let $m$ witness the $\varepsilon$-stability of  $\varphi(x\,;z\,;X)$, see Definition~\ref{def_epsilon_stable}.
-  Let $\bar x=\langle x_i\ :\ i\le m\rangle$ where the $x_i$ are copies of $x$.
+  Let $m$ be maximal such that a sequence as in Definition~\ref{def_epsilon_stable} exists for $\varphi(x\,;z\,;X)$.
+  Write $\bar x$ for $\langle x_i\ :\ i\le m\rangle$, where the $x_i$ are copies of $x$.
   Then the formula\smallskip
 
   \ceq{\hfill\sigma(\bar x\,;z\,;X)}{=}{\bigwedge_{i\le m}\ \varphi(x_i\,;z\,;X)}\smallskip
@@ -131,7 +131,7 @@ This contradicts our choice of $m$.
 
 \begin{proof}
   Negate the claim and let $B$ witness that $\sigma(\bar x)$ does not approximate ${\EuScript D}$ from $\varepsilon$-below.
-  Suppose that $a_0,\dots,a_{n-1}$ and $b_0,\dots,b_{n-1}$ have been defined.
+  For $n\le m$ suppose that $a_0,\dots,a_{n-1}$ and $b_0,\dots,b_{n-1}$ have been defined.
   Choose $a_n$ such that for every $b\in B\cup\{b_0,\dots,b_{n-1}\}$ and every $C$
 
   \ceq{1.\hfill\langle b,C\rangle\in{\EuScript D}}{\Rightarrow}{\varphi(a_n\,;b\,;C)}\quad and
@@ -148,22 +148,22 @@ This contradicts our choice of $m$.
 
   Note that (4) ensures that $\langle b_i,C_i^\varepsilon\rangle\notin{\EuScript D}$ for every $i$.
   Then there is some $\tilde C_{i,n}\cap C^\varepsilon_i=\varnothing$ that witnesses (3) for $\langle b_i,C_i^\varepsilon\rangle\notin{\EuScript D}$.
-  We claim that the procedure has to stop after $< m$ steps. 
-  In fact, from (3) we obtain ${\sim}\varphi(a_n\,;b_i\,;\tilde C_{i,n})$ for every $i<n<m$.
-  Therefore, by monotonicity, ${\sim}\varphi(a_n\,;b_i\,;\tilde C_i)$ for $\tilde C_i=\bigcup_{n< m}\tilde C_{i,n}$.
-  On the other hand, by (4) we have that $\varphi(a_i\,;b_n\,;C_n)$ for every $i<n<m$.
-  Therefore, $\langle a_{m-1-i}\,;b_{m-1-i}\,;C_{m-1-i}\,;\tilde C_{m-1-i}\ :\ i< m\rangle$ contradicts the choice of $m$.
+  We claim that the procedure has to stop at some stage $<m$. 
+  Assume for a contradiction that we can continue till we have $\langle a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i\le m\rangle$.
+  From (3) we obtain ${\sim}\varphi(a_n\,;b_i\,;\tilde C_{i,n})$ for every $i<n\le m$.
+  Therefore, by monotonicity, ${\sim}\varphi(a_n\,;b_i\,;\tilde C_i)$ for $\tilde C_i=\bigcup_{n\le m}\tilde C_{i,n}$.
+  On the other hand, by (4) we have that $\varphi(a_i\,;b_n\,;C_n)$ for every $i<n\le m$.
+  Therefore, $\langle a_{m-i}\,;b_{m-i}\,;C_{m-i}\,;\tilde C_{m-i}\ :\ i\le m\rangle$ contradicts the maximality of $m$.
 \end{proof}
 
 \begin{lemma}\label{lem_sigma_stable}
-  If $\varphi(x\,;z\,;C)$ is $\varepsilon$-stable then $\sigma(\bar x\,;z\,;C)$ in the previous lemma is $\varepsilon$-stable.
+  If $\varphi(x\,;z\,;X)$ is $\varepsilon$-stable then $\sigma(\bar x\,;z\,;X)$ in the previous lemma is $\varepsilon$-stable.
 \end{lemma}
 
 \begin{proof}
-  Let $m$ be maximal such that a sequence as in (3) of Definition~\ref{def_epsilon_stable} exists.
+  Let $m$ be maximal such that a sequence as in Definition~\ref{def_epsilon_stable} exists for $\varphi(x\,;z\,;X)$.
   Let $k$ be sufficiently large so that every $m$-coloring of a graph of size $k$ has a monocromatic subgraph of size $>m$.
-  Let $\langle \bar a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<k\rangle$ be a sequence witnessing the $\varepsilon$-instability.
-  Then for every pair $i<n$ there is some $j<m$ such that ${\sim}\varphi(a_{j,i}\,;b_n\,;\tilde C_i)$.
-  By the choice of $k$ there is a $j<m$ such that ${\sim}\varphi(a_{j,i}\,;b_n\,;\tilde C_i)$ obtains for $>m$ many $i$.
-  Therefore we can extract a subsequence that contradicts the maximality of $m$.
+  Let $\langle \bar a_i\,;b_i\,;C_i\,;\tilde C_i\ :\ i<k\rangle$ be a sequence witnessing the $\varepsilon$-instability of $\sigma(\bar x\,;z\,;X)$.
+  Then for every pair $i<n$ there is some $j<m$ such that ${\sim}\varphi(a_{i,j}\,;b_n\,;\tilde C_n)$.
+  By the choice of $k$ there is a subsequence of length $>m$ and a fixed $j<m$ such that ${\sim}\varphi(a_{i,j}\,;b_n\,;\tilde C_n)$ holds for every pair $i<n$ in the subsequence. This contradicts the maximality of $m$.
 \end{proof}

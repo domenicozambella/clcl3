@@ -655,7 +655,7 @@ First, here the attribute \textit{stable\/} refers to a whole class of formulas~
 Furthermore, the sequence witnessing the order property is required to be infinite.
 Finally, since we need to extend the definition of stability to types, sequences of length $\kappa$ (the cardinality of ${\EuScript U}$, a Ramsey cardinal) are used.
 
-In this section  ${\EuScript D}$ is always a subset of ${\EuScript U}^z\times K(S)$, where $n$ has to be inferred from the context (tipically, $n=|X|$).
+In this section  ${\EuScript D}$ is always a subset of ${\EuScript U}^z\times K(S)^{|X|}$.
 We write ${\sim}{\EuScript D}$ for the set obtained by applying the definition in Section~\ref{K(S)} to all fibers of ${\EuScript D}$.
 That is, if ${\EuScript D}_b$ is the $b$-fiber $\big\{C\,:\,\langle b\,;C\rangle\in{\EuScript D}\big\}$, we define
 
@@ -915,10 +915,10 @@ Apply Ramsey with pairs $\langle C,\tilde C\rangle$ of compact subsets of $S$ as
   Suppose $\pi(\bar x\,;z\,;X)$ is unstable.
   Let $\langle \bar a_i\,;b_i\ :\ i<\kappa\rangle$ be a sequence witnessing instability.
   Suppose ${\sim}\pi(\bar a_i\,;b_n\,;\tilde C)$ holds for every $i<n<\kappa$ (the case $n<i<\kappa$ is identical).
-  For every $i<n$ we can pick some $j<\lambda$ such that ${\sim}\sigma(a_{i,j}\,;b_n\,;\tilde C)$.
+  For every pair $i<n$ we can pick some $j<\lambda$ such that ${\sim}\sigma(a_{i,j}\,;b_n\,;\tilde C)$.
   Interpret $j$ as a color. 
   As $\kappa$ is a Ramsey cardinal, every $\lambda$-coloring of a complete graph of size $\kappa$ has a monochromatic subgraph of size $\kappa$.
-  That is, there is some fixed $j<\lambda$ such that ${\sim}\sigma(a_{i,j}\,;b_n\,;\tilde C)$ holds for $i<n$ restricted to range over a subsequence of length $\kappa$.
+  That is, there is some fixed $j<\lambda$ such that ${\sim}\sigma(a_{i,j}\,;b_n\,;\tilde C)$ holds for every pair $i<n$ restricted to range over a subsequence of length $\kappa$.
   Such a subsequence contradicts the stability of $\sigma(x\,;z\,;X)$.
 \end{proof}
 
