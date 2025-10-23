@@ -138,32 +138,32 @@
    \smash{\tikz[baseline]\node[rectangle, fill=teal!25, rounded corners, inner xsep=0.5ex, inner ysep=0.2ex, anchor=base, minimum height = 2.7ex]{\strut #1};}}
 
 %%%%%%% GETCOMMIT
-\newcommand\dotGitHEAD{}
-\newcommand\branch{}
+% \newcommand\dotGitHEAD{}
+% \newcommand\branch{}
 
 
-\makeatletter\let\myfilehandle\@inputcheck\makeatother
+% \makeatletter\let\myfilehandle\@inputcheck\makeatother
 
-\openin\myfilehandle=.git/HEAD\relax
+% \openin\myfilehandle=.git/HEAD\relax
 
-\begingroup\endlinechar-1
-  \global\read\myfilehandle to \dotGitHEAD
-\endgroup
-\closein\myfilehandle
+% \begingroup\endlinechar-1
+%   \global\read\myfilehandle to \dotGitHEAD
+% \endgroup
+% \closein\myfilehandle
 
-\newcommand\GetBranch{}
-\def\GetBranch ref: refs/heads/#1\relax{\renewcommand{\branch}{#1}}
+% \newcommand\GetBranch{}
+% \def\GetBranch ref: refs/heads/#1\relax{\renewcommand{\branch}{#1}}
 
-\expandafter\GetBranch\dotGitHEAD\relax
+% \expandafter\GetBranch\dotGitHEAD\relax
 
-\openin\myfilehandle=.git/refs/heads/\branch\relax
+% \openin\myfilehandle=.git/refs/heads/\branch\relax
 
-\begingroup\endlinechar-1
-  \global\read\myfilehandle to \commit
-\endgroup
-\closein\myfilehandle
+% \begingroup\endlinechar-1
+%   \global\read\myfilehandle to \commit
+% \endgroup
+% \closein\myfilehandle
 
-\makeatother
+% \makeatother
 
 \linespread{1.1}
 \author{Silvia Barbina}
@@ -177,12 +177,15 @@
 \address[Domenico Zambella]{Dipartimento di Matematica, Universit\`{a} di Torino}
 \email[Domenico Zambella]{domenico.zambella@unito.it}
 
-\thanks{Silvia Barbina and Riccardo Camerlo were partially supported by PRIN2022 \textit{Models, sets and classifications}, prot. 2022TECZJA. Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in combinatorics}, prot. 2022BXH4R5}
+\thanks{Silvia Barbina was partially supported by PRIN2022 \textit{Models, sets and classifications}, prot.\@ 2022TECZJA.
+Riccardo Camerlo was partially supported by the MUR excellence department project awarded to the Department of Mathematics of the University of Genoa, CUP D33C23001110001. 
+Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in combinatorics}, prot.\@ 2022BXH4R5}
+
+\subjclass[2020]{03C66, 03C45, 03C68}
 
 \begin{document}
 \title{Local stability in structures with a standard sort}
-% \hfill\texttt{~}
-\hfill\texttt{Branch \branch\ Last\_commit \StrLeft{\commit}{7}\ \DTMnow}\par
+% \hfill\texttt{Branch \branch\ Last\_commit \StrLeft{\commit}{7}\ \DTMnow}\par
 \maketitle
 \raggedbottom
 
