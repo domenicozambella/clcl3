@@ -190,17 +190,11 @@ Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in
 \raggedbottom
 
 \begin{abstract}
-  Continuous logic~\cite{BBHU} has replaced Henson-Iovino logic~\cite{HI} as a
-  formalism to study the model theory of continuous structures.
-  One of the first articles on the subject, \cite{BU}, defines local stability within continuous logic - as noted by Henson, this escaped~\cite{HI}'s approach.
-  Subsequently, this has been used as a major argument to advocate in favor of \cite{BBHU}'s over~\cite{HI}'s approach.\smallskip
-
-  \noindent
-  Recently, a classical approach to continuous structures has been proposed  in \cite{clcl} and~\cite{Z} that extend the class of structures falling under the scope of~\cite{HI} or~\cite{BBHU}.
+  Recently, a classical approach to continuous structures has been proposed in \cite{clcl} and~\cite{Z} that extends the class of structures falling under the scope of~\cite{HI} or~\cite{BBHU}.
   These articles introduce the notion of \textit{structures with a standard sort.}
   We discuss local stability in this context.
-  We examine three variants of order property which are prima facie non equivalent.
-  For each variant we show that sets externally definable by stable formulas are definable in some appropiate sense.
+  We examine three variants of the order property which are prima facie non equivalent.
+  For each variant we show that sets externally definable by stable formulas are definable in some appropriate sense.
 \end{abstract}
 
 \def\medrel#1{\parbox{6ex}{\hfil $#1$}}
@@ -212,6 +206,17 @@ Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Structures with a standard sort}
+
+Continuous logic~\cite{BBHU} has replaced Henson-Iovino logic~\cite{HI} as a formalism to study the model theory of continuous structures. 
+One of the first articles on the subject, \cite{BU}, defines local stability within continuous logic.
+As noted by Henson, this definition escapes~\cite{HI}'s approach.
+This has subsequently been used as a major argument to advocate in favor of \cite{BBHU}'s over~\cite{HI}'s approach.
+
+In this section we recall the basic properties of the \textit{structures with a standard sort\/} in \cite{clcl}, which offers an alternative framework to describe continuous structures using classical logic. 
+
+There is more than one way to define stability in \cite{clcl}'s context.
+In Sections~\ref{finitary}, \ref{nonfinitary} and~\ref{epsilonstable} we consider three variants and for each we prove a suitable version of the classical theorem that says that externally definable sets are definable. 
+All three proofs follow the same line of reasoning~--~a finitary version of the classical argument as presented e.g. in~\cite{Z?}.
 
 Let \emph{$S$\/} be a Hausdorff compact topological space.
 We associate to $S$ a first order structure in a language \emph{${\EuScript L}_{\sf S}$\/} that has a relation symbol for each compact subset $C\subseteq S$ and a function symbol for each continuous function $f:S^n\to S$.
@@ -415,6 +420,8 @@ By Fact~\ref{fact_saturation} and the following fact, all ${\EuScript F}$-satura
 \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
 \def\ceq#1#2#3{\parbox[t]{23ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
+In this section we introduce some notions that are used to describe global types in Section~\ref{nonfinitary}.
+
 Write \emph{$K(S)$\/} for the set of compact subsets of $S$.
 In this section ${\EuScript D}$ and ${\EuScript C}$ range over subsets of $K(S)$.
 We define 
@@ -514,16 +521,12 @@ It is not difficult to see that (2) holds if and only if ${\EuScript D}$ is clos
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Stable formulas~--~the finitary case}
+\section{Stable formulas~--~the finitary case}\label{finitary}
 \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
 \def\ceq#1#2#3{\parbox[t]{22ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
-There is more than one way to define stability in our context.
-In this paper we consider three variants and for each we prove a suitable version of the theorem that says that externally definable sets are definable.
-All three proofs follow the same line of reasoning~--~a finitary version of the classical argument as presented e.g. in~\cite{Z?}.
-
-In this section we consider the strongest possible requirement of stability.
-It is not the most interesting one, but it is very similar to the classical definition~--~the comparison may be useful though not stricly required for the sequel.
+In this section we consider the strongest possible notion of order property.
+It is not the most interesting one, but it is very similar to the classical definition~--~the comparison may be useful, though not stricly required for the sequel.
 
 The following definition of stability is the classical one.
 We dub it \textit{finitary\/} for the reason explained below.
@@ -612,7 +615,7 @@ We only state it here for comparison with its non-finitary counterpart, Theorem~
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Stable formulas~--~the non-finitary case}
+\section{Stable formulas~--~the non-finitary case}\label{nonfinitary}
 \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
 \def\ceq#1#2#3{\parbox[t]{22ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
@@ -836,7 +839,7 @@ Apply Ramsey with pairs $\langle C,\tilde C\rangle$ of compact subsets of $S$ as
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Yet another version of stability}
+\section{Yet another version of stability}\label{epsilonstable}
 \def\medrel#1{\parbox{5ex}{\hfil $#1$}}
 \def\ceq#1#2#3{\parbox[t]{28ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
