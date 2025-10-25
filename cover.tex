@@ -1,0 +1,324 @@
+\documentclass{amsproc}
+\usepackage{subfiles}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{comment}
+\usepackage[alphabetic]{amsrefs}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{datetime2} 
+\usepackage[colorlinks=true,linkcolor=blue,]{hyperref}
+\usepackage{tcolorbox}
+\usepackage{xstring}
+
+\usepackage{stackengine}
+\usepackage{scalerel}
+\usepackage{mathtools}
+\usepackage{calc}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{euscript}
+% \def\EuScript#1{\mathscr#1}
+% \usepackage{fourier-otf}
+\usepackage{fourier}
+%\usepackage{palatino}
+% \usepackage[sc]{mathpazo} % add possibly `sc` and `osf` options
+%\usepackage{eulervm}
+%\usepackage{bbm}
+%\usepackage{latexsym}
+% \usepackage{mathrsfs}
+% \usepackage{stmaryrd}
+% \usepackage{stix}
+\def\dotminus{\stackon[.2ex]{$-$}{$.$}}
+% \def\wneg{\stackon[-.2ex]{$\neg$}{$\neg$}}
+\usepackage{dsfont}
+% \newcommand*{\TakeFourierOrnament}[1]{{%
+% \fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
+% \renewcommand*{\danger}{\TakeFourierOrnament{66}}
+\parindent0ex
+\parskip1.2ex
+% \makeatletter
+% \DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+% \DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
+% \DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
+% \DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+% \DeclareOldFontCommand{\it}{\normalfont\itshape}{\mathit}
+% \DeclareOldFontCommand{\sl}{\normalfont\slshape}{\@nomath\sl}
+% \DeclareOldFontCommand{\sc}{\normalfont\scshape}{\@nomath\sc}
+% \makeatother
+
+\newcommand{\mylabel}[1]{{#1}\hfill}
+\renewenvironment{itemize}
+  {\begin{list}{$\triangleright$}{%
+  \setlength{\parskip}{0mm}
+  \setlength{\topsep}{.1\baselineskip}
+  \setlength{\rightmargin}{0mm}
+  \setlength{\listparindent}{0mm}
+  \setlength{\itemindent}{0mm}
+  \setlength{\labelwidth}{3ex}
+  \setlength{\itemsep}{.1\baselineskip}
+  \setlength{\parsep}{.1\baselineskip}
+  \setlength{\partopsep}{0mm}
+  \setlength{\labelsep}{1ex}
+  \setlength{\leftmargin}{\labelwidth+\labelsep}
+  \let\makelabel\mylabel}}{%
+\end{list}}
+
+
+\newtheoremstyle{mio}% name
+     {2\parskip}     % Space above
+     {2\parskip}     % Space below
+     {}%         Body font
+     {}%         Indent amount (empty = no indent, \parindent = para indent)
+     {\bfseries}% Thm head font
+     {}%        Punctuation after thm head
+     {1ex}%     Space after thm head: " " = normal interword space;
+           %   \newline = linebreak
+     {\llap{\thmnumber{#2}\hskip0.9ex}\thmname{#1}\thmnote{\bfseries{}#3}}% Thm head spec (can be left empty, meaning `normal')
+
+\newcounter{thm}
+
+\tcbset{
+  mythm/.style={
+    colback=black!5!white,
+    colframe=white!50!black,
+    extrude right by=2ex,
+    extrude left by=6.5ex,
+    % before=\par\noindent,
+    % after=\par\noindent,
+    top=0.7ex,
+    bottom=1.5ex,
+    right=2ex,
+    left=6.5ex,
+    boxsep=0pt,
+    % parbox=false,
+    before skip=\baselineskip,
+    after skip=\baselineskip,
+  },
+}
+\theoremstyle{mio}
+\newtheorem{theorem}[thm]{Theorem}\tcolorboxenvironment{theorem}{mythm}
+\newtheorem{corollary}[thm]{Corollary}\tcolorboxenvironment{corollary}{mythm}
+\newtheorem{proposition}[thm]{Proposition}\tcolorboxenvironment{proposition}{mythm}
+\newtheorem{lemma}[thm]{Lemma}\tcolorboxenvironment{lemma}{mythm}
+\newtheorem{fact}[thm]{Fact}\tcolorboxenvironment{fact}{mythm}
+\newtheorem{definition}[thm]{Definition}\tcolorboxenvironment{definition}{mythm}
+\newtheorem{assumption}[thm]{Assumption}\tcolorboxenvironment{assumption}{mythm}
+\newtheorem{void}[thm]{}\tcolorboxenvironment{void}{mythm}
+\newtheorem{notation}[thm]{Notation}\tcolorboxenvironment{notation}{mythm}
+\newtheorem{note}[thm]{Note}\tcolorboxenvironment{note}{mythm}
+\newtheorem{remark}[thm]{Remark}\tcolorboxenvironment{remark}{mythm}
+\newtheorem{definition_theorem}[thm]{Definition\,/\,Theorem}\tcolorboxenvironment{definition_theorem}{mythm}
+\newtheorem{exercise}[thm]{Exercise}
+\newtheorem{example}[thm]{Example}
+\newtheorem{question}[thm]{Question}
+
+
+\makeatletter
+\providecommand{\proofNameStyle}{\bfseries}
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont% \topsep6\p@\@plus6\p@\relax
+  % \vspace*{-\baselineskip}
+  \trivlist
+  \item[\hskip\labelsep
+        \proofNameStyle
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+
+
+\renewcommand*{\emph}[1]{%
+   \smash{\tikz[baseline]\node[rectangle, fill=teal!25, rounded corners, inner xsep=0.5ex, inner ysep=0.2ex, anchor=base, minimum height = 2.7ex]{\strut #1};}}
+
+%%%%%%% GETCOMMIT
+% \newcommand\dotGitHEAD{}
+% \newcommand\branch{}
+
+
+% \makeatletter\let\myfilehandle\@inputcheck\makeatother
+
+% \openin\myfilehandle=.git/HEAD\relax
+
+% \begingroup\endlinechar-1
+%   \global\read\myfilehandle to \dotGitHEAD
+% \endgroup
+% \closein\myfilehandle
+
+% \newcommand\GetBranch{}
+% \def\GetBranch ref: refs/heads/#1\relax{\renewcommand{\branch}{#1}}
+
+% \expandafter\GetBranch\dotGitHEAD\relax
+
+% \openin\myfilehandle=.git/refs/heads/\branch\relax
+
+% \begingroup\endlinechar-1
+%   \global\read\myfilehandle to \commit
+% \endgroup
+% \closein\myfilehandle
+
+% \makeatother
+
+\linespread{1.1}
+\author{Silvia Barbina}
+\author{Riccardo Camerlo}
+\author{Domenico Zambella}
+
+
+\address[Silvia Barbina]{Sezione di Matematica, Universit\`{a} di Camerino}
+\email[Silvia Barbina]{silvia.barbina@unicam.it}
+\address[Riccardo Camerlo]{Dipartimento di Matematica, Universit\`{a} di Genova}\email[Riccardo Camerlo]{riccardo.camerlo@unige.it}
+\address[Domenico Zambella]{Dipartimento di Matematica, Universit\`{a} di Torino}
+\email[Domenico Zambella]{domenico.zambella@unito.it}
+
+\thanks{Silvia Barbina was partially supported by PRIN2022 \textit{Models, sets and classifications}, prot.\@ 2022TECZJA.
+Riccardo Camerlo was partially supported by the MUR excellence department project awarded to the Department of Mathematics of the University of Genoa, CUP D33C23001110001. 
+Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in combinatorics}, prot.\@ 2022BXH4R5}
+
+\subjclass[2020]{03C66, 03C45, 03C68}
+
+\begin{document}
+\hfill 25 October 2025\bigskip
+
+This paper concerns notions of local stability for \textit{structures with a standard sort.}
+These are a classical framework for continuous structures recently introduced in \cite{clcl} as an alternative to~\cite{BBHU}.
+
+Continuous model theory~\cite{BBHU} has replaced Henson-Iovino logic~\cite{HI} as a formalism to study the model theory of continuous structures. 
+One of the first articles on the subject, \cite{BU}, defines local stability within continuous logic.
+As noted by Henson, this definition escapes~\cite{HI}'s approach.
+
+We examine three variants of the order property in the context of \cite{clcl}, and for each we prove a suitable version of the classical theorem that says that externally definable sets are definable.
+
+If it is appropriate to indicate a specific editor, our preference would be Krzysztof Krupi\'nski.
+
+Thank you for your consideration.
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+
+\BibSpec{arXiv}{%
+  +{}{\PrintAuthors}{author}
+  +{,}{ \textit}{title}
+  +{}{ \parenthesize}{date}
+  +{,}{ arXiv:}{eprint}
+  +{,}{ } {note}
+  % +{,}{ \url}
+}
+
+\BibSpec{webpage}{%
+  +{}{\PrintAuthors} {author}
+  +{,}{ \textit} {title}
+  +{,}{ } {portal}
+  +{}{ \parenthesize} {date}
+  +{,}{ } {doi}
+  +{,}{ } {note}
+  +{.}{ } {transition}
+}
+\begin{bibdiv}
+\begin{biblist}[]\normalsize
+
+%   \bib{A}{article}{
+%     label={A},
+%     author={Auslander, Josef},
+%     title={Topological Dynamics},
+%     journal={Scholarpedia},
+%     date={2008},
+%     note={\href{http://scholarpedia.org/article/Topological_dynamics}{scholarpedia.3449}},
+% }\smallskip
+\bib{clcl}{article}{
+    label={ABBMZ},
+    author = {Agostini, Claudio},
+    author = {Baratella, Stefano},
+    author = {Barbina, Silvia},
+    author = {Motto Ros, Luca},
+    author = {Zambella, Domenico},
+    journal={Bull. Iran. Math. Soc.},
+    volume={51},
+    date = {2025},
+    title = {Continuous logic in a classical setting},
+    note={\href{https://arxiv.org/abs/2402.01245}{arXiv:2402.01245}},
+  }\smallskip
+\bib{BBHU}{article}{
+  label={BBHU},
+  author={Ben Yaacov, Ita\"{\i}},
+  author={Berenstein, Alexander},
+  author={Henson, C. Ward},
+  author={Usvyatsov, Alexander},
+  title={Model theory for metric structures},
+  conference={
+      title={Model theory with applications to algebra and analysis. Vol. 2},
+  },
+  book={
+      series={London Math. Soc. Lecture Note Ser.},
+      volume={350},
+      publisher={Cambridge Univ. Press, Cambridge},
+  },
+  %  isbn={978-0-521-70908-8},
+  date={2008},
+  pages={315--427},
+  %  review={\MR{2436146}},
+  %  doi={10.1017/CBO9780511735219.011},
+}\smallskip
+\bib{BU}{article}{
+   label={BU},
+   author={Ben Yaacov, Ita\"i},
+   author={Usvyatsov, Alexander},
+   title={Continuous first order logic and local stability},
+   journal={Trans. Amer. Math. Soc.},
+   volume={362},
+   date={2010},
+  %  number={10},
+   pages={5213--5259},
+  %  issn={0002-9947},
+  %  review={\MR{2657678}},
+  %  doi={10.1090/S0002-9947-10-04837-3},
+  note={\href{https://arxiv.org/abs/0801.4303}{arXiv:0801.4303}},
+}
+
+\bib{HI}{article}{
+  label={HI},
+  author={Henson, C. Ward},
+  author={Iovino, Jos\'{e}},
+  title={Ultraproducts in analysis},
+  conference={
+    title={Analysis and logic},
+    address={Mons},
+    date={1997},
+   },
+   book={
+      series={London Math. Soc. Lecture Note Ser.},
+      volume={262},
+      publisher={Cambridge Univ. Press, Cambridge},
+   },
+   date={2002},
+   pages={1--110},
+  %  review={\MR{1967834}},
+}
+% \bib{Z}{article}{
+%   label={Z},
+%   author = {Zambella, Domenico},
+%   title = {Standard analysis},
+%   % doi = {10.48550/arXiv.2311.15711},
+%   note={\href{https://arxiv.org/abs/2311.15711}{arXiv:2311.15711}},
+%   date = {2023},
+% }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Continuous group actions}
+\end{biblist}
+\end{bibdiv}
+\end{document}
