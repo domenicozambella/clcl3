@@ -11,6 +11,11 @@
 \usepackage{tcolorbox}
 \usepackage{xstring}
 \usepackage[normalem]{ulem}
+\newcommand\xoutpars[1]{\let\helpcmd\xout\parhelp#1\par\relax\relax}
+\newcommand\soutpars[1]{\let\helpcmd\sout\parhelp#1\par\relax\relax}
+\long\def\parhelp#1\par#2\relax{%
+  \helpcmd{#1}\ifx\relax#2\else\par\parhelp#2\relax\fi%
+}
 \usepackage{stackengine}
 \usepackage{scalerel}
 \usepackage{mathtools}
@@ -220,7 +225,7 @@
 \raggedbottom
 
 \begin{abstract}
-  Recently, a classical approach to continuous structures has been proposed in \cite{clcl} and~\cite{Z} \sout{that extends the class of structures falling under the scope of~\cite{HI} or~\cite{BBHU}}.
+  Recently, a classical approach to continuous structures has been proposed in \cite{clcl} and~\cite{Z} that extends the class of structures falling under the scope of~\cite{BBHU}.
   These articles introduce the notion of \textit{structures with a standard sort.}
   We discuss local stability in this context.
   We examine three variants of the order property which are prima facie non equivalent.
@@ -237,7 +242,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Structures with a standard sort}
 
-\sout{Continuous logic~\cite{BBHU} has replaced Henson-Iovino logic~\cite{HI} as a formalism to study the model theory of continuous structures. 
+\textcolor{gray}{Continuous logic~\cite{BBHU} has replaced Henson-Iovino logic~\cite{HI} as a formalism to study the model theory of continuous structures. 
 One of the first articles on the subject, \cite{BU}, defines local stability within continuous logic.
 As noted by Henson, this definition escapes~\cite{HI}'s approach.
 This has subsequently been used as a major argument to advocate in favor of \cite{BBHU}'s over~\cite{HI}'s approach.}
@@ -299,8 +304,10 @@ A standard structure $M$ is \emph{${\EuScript F}$-saturated\/} if it realizes ev
 The following theorem is proved in \cite{clcl} for signatures that do not contain symbols of sort ${\sf H}^n\times{\sf S}^m\to {\sf S}$ with $n{\cdot}m>0$.
 A similar framework has been independently introduced in \cite{CP}~--~only without quantifiers of sort {\sf H} and with an approximate notion of satisfaction.
 The corresponding compactness theorem is proved there with a similar method.
-The setting in \cite{CP} is a generalization of that used by Henson and Iovino for Banach spaces~\cite{HI}.
+The setting in \cite{CP} is a generalization of that used by Henson and Iovino for Banach spaces\textcolor{blue}{, see e.g.~\cite{I}}.
 By the elimination of quantifiers of sort {\sf S}, proved in \cite{clcl}*{Proposition 3.6}, the two approaches are equivalent~--~up to approximations.
+
+% \textcolor{blue}{When this paper was completed, Arthuro Rodriguez-Fanlo informed the third author that a similar approach to continuous structures was introduced in \cite{CH}*{Appendix A}, though not elaborated with the same details as in the references above.}
 
 In \cite{Z} it is observed that, under the assumption of equicontinuity, the proof in \cite{clcl} extends to the case $n{\cdot}m> 0$.
 
@@ -1150,15 +1157,17 @@ But (5) contradicts (3), while (6) contradicts (4).
 \vskip10ex
 \textbf{Acknowledgments}\quad Domenico Zambella would like to thank Elisabetta Marchese for helpful discussion.
 
-\textbf{Author contribution}\quad All authors have contributed equally.
+\textcolor{gray}{
+\textbf{Author contribution}\quad All authors have contributed equally.}
 
 \textbf{Funding}\quad
 Silvia Barbina was partially supported by PRIN2022 \textit{Models, sets and classifications}, prot.\@ 2022TECZJA.
 Riccardo Camerlo was partially supported by the MUR excellence department project awarded to the Department of Mathematics of the University of Genoa, CUP D33C23001110001. 
 Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in combinatorics}, prot.\@ 2022BXH4R5
 
-\section*{Declaration}
+\textcolor{gray}{
 \textbf{Conflict of interest}\quad The authors declare no conflict of interest.
+}
 
 
 \vskip10ex
@@ -1248,21 +1257,30 @@ Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in
   %  review={\MR{2436146}},
   %  doi={10.1017/CBO9780511735219.011},
 }\smallskip
-\bib{BU}{article}{
-   label={BU},
-   author={Ben Yaacov, Ita\"i},
-   author={Usvyatsov, Alexander},
-   title={Continuous first order logic and local stability},
-   journal={Trans. Amer. Math. Soc.},
-   volume={362},
-   date={2010},
-  %  number={10},
-   pages={5213--5259},
-  %  issn={0002-9947},
-  %  review={\MR{2657678}},
-  %  doi={10.1090/S0002-9947-10-04837-3},
-  note={\href{https://arxiv.org/abs/0801.4303}{arXiv:0801.4303}},
-}\smallskip
+% \bib{BU}{article}{
+%    label={BU},
+%    author={Ben Yaacov, Ita\"i},
+%    author={Usvyatsov, Alexander},
+%    title={Continuous first order logic and local stability},
+%    journal={Trans. Amer. Math. Soc.},
+%    volume={362},
+%    date={2010},
+%   %  number={10},
+%    pages={5213--5259},
+%   %  issn={0002-9947},
+%   %  review={\MR{2657678}},
+%   %  doi={10.1090/S0002-9947-10-04837-3},
+%   note={\href{https://arxiv.org/abs/0801.4303}{arXiv:0801.4303}},
+% }\smallskip
+% \vskip-\baselineskip
+% \textcolor{blue}{\bib{CH}{article}{
+%   label={CH},
+%   title={Piecewise Interpretable Hilbert Spaces}, 
+%   author={Alexis Chevalier},
+%   author={Ehud Hrushovski},
+%   note={\href{https://arxiv.org/abs/2110.05142}{arXiv:2110.05142}},
+%   date = {2023},
+% }}\smallskip
 \bib{CP}{article}{
     label={CP},
    author={Chavarria, Nicolas},
@@ -1343,8 +1361,8 @@ Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in
 %   %  review={\MR{2373360}},
 %   %  doi={10.1090/S0894-0347-07-00558-9},
 % }
-
-\bib{HI}{article}{
+\vskip-\baselineskip
+\textcolor{gray}{\bib{HI}{article}{
   label={HI},
   author={Henson, C. Ward},
   author={Iovino, Jos\'{e}},
@@ -1361,11 +1379,10 @@ Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in
    },
    date={2002},
    pages={1--110},
-  %  review={\MR{1967834}},
-}\smallskip
+}}\smallskip
 % \bib{K}{article}{
 %   label={K},
-%   author = {Keisler, H. Jerome},
+%   author = {Keisler, H. Jerome},  
 %   title = {Model Theory for Real-valued Structures},
 %   book={
 %     editor={Iovino, Jos\'e},
@@ -1396,6 +1413,15 @@ Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in
 %   %  review={\MR{3372605}},
 %   %  doi={10.1007/s00153-015-0424-0},
 % }
+\vskip-\baselineskip
+\noindent\textcolor{blue}{\bib{I}{book}{
+  label={I},
+  author={Iovino, Jos\'e},
+  title={Applications of model theory to functional analysis},
+  publisher={Dover Publications, Inc., Mineola, NY},
+  date={2014},
+  pages={xiv+95},
+}}
 \bib{TZ}{book}{
   label={TZ},
   author={Tent, Katrin},
