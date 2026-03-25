@@ -10,7 +10,7 @@
 \usepackage[colorlinks=true,linkcolor=blue,]{hyperref}
 \usepackage{tcolorbox}
 \usepackage{xstring}
-
+\usepackage[normalem]{ulem}
 \usepackage{stackengine}
 \usepackage{scalerel}
 \usepackage{mathtools}
@@ -132,10 +132,39 @@
 }
 \makeatother
 
-
-
 \renewcommand*{\emph}[1]{%
    \smash{\tikz[baseline]\node[rectangle, fill=teal!25, rounded corners, inner xsep=0.5ex, inner ysep=0.2ex, anchor=base, minimum height = 2.7ex]{\strut #1};}}
+
+\makeatletter
+\def\@setaddresses{\par
+  \nobreak \begingroup
+\footnotesize
+  \def\author##1{\nobreak\addvspace\bigskipamount}%
+  \def\\{\unskip, \ignorespaces}%
+  \interlinepenalty\@M
+  \def\address##1##2{\begingroup
+    \par\addvspace\bigskipamount\indent
+    \@ifnotempty{##1}{\ignorespaces##1\unskip\quad  }%
+    {\scshape\ignorespaces##2}\par\endgroup}%
+  \def\curraddr##1##2{\begingroup
+    \@ifnotempty{##2}{\nobreak\indent\curraddrname
+      \@ifnotempty{##1}{, \ignorespaces##1\unskip}\/:\space
+      ##2\par}\endgroup}%
+  \def\email##1##2{\begingroup
+    \@ifnotempty{##2}{\nobreak\indent\emailaddrname
+      \@ifnotempty{##1}{, \unskip}\/:\space
+      \ttfamily##2\par}\endgroup}%
+  \def\urladdr##1##2{\begingroup
+    \def~{\char`\~}%
+    \@ifnotempty{##2}{\nobreak\indent\urladdrname
+      \@ifnotempty{##1}{, \ignorespaces##1\unskip}\/:\space
+      \ttfamily##2\par}\endgroup}%
+  \addresses
+  \endgroup
+}
+\makeatother
+
+
 
 %%%%%%% GETCOMMIT
 % \newcommand\dotGitHEAD{}
@@ -177,9 +206,9 @@
 \address[Domenico Zambella]{Dipartimento di Matematica, Universit\`{a} di Torino}
 \email[Domenico Zambella]{domenico.zambella@unito.it}
 
-\thanks{Silvia Barbina was partially supported by PRIN2022 \textit{Models, sets and classifications}, prot.\@ 2022TECZJA.
-Riccardo Camerlo was partially supported by the MUR excellence department project awarded to the Department of Mathematics of the University of Genoa, CUP D33C23001110001. 
-Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in combinatorics}, prot.\@ 2022BXH4R5}
+% \thanks{Silvia Barbina was partially supported by PRIN2022 \textit{Models, sets and classifications}, prot.\@ 2022TECZJA.
+% Riccardo Camerlo was partially supported by the MUR excellence department project awarded to the Department of Mathematics of the University of Genoa, CUP D33C23001110001. 
+% Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in combinatorics}, prot.\@ 2022BXH4R5}
 
 \subjclass[2020]{03C66, 03C45, 03C68}
 
@@ -191,7 +220,7 @@ Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in
 \raggedbottom
 
 \begin{abstract}
-  Recently, a classical approach to continuous structures has been proposed in \cite{clcl} and~\cite{Z} that extends the class of structures falling under the scope of~\cite{HI} or~\cite{BBHU}.
+  Recently, a classical approach to continuous structures has been proposed in \cite{clcl} and~\cite{Z} \sout{that extends the class of structures falling under the scope of~\cite{HI} or~\cite{BBHU}}.
   These articles introduce the notion of \textit{structures with a standard sort.}
   We discuss local stability in this context.
   We examine three variants of the order property which are prima facie non equivalent.
@@ -208,16 +237,18 @@ Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Structures with a standard sort}
 
-Continuous logic~\cite{BBHU} has replaced Henson-Iovino logic~\cite{HI} as a formalism to study the model theory of continuous structures. 
+\sout{Continuous logic~\cite{BBHU} has replaced Henson-Iovino logic~\cite{HI} as a formalism to study the model theory of continuous structures. 
 One of the first articles on the subject, \cite{BU}, defines local stability within continuous logic.
 As noted by Henson, this definition escapes~\cite{HI}'s approach.
-This has subsequently been used as a major argument to advocate in favor of \cite{BBHU}'s over~\cite{HI}'s approach.
+This has subsequently been used as a major argument to advocate in favor of \cite{BBHU}'s over~\cite{HI}'s approach.}
 
 In this section we recall the basic properties of the \textit{structures with a standard sort\/} in \cite{clcl}, which offers an alternative framework to describe continuous structures using classical logic. 
 We refer the reader to the introduction of \cite{clcl} or~\cite{Z}.
 
 There is more than one way to define stability in \cite{clcl}'s context.
-In Sections~\ref{finitary}, \ref{nonfinitary} and~\ref{epsilonstable} we consider three variants and for each we prove a suitable version of the classical theorem that says that externally definable sets are definable. 
+It is also not clear \textcolor{blue}{how to generalize the notion of definability of types (in Fact~\ref{fact_approx_X} we introduce a definition which seems most robust).}
+We discuss these issues in Sections~\ref{finitary}, \ref{nonfinitary} and~\ref{epsilonstable}.
+We consider three variants and for each we prove a suitable version of the classical theorem that says that externally definable sets are definable.
 All three proofs follow the same line of reasoning~--~a finitary version of the classical argument as presented e.g. in~\cite{Z?}.
 
 Let \emph{$S$\/} be a Hausdorff compact topological space.
@@ -683,7 +714,7 @@ When $\sigma(x\,;z\,;X)$ is a formula and  ${\EuScript D}$ is involutive (2) in 
 
 Under the assumptions of the remark (i.e. when ${\EuScript D}$ is involutive and $\sigma(x\,;z\,;X)$ is a formula), it is easy to verify by saturation that in Definition~\ref{def_approx_X} the requirement \textit{for every small\/} $B$ can be replaced by \textit{for every finite\/} $B$ (indeed, one can verify that the proof of the following fact also works when $B$ is required to be finite).
 
-\begin{fact}
+\begin{fact}\label{fact_approx_X}
   Let $\varphi(x\,;z\,;X)$ be an ${\EuScript F}_{\sf X}$-formula.
   For every involutive ${\EuScript D}$ the following are equivalent
   \begin{itemize}
@@ -1117,7 +1148,20 @@ But (5) contradicts (3), while (6) contradicts (4).
 
 
 \vskip10ex
+\textbf{Acknowledgments}\quad Domenico Zambella would like to thank Elisabetta Marchese for helpful discussion.
 
+\textbf{Author contribution}\quad All authors have contributed equally.
+
+\textbf{Funding}\quad
+Silvia Barbina was partially supported by PRIN2022 \textit{Models, sets and classifications}, prot.\@ 2022TECZJA.
+Riccardo Camerlo was partially supported by the MUR excellence department project awarded to the Department of Mathematics of the University of Genoa, CUP D33C23001110001. 
+Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in combinatorics}, prot.\@ 2022BXH4R5
+
+\section*{Declaration}
+\textbf{Conflict of interest}\quad The authors declare no conflict of interest.
+
+
+\vskip10ex
 %%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%
