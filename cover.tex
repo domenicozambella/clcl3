@@ -137,6 +137,38 @@
 \renewcommand*{\emph}[1]{%
    \smash{\tikz[baseline]\node[rectangle, fill=teal!25, rounded corners, inner xsep=0.5ex, inner ysep=0.2ex, anchor=base, minimum height = 2.7ex]{\strut #1};}}
 
+
+\makeatletter
+\def\@setaddresses{\par
+  \nobreak \begingroup
+\footnotesize
+  \def\author##1{\nobreak\addvspace\bigskipamount}%
+  \def\\{\unskip, \ignorespaces}%
+  \interlinepenalty\@M
+  \def\address##1##2{\begingroup
+    \par\addvspace\bigskipamount\indent
+    \@ifnotempty{##1}{\ignorespaces##1\unskip\quad  }%
+    {\scshape\ignorespaces##2}\par\endgroup}%
+  \def\curraddr##1##2{\begingroup
+    \@ifnotempty{##2}{\nobreak\indent\curraddrname
+      \@ifnotempty{##1}{, \ignorespaces##1\unskip}\/:\space
+      ##2\par}\endgroup}%
+  \def\email##1##2{\begingroup
+    \@ifnotempty{##2}{\nobreak\indent\emailaddrname
+      \@ifnotempty{##1}{, \unskip}\/:\space
+      \ttfamily##2\par}\endgroup}%
+  \def\urladdr##1##2{\begingroup
+    \def~{\char`\~}%
+    \@ifnotempty{##2}{\nobreak\indent\urladdrname
+      \@ifnotempty{##1}{, \ignorespaces##1\unskip}\/:\space
+      \ttfamily##2\par}\endgroup}%
+  \addresses
+  \endgroup
+}
+\makeatother
+
+
+
 %%%%%%% GETCOMMIT
 % \newcommand\dotGitHEAD{}
 % \newcommand\branch{}
@@ -184,7 +216,10 @@ Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in
 \subjclass[2020]{03C66, 03C45, 03C68}
 
 \begin{document}
-\hfill 25 October 2025\bigskip
+\hfill 28 October 2025\bigskip
+
+
+\textbf{Local stability in structures with a standard sort}\bigskip
 
 This paper concerns notions of local stability for \textit{structures with a standard sort.}
 These are a classical framework for continuous structures recently introduced in \cite{clcl} as an alternative to~\cite{BBHU}.
