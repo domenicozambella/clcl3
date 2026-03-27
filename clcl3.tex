@@ -242,37 +242,34 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Structures with a standard sort}
 
-\textcolor{gray}{Continuous logic~\cite{BBHU} has replaced Henson-Iovino logic~\cite{HI} as a formalism to study the model theory of continuous structures. 
-One of the first articles on the subject, \cite{BU}, defines local stability within continuous logic.
-As noted by Henson, this definition escapes~\cite{HI}'s approach.
-This has subsequently been used as a major argument to advocate in favor of \cite{BBHU}'s over~\cite{HI}'s approach.}
+Structures with a standard sort are introduced in \cite{clcl} as a framework to describe continuous structures.
+This framework extends the range of structures that can be described by continuous logic \`a la~\cite{BBHU}.
+The underlying logic is classical, but compactness only holds for positive formulas.
+We refer the reader to the introduction of \cite{clcl} or~\cite{Z} for motivation and further background.
+In this section we recall the definitions and basic properties are needed to make this paper self-contained.
 
-\textcolor{blue}{Structures with a standard sort are introduced in \cite{clcl} as an alternative framework to describe continuous structures using classical logic.
-We refer the reader to the introduction of \cite{clcl} or~\cite{Z} for motivations.
-In this section we recall the definitions and basic properties used in this paper.}
-
-There is more than one way to define stability in \cite{clcl}'s context.
-It is also not clear \textcolor{blue}{how to generalize the notion of definability of types (in Fact~\ref{fact_approx_X} we introduce a definition which seems most robust).}
+There is more than one way to define stability in the context introduced in \cite{clcl}.
+It is also not clear how to generalize the notion of definability of types (in Fact~\ref{fact_approx_X} we introduce a definition which seems robust).
 We discuss these issues in Sections~\ref{finitary}, \ref{nonfinitary} and~\ref{epsilonstable}.
-We consider three variants and for each we prove a suitable version of the classical theorem that says that externally definable sets are definable.
+We consider three variants of the notion of stability and for each we prove a suitable version of the classical theorem that says that externally definable sets are definable.
 All three proofs follow the same line of reasoning~--~a finitary version of the classical argument as presented e.g. in~\cite{Z?}.
 
 Let \emph{$S$\/} be a Hausdorff compact topological space.
-We associate to $S$ a first order structure in a language \emph{${\EuScript L}_{\sf S}$\/} that has a relation symbol for each compact subset $C\subseteq S$ and a function symbol for each continuous function $f:S^n\to S$.
+We associate to $S$ a first-order structure in a language \emph{${\EuScript L}_{\sf S}$\/} that has a relation symbol for each compact subset $C\subseteq S$ and a function symbol for each continuous function $f:S^n\to S$.
 Depending on the context, $C$ and $f$ denote either the symbols of ${\EuScript L}_{\sf S}$ or their interpretation in the structure $S$.
-Throughout these notes the letter $C$ always denotes a compact subset of $S$, or a tuple of such sets.
+Throughout the paper the letter $C$ always denotes a compact subset of $S$, or a tuple of such sets.
 
-Finally, note that we could allow in ${\EuScript L}_{\sf S}$ relation symbols for all compact subsets of $S^n$, for any $n$.
+In ${\EuScript L}_{\sf S}$ we could also allow relation symbols for all compact subsets of $S^n$, for every $n$.
 But this would clutter the notation, therefore we prefer to leave the straightforward generalization to the reader.%adding very little to the theory.
 
 % Finally, note that we could allow in ${\EuScript L}_{\sf S}$ relation symbols for all compact subsets of $S^n$, for any $n$.
 % But this would clutter the notation adding very little to the theory.
 % When needed, we will assume this generalization and leave the detail to the reader.
 
-We also fix an arbitrary first order language which we denote by \emph{${\EuScript L}_{\sf H}$\/} and call the language of the home sort.
+We also fix an arbitrary first-order language which we denote by \emph{${\EuScript L}_{\sf H}$,} and which  we call the language of the home sort.
 
 \begin{definition}\label{def_0}
-  Let \emph{${\EuScript L}$\/} be a two sorted language. 
+  Let \emph{${\EuScript L}$\/} be a two-sorted language. 
   The two sorts are denoted by \emph{${\sf H}$} and \emph{${\sf S}$.} 
   The language ${\EuScript L}$ expands ${\EuScript L}_{\sf H}$ and ${\EuScript L}_{\sf S}$ with symbols of sort ${\sf H}^n\times{\sf S}^m\to {\sf S}$.
   An \emph{${\EuScript L}$-structure\/} is a structure of signature ${\EuScript L}$ that interprets these symbols with equicontinuous functions (i.e.\@ uniformly continuous w.r.t.\@ the variables in ${\sf H}$).
@@ -293,7 +290,7 @@ We write \emph{$x\in C$\/} for the predicate associated to a compact set $C$, an
   \end{itemize}
 \end{definition}
 
-We remark that a smaller fragment of ${\EuScript F}$ may be of interest in some specific contexts.
+A smaller fragment of ${\EuScript F}$ may be of interest in some specific contexts.
 This fragment is obtained by excluding equalities and inequalities from (i).
 The discussion below applies to this smaller fragment as well.
 
@@ -305,12 +302,10 @@ A standard structure $M$ is \emph{${\EuScript F}$-saturated\/} if it realizes ev
 The following theorem is proved in \cite{clcl} for signatures that do not contain symbols of sort ${\sf H}^n\times{\sf S}^m\to {\sf S}$ with $n{\cdot}m>0$.
 A similar framework has been independently introduced in \cite{CP}~--~only without quantifiers of sort {\sf H} and with an approximate notion of satisfaction.
 The corresponding compactness theorem is proved there with a similar method.
-The setting in \cite{CP} is a generalization of that used by Henson and Iovino for Banach spaces\textcolor{blue}{, see e.g.~\cite{I}}.
+The setting in \cite{CP} is a generalization of that used by Henson and Iovino for Banach spaces (see, for example,~\cite{I}).
 By the elimination of quantifiers of sort {\sf S}, proved in \cite{clcl}*{Proposition 3.6}, the two approaches are equivalent~--~up to approximations.
 
-% \textcolor{blue}{When this paper was completed, Arthuro Rodriguez-Fanlo informed the third author that a similar approach to continuous structures was introduced in \cite{CH}*{Appendix A}, though not elaborated with the same details as in the references above.}
-
-In \cite{Z} it is observed that, under the assumption of equicontinuity, the proof in \cite{clcl} extends to the case $n{\cdot}m> 0$.
+In \cite{Z} it is observed that, under the assumption of equicontinuity, the proof in \cite{clcl} extends to the case $n{\cdot}m> 0$ (a case which captures examples such as equicontinuous flows).
 
 \begin{theorem}[ (Compactness)]\label{thm_compactness}
   Every standard structure has an ${\EuScript F}$-saturated ${\EuScript F}$-elementary extension.
@@ -1158,17 +1153,16 @@ But (5) contradicts (3), while (6) contradicts (4).
 \vskip10ex
 \textbf{Acknowledgments}\quad Domenico Zambella would like to thank Elisabetta Marchese for helpful discussion.
 
-\textcolor{gray}{
-\textbf{Author contribution}\quad All authors have contributed equally.}
+
+% \textbf{Author contribution}\quad All authors have contributed equally.
 
 \textbf{Funding}\quad
 Silvia Barbina was partially supported by PRIN2022 \textit{Models, sets and classifications}, prot.\@ 2022TECZJA.
 Riccardo Camerlo was partially supported by the MUR excellence department project awarded to the Department of Mathematics of the University of Genoa, CUP D33C23001110001. 
 Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in combinatorics}, prot.\@ 2022BXH4R5
 
-\textcolor{gray}{
-\textbf{Conflict of interest}\quad The authors declare no conflict of interest.
-}
+% \textbf{Conflict of interest}\quad The authors declare no conflict of interest.
+
 
 
 \vskip10ex
@@ -1262,7 +1256,7 @@ Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in
 %    label={BU},
 %    author={Ben Yaacov, Ita\"i},
 %    author={Usvyatsov, Alexander},
-%    title={Continuous first order logic and local stability},
+%    title={Continuous first-order logic and local stability},
 %    journal={Trans. Amer. Math. Soc.},
 %    volume={362},
 %    date={2010},
@@ -1362,32 +1356,31 @@ Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in
 %   %  review={\MR{2373360}},
 %   %  doi={10.1090/S0894-0347-07-00558-9},
 % }
-\vskip-\baselineskip
-\textcolor{gray}{\bib{HI}{article}{
-  label={HI},
-  author={Henson, C. Ward},
-  author={Iovino, Jos\'{e}},
-  title={Ultraproducts in analysis},
-  conference={
-    title={Analysis and logic},
-    address={Mons},
-    date={1997},
-   },
-   book={
-      series={London Math. Soc. Lecture Note Ser.},
-      volume={262},
-      publisher={Cambridge Univ. Press, Cambridge},
-   },
-   date={2002},
-   pages={1--110},
-}}\smallskip
+% \bib{HI}{article}{
+%   label={HI},
+%   author={Henson, C. Ward},
+%   author={Iovino, Jos\'{e}},
+%   title={Ultraproducts in analysis},
+%   conference={
+%     title={Analysis and logic},
+%     address={Mons},
+%     date={1997},
+%    },
+%    book={
+%       series={London Math. Soc. Lecture Note Ser.},
+%       volume={262},
+%       publisher={Cambridge Univ. Press, Cambridge},
+%    },
+%    date={2002},
+%    pages={1--110},
+% }\smallskip
 % \bib{K}{article}{
 %   label={K},
 %   author = {Keisler, H. Jerome},  
 %   title = {Model Theory for Real-valued Structures},
 %   book={
 %     editor={Iovino, Jos\'e},
-%     title ={{in} Beyond First Order Model Theory}, 
+%     title ={{in} Beyond first-order Model Theory}, 
 %     volume ={II},
 %     publisher={Chapman and Hall/CRC},
 %   % https://doi.org/10.1201/9780429263637
@@ -1415,14 +1408,14 @@ Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in
 %   %  doi={10.1007/s00153-015-0424-0},
 % }
 \vskip-\baselineskip
-\noindent\textcolor{blue}{\bib{I}{book}{
+\bib{I}{book}{
   label={I},
   author={Iovino, Jos\'e},
   title={Applications of model theory to functional analysis},
-  publisher={Dover Publications, Inc., Mineola, NY},
+  publisher={Dover Publications},
   date={2014},
   pages={xiv+95},
-}}
+}
 \bib{TZ}{book}{
   label={TZ},
   author={Tent, Katrin},
@@ -1430,8 +1423,8 @@ Domenico Zambella was partially supported by PRIN2022 \textit{Logical methods in
   title={A course in model theory},
   series={Lecture Notes in Logic},
   volume={40},
-  publisher={Association for Symbolic Logic, La Jolla, CA; Cambridge
-  University Press, Cambridge},
+  publisher={Association for Symbolic Logic; Cambridge
+  University Press},
   date={2012},
   pages={x+248},
 %  isbn={978-0-521-76324-0},
